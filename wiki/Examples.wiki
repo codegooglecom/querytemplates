@@ -3,10 +3,12 @@ There are 3 sections of examples:
  * [#Intermediate Intermediate]
  * [#Advanced Advanced]
 
-After reading all 8 examples you should be able to start implementing QueryTemplates in you application. Each example contains comments describing new things introduced in it and refers to previous one in same section. Comments from previous example are removed.
+After reading all 8 examples you should be able to start implementing QueryTemplates in you application. Each example contains comments describing new things introduced in it and refers to previous one in same section. Comments from previous example are removed.  
 
 = Simple =
 == [http://code.google.com/p/querytemplates/source/browse/trunk/examples/simple-1/ Simple 1] ==
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/simple-1/input.html Source]
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/simple-1/output.code.php Result]
 {{{
 <?php
 /* STEP 0 - prepare input data */
@@ -51,6 +53,8 @@ $template = template('output')
 require($template);
 }}}
 == [http://code.google.com/p/querytemplates/source/browse/trunk/examples/simple-2/ Simple 2] ==
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/simple-2/input.html Source]
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/simple-2/output.code.php Result]
 {{{
 <?php
 /* STEP 0 - prepare input data */
@@ -98,6 +102,8 @@ $template = template('output')
 require($template);
 }}}
 == [http://code.google.com/p/querytemplates/source/browse/trunk/examples/simple-3/ Simple 3] ==
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/simple-3/input.html Source]
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/simple-3/output.code.php Result]
 {{{
 <?php
 /* STEP 0 - prepare input data */
@@ -152,6 +158,8 @@ require($template);
 
 = Intermediate =
 == [http://code.google.com/p/querytemplates/source/browse/trunk/examples/intermediate-1/ Intermediate 1] ==
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/intermediate-1/input.html Source]
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/intermediate-1/output.code.php Result]
 {{{
 <?php
 /* STEP 0 - prepare input data */
@@ -218,6 +226,8 @@ $template = template('output')
 require($template);
 }}}
 == [http://code.google.com/p/querytemplates/source/browse/trunk/examples/intermediate-2/ Intermediate 2] ==
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/intermediate-2/input.html Source]
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/intermediate-2/output.code.php Result]
 {{{
 <?php
 /* STEP 0 - prepare input data */
@@ -251,6 +261,8 @@ $template = template('output')
 require($template);
 }}}
 == [http://code.google.com/p/querytemplates/source/browse/trunk/examples/intermediate-3/ Intermediate 3] ==
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/intermediate-3/input.html Source]
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/intermediate-3/output.code.php Result]
 {{{
 <?php
 /* STEP 0 - prepare input data */
@@ -286,6 +298,9 @@ require($template);
 
 = Advanced =
 == [http://code.google.com/p/querytemplates/source/browse/trunk/examples/advanced-1/ Advanced 1] ==
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/advanced-1/input.html Source 1]
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/advanced-1/input2.html Source 2]
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/advanced-1/output.code.php Result]
 {{{
 <?php
 /* STEP 0 - prepare input data */
@@ -366,6 +381,9 @@ $template = template('output')
 require($template);
 }}}
 == [http://code.google.com/p/querytemplates/source/browse/trunk/examples/advanced-2/ Advanced 2] ==
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/advanced-2/input.html Source 1]
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/advanced-2/input2.html Source 2]
+ * [http://code.google.com/p/querytemplates/source/browse/trunk/examples/advanced-2/output.code.php Result]
 {{{
 <?php
 /* STEP 0 - prepare input data */
