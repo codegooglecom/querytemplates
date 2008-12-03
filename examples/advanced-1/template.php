@@ -34,8 +34,6 @@ $tagFields = array_keys($posts[0]['Tag'][0]);
 
 /* STEP 1 - set up environment */
 require_once('../../src/QueryTemplates.php');
-// tmp
-require_once('../../../phpQuery/phpQuery/phpQuery.php');
 QueryTemplates::$sourcesPath = dirname(__FILE__);
 QueryTemplates::$targetsPath = dirname(__FILE__);
 // QueryTemplates::$debug = 1;
