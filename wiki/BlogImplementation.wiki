@@ -11,7 +11,10 @@ You can browse source directly via [http://code.google.com/p/querytemplates/sour
  * [http://code.google.com/p/querytemplates/source/browse/qt-blog/webroot/templates/ Source templates]
  * [http://code.google.com/p/querytemplates/source/browse/qt-blog/tmp/cache/views Final templates]
 
-Installation
+== Download ==
+QT Blog can be downloaded from [http://code.google.com/p/querytemplates/downloads/list download section].
+
+== Installation ==
  # Execute DATABASE.sql
  # Edit config/database.php with proper user data
  # Edit webroot/index.php changing CAKE_CORE_INCLUDE_PATH to your CakePHP 1.2 path
