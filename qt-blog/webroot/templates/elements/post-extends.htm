@@ -1,0 +1,58 @@
+<div class='related'>
+	<div class='comments'>
+		<h3>Comments</h3>
+		<ul>
+			<li>
+				<h4 class='author'>Author 1</h4>
+				<div class='body'>
+					<p>Text within paragraph</p>
+					<p>Nulla sed ante. Morbi eu lorem. Proin mattis luctus dolor. Sed sed odio id nunc elementum gravida. Duis pretium ullamcorper lorem. Vestibulum erat nisl, tempor et, rhoncus non, tristique id, augue. Quisque at ipsum. Nam tincidunt leo sed quam. Suspendisse potenti. Sed nec sem sed arcu porta sagittis.</p>
+				</div>
+			</li>
+			<li>
+				<h4 class='author'><a href='#'>Author 2</a></h4>
+				<div class='body'>
+					Text outside paragraph
+					<blockquote>Text within blockquote</blockquote>
+					<p>Nulla sed ante. Morbi eu lorem. Proin mattis luctus dolor. Sed sed odio id nunc elementum gravida. Duis pretium ullamcorper lorem. Vestibulum erat nisl, tempor et, rhoncus non, tristique id, augue. Quisque at ipsum. Nam tincidunt leo sed quam. Suspendisse potenti. Sed nec sem sed arcu porta sagittis.</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class='comment-form'>
+		<h3>Add Comment</h3>
+		<form id='Comment'>
+			<fieldset>
+				<input type="hidden" name='data[Post][id]' class='formToCakeForm-skip' />
+				<legend>Post your comment</legend>
+				<div>
+					<label>
+						You:<br />
+						<input type='text' name='Comment.author' />
+					</label>
+				</div>
+				<div>
+					<label>
+						Email (not public):<br />
+						<input type='text' name='Comment.email' />
+					</label>
+				</div>
+				<div>
+					<label>
+						URL:<br />
+						<input type='text' name='Comment.url' />
+					</label>
+				</div>
+				<div>
+					<label>
+						Comment:<br />
+						<textarea name='Comment.body'></textarea>
+					</label>
+				</div>
+				<div>
+					<input type='submit' value='Submit' />
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>

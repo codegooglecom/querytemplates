@@ -1,0 +1,4 @@
+Installation:
+  1. Execute DATABASE.sql
+  2. Edit config/database.php with proper user data
+  3. Edit webroot/index.php changing CAKE_CORE_INCLUDE_PATH to your CakePHP 1.2 path
