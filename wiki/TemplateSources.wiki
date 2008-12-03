@@ -5,6 +5,6 @@ Source can be one of followings
  * XHTML
  * XML
  * PHP
-   * PHP files are read as DOM, where PHP tags becomes <php>code</php> nodes
+   * PHP files are read as DOM, where PHP tags becomes `<php>code</php>` nodes
  * Callback
    * Callbacks as sources are used to lazy-execute some code
