@@ -5,7 +5,7 @@ There are 3 sections of examples:
 
 After reading all 8 examples you should be able to start implementing QueryTemplates in you application. Each example contains comments describing new things introduced in it and refers to previous one in same section. Comments from previous example are removed.
 
-== Simple ==
+= Simple =
 == [http://code.google.com/p/querytemplates/source/browse/trunk/examples/simple-1/ Simple 1] ==
 {{{
 <?php
@@ -150,7 +150,7 @@ $template = template('output')
 require($template);
 }}}
 
-== Intermediate ==
+= Intermediate =
 == [http://code.google.com/p/querytemplates/source/browse/trunk/examples/intermediate-1/ Intermediate 1] ==
 {{{
 <?php
@@ -284,7 +284,7 @@ $template = template('output')
 require($template);
 }}}
 
-== Advanced ==
+= Advanced =
 == [http://code.google.com/p/querytemplates/source/browse/trunk/examples/advanced-1/ Advanced 1] ==
 {{{
 <?php
