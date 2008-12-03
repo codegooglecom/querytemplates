@@ -1,0 +1,16 @@
+== Minimal template structure ==
+{{{
+// intialize 
+require(template()
+   // fetch sources
+  ->sourceCollect('myfile.html')
+  // start parsing
+  ->parse()
+    // inject sources
+    ->source('myfile.html')->returnReplace()
+    // inject data
+    ->find('.target')->php('print $data')->end()
+  // save for inclusion
+  ->save()
+);
+}}}

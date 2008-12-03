@@ -1,0 +1,13 @@
+CakeForm plugin automaticaly converts HTML markup forms into executable PHP code using CakePHP's default FormHelper. It's used to rapidly mix designed template with CakePHP form controls. It also handles error messages.
+
+It's use is quite simple
+{{{
+// load plugin
+->plugin('CakeForms')
+// find form in the template
+->find('form')
+  // convert form
+  ->formToCakeForm(
+    array('Post', array('action' => 'edit')), $form
+  );
+}}}

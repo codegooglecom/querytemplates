@@ -1,0 +1,14 @@
+QT Blog is a CakePHP based blog implementation created to present various QueryTemplates usage patterns:
+ * DB data injections
+ * Callback sources
+ * Multiple template sources
+ * Form convertions
+
+It uses CakeForms plugin, which converts pure HTML forms into PHP templates integrated with CakePHP FormHelper.
+ 
+You can browse source directly via [http://code.google.com/p/querytemplates/source/browse/qt-blog/ web repository].
+
+Installation
+ # Execute DATABASE.sql
+ # Edit config/database.php with proper user data
+ # Edit webroot/index.php changing CAKE_CORE_INCLUDE_PATH to your CakePHP 1.2 path

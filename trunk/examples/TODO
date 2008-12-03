@@ -1,0 +1,5 @@
+Things which should be included in future examples:
+ * quering source('name')->...->returnXXX()
+ * more on callbacks
+ * more on breaking the chain
+ * inputsFromValues

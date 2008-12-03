@@ -1,0 +1,2805 @@
+<html>
+<head>
+<title>Docs For Class QueryTemplatesPhpQuery</title>
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">QueryTemplates</td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                    
+                                                  		  [ <a href="../classtrees_QueryTemplates.html" class="menu">class tree: QueryTemplates</a> ]
+		  [ <a href="../elementindex_QueryTemplates.html" class="menu">index: QueryTemplates</a> ]
+		  	    [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+      <b>Packages:</b><br />
+              <a href="../li_QueryTemplates.html">QueryTemplates</a><br />
+              <a href="../li_phpQuery.html">phpQuery</a><br />
+            <br /><br />
+                        <b>Files:</b><br />
+      	  <div class="package">
+			<a href="../QueryTemplates/_IQueryTemplatesParse.php.html">		IQueryTemplatesParse.php
+		</a><br>
+			<a href="../QueryTemplates/_IQueryTemplatesTemplate.php.html">		IQueryTemplatesTemplate.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplatesParse.php.html">		QueryTemplatesParse.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplatesPhpQuery.php.html">		QueryTemplatesPhpQuery.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplatesSource.php.html">		QueryTemplatesSource.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplatesSourceQuery.php.html">		QueryTemplatesSourceQuery.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplatesTemplate.php.html">		QueryTemplatesTemplate.php
+		</a><br>
+	  </div><br />
+	subpackage <b>QueryTemplatesPlugins</b><br>  <div class="package">
+			<a href="../QueryTemplates/QueryTemplatesPlugins/_phpQuery---plugins---CakeForms.php.html">		CakeForms.php
+		</a><br>
+	  </div><br />
+      
+            <b>Interfaces:</b><br />
+        <div class="package">
+		    		<a href="../QueryTemplates/IQueryTemplatesParse.html">IQueryTemplatesParse</a><br />
+	    		<a href="../QueryTemplates/IQueryTemplatesParseChain.html">IQueryTemplatesParseChain</a><br />
+	    		<a href="../QueryTemplates/IQueryTemplatesTemplate.html">IQueryTemplatesTemplate</a><br />
+	    		<a href="../QueryTemplates/IQueryTemplatesTemplateChain.html">IQueryTemplatesTemplateChain</a><br />
+	    		<a href="../QueryTemplates/IQueryTemplatesTemplateParse.html">IQueryTemplatesTemplateParse</a><br />
+	    		<a href="../QueryTemplates/IQueryTemplatesTemplateSources.html">IQueryTemplatesTemplateSources</a><br />
+	  </div>
+      
+            <b>Classes:</b><br />
+        <div class="package">
+	QueryTemplatesPlugins<br />	    &nbsp;&nbsp;		<a href="../QueryTemplates/QueryTemplatesPlugins/phpQueryObjectPlugin_CakeForms.html">phpQueryObjectPlugin_CakeForms</a><br />
+	  </div>
+  <div class="package">
+		    		<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a><br />
+	    		<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a><br />
+	    		<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a><br />
+	    		<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a><br />
+	    		<a href="../QueryTemplates/QueryTemplatesTemplate.html">QueryTemplatesTemplate</a><br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: QueryTemplatesPhpQuery</h1>
+Source Location: /QueryTemplatesPhpQuery.php<br /><br />
+
+
+<table width="100%" border="0">
+<tr><td valign="top">
+
+<h3><a href="#class_details">Class Overview</a></h3>
+<pre><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>
+   |
+   --QueryTemplatesPhpQuery</pre><br />
+<div class="description">Class extending phpQueryObject with templating methods.</div><br /><br />
+<h4>Author(s):</h4>
+<ul>
+          <li>Tobiasz Cudnik &lt;<a href="mailto:tobiasz.cudnik/gmail.com">tobiasz.cudnik/gmail.com</a>&gt;</li>
+                              </ul>
+
+
+
+
+                    
+
+        
+</td>
+
+
+
+<td valign="top">
+<h3><a href="#class_methods">Methods</a></h3>
+<ul>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodelseIfPHP">elseIfPHP</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodelseIfVar">elseIfVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodelsePHP">elsePHP</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodifPHP">ifPHP</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodifVar">ifVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodinputsFromValues">inputsFromValues</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodloop">loop</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodloopOne">loopOne</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodstackToMethod">stackToMethod</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodtagToElseIfPHP">tagToElseIfPHP</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodtagToElseIfVar">tagToElseIfVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodtagToElsePHP">tagToElsePHP</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodtagToIfPHP">tagToIfPHP</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodtagToIfVar">tagToIfVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToForm">valuesToForm</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelector">valuesToSelector</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelectorReplace">valuesToSelectorReplace</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToStack">valuesToStack</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToStackReplace">valuesToStackReplace</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToVars">valuesToVars</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToForm">varsToForm</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelector">varsToSelector</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelectorReplace">varsToSelectorReplace</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToStack">varsToStack</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToStackReplace">varsToStackReplace</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#method_clone">_clone</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#method_loop">_loop</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#method_valuesToSelector">_valuesToSelector</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#method_varsToSelector">_varsToSelector</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#method_varsToStack">_varsToStack</a></li>
+  </ul>
+</td>
+
+</tr></table>
+<hr />
+
+<table width="100%" border="0"><tr>
+
+
+<td valign="top">
+<h3>Child classes:</h3>
+<div class="tags">
+<dl>
+<dt><a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a></dt>
+	<dd>Class handling template source use.</dd>
+</dl>
+<dl>
+<dt><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a></dt>
+	<dd>Template parsing class.</dd>
+</dl>
+<dl>
+<dt><a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a></dt>
+	<dd>Class handling template source fetching.</dd>
+</dl>
+</div>
+</td>
+
+
+<td valign="top">
+<h3>Inherited Variables</h3>
+<div class="tags">
+<h4>Class: <a href="../phpQuery/phpQueryObject.html">phpQueryObject</a></h4>
+<dl>
+<dt>
+  <a href="../phpQuery/phpQueryObject.html#var$charset">phpQueryObject::$charset</a>
+  </dt>
+<dd>
+   
+</dd>
+<dt>
+  <a href="../phpQuery/phpQueryObject.html#var$current">phpQueryObject::$current</a>
+  </dt>
+<dd>
+   
+</dd>
+<dt>
+  <a href="../phpQuery/phpQueryObject.html#var$document">phpQueryObject::$document</a>
+  </dt>
+<dd>
+   
+</dd>
+<dt>
+  <a href="../phpQuery/phpQueryObject.html#var$documentFragment">phpQueryObject::$documentFragment</a>
+  </dt>
+<dd>
+   
+</dd>
+<dt>
+  <a href="../phpQuery/phpQueryObject.html#var$documentID">phpQueryObject::$documentID</a>
+  </dt>
+<dd>
+   
+</dd>
+<dt>
+  <a href="../phpQuery/phpQueryObject.html#var$documentWrapper">phpQueryObject::$documentWrapper</a>
+  </dt>
+<dd>
+   
+</dd>
+<dt>
+  <a href="../phpQuery/phpQueryObject.html#var$elements">phpQueryObject::$elements</a>
+  </dt>
+<dd>
+   
+</dd>
+<dt>
+  <a href="../phpQuery/phpQueryObject.html#var$elementsBackup">phpQueryObject::$elementsBackup</a>
+  </dt>
+<dd>
+   
+</dd>
+<dt>
+  <a href="../phpQuery/phpQueryObject.html#var$elementsInterator">phpQueryObject::$elementsInterator</a>
+  </dt>
+<dd>
+   
+</dd>
+<dt>
+  <a href="../phpQuery/phpQueryObject.html#var$previous">phpQueryObject::$previous</a>
+  </dt>
+<dd>
+   
+</dd>
+<dt>
+  <a href="../phpQuery/phpQueryObject.html#var$root">phpQueryObject::$root</a>
+  </dt>
+<dd>
+   
+</dd>
+<dt>
+  <a href="../phpQuery/phpQueryObject.html#var$valid">phpQueryObject::$valid</a>
+  </dt>
+<dd>
+   
+</dd>
+<dt>
+  <a href="../phpQuery/phpQueryObject.html#var$xpath">phpQueryObject::$xpath</a>
+  </dt>
+<dd>
+   
+</dd>
+</dl>
+</div>
+</td>
+
+<td valign="top">
+<h3>Inherited Methods</h3>
+<div class="tags">
+<h4>Class: <a href="../phpQuery/phpQueryObject.html">phpQueryObject</a></h4>
+<dl>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#method__construct">phpQueryObject::__construct()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodadd">phpQueryObject::add()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodaddClass">phpQueryObject::addClass()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodaddClassPHP">phpQueryObject::addClassPHP()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodafter">phpQueryObject::after()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodafterPHP">phpQueryObject::afterPHP()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodancestors">phpQueryObject::ancestors()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodandSelf">phpQueryObject::andSelf()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodappend">phpQueryObject::append()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodappendPHP">phpQueryObject::appendPHP()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodappendTo">phpQueryObject::appendTo()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodattr">phpQueryObject::attr()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodattrAppend">phpQueryObject::attrAppend()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodattrEvents">phpQueryObject::attrEvents()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodattrPHP">phpQueryObject::attrPHP()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodattrPrepend">phpQueryObject::attrPrepend()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodbefore">phpQueryObject::before()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodbeforePHP">phpQueryObject::beforePHP()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodbind">phpQueryObject::bind()</a>
+  </dt>
+  <dd>
+    Binds a handler to one or more events (like click) for each matched element.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodchange">phpQueryObject::change()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodchildren">phpQueryObject::children()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodclick">phpQueryObject::click()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodcontents">phpQueryObject::contents()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodcontentsUnwrap">phpQueryObject::contentsUnwrap()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodcount">phpQueryObject::count()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodcss">phpQueryObject::css()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodcurrent">phpQueryObject::current()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methoddebug">phpQueryObject::debug()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methoddocumentFragment">phpQueryObject::documentFragment()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methoddump">phpQueryObject::dump()</a>
+  </dt>
+  <dd>
+    Dump htmlOuter and preserve chain. Usefull for debugging.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methoddumpDie">phpQueryObject::dumpDie()</a>
+  </dt>
+  <dd>
+    Dump htmlOuter and stop script execution. Usefull for debugging.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methoddumpLength">phpQueryObject::dumpLength()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methoddumpTree">phpQueryObject::dumpTree()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methoddumpWhois">phpQueryObject::dumpWhois()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodeach">phpQueryObject::each()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodelementsContainsNode">phpQueryObject::elementsContainsNode()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodend">phpQueryObject::end()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodeq">phpQueryObject::eq()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodextend">phpQueryObject::extend()</a>
+  </dt>
+  <dd>
+    Deprecated, use $pq-&gt;plugin() instead.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodfilter">phpQueryObject::filter()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodfilterCallback">phpQueryObject::filterCallback()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodfind">phpQueryObject::find()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodget">phpQueryObject::get()</a>
+  </dt>
+  <dd>
+    Return matched DOM nodes.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodgetDocument">phpQueryObject::getDocument()</a>
+  </dt>
+  <dd>
+    Returns object with stack set to document root.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodgetDocumentID">phpQueryObject::getDocumentID()</a>
+  </dt>
+  <dd>
+    Get object's Document ID.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodgetDocumentIDRef">phpQueryObject::getDocumentIDRef()</a>
+  </dt>
+  <dd>
+    Saves object's DocumentID to $var by reference.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodgetDOMDocument">phpQueryObject::getDOMDocument()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodgetElementSiblings">phpQueryObject::getElementSiblings()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodgetNodeAttrs">phpQueryObject::getNodeAttrs()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodgetNodeXpath">phpQueryObject::getNodeXpath()</a>
+  </dt>
+  <dd>
+    Returns node's XPath.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodgetString">phpQueryObject::getString()</a>
+  </dt>
+  <dd>
+    Return matched DOM nodes.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodgetStrings">phpQueryObject::getStrings()</a>
+  </dt>
+  <dd>
+    Return matched DOM nodes.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodhasClass">phpQueryObject::hasClass()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodhide">phpQueryObject::hide()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodhtml">phpQueryObject::html()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodhtmlOuter">phpQueryObject::htmlOuter()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodindex">phpQueryObject::index()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodinsert">phpQueryObject::insert()</a>
+  </dt>
+  <dd>
+    Various insert scenarios.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodinsertAfter">phpQueryObject::insertAfter()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodinsertBefore">phpQueryObject::insertBefore()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodis">phpQueryObject::is()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodisChar">phpQueryObject::isChar()</a>
+  </dt>
+  <dd>
+    Determines if $char is really a char.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodisHTML">phpQueryObject::isHTML()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodisRegexp">phpQueryObject::isRegexp()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodisRoot">phpQueryObject::isRoot()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodisXHTML">phpQueryObject::isXHTML()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodisXML">phpQueryObject::isXML()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodkey">phpQueryObject::key()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodlength">phpQueryObject::length()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodload">phpQueryObject::load()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodmap">phpQueryObject::map()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodmarkup">phpQueryObject::markup()</a>
+  </dt>
+  <dd>
+    jQuey difference
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodmarkupEvents">phpQueryObject::markupEvents()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodmarkupOuter">phpQueryObject::markupOuter()</a>
+  </dt>
+  <dd>
+    jQuey difference
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodmatchClasses">phpQueryObject::matchClasses()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodmerge">phpQueryObject::merge()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodnewInstance">phpQueryObject::newInstance()</a>
+  </dt>
+  <dd>
+    Returns new instance of actual class.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodnext">phpQueryObject::next()</a>
+  </dt>
+  <dd>
+    Double-function method.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodnextAll">phpQueryObject::nextAll()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodnot">phpQueryObject::not()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodoffsetExists">phpQueryObject::offsetExists()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodoffsetGet">phpQueryObject::offsetGet()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodoffsetSet">phpQueryObject::offsetSet()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodoffsetUnset">phpQueryObject::offsetUnset()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodparent">phpQueryObject::parent()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodparents">phpQueryObject::parents()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodparseSelector">phpQueryObject::parseSelector()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodphp">phpQueryObject::php()</a>
+  </dt>
+  <dd>
+    Just like html(), but returns markup with VALID (dangerous) PHP tags.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodplugin">phpQueryObject::plugin()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodprepend">phpQueryObject::prepend()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodprependPHP">phpQueryObject::prependPHP()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodprependTo">phpQueryObject::prependTo()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodprev">phpQueryObject::prev()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodprevAll">phpQueryObject::prevAll()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodpseudoClasses">phpQueryObject::pseudoClasses()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodremove">phpQueryObject::remove()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodremoveAttr">phpQueryObject::removeAttr()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodremoveClass">phpQueryObject::removeClass()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodreplaceAll">phpQueryObject::replaceAll()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodreplaceWith">phpQueryObject::replaceWith()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodreplaceWithPHP">phpQueryObject::replaceWithPHP()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodreverse">phpQueryObject::reverse()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodrewind">phpQueryObject::rewind()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodrunQuery">phpQueryObject::runQuery()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodserialize">phpQueryObject::serialize()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodserializeArray">phpQueryObject::serializeArray()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodshow">phpQueryObject::show()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodsiblings">phpQueryObject::siblings()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodsize">phpQueryObject::size()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodslice">phpQueryObject::slice()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodstack">phpQueryObject::stack()</a>
+  </dt>
+  <dd>
+    Attribute method.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodstackIsRoot">phpQueryObject::stackIsRoot()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodsubmit">phpQueryObject::submit()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodswitchWith">phpQueryObject::switchWith()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodtext">phpQueryObject::text()</a>
+  </dt>
+  <dd>
+    Return joined text content.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodtoggleClass">phpQueryObject::toggleClass()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodtoReference">phpQueryObject::toReference()</a>
+  </dt>
+  <dd>
+    Saves actual object to $var by reference.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodtoRoot">phpQueryObject::toRoot()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodtrigger">phpQueryObject::trigger()</a>
+  </dt>
+  <dd>
+    Trigger a type of event on every matched element.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodtriggerHandler">phpQueryObject::triggerHandler()</a>
+  </dt>
+  <dd>
+    This particular method triggers all bound event handlers on an element (for a specific event type) WITHOUT executing the browsers default actions.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodunbind">phpQueryObject::unbind()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodunloadDocument">phpQueryObject::unloadDocument()</a>
+  </dt>
+  <dd>
+    Unloads whole document from memory.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodunQuote">phpQueryObject::unQuote()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodval">phpQueryObject::val()</a>
+  </dt>
+  <dd>
+    Return form element value.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodvalid">phpQueryObject::valid()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodwhois">phpQueryObject::whois()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodwrap">phpQueryObject::wrap()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodwrapAll">phpQueryObject::wrapAll()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodwrapAllOld">phpQueryObject::wrapAllOld()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodwrapAllPHP">phpQueryObject::wrapAllPHP()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodwrapInner">phpQueryObject::wrapInner()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodwrapInnerPHP">phpQueryObject::wrapInnerPHP()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodwrapPHP">phpQueryObject::wrapPHP()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodxml">phpQueryObject::xml()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#methodxmlOuter">phpQueryObject::xmlOuter()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#method_clone">phpQueryObject::_clone()</a>
+  </dt>
+  <dd>
+    Enter description here...
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#method_empty">phpQueryObject::_empty()</a>
+  </dt>
+  <dd>
+    Proper name without underscore (just -&gt;empty()) also works.
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#method_next">phpQueryObject::_next()</a>
+  </dt>
+  <dd>
+    Safe rename of next().
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#method_prev">phpQueryObject::_prev()</a>
+  </dt>
+  <dd>
+    Use prev() and next().
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#method__call">phpQueryObject::__call()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#method__get">phpQueryObject::__get()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#method__loadSuccess">phpQueryObject::__loadSuccess()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#method__pseudoClassParam">phpQueryObject::__pseudoClassParam()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#method__toString">phpQueryObject::__toString()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../phpQuery/phpQueryObject.html#method___wrapAllCallback">phpQueryObject::___wrapAllCallback()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+  </dl>
+</div>
+</td>
+
+</tr></table>
+<hr />
+
+<a name="class_details"></a>
+<h3>Class Details</h3>
+<div class="tags">
+[line 13]<br />
+Class extending phpQueryObject with templating methods.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>author:</b>&nbsp;&nbsp;</td><td>Tobiasz Cudnik &lt;<a href="mailto:tobiasz.cudnik/gmail.com">tobiasz.cudnik/gmail.com</a>&gt;</td>
+  </tr>
+  <tr>
+    <td><b>link:</b>&nbsp;&nbsp;</td><td><a href="http://code.google.com/p/querytemplates/">http://code.google.com/p/querytemplates/</a></td>
+  </tr>
+  <tr>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>safe variable interactions (if isset), as option</td>
+  </tr>
+  <tr>
+    <td><b>abstract:</b>&nbsp;&nbsp;</td><td></td>
+  </tr>
+  <tr>
+    <td><b>license:</b>&nbsp;&nbsp;</td><td><a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a></td>
+  </tr>
+</table>
+</div>
+</div><br /><br />
+<div class="top">[ <a href="#top">Top</a> ]</div><br />
+
+
+<hr />
+<a name="class_methods"></a>
+<h3>Class Methods</h3>
+<div class="tags">
+
+  <hr />
+	<a name="methodelseIfPHP"></a>
+	<h3>method elseIfPHP <span class="smalllinenumber">[line 1192]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> elseIfPHP(
+string
+$code, [bool
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Wraps selected tag with PHP &quot;else if&quot; statement containing $code as condition.<br /><br /><p>Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.</p><p>Method doesn't change selected elements stack. Returned is source element.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'node1'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodelseIfPHP">elseIfPHP</a><span class="src-sym">(</span><span class="src-str">'$foo&nbsp;==&nbsp;1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>/&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$foo&nbsp;</span>==&nbsp;<span class="src-num">1</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node1/&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$code</b>&nbsp;&nbsp;</td>
+        <td>Valid PHP condition code</td>
+      </tr>
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td>Determines if selected elements should be wrapped together or one-by-one</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodelseIfVar"></a>
+	<h3>method elseIfVar <span class="smalllinenumber">[line 1239]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> elseIfVar(
+string
+$var, [bool
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Wraps selected tag with PHP &quot;else if&quot; statement checking if $var evaluates  to true. $var must be an object available inside template's scope.<br /><br /><p>$var is passed in JS object convention (dot separated).</p><p>Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.</p><p>Method doesn't change selected elements stack. Returned is source element.</p><p>Notice-safe.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'node1'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodelseIfVar">elseIfVar</a><span class="src-sym">(</span><span class="src-str">'foo.bar.1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>/&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$foo</span><span class="src-sym">-&gt;</span><span class="src-id">bar</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-num">1</span><span class="src-sym">}</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;node/&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;</span><span class="src-sym">}&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$var</b>&nbsp;&nbsp;</td>
+        <td>Dot-separated object path, eg Object.property.inneProperty</td>
+      </tr>
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td>Determines if selected elements should be wrapped together or one-by-one</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodelsePHP"></a>
+	<h3>method elsePHP <span class="smalllinenumber">[line 1261]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> elsePHP(
+[bool
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Wraps selected tag with PHP &quot;else&quot; statement.<br /><br /><p>Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.</p><p>Method doesn't change selected elements stack. Returned is source element.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td>Determines if selected elements should be wrapped together or one-by-one</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodifPHP"></a>
+	<h3>method ifPHP <span class="smalllinenumber">[line 1101]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> ifPHP(
+string
+$code, [bool
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Wraps selected tag with PHP &quot;if&quot; statement containing $code as condition.<br /><br /><p>Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.</p><p>Method doesn't change selected elements stack. Returned is source element.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'node1'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">tagToElseIf</span><span class="src-sym">(</span><span class="src-str">'$foo&nbsp;==&nbsp;1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>/&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$foo&nbsp;</span>==&nbsp;<span class="src-num">1</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node1/&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$code</b>&nbsp;&nbsp;</td>
+        <td>Valid PHP condition code</td>
+      </tr>
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td>Determines if selected elements should be wrapped together or one-by-one</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodifVar"></a>
+	<h3>method ifVar <span class="smalllinenumber">[line 1149]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> ifVar(
+string
+$var, [bool
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Wraps selected tag with PHP &quot;if&quot; statement checking if $var evaluates  to true. $var must be an object available inside template's scope.<br /><br /><p>$var is passed in JS object convention (dot separated).</p><p>Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.</p><p>Method doesn't change selected elements stack. Returned is source element.</p><p>Notice-safe.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'node1'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodifVar">ifVar</a><span class="src-sym">(</span><span class="src-str">'foo.bar.1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>/&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$foo</span><span class="src-sym">-&gt;</span><span class="src-id">bar</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-num">1</span><span class="src-sym">}</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node/&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodtagToIfVar">QueryTemplatesPhpQuery::tagToIfVar()</a></td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$var</b>&nbsp;&nbsp;</td>
+        <td>Dot-separated object path, eg Object.property.inneProperty</td>
+      </tr>
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td>Determines if selected elements should be wrapped together or one-by-one</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodinputsFromValues"></a>
+	<h3>method inputsFromValues <span class="smalllinenumber">[line 481]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> inputsFromValues(
+$data
+$data, [$type
+$type = 'hidden'])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Creates markup with INPUT tags and prepends it to form.<br /><br /><p>If selected element isn't a FORM than find('form') is executed.</p><p>Method doesn't change selected elements stack.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'field1'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'field2'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'bar'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodinputsFromValues">inputsFromValues</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">form</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;name</span>=<span class="src-str">'was-here-before'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">form</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">form</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;name</span>=<span class="src-str">'field1'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'foo'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;name</span>=<span class="src-str">'field2'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'bar'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;name</span>=<span class="src-str">'was-here-before'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">form</span>&gt;</div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$data&nbsp;&nbsp;</td>
+        <td><b>$data</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">$type&nbsp;&nbsp;</td>
+        <td><b>$type</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodloop"></a>
+	<h3>method loop <span class="smalllinenumber">[line 391]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a> loop(
+String
+$varName, String
+$asVarName, [String
+$keyName = null])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Wrap selected elements with PHP foreach loop iterating $varName.<br /><br /><p>Method doesn't change selected elements stack. Returned is source element.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$pq</span><span class="src-sym">[</span><span class="src-str">'node1'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodloop">loop</a><span class="src-sym">(</span><span class="src-str">'$foo'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'$bar'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'$i'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  &lt;node1/&gt;</p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">foreach</span><span class="src-sym">(</span><span class="src-var">$foo&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$i&nbsp;</span>=&gt;&nbsp;<span class="src-var">$bar</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node1/&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$varName</b>&nbsp;&nbsp;</td>
+        <td>Variable which will be looped. Must contain $ at the beggining.</td>
+      </tr>
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$asVarName</b>&nbsp;&nbsp;</td>
+        <td>Name of variable being result of iteration.</td>
+      </tr>
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$keyName</b>&nbsp;&nbsp;</td>
+        <td>Optional. Use it when you want to have $varName's key available.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodloopOne"></a>
+	<h3>method loopOne <span class="smalllinenumber">[line 436]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a> loopOne(
+String
+$varName, String
+$asVarName, [String
+$keyName = null])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Remove (detach) all matched nodes besided first one and than wrap it with  PHP foreach loop iterating $varName.<br /><br /><p>Method DOES change selected elements stack. Returned is first element.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'ul&nbsp;li'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodloopOne">loopOne</a><span class="src-sym">(</span><span class="src-str">'$foo'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'$bar'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'$i'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">ul</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">li</span>&gt;<span class="src-id">first</span>&lt;/<span class="src-id">li</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">li</span>&gt;<span class="src-id">second</span>&lt;/<span class="src-id">li</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">ul</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;&lt;ul&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">foreach</span><span class="src-sym">(</span><span class="src-var">$foo&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$i&nbsp;</span>=&gt;&nbsp;<span class="src-var">$bar</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;li&gt;first&lt;/li&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;/ul&gt;</div></li>
+</ol></p><p>Proposed names: <ul><li>loopFirst</li></ul></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodloop">QueryTemplatesPhpQuery::loop()</a></td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$varName</b>&nbsp;&nbsp;</td>
+        <td>Variable which will be looped. Must contain $ at the beggining.</td>
+      </tr>
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$asVarName</b>&nbsp;&nbsp;</td>
+        <td>Name of variable being result of iteration.</td>
+      </tr>
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$keyName</b>&nbsp;&nbsp;</td>
+        <td>Optional. Use it when you want to have $varName's key available.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodstackToMethod"></a>
+	<h3>method stackToMethod <span class="smalllinenumber">[line 846]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>array stackToMethod(
+[string
+$method = 'markupOuter'])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Returns array being result of running $method on all stack elements.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$method</b>&nbsp;&nbsp;</td>
+        <td>Method used for output.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtagToElseIfPHP"></a>
+	<h3>method tagToElseIfPHP <span class="smalllinenumber">[line 973]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> tagToElseIfPHP(
+string
+$code)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces selected tag with PHP &quot;else if&quot; statement containing $code as condition.<br /><br /><p>Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'.else-if'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodtagToElseIfPHP">tagToElseIfPHP</a><span class="src-sym">(</span><span class="src-str">'$foo&nbsp;==&nbsp;1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'else-if'</span>&gt;&lt;<span class="src-id">node1</span>/&gt;&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$foo&nbsp;</span>==&nbsp;<span class="src-num">1</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node1/&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$code</b>&nbsp;&nbsp;</td>
+        <td>Valid PHP condition code</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtagToElseIfVar"></a>
+	<h3>method tagToElseIfVar <span class="smalllinenumber">[line 1019]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> tagToElseIfVar(
+string
+$var)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces selected tag with PHP &quot;else if&quot; statement checking if $var evaluates  to true. $var must be an object available inside template's scope.<br /><br /><p>$var is passed in JS object convention (dot separated).</p><p>Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.</p><p>Notice-safe.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'.else-if-var'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodtagToElseIfVar">tagToElseIfVar</a><span class="src-sym">(</span><span class="src-str">'foo.bar'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'else-if-var'</span>&gt;&lt;<span class="src-id">node1</span>/&gt;&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$foo</span><span class="src-sym">-&gt;</span><span class="src-id">bar</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node1/&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodifVar">QueryTemplatesPhpQuery::ifVar()</a></td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$var</b>&nbsp;&nbsp;</td>
+        <td>Dot-separated object path, eg Object.property.inneProperty</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtagToElsePHP"></a>
+	<h3>method tagToElsePHP <span class="smalllinenumber">[line 1056]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> tagToElsePHP(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces selected tag with PHP &quot;else&quot; statement.<br /><br /><p>Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'.else'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodtagToElsePHP">tagToElsePHP</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'else'</span>&gt;&lt;<span class="src-id">node1</span>/&gt;&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node1/&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtagToIfPHP"></a>
+	<h3>method tagToIfPHP <span class="smalllinenumber">[line 887]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> tagToIfPHP(
+string
+$code)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces selected tag with PHP &quot;if&quot; statement containing $code as condition.<br /><br /><p>Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'.if'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodtagToIfPHP">tagToIfPHP</a><span class="src-sym">(</span><span class="src-str">'$foo&nbsp;==&nbsp;1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'if'</span>&gt;&lt;<span class="src-id">node1</span>/&gt;&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$foo&nbsp;</span>==&nbsp;<span class="src-num">1</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node1/&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$code</b>&nbsp;&nbsp;</td>
+        <td>Valid PHP condition code</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtagToIfVar"></a>
+	<h3>method tagToIfVar <span class="smalllinenumber">[line 933]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> tagToIfVar(
+string
+$var)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces selected tag with PHP &quot;if&quot; statement checking if $var evaluates  to true. $var must be an object available inside template's scope.<br /><br /><p>$var is passed in JS object convention (dot separated).</p><p>Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.</p><p>Notice-safe.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'.if-var'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodtagToIfVar">tagToIfVar</a><span class="src-sym">(</span><span class="src-str">'foo.bar'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'if-var'</span>&gt;&lt;<span class="src-id">node1</span>/&gt;&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$foo</span><span class="src-sym">-&gt;</span><span class="src-id">bar</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node1/&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodifVar">QueryTemplatesPhpQuery::ifVar()</a></td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$var</b>&nbsp;&nbsp;</td>
+        <td>Dot-separated object path, eg Object.property.inneProperty</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvaluesToForm"></a>
+	<h3>method valuesToForm <span class="smalllinenumber">[line 660]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> valuesToForm(
+$data
+$data, [
+$selectorPattern = &quot;[name*='%k']&quot;])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Toggles form fields selection states. This means radio checked, checkbox  checked, select selected and<br /><br /><p>Method doesn't change selected elements stack.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'text-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'new'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'checkbox-example'&nbsp;</span>=&gt;&nbsp;<span class="src-id">true</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'radio-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'second'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'select-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'second'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'textarea-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'new'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToForm">valuesToForm</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">form</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;type</span>=<span class="src-str">'text'&nbsp;</span><span class="src-id">name</span>=<span class="src-str">'text-example'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'old'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;type</span>=<span class="src-str">'checkbox'&nbsp;</span><span class="src-id">name</span>=<span class="src-str">'checkbox-example'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'foo'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;type</span>=<span class="src-str">'radio'&nbsp;</span><span class="src-id">name</span>=<span class="src-str">'radio-example'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'first'&nbsp;</span><span class="src-id">checked</span>=<span class="src-str">'checked'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;type</span>=<span class="src-str">'radio'&nbsp;</span><span class="src-id">name</span>=<span class="src-str">'radio-example'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'second'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">select&nbsp;name</span>=<span class="src-str">'select-example'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">option&nbsp;value</span>=<span class="src-str">'first'&nbsp;</span><span class="src-id">selected</span>=<span class="src-str">'selected'</span>&gt;&lt;/<span class="src-id">option</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">option&nbsp;value</span>=<span class="src-str">'second'</span>&gt;&lt;/<span class="src-id">option</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;/<span class="src-id">select</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">textarea&nbsp;name</span>=<span class="src-str">'textarea-example'</span>&gt;<span class="src-id">old</span>&lt;/<span class="src-id">textarea</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">form</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">form</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;type</span>=<span class="src-str">'text'&nbsp;</span><span class="src-id">name</span>=<span class="src-str">'text-example'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'new'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;type</span>=<span class="src-str">'checkbox'&nbsp;</span><span class="src-id">name</span>=<span class="src-str">'checkbox-example'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'foo'&nbsp;</span><span class="src-id">checked</span>=<span class="src-str">'checked'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;type</span>=<span class="src-str">'radio'&nbsp;</span><span class="src-id">name</span>=<span class="src-str">'radio-example'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'first'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;type</span>=<span class="src-str">'radio'&nbsp;</span><span class="src-id">name</span>=<span class="src-str">'radio-example'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'second'&nbsp;</span><span class="src-id">checked</span>=<span class="src-str">'checked'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">select&nbsp;name</span>=<span class="src-str">'select-example'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">option&nbsp;value</span>=<span class="src-str">'first'</span>&gt;&lt;/<span class="src-id">option</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">option&nbsp;value</span>=<span class="src-str">'second'&nbsp;</span><span class="src-id">selected</span>=<span class="src-str">'selected'</span>&gt;&lt;/<span class="src-id">option</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;/<span class="src-id">select</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">textarea&nbsp;name</span>=<span class="src-str">'textarea-example'</span>&gt;<span class="src-key">new</span>&lt;/<span class="src-id">textarea</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">form</span>&gt;</div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$data&nbsp;&nbsp;</td>
+        <td><b>$data</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$selectorPattern</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvaluesToSelector"></a>
+	<h3>method valuesToSelector <span class="smalllinenumber">[line 294]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a> valuesToSelector(
+Array|Object
+$data, [String
+$selectorPattern = '.%k'], [Array
+$skipKeys = null])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Injects markup from $data's content (rows or attributes) into nodes  matched by selector.<br /><br /><p>For replacing matched nodes with content use valuesToSelectorReplace().  For injecting values into forms use valuesToForm().</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$values&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'&lt;foo/&gt;'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'&lt;bar/&gt;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;notice&nbsp;single&nbsp;quotes</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'p'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelector">valuesToSelector</a><span class="src-sym">(</span><span class="src-var">$values</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">p&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'field1'</span>&gt;<span class="src-id">lorem&nbsp;ipsum</span>&lt;/<span class="src-id">p</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">p&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'field2'</span>&gt;<span class="src-id">lorem&nbsp;ipsum</span>&lt;/<span class="src-id">p</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">p&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'field1'</span>&gt;&lt;<span class="src-id">foo</span>/&gt;&lt;/<span class="src-id">p</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">p&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'field2'</span>&gt;&lt;<span class="src-id">bar</span>/&gt;&lt;/<span class="src-id">p</span>&gt;</div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelectorReplace">QueryTemplatesPhpQuery::valuesToSelectorReplace()</a></td>
+  </tr>
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToForm">QueryTemplatesPhpQuery::valuesToForm()</a></td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">Array|Object&nbsp;&nbsp;</td>
+        <td><b>$data</b>&nbsp;&nbsp;</td>
+        <td>Associative array or Object containing markup.</td>
+      </tr>
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$selectorPattern</b>&nbsp;&nbsp;</td>
+        <td>By default it's class selector, where $data's key (field) is a class name.</td>
+      </tr>
+          <tr>
+        <td class="type">Array&nbsp;&nbsp;</td>
+        <td><b>$skipKeys</b>&nbsp;&nbsp;</td>
+        <td>Array of keys from $varValue which should be skipped.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvaluesToSelectorReplace"></a>
+	<h3>method valuesToSelectorReplace <span class="smalllinenumber">[line 336]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a> valuesToSelectorReplace(
+Array|Object
+$data, [String
+$selectorPattern = '.%k'], [Array
+$skipKeys = null])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Injects markup from $data's content (rows or attributes) into document  replacing nodes matched by selector.<br /><br /><p>For injecting markup inside matched nodes use valuesToSelector().  For injecting values into forms use valuesToForm().</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$values&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'&lt;foo/&gt;'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'&lt;bar/&gt;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;notice&nbsp;single&nbsp;quotes</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'p'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelector">valuesToSelector</a><span class="src-sym">(</span><span class="src-var">$values</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">p&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'field1'</span>&gt;<span class="src-id">lorem&nbsp;ipsum</span>&lt;/<span class="src-id">p</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">p&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'field2'</span>&gt;<span class="src-id">lorem&nbsp;ipsum</span>&lt;/<span class="src-id">p</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">foo</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">bar</span>/&gt;</div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelector">QueryTemplatesPhpQuery::valuesToSelector()</a></td>
+  </tr>
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToForm">QueryTemplatesPhpQuery::valuesToForm()</a></td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">Array|Object&nbsp;&nbsp;</td>
+        <td><b>$data</b>&nbsp;&nbsp;</td>
+        <td>Associative array or Object containing markup.</td>
+      </tr>
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$selectorPattern</b>&nbsp;&nbsp;</td>
+        <td>By default it's class selector, where $data's key (field) is a class name.</td>
+      </tr>
+          <tr>
+        <td class="type">Array&nbsp;&nbsp;</td>
+        <td><b>$skipKeys</b>&nbsp;&nbsp;</td>
+        <td>Array of keys from $varValue which should be skipped.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvaluesToStack"></a>
+	<h3>method valuesToStack <span class="smalllinenumber">[line 829]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> valuesToStack(
+Array|String|<a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>
+$markup)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces nodes from stack with $markup using markup() insted of replaceWith().<br /><br /><p>Method doesn't change selected elements stack.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$values&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'&lt;foo/&gt;'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'&lt;bar/&gt;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'node1'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToStack">valuesToStack</a><span class="src-sym">(</span><span class="src-var">$values</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">node2</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">node2</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">node1</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">foo</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">bar</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">node1</span>&gt;</div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">Array|String|<a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>&nbsp;&nbsp;</td>
+        <td><b>$markup</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvaluesToStackReplace"></a>
+	<h3>method valuesToStackReplace <span class="smalllinenumber">[line 785]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> valuesToStackReplace(
+Array|String|<a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>
+$markup)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces nodes from stack with $markup using replaceWith() insted of markup().<br /><br /><p>Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$markups&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'&lt;foo/&gt;'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'&lt;bar/&gt;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'node1'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">markupToStackOuter</span><span class="src-sym">(</span><span class="src-var">$markups</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">node2</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">node2</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">node1</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">foo</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">bar</span>/&gt;</div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">Array|String|<a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>&nbsp;&nbsp;</td>
+        <td><b>$markup</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvaluesToVars"></a>
+	<h3>method valuesToVars <span class="smalllinenumber">[line 744]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> valuesToVars(
+array
+$varsArray)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Behaves as var_export, dumps variables from $varsArray as $key = value for  later use during template execution.<br /><br /><p>Method doesn't change selected elements stack.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'foo'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'bar'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'bar'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'node1'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToVars">valuesToVars</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">node2</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">node1</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$foo&nbsp;</span>=&nbsp;<span class="src-str">'bar'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$bar&nbsp;</span>=&nbsp;<span class="src-str">'foo'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node1&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;node2/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/node1&gt;</div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">array&nbsp;&nbsp;</td>
+        <td><b>$varsArray</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvarsToForm"></a>
+	<h3>method varsToForm <span class="smalllinenumber">[line 561]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> varsToForm(
+
+$varName, 
+$varValue, [String
+$selectorPattern = &quot;[name*='%k']&quot;], String
+$arrayName, Array|Object
+$arrayValue)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Injects PHP code printing $arrayName's keys into form inputs.<br /><br /><p>Inputs are selected according to $selectorPattern, where %k represents  variable's key.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'input-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'array-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'textarea-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'select-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'radio-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'checkbox-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;notice&nbsp;single&nbsp;quotes</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToForm">varsToForm</a><span class="src-sym">(</span><span class="src-str">'$data'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$data</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">form</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;name</span>=<span class="src-str">'input-example'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;name</span>=<span class="src-str">'array[array-example]'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">textarea&nbsp;name</span>=<span class="src-str">'textarea-example'</span>&gt;&lt;/<span class="src-id">textarea</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">select&nbsp;name</span>=<span class="src-str">'select-example'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">option&nbsp;value</span>=<span class="src-str">'first'&nbsp;</span><span class="src-id">selected</span>=<span class="src-str">'selected'</span>&gt;&lt;/<span class="src-id">option</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;/<span class="src-id">select</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;type</span>=<span class="src-str">'radio'&nbsp;</span><span class="src-id">name</span>=<span class="src-str">'radio-example'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'foo'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;type</span>=<span class="src-str">'checkbox'&nbsp;</span><span class="src-id">name</span>=<span class="src-str">'checkbox-example'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'foo'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">form</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;&lt;form&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;input&nbsp;name='input-example'&nbsp;value='<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'input-example'</span><span class="src-sym">]&nbsp;</span><span class="src-php">?&gt;</span>'&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;input&nbsp;name='array[array-example]'&nbsp;value='<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'array-example'</span><span class="src-sym">]&nbsp;</span><span class="src-php">?&gt;</span>'&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;textarea&nbsp;name='textarea-example'&gt;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'textarea-example'</span><span class="src-sym">]&nbsp;</span><span class="src-php">?&gt;</span>&lt;/textarea&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;select&nbsp;name='select-example'&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'select-example'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-str">'first'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;&lt;option&nbsp;value='first'&nbsp;selected='selected'&gt;&lt;/option&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">else</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;&lt;option&nbsp;value='first'&gt;&lt;/option&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-php">?&gt;</span>&lt;/select&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'radio-example'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-str">'foo'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;&lt;input&nbsp;type='radio'&nbsp;name='radio-example'&nbsp;checked='checked'&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">else</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;&lt;input&nbsp;type='radio'&nbsp;name='radio-example'&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'checkbox-example'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-str">'foo'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;&lt;input&nbsp;type='checkbox'&nbsp;name='checkbox-example'&nbsp;checked='checked'&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">else</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;&lt;input&nbsp;type='checkbox'&nbsp;name='checkbox-example'&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;/form&gt;</div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>support select[multiple] (thou array)</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$arrayName</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">Array|Object&nbsp;&nbsp;</td>
+        <td><b>$arrayValue</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$selectorPattern</b>&nbsp;&nbsp;</td>
+        <td>Defaults to name attribute containing variable's key.</td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$varName</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$varValue</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvarsToSelector"></a>
+	<h3>method varsToSelector <span class="smalllinenumber">[line 57]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a> varsToSelector(
+String
+$varName, Array|Object
+$varValue, [String
+$selectorPattern = '.%k'], [Array
+$skipKeys = null])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Injects PHP code printing $varName's content (rows or attributes) into nodes  matched by selector.<br /><br /><p>For replacing matched nodes with content use varsToSelectorReplace().  For injecting vars into forms use varsToForm().</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$foo&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'field1'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'field2'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'bar'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;notice&nbsp;single&nbsp;quotes</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelector">varsToSelector</a><span class="src-sym">(</span><span class="src-str">'$foo'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$foo</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">p&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'field1'</span>&gt;<span class="src-id">lorem&nbsp;ipsum</span>&lt;/<span class="src-id">p</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">p&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'field2'</span>&gt;<span class="src-id">lorem&nbsp;ipsum</span>&lt;/<span class="src-id">p</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;&lt;p&nbsp;class='field1'&gt;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$foo</span><span class="src-sym">[</span><span class="src-str">'field1'</span><span class="src-sym">]&nbsp;</span><span class="src-php">?&gt;</span>&lt;/p&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;p&nbsp;class='field2'&gt;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$foo</span><span class="src-sym">[</span><span class="src-str">'field2'</span><span class="src-sym">]&nbsp;</span><span class="src-php">?&gt;</span>&lt;/p&gt;</div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelectorReplace">QueryTemplatesPhpQuery::varsToSelectorReplace()</a></td>
+  </tr>
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToForm">QueryTemplatesPhpQuery::varsToForm()</a></td>
+  </tr>
+  <tr>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>support $arrayName to be a function (last char == ')'),  then prepend \$$var = $arrayName</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$varName</b>&nbsp;&nbsp;</td>
+        <td>Variable avaible in scope of type Array or Object. $varName should start with $.</td>
+      </tr>
+          <tr>
+        <td class="type">Array|Object&nbsp;&nbsp;</td>
+        <td><b>$varValue</b>&nbsp;&nbsp;</td>
+        <td>$varName's value with all keys (fields) OR array of $varName's keys (fields).</td>
+      </tr>
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$selectorPattern</b>&nbsp;&nbsp;</td>
+        <td>By default it's class selector, where $varName's key (field) is a class name.</td>
+      </tr>
+          <tr>
+        <td class="type">Array&nbsp;&nbsp;</td>
+        <td><b>$skipKeys</b>&nbsp;&nbsp;</td>
+        <td>Array of keys from $varValue which should be skipped.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvarsToSelectorReplace"></a>
+	<h3>method varsToSelectorReplace <span class="smalllinenumber">[line 102]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a> varsToSelectorReplace(
+String
+$varName, Array|Object
+$varValue, [String
+$selectorPattern = '.%k'], [Array
+$skipKeys = null])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Injects PHP code printing $varName's content (rows or attributes) into  document replacing nodes matched by selector.<br /><br /><p>For injecting vars inside matched nodes use varsToSelectorReplace().  For injecting vars into forms use varsToForm().</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$foo&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'field1'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'field2'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'bar'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;notice&nbsp;single&nbsp;quotes</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelector">varsToSelector</a><span class="src-sym">(</span><span class="src-str">'$foo'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$foo</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">p&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'field1'</span>&gt;<span class="src-id">lorem&nbsp;ipsum</span>&lt;/<span class="src-id">p</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">p&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'field2'</span>&gt;<span class="src-id">lorem&nbsp;ipsum</span>&lt;/<span class="src-id">p</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$foo</span><span class="src-sym">[</span><span class="src-str">'field1'</span><span class="src-sym">]&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$foo</span><span class="src-sym">[</span><span class="src-str">'field2'</span><span class="src-sym">]&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelector">QueryTemplatesPhpQuery::varsToSelector()</a></td>
+  </tr>
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToForm">QueryTemplatesPhpQuery::varsToForm()</a></td>
+  </tr>
+  <tr>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>support $arrayName to be a function (last char == ')'),  then prepend \$$var = $arrayName</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$varName</b>&nbsp;&nbsp;</td>
+        <td>Variable avaible in scope of type Array or Object. $varName should start with $.</td>
+      </tr>
+          <tr>
+        <td class="type">Array|Object&nbsp;&nbsp;</td>
+        <td><b>$varValue</b>&nbsp;&nbsp;</td>
+        <td>$varName's value with all keys (fields) OR array of $varName's keys (fields).</td>
+      </tr>
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$selectorPattern</b>&nbsp;&nbsp;</td>
+        <td>By default it's class selector, where $varName's key (field) is a class name.</td>
+      </tr>
+          <tr>
+        <td class="type">Array&nbsp;&nbsp;</td>
+        <td><b>$skipKeys</b>&nbsp;&nbsp;</td>
+        <td>Array of keys from $varValue which should be skipped.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvarsToStack"></a>
+	<h3>method varsToStack <span class="smalllinenumber">[line 180]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> varsToStack(
+String
+$varName, Array|Object
+$varValue, [Array
+$skipKeys = null])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces nodes from stack with $markup using markup() insted of replaceWith().<br /><br /><p>Method doesn't change selected elements stack.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$values&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'&lt;foo/&gt;'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'&lt;bar/&gt;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'node1'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToStack">varsToStack</a><span class="src-sym">(</span><span class="src-str">'$values'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$values</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">node2</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">node2</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">node1</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;&lt;node1&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-var">$values</span><span class="src-sym">[</span><span class="src-num">0</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;/node1&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;node1&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-var">$values</span><span class="src-sym">[</span><span class="src-num">1</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;/node1&gt;</div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToStackReplace">QueryTemplatesPhpQuery::varsToStackReplace()</a></td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$varName</b>&nbsp;&nbsp;</td>
+        <td>Variable avaible in scope of type Array or Object. $varName should start with $.</td>
+      </tr>
+          <tr>
+        <td class="type">Array|Object&nbsp;&nbsp;</td>
+        <td><b>$varValue</b>&nbsp;&nbsp;</td>
+        <td>$varName's value with all keys (fields) OR array of $varName's keys (fields).</td>
+      </tr>
+          <tr>
+        <td class="type">Array&nbsp;&nbsp;</td>
+        <td><b>$skipKeys</b>&nbsp;&nbsp;</td>
+        <td>Array of keys from $varValue which should be skipped.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvarsToStackReplace"></a>
+	<h3>method varsToStackReplace <span class="smalllinenumber">[line 226]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> varsToStackReplace(
+String
+$varName, Array|Object
+$varValue, [Array
+$skipKeys = null])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces nodes from stack with $markup using replaceWith() insted of markup().<br /><br /><p>Method doesn't change selected elements stack.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$values&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'&lt;foo/&gt;'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'&lt;bar/&gt;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'node1'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToStackReplace">varsToStackReplace</a><span class="src-sym">(</span><span class="src-str">'$values'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$values</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">node2</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">node2</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">node2</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">node1</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-var">$values</span><span class="src-sym">[</span><span class="src-num">0</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;node2/&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-var">$values</span><span class="src-sym">[</span><span class="src-num">1</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>QueryTemplatesPhpQuery::varsToStac()</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$varName</b>&nbsp;&nbsp;</td>
+        <td>Variable avaible in scope of type Array or Object. $varName should start with $.</td>
+      </tr>
+          <tr>
+        <td class="type">Array|Object&nbsp;&nbsp;</td>
+        <td><b>$varValue</b>&nbsp;&nbsp;</td>
+        <td>$varName's value with all keys (fields) OR array of $varName's keys (fields).</td>
+      </tr>
+          <tr>
+        <td class="type">Array&nbsp;&nbsp;</td>
+        <td><b>$skipKeys</b>&nbsp;&nbsp;</td>
+        <td>Array of keys from $varValue which should be skipped.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_clone"></a>
+	<h3>method _clone <span class="smalllinenumber">[line 1274]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> _clone(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		<br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../phpQuery/phpQueryObject.html#method_clone">phpQueryObject::_clone()</a></td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	Overrides <a href="../phpQuery/phpQueryObject.html#method_clone">phpQueryObject::_clone()</a> (Enter description here...)<br /><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_loop"></a>
+	<h3>method _loop <span class="smalllinenumber">[line 442]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _loop(
+
+$pq, 
+$varName, 
+$asVarName, 
+$keyName)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		<br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$pq</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$varName</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$asVarName</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$keyName</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_valuesToSelector"></a>
+	<h3>method _valuesToSelector <span class="smalllinenumber">[line 339]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _valuesToSelector(
+
+$replace, 
+$data, 
+$selectorPattern, 
+$skipKeys)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		<br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$replace</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$data</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$selectorPattern</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$skipKeys</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_varsToSelector"></a>
+	<h3>method _varsToSelector <span class="smalllinenumber">[line 105]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _varsToSelector(
+
+$replace, 
+$varName, 
+$varValue, 
+$selectorPattern, 
+$skipKeys)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		<br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$replace</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$varName</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$varValue</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$selectorPattern</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$skipKeys</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_varsToStack"></a>
+	<h3>method _varsToStack <span class="smalllinenumber">[line 229]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _varsToStack(
+
+$replace, 
+$varName, 
+$varValue, [
+$skipKeys = null])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		<br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>protected</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$replace</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$varName</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$varValue</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$skipKeys</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+</div><br />
+
+
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Wed, 03 Dec 2008 11:39:56 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

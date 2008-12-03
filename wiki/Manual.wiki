@@ -1,0 +1,16 @@
+= Table of Contents =
+ * [Template_Structure Template Structure]
+ * [Data_Injections Data Injections]
+ * Code Injections
+ * [Template_Sources Template Sources]
+ * Preparing environment
+ * jQuery API extensions
+ * Events
+ * [Integration Integration]
+ * Template side includes
+ * [Extending_Query_Templates Extending Query Templates]
+ * [Debugging Debugging]
+ 
+*[http://meta20.net/querytemplates-api/ API Rerefence]* is also available.
+
+For informations about phpQuery please refer to [http://code.google.com/p/phpquery/wiki/Manual phpQuery Manual].
