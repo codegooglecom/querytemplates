@@ -393,6 +393,19 @@ abstract class QueryTemplatesPhpQuery
 		return $this;
 	}
 	/**
+	 * 
+	 * @param $varName
+	 * @param $asVarName
+	 * @param $keyName
+	 * @return unknown_type
+	 * @todo
+	 */
+	public function loopSeparate($varName, $asVarName, $keyName = null) {
+		foreach($this->stack() as $node)
+			$this->_loop($node, $varName, $asVarName, $keyName);
+		return $this;
+	}
+	/**
 	 * Remove (detach) all matched nodes besided first one and than wrap it with
 	 * PHP foreach loop iterating $varName.
 	 *
@@ -443,8 +456,8 @@ abstract class QueryTemplatesPhpQuery
 		$as = $keyName
 			? "{$asVarName} => {$keyName}"
 			: $asVarName;
-		$pq->beforePHP("foreach({$varName} as {$as}):");
-		$pq->afterPHP("endforeach;");
+		$pq->eq(0)->beforePHP("foreach({$varName} as {$as}):");
+		$pq->slice(-1, 1)->afterPHP("endforeach;");
 	}
 	/**
 	 * Creates markup with INPUT tags and prepends it to form.

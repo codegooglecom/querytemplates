@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Example: simple3</title>
+<title>Example: advanced-1</title>
 </head>
 <body>
 	<ul>

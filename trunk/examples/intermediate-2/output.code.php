@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Example: simple3</title>
+<title>Example: intermediate-2</title>
 </head>
 <body>
 	<form>
@@ -19,11 +19,11 @@
 </dd>
 				<dt><label>input[type=radio]</label></dt>
 				<dd>
-					<label>[value=first] 
+					<label>[value=first]
 						<input type="radio" name="radio-example" value="first"></label>
 				</dd>
 				<dd>
-					<label>[value=second] 
+					<label>[value=second]
 						<input type="radio" name="radio-example" value="second" checked></label>
 				</dd>
 				<dt><label>select</label></dt>

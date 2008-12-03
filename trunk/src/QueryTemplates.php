@@ -134,12 +134,19 @@ abstract class QueryTemplates {
 			if (file_exists($cacheDeps)) {
 				foreach(file($cacheDeps) as $line) {
 					list($file, $time) = explode("\t", $line);
-					// check if template source have been modified
-					if (filemtime($file) > $time )
+					if (! file_exists($file)) {
 						$useCache = false;
+						continue;
+					}
+					// check if template source have been modified
+					if (filemtime($file) > $time ) {
+						$useCache = false;
+						continue;
+					}
 					// check timeout (stiff refresh)
 					if (self::$cacheTimeout && time()-$time > self::$cacheTimeout ) {
 						$useCache = false;
+						continue;
 			//		debug('cacheTimeout');
 					}
 				}
