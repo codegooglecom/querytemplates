@@ -1,9 +1,9 @@
 #labels Featured
 = Table of Contents =
  * [TemplateStructure Template Structure]
- * [DataInjections Data Injections]
+ * Data Injections
  * Code Injections
- * [Template_Sources Template Sources]
+ * [TemplateSources Template Sources]
  * Preparing environment
  * jQuery API extensions
  * Events
