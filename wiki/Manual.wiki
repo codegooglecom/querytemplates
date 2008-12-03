@@ -1,6 +1,7 @@
+#labels Featured
 = Table of Contents =
- * [Template_Structure Template Structure]
- * [Data_Injections Data Injections]
+ * [TemplateStructure Template Structure]
+ * [DataInjections Data Injections]
  * Code Injections
  * [Template_Sources Template Sources]
  * Preparing environment
@@ -8,7 +9,7 @@
  * Events
  * [Integration Integration]
  * Template side includes
- * [Extending_Query_Templates Extending Query Templates]
+ * [ExtendingQueryTemplates Extending Query Templates]
  * [Debugging Debugging]
  
 *[http://meta20.net/querytemplates-api/ API Rerefence]* is also available.
