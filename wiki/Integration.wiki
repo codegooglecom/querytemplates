@@ -5,4 +5,4 @@ QueryTemplates can be very easily used as
  * template generator for non-framework applications
 
 Integrations plugins
- * CakeForm (CakePHP 1.2)
+ * CakeForms (CakePHP 1.2)
