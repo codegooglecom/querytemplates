@@ -48,6 +48,9 @@ App::import('Vendor', 'QueryTemplates', array(
 //APP::import('vendors', 'QueryTemplates');
 QueryTemplates::$targetsPath = TMP.'cache/views/';
 QueryTemplates::$sourcesPath = APP.'webroot/templates/';
-QueryTemplates::$cacheTimeout = -1;
+QueryTemplates::$monitorTemplateModification = true;
+QueryTemplates::$monitorCodeModification = true;
+// disable cache
+//QueryTemplates::$cacheTimeout = -1;
 //EOF
 ?>
