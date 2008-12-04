@@ -14,3 +14,4 @@ require(template()
   ->save()
 );
 }}}
+Last 2 methods /end() and save()/ can be omitted, as every toString conversion triggers save(), which saves whole template, not actually matched stack.
