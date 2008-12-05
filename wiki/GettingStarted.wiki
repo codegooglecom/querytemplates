@@ -1,9 +1,12 @@
+#labels Featured
 QuerieTemplates works in following steps
  * prepare HTML/XML markup
  * prepare data which will be injected into tempalte (optional)
  * create template from one or more sources, quering them if neccessary
  * query template and inject data
  * save template as PHP source file and include it
+
+You can find [Examples examples here on the wiki] and download [http://code.google.com/p/querytemplates/downloads/list example blog implementation] in CakePHP framework.
 
 Data sources
  * values (static)
