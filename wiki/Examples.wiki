@@ -57,7 +57,7 @@ require($template);
 Same code as in *Step 2* above, but written in *classic* way (comments were stripped)
 {{{
 /* STEP 2 - create template */
-$template = template('output');
+$template = new QueryTemplatesTemplate('output');
 $template->sourceCollect('input.html');
 $template = $template->parse();
 $source = $template->source('input.html');
