@@ -60,8 +60,10 @@ Same code as in *Step 2* above, but written in *classic* way (comments were stri
 $template = template('output');
 $template->sourceCollect('input.html');
 $template = $template->parse();
-$template->source('input.html')->returnReplace();
-$li = $template['ul > li']->loopOne('$data', '$row');
+$source1 = $template->source('input.html');
+$source1->returnReplace();
+$li = $template['ul > li'];
+$li = $li->loopOne('$data', '$row');
 $li->php('print $row');
 }}}
 == [http://code.google.com/p/querytemplates/source/browse/trunk/examples/simple-2/ Simple 2] ==
