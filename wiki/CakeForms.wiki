@@ -1,4 +1,4 @@
-CakeForms plugin automaticaly converts HTML markup forms into executable PHP code using CakePHP's default FormHelper. It's used to rapidly mix designed template with CakePHP form controls. It also handles error messages.
+CakeForms plugin automatically converts HTML markup forms into executable PHP code using CakePHP's default FormHelper. It's used to rapidly mix designed template with CakePHP form controls. It also handles error messages.
 
 It's use is quite simple
 {{{
@@ -11,3 +11,7 @@ It's use is quite simple
     array('Post', array('action' => 'edit')), $form
   );
 }}}
+
+For further reading see
+ * [http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPlugins/phpQueryObjectPlugin_CakeForms.html Class API reference]
+ * [http://code.google.com/p/querytemplates/wiki/BlogImplementation QT Blog] which uses CakeForms
