@@ -43,16 +43,16 @@ $template = template('output')
 		->source('input.html')->returnReplace()
 		->find('.my-div')
 			->find('ul > li')
-				->loopOne('$data', '$row')
+				->loopOne('data', 'row')
 					// using varsToSelector and having 2 models can lead to naming collisions
 					// one of possible ways to bypass this problem is reduceing
 					// matched nodes to interesting ones
 					->find('> *')->slice(1, 3)
-						->varsToSelector('$row["Model-1"]', $modelOneFields)
+						->varsToSelector('row["Model-1"]', $modelOneFields)
 					->end()->end()
 					// second way is to redefine selector patter in varsToSelector
 					// but this requires also changing classes inside template
-					->varsToSelector('$row["Model-2"]', $modelTwoFields, '.Model-2-%k')
+					->varsToSelector('row["Model-2"]', $modelTwoFields, '.Model-2-%k')
 				->end()
 			->end()
 		->end()

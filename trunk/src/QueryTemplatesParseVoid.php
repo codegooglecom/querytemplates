@@ -10,8 +10,11 @@
  */
 class QueryTemplatesParseVoid {
 	protected $save;
-	public function __construct($save) {
+	protected $parent;
+	public function __construct($save, $parent) {
 		$this->save = $save;
+		$this->parent = $parent;
+		$this->parent->parse = $this;
 	}
 	public function __call($name, $arguments) {
 		return $this;

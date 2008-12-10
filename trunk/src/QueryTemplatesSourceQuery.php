@@ -8,7 +8,7 @@
  * @link http://code.google.com/p/querytemplates/
  */
 class QueryTemplatesSourceQuery
-	extends QueryTemplatesPhpQuery
+	extends phpQueryObject
 	implements IQueryTemplatesTemplateChain,
 		IQueryTemplatesTemplateSources,
 		IQueryTemplatesTemplateParse {

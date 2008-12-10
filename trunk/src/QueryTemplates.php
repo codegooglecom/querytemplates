@@ -1,15 +1,23 @@
 <?php
 /**
- * QueryTemplates is a PHP templating engine using pure HTML files in popular
- * web 2.0 pattern load-traverse-modify using jQuery-like chainable API.
+ * QueryTemplates - rapid multilanguage template generator
+ * 
+ * PHP based templating engine creating reusable native templates in various
+ * languages.
+ * 
+ * As for today, supported are following sources: HTML, XML, XHTML, PHP and 
+ * PHP callbacks which can be processed into PHP or JS template file.
+ * 
+ * Library uses popular web 2.0 pattern load-traverse-modify thou jQuery like
+ * chainable API and provides developer several rapid template filling methods.
  *
- * @version 1.0 Beta1
+ * @version 1.0 Beta2
  * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  * @link http://code.google.com/p/querytemplates/
  */
 
-require_once(dirname(realpath(__FILE__))."/QueryTemplatesTemplate.php");
+require_once(dirname(__FILE__)."/QueryTemplatesTemplate.php");
 /**
  * Static methods namespace class.
  *
@@ -48,14 +56,15 @@ abstract class QueryTemplates {
 	/**
 	 * Path prepended to templates names.
 	 * @var string
-	 * TODO refactor to $sourcePath
 	 */
 	public static $sourcesPath = '';
 	/**
 	 * Timeout for cached templates in minutes.
 	 * Generally uneeded because of checking templates modification time.
+	 * 
 	 * False (default) means no timeout.
 	 * -1 turns off cache.
+	 * 
 	 * @var mixed
 	 * @see self::$cache
 	 * @see self::$targetsPath
@@ -73,20 +82,20 @@ abstract class QueryTemplates {
 	 * @TODO create formatter API
 	 * @var int
 	 */
-	public static $useTidy = false;
+	public static $htmlTidy = false;
 	/**
 	 * Use tabs insted of spaces for tidy intendation.
 	 * @var bool
 	 * @TODO create formatter API
 	 */
-	public static $tidyIntendWithTabs = true;
+	public static $htmlTidyIntendWithTabs = true;
 	/**
 	 * Config fo Tidy.
 	 * @link http://tidy.sourceforge.net/docs/quickref.html
 	 * @var array
 	 * @TODO create formatter API
 	 */
-	public static $tidyConfig = array(
+	public static $htmlTidyConfig = array(
 		'indent' => true,
 		'indent-spaces' => 4,
 		'wrap' => false,
@@ -102,20 +111,16 @@ abstract class QueryTemplates {
 	);
 	/**
 	 * PEAR XML_Beutifuler
-	 * XML only. No PHP code support (at least working one). 
-	 * @TODO create formatter API
+	 * 
+	 * XML only. No full PHP code support. 
+	 * 
 	 * @var unknown_type
 	 */
-	public static $formatterEnable = false;
-	/**
-	 * @TODO create formatter API
-	 * @var unknown_type
-	 */
-	public static $formatterOptions = null;
-	protected static $formatterInstance = null;
+	public static $xmlBeautifier = false;
+	protected static $xmlBeautifierInstance = null;
 	/**
 	 * Fixes paths to CSS, JS and image files.
-	 * @todo Dont update external links.
+	 * 
 	 * @var string
 	 */
 	public static $fixWebroot = '';
@@ -125,8 +130,8 @@ abstract class QueryTemplates {
 	 *
 	 * @return string|false
 	 */
-	public static function loadTemplate($templateName, $targetsPath = null) {
-		list($cachePath, $cacheDeps) = self::getCachePaths($templateName, $targetsPath);
+	public static function loadTemplate($templateName, $targetsPath = null, $language = 'php') {
+		list($cachePath, $cacheDeps) = self::getCachePaths($templateName, $targetsPath, $language);
 		$useCache = false;
 		if (file_exists($cachePath) && self::$cacheTimeout >= 0) {
 			$useCache = true;
@@ -137,17 +142,19 @@ abstract class QueryTemplates {
 					if (! file_exists($file)) {
 						$useCache = false;
 						continue;
+			//		debug('cache: template cache unavailable');
 					}
 					// check if template source have been modified
 					if (filemtime($file) > $time ) {
 						$useCache = false;
 						continue;
+			//		debug('cache: template source modified');
 					}
 					// check timeout (stiff refresh)
 					if (self::$cacheTimeout && time()-$time > self::$cacheTimeout ) {
 						$useCache = false;
 						continue;
-			//		debug('cacheTimeout');
+			//		debug('cache: cacheTimeout');
 					}
 				}
 			}
@@ -155,6 +162,15 @@ abstract class QueryTemplates {
 				return $cachePath;
 		}
 		return false;
+	}
+	public function toJSON($data) {
+		$dir = dirname(__FILE__);
+		if (! class_exists('phpQuery')) {
+			$included = @include_once('phpQuery.php');
+			if (! $included)
+				require_once("$dir/phpQuery/phpQuery.php");
+		}
+		return phpQuery::toJSON($data);
 	}
 	/**
 	 * Creates new template and returns it's path.
@@ -171,30 +187,29 @@ abstract class QueryTemplates {
 	 * @return string|false
 	 */
 	public static function saveTemplate($pq, $dependencies = array(), 
-		$templateName = null, $vars = null, $targetsPath = null, $unloadDocument = true ) {
-		// for performance cache stuff is checked only when writing
+			$templateName = null, $vars = null, $targetsPath = null, 
+			$unloadDocument = true, $language = 'php', $extraParams = array()) {
+		// for performance reasons, cache stuff is checked only when writing
 		if (! self::validateCacheSettings() )
 			return false;
 		if (! self::$monitorTemplateModification)
 			$dependencies = array();
-		if (! $templateName )
+		if (! $templateName)
 			$templateName = md5(microtime());
-		$html = self::postFilters($pq);
+		$markup = self::postFilters($pq, $language);
 		// needed to avoid conflicts
 		if ($unloadDocument)
 			$pq->unloadDocument();
-		list($cachePath, $cacheDeps) = self::getCachePaths($templateName, $targetsPath);
-		$varsPHP = "";
-		if ($vars) {
-			$varsPHP = "<?php\n";
-			foreach($vars as $var => $val) {
-				$varsPHP .= "\$$var = ".var_export($val, true).";\n";
-			}
-			$varsPHP .= "?>";
-		}
+		list($cachePath, $cacheDeps) = self::getCachePaths(
+			$templateName, $targetsPath, $language);
+		$languageClass = 'QueryTemplatesLanguage'.strtoupper($language);
+		$fileContent = call_user_func_array(
+			array($languageClass, 'templateWrapper'),
+			array($markup, $templateName, $vars, $extraParams)
+		);
 		file_put_contents(
 		 	$cachePath,
-		 	$varsPHP.$html
+		 	$fileContent
 		);
 		$dependencies = array_map(
 			array('QueryTemplates', 'mapDepends'),
@@ -311,15 +326,18 @@ abstract class QueryTemplates {
 	 * @return unknown
 	 * @TODO refactor to getTargetPaths
 	 */
-	protected static function getCachePaths( $templateName, $targetsPath = null ) {
+	protected static function getCachePaths($templateName, $targetsPath = null, $language = 'php') {
 		$replace = array('/', '\\');
 		if (! $targetsPath )
 			$targetsPath = self::$targetsPath;
 		$clearCacheName = self::cleanCacheName($templateName);
+		// TODO ???
+		$extension = strtolower($language);
+		$s = DIRECTORY_SEPARATOR;
 		return array(
-			$targetsPath.$clearCacheName.'.code.php',
+			rtrim($targetsPath, $s).$s.$clearCacheName.'.code.'.$extension,
 //			$targetsPath.$clearCacheName.'.time.php',
-			$targetsPath.$clearCacheName.'.deps.php',
+			rtrim($targetsPath, $s).$s.$clearCacheName.".deps-$extension.php",
 //			$targetsPath.$clearCacheName.'.src_time.php',
 		);
 	}
@@ -327,113 +345,94 @@ abstract class QueryTemplates {
 		return str_replace(array('/', '\\'), '_', $name);
 	}
 	/**
+	 * HTML Tidy
+	 * 
+	 * @param $markup
+	 * @param $isDocumentFragment
+	 * @return unknown_type
+	 * 
+	 * FIXME formatting attr with PHP code (input[value]) changes PHP tags to normal
+	 * @TODO use output-html	output-xml output-xhtml
+	 */
+	public static function htmlTidy($markup, $isDocumentFragment) {
+		if ($isDocumentFragment) {
+			// if we doesnt want whole doc, but only a part, get <body> content
+//			$config = array_merge(
+//				self::$htmlTidyConfig,
+//				array('show-body-only' => true)
+//			);
+			$htmlTidy = tidy_parse_string($markup, self::$htmlTidyConfig);
+//			$html = tidy_get_output($htmlTidy);
+			$markup = '';
+			$body = tidy_get_body($htmlTidy);
+			if ($body->child)
+				foreach($body->child as $node)
+					// get outer html
+					$markup .= $node->value;
+		} else if (self::$useTidy === 2) {
+			// adding <php> as new block element destroys tags inside <head>,
+			// so we need to mask them for a while
+			// this is DIRTY hack and You cant rely on it
+		/*	$html = preg_replace("@<\\?php(.+?)(?:\\?>)@", "<script type='text/php'>\\1</script>", $html);*/
+			$htmlTidy = tidy_parse_string($markup, self::$htmlTidyConfig);
+			$markup = tidy_get_output($htmlTidy);
+			// and now backwards...
+		/*	$html = preg_replace("@<script type='text/php'>(.+?)(?:</script>)@", "<?php\\1?>", $html);*/
+		}
+		if (self::$htmlTidyIntendWithTabs) {
+			$markup = preg_replace_callback("@(?<=\\n)(\\s+)(?=.)@",
+				array('QueryTemplates', 'htmlTidySpacesToTabs'),
+				$markup
+			);
+		}
+		return $markup;
+	}
+	public static function htmlTidySpacesToTabs($matches) {
+		$spacesPerTab = self::$htmlTidyConfig['indent-spaces']
+			? self::$htmlTidyConfig['indent-spaces']
+			: 4;
+		return str_repeat("\t", strlen($matches[1])/$spacesPerTab);
+	}
+	/**
+	 * PEAR XML_Beautifier class.
+	 * 
+	 * Does NOT support <?php tags inside attributes.
+	 * 
+	 * @link http://pear.php.net/package/XML_Beautifier
+	 * @param $markup
+	 * @return unknown_type
+	 */
+	public static function xmlBeautifier($markup) {
+		if (self::$xmlBeautifierInstance)
+			$fmt = self::$xmlBeautifierInstance;
+		else {
+			require_once "XML/Beautifier.php";
+			$fmt = new XML_Beautifier();
+		}
+		$markup = $fmt->formatString($markup);
+		if (PEAR::isError($result)) {
+			self::debug($result->getMessage());
+		}
+		return $markup;
+	}
+	/**
 	 * Enter description here...
 	 *
 	 * @param phpQuery $_
 	 * @return string
 	 */
-	protected static function postFilters($pq) {
-		$partialDoc = $pq->documentFragment();
+	protected static function postFilters($dom, $language = 'php') {
 		if (self::$fixWebroot)
-			$pq->plugin('Scripts')->script('fix_webroot', self::$fixWebroot);
-//		$html = $dom->php();
-		$markup = $pq->markupOuter();
-		/* <php>...</php> to <?php...?> */
-		/*
-		$html = preg_replace_callback(
-			'@<php>\s*<!--(.*?)-->\s*</php>@s',
-			create_function('$m',
-				'return "<?php\n ".htmlspecialchars_decode($m[1])." \n?>";'
-			),
-			$dom->htmlOuter()
+			$dom->plugin('Scripts')->script('fix_webroot', self::$fixWebroot);
+		$languageClass = 'QueryTemplatesLanguage'.strtoupper($language);
+		$dom = call_user_func_array(
+			array($languageClass, 'postFilterDom'), array($dom)
 		);
-		*/
-		// tidy for pretty output
-		if (self::$useTidy && function_exists('tidy_parse_string')) {
-			// TODO use output-html	output-xml output-xhtml
-			// FIXME formatting attr with PHP code (input[value]) changes PHP tags (to normal)
-			if ($partialDoc) {
-				// if we doesnt want whole doc, but only a part, get <body> content
-//				$config = array_merge(
-//					self::$tidyConfig,
-//					array('show-body-only' => true)
-//				);
-				$tidy = tidy_parse_string($markup, self::$tidyConfig);
-//				$html = tidy_get_output($tidy);
-				$markup = '';
-				$body = tidy_get_body($tidy);
-				if ($body->child)
-					foreach($body->child as $node)
-						// get outer html
-						$markup .= $node->value;
-			} else if (self::$useTidy === 2) {
-				// adding <php> as new block element destroys tags inside <head>,
-				// so we need to mask them for a while
-				// this is DIRTY hack and You cant rely on it
-			/*	$html = preg_replace("@<\\?php(.+?)(?:\\?>)@", "<script type='text/php'>\\1</script>", $html);*/
-				$tidy = tidy_parse_string($markup, self::$tidyConfig);
-				$markup = tidy_get_output($tidy);
-				// and now backwards...
-			/*	$html = preg_replace("@<script type='text/php'>(.+?)(?:</script>)@", "<?php\\1?>", $html);*/
-			}
-			if (self::$tidyIntendWithTabs) {
-				$markup = preg_replace_callback("@(?<=\\n)(\\s+)(?=.)@",
-					array('QueryTemplates', 'tidySpacesToTabs'),
-					$markup
-				);
-			}
-		}
-		if (self::$formatterEnable) {
-			// XXX doent support <?php tags inside attribute
-			if (self::$formatterInstance)
-				$fmt = self::$formatterInstance;
-			else {
-				require_once "XML/Beautifier.php";
-				$fmt = new XML_Beautifier();
-			}
-			var_dump($markup);
-			$markup = $fmt->formatString($markup);
-			if (PEAR::isError($result)) {
-				self::debug($result->getMessage());
-			}
-		}
-		// it's important to convert markup to PHP AFTER using Tidy
-		$markup = phpQuery::markupToPHP($markup);
-		// FIXME just a quick fix, breaks nodes structure
-		$markup = str_replace('?><?php', '', $markup);
-		// safe tags
-		/*$html = str_replace(
-			array('<?php <!--', '--> ?>'),
-			array('<?php', '?>'),
-			$html
-		);*/
-		// fix PHP tags inside HTML attr
-		// separate regex needed for ' and " delimiters (make it in one if You can...)
-		// attrs without delimiters are NOT supported (but can be)
-		$regexes = array(/*
-			'@(<[^>]+?\\w+\\s*=\\s*)(\')([^\']*)(?:&lt;|%3C|<)\\?(?:php)?(.*?)(?:\\?&gt;|\\?%3E|\\?>)([^\']*)\'@',
-			'@(<[^>]+?\\w+\\s*=\\s*)(")([^"]*)(?:&lt;|%3C|<)\\?(?:php)?(.*?)(?:\\?&gt;|\\?%3E|\\?>)([^"]*)"@',
-		*/);
-		/*
-		foreach($regexes as $regex)
-			$html = preg_replace_callback(
-				$regex,
-	//			'@(<[^>]+?\\w\\s*=\\s*)([\'"])?&lt;\\?php(.*?)(\\?&gt;)\\2@',
-	//			'@(<[^>]+?\\w\\s*=\\s*)([\'"])?(.*?)&lt;\\?php(.*?)(\\?&gt;)(.*?)\\2@',
-				create_function('$m',
-					'return $m[1].$m[2].$m[3]."<?php"
-						.str_replace(array("%20", "%3E", "%09", "&#10;", "&#9;"), array(" ", ">", "	", " ", " "), htmlspecialchars_decode($m[4]))
-						."?>".$m[5].$m[2];'
-				),
-				$markup
-			);
-		*/
+		$markup = $dom->markupOuter();
+		$markup = call_user_func_array(
+			array($languageClass, 'postFilterMarkup'),
+			array($markup, $dom->documentFragment())
+		);
 		return $markup;
-	}
-	public static function tidySpacesToTabs($matches) {
-		$spacesPerTab = self::$tidyConfig['indent-spaces']
-			? self::$tidyConfig['indent-spaces']
-			: 4;
-		return str_repeat("\t", strlen($matches[1])/$spacesPerTab);
 	}
 }
