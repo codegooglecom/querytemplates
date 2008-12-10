@@ -15,18 +15,18 @@
  ?><li>
 				<span class="field1"><?php 
  print is_object($row)
-						? $row->field1
-						: $row['field1'] 
+	? $row->field1
+	: $row['field1'] 
  ?></span>,
 				<span class="field2"><?php 
  print is_object($row)
-						? $row->field2
-						: $row['field2'] 
+	? $row->field2
+	: $row['field2'] 
  ?></span>,
 				<span class="field3"><?php 
  print is_object($row)
-						? $row->field3
-						: $row['field3'] 
+	? $row->field3
+	: $row['field3'] 
  ?></span>
 			</li>
 <?php 

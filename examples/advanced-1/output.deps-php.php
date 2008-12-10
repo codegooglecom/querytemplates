@@ -1,0 +1,1 @@
+/home/bob/workspace/QueryTemplatesJs/examples/advanced-1/input.html	1227698693
