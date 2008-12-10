@@ -27,7 +27,7 @@ $template = template('output')
 		->find('ul > li')
 			// loopOne means 'use first for a loop and throw away rest
 			// of selected elements (ul > li in this case)
-			->loopOne('$data', '$row')
+			->loopOne('data', 'row')
 				// injects php code as innerHTML
 				->php('print $row')
 			->end()

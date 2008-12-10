@@ -20,10 +20,18 @@ if (! class_exists('Callback')) {
  */
 class QueryTemplatesTemplate
 	implements IQueryTemplatesTemplate {
+	/**
+	 * QueryTemplatesParse object
+	 * 
+	 * @var QueryTemplatesParse
+	 */
+	public $parse;
+	public $language = 'php';
 	public $name;
 	public $cache = true;
 	/**
 	 * @access private
+	 * @todo refactor: "toCollect"
 	 */
 	public $toFetch = array(
 		// [0] path, [1] name, [2] parse php tags
@@ -36,8 +44,9 @@ class QueryTemplatesTemplate
 	 *
 	 * @param string $name Optional.
 	 */
-	public function __construct($name = null) {
+	public function __construct($name = null, $language = 'php') {
 		$this->name = $name;
+		$this->language = $language;
 	}
 	/**
 	 * Fetches file or URL and returns phpQuery object with additional collect()
@@ -122,8 +131,9 @@ class QueryTemplatesTemplate
 			$this->name = $this->generateName();
 		//check cache
 //		$this->includeFunctions();
-		if ($includePath = QueryTemplates::loadTemplate($this->name))
-			return new QueryTemplatesParseVoid($includePath);
+		$includePath = QueryTemplates::loadTemplate($this->name, null, $this->language);
+		if ($includePath)
+			return new QueryTemplatesParseVoid($includePath, $this);
 		$this->includeClasses();
 		return new QueryTemplatesParse($this);
 	}
@@ -159,6 +169,7 @@ class QueryTemplatesTemplate
 	}
 	/**
 	 * @access private
+	 * @TODO move to QueryTemplates static namespace
 	 */
 	protected function includeClasses() {
 		$dir = dirname(__FILE__);
@@ -168,6 +179,9 @@ class QueryTemplatesTemplate
 				require_once("$dir/phpQuery/phpQuery.php");
 		}
 		phpQuery::$debug = QueryTemplates::$debug;
+		require_once("$dir/QueryTemplatesLanguage".strtoupper($this->language).".php");
+		$languageClass = 'QueryTemplatesLanguage'.strtoupper($this->language);
+		call_user_func_array(array($languageClass, 'initialize'), array());
 		require_once("$dir/QueryTemplatesPhpQuery.php");
 		require_once("$dir/QueryTemplatesSourceQuery.php");
 		require_once("$dir/QueryTemplatesSource.php");
@@ -184,14 +198,31 @@ class QueryTemplatesTemplate
 		else
 			return $this->parent->name;
 	}
+	function __toString() {
+		return is_object($this->parse)
+			? $this->parse->save()
+			: $this->parse;
+	}
+	function save($callback = null, $activeCallback = true) {
+		$params = func_get_args();
+		return is_object($this->parse)
+			? call_user_func_array(array($this->parse, 'save'), $params)
+			: $this->parse;
+	}
 }
 
 /**
  * Create new template using QueryTemplates.
  *
  * @param string $name
+ * Template's name. Will be used as part of output filename.
+ * @param string $language
+ * Template's language needs to be explicitly defined here and can't be changed
+ * later. Although 2 templates with separate languages can share same chain.
+ * 
  * @return QueryTemplatesTemplate
+ * @see QueryTemplatesTemplate::__construct
  */
-function template($name = null) {
-	return new QueryTemplatesTemplate($name);
+function template($name = null, $language = 'php') {
+	return new QueryTemplatesTemplate($name, $language);
 }

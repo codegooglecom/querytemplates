@@ -11,7 +11,7 @@
  * @TODO multi-returns
  */
 class QueryTemplatesSource
-	extends QueryTemplatesPhpQuery
+	extends phpQueryObject
 	implements IQueryTemplatesParseChain {
 	/**
 	 * Parent template.
