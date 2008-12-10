@@ -13,14 +13,14 @@
 ?>'>
 			<h2 class="title"><?php 
  print is_object($r["Post"])
-						? $r["Post"]->title
-						: $r["Post"]['title'] 
+	? $r["Post"]->title
+	: $r["Post"]['title'] 
  ?>
 </h2>
 			<p class="body"><?php 
  print is_object($r["Post"])
-						? $r["Post"]->body
-						: $r["Post"]['body'] 
+	? $r["Post"]->body
+	: $r["Post"]['body'] 
  ?></p>
 		
 	<?php 
@@ -32,12 +32,12 @@
  ?><li>
 			<strong class="author"><?php 
  print is_object($comment)
-						? $comment->author
-						: $comment['author'] 
+	? $comment->author
+	: $comment['author'] 
  ?></strong>: <span class="body"><?php 
  print is_object($comment)
-						? $comment->body
-						: $comment['body'] 
+	? $comment->body
+	: $comment['body'] 
  ?></span>
 		</li>
 <?php 

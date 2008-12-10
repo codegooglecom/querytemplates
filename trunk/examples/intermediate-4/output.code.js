@@ -6,47 +6,80 @@ function templateoutput(__data) {
 	var print = function(value) {
 		__template += value;
 	}
-	__template += '<form>\n		<legend>Form example</legend>\n		<fieldset><dl>\n<dt><label>input[type=text]</label></dt>\n				<dd>\n					<input type="text" name="text-example" value="';
+	__template += '<form>\
+		<legend>Form example</legend>\
+		<fieldset><dl>\
+<dt><label>input[type=text]</label></dt>\
+				<dd>\
+					<input type="text" name="text-example" value="';
  
  	print(data['text-example']);  
 ;
-	__template += '">\n</dd>\n				<dt><label>input[type=checkbox]</label></dt>\n				<dd>\n					';
+	__template += '">\
+</dd>\
+				<dt><label>input[type=checkbox]</label></dt>\
+				<dd>\
+					';
  if (data['checkbox-example'] == true) { ;
 	__template += '<input type="checkbox" name="checkbox-example" value="foo" checked>';
  } 
  else { ;
 	__template += '<input type="checkbox" name="checkbox-example" value="foo">';
  } 
-	__template += '\n</dd>\n				<dt>input[type=radio]</dt>\n				<dd>\n					<label>[value=first]\n						';
+	__template += '\
+</dd>\
+				<dt>input[type=radio]</dt>\
+				<dd>\
+					<label>[value=first]\
+						';
  if (data['radio-example'] == 'first') { ;
 	__template += '<input type="radio" name="radio-example" value="first" checked>';
  } 
  else { ;
 	__template += '<input type="radio" name="radio-example" value="first">';
  } 
-	__template += '</label>\n				</dd>\n				<dd>\n					<label>[value=second]\n						';
+	__template += '</label>\
+				</dd>\
+				<dd>\
+					<label>[value=second]\
+						';
  if (data['radio-example'] == 'second') { ;
 	__template += '<input type="radio" name="radio-example" value="second" checked>';
  } 
  else { ;
 	__template += '<input type="radio" name="radio-example" value="second">';
  } 
-	__template += '</label>\n				</dd>\n				<dt><label>select</label></dt>\n				<dd>\n					<select name="select-example">';
+	__template += '</label>\
+				</dd>\
+				<dt><label>select</label></dt>\
+				<dd>\
+					<select name="select-example">';
  if (data['select-example'] == 'first') { ;
-	__template += '<option value="first" selected>First</option>\n';
+	__template += '<option value="first" selected>First</option>\
+';
  } 
  else { ;
-	__template += '<option value="first">First</option>\n';
+	__template += '<option value="first">First</option>\
+';
  } 
  if (data['select-example'] == 'second') { ;
-	__template += '<option value="second" selected>Second</option>\n';
+	__template += '<option value="second" selected>Second</option>\
+';
  } 
  else { ;
-	__template += '<option value="second">Second</option>\n';
+	__template += '<option value="second">Second</option>\
+';
  } 
-	__template += '</select>\n</dd>\n				<dt><label>textarea</label></dt>\n				<dd>\n					<textarea name="textarea-example">';
+	__template += '</select>\
+</dd>\
+				<dt><label>textarea</label></dt>\
+				<dd>\
+					<textarea name="textarea-example">';
  print(data['textarea-example']); ;
-	__template += '</textarea>\n</dd>\n			</dl></fieldset>\n</form>';
+	__template += '</textarea>\
+</dd>\
+			</dl></fieldset>\
+</form>';
 
 	return __template;
 }

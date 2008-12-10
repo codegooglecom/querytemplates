@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Example: simple3</title>
+<title>Example: intermediate-1</title>
 </head>
 <body>
 	<div class="my-div">
@@ -15,8 +15,8 @@
 <dt><strong>Model-1-field-1</strong></dt>
 					<dd class="field-1"><?php 
  print is_object($row["Model-1"])
-						? $row["Model-1"]->field-1
-						: $row["Model-1"]['field-1'] 
+	? $row["Model-1"]->field-1
+	: $row["Model-1"]['field-1'] 
  ?>
 </dd>
 				</dl>
@@ -24,26 +24,21 @@
 <dt><strong>Model-1-field-2</strong></dt>
 					<dd class="field-2"><?php 
  print is_object($row["Model-1"])
-						? $row["Model-1"]->field-2
-						: $row["Model-1"]['field-2'] 
+	? $row["Model-1"]->field-2
+	: $row["Model-1"]['field-2'] 
  ?>
 </dd>
 				</dl>
 <dl>
 <dt><strong>Model-1-field-3</strong></dt>
-					<dd class="field-3"><?php 
- print is_object($row["Model-1"])
-						? $row["Model-1"]->field-3
-						: $row["Model-1"]['field-3'] 
- ?>
-</dd>
+					<dd class="field-3">Lorem ipsum</dd>
 				</dl>
 <dl>
 <dt><strong>Model-2-field-1</strong></dt>
 					<dd class="Model-2-field-1"><?php 
  print is_object($row["Model-2"])
-						? $row["Model-2"]->field-1
-						: $row["Model-2"]['field-1'] 
+	? $row["Model-2"]->field-1
+	: $row["Model-2"]['field-1'] 
  ?>
 </dd>
 				</dl>
@@ -51,8 +46,8 @@
 <dt><strong>Model-2-field-2</strong></dt>
 					<dd class="Model-2-field-2"><?php 
  print is_object($row["Model-2"])
-						? $row["Model-2"]->field-2
-						: $row["Model-2"]['field-2'] 
+	? $row["Model-2"]->field-2
+	: $row["Model-2"]['field-2'] 
  ?>
 </dd>
 				</dl>
@@ -60,8 +55,8 @@
 <dt><strong>Model-2-field-3</strong></dt>
 					<dd class="Model-2-field-3"><?php 
  print is_object($row["Model-2"])
-						? $row["Model-2"]->field-3
-						: $row["Model-2"]['field-3'] 
+	? $row["Model-2"]->field-3
+	: $row["Model-2"]['field-3'] 
  ?>
 </dd>
 				</dl>

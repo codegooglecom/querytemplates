@@ -6,16 +6,22 @@ function templateoutput(__data) {
 	var print = function(value) {
 		__template += value;
 	}
-	__template += '<ul>\n';
- for (keyf4f3ad9d8e8519648bf0e01652885044 in data) {
-		var row = data[keyf4f3ad9d8e8519648bf0e01652885044]; 
+	__template += '<ul>\
+';
+ for (__keye0b4c in data) {
+		var row = data[__keye0b4c]; 
 		if (row instanceof Function)
 			continue; ;
 	__template += '<li>';
  print(row); ;
-	__template += '\n</li>\n';
+	__template += '\
+</li>\
+';
  } 
-	__template += '\n		\n		\n	</ul>';
+	__template += '\
+		\
+		\
+	</ul>';
 
 	return __template;
 }
