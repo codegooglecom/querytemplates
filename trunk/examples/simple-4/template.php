@@ -26,12 +26,12 @@ $template = template('output')
 		->source('input.html')->returnReplace()
 		->find('.my-div')
 			->find('ul > li')
-				->loopOne('$data', '$row')
+				->loopOne('data', 'row')
 					// this is one of the most important methods
 					// it takes an associative array ($row) and injects it's content
 					// into nodes matching selector pattern
 					// by default it searches for classes same as key name
-					->varsToSelector('$row', $data[0])
+					->varsToSelector('row', $data[0])
 				->end()
 			->end()
 			// replace matched node (.my-div) with an 'if' statement
