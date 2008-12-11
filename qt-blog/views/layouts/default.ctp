@@ -28,6 +28,12 @@ $template = template($name)
 		->find('.sidebar .posts')
 			->replaceWithPHP('print $this->requestAction("/posts/latest", array("return"))')
 		->end()
+		// fix webroot for links
+		->find('a[href^=/]')
+			->each(new Callback(create_function('$node, $view', '
+				pq($node)->attr("href", $view->webroot.substr(pq($node)->attr("href"), 1));
+			'), new CallbackParam, $this))
+		->end()
 		// attach debug
 		->find('body > *:last')
 			->afterPHP('echo $cakeDebug;')

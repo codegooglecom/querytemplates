@@ -10,8 +10,8 @@ $template = template($name)
 	->parse()
 		->source('posts')->returnReplace()
 		->find('ul li')
-			->loopOne('$posts', '$post')
-				->varsToSelector('$post["Post"]', $postFields, '.Post-%k')
+			->loopOne('posts', 'post')
+				->varsToSelector('post["Post"]', $postFields, '.Post-%k')
 				->find('.Post-title')
 					->php('
 						print $html->link($post["Post"]["title"],
@@ -22,7 +22,7 @@ $template = template($name)
 				->find('.tags')
 					->ifPHP('isset($post["Tag"]) && $post["Tag"]')
 					->find('em')
-						->loopOne('$post["Tag"]', '$tag')
+						->loopOne('post["Tag"]', 'tag')
 							->php('print
 								$html->link($tag[\'tag\'],
 									"/tags/view/{$tag[\'id\']}"

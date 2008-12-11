@@ -1,21 +1,21 @@
 
 											<h2 class="Post-title"><?php 
  print is_object($post["Post"])
-						? $post["Post"]->title
-						: $post["Post"]['title'] 
+	? $post["Post"]->title
+	: $post["Post"]['title'] 
  ?>
 </h2>
 											<div class="Post-body"><?php 
  print is_object($post["Post"])
-						? $post["Post"]->body
-						: $post["Post"]['body'] 
+	? $post["Post"]->body
+	: $post["Post"]['body'] 
  ?>
 </div>
 											<p>
 												Comments: <span class="Post-comments_count"><?php 
  print is_object($post["Post"])
-						? $post["Post"]->comments_count
-						: $post["Post"]['comments_count'] 
+	? $post["Post"]->comments_count
+	: $post["Post"]['comments_count'] 
  ?></span>
 											</p>
 											<?php 
@@ -79,7 +79,7 @@
 				<div class="input text">
 					<label for="CommentAuthor">
 						You:<br><?php 
- 			print $form->error('Comment.author', null, array (
+ print $form->error('Comment.author', null, array (
   'before' => '<p class="errorField">',
   'class' => 'errorField',
   'after' => '</p>',
@@ -97,7 +97,7 @@
 				<div class="input text">
 					<label for="CommentEmail">
 						Email (not public):<br><?php 
- 			print $form->error('Comment.email', null, array (
+ print $form->error('Comment.email', null, array (
   'before' => '<p class="errorField">',
   'class' => 'errorField',
   'after' => '</p>',
@@ -115,7 +115,7 @@
 				<div class="input text">
 					<label for="CommentUrl">
 						URL:<br><?php 
- 			print $form->error('Comment.url', null, array (
+ print $form->error('Comment.url', null, array (
   'before' => '<p class="errorField">',
   'class' => 'errorField',
   'after' => '</p>',
@@ -133,7 +133,7 @@
 				<div class="input textarea">
 					<label for="CommentBody">
 						Comment:<br><?php 
- 			print $form->error('Comment.body', null, array (
+ print $form->error('Comment.body', null, array (
   'before' => '<p class="errorField">',
   'class' => 'errorField',
   'after' => '</p>',
@@ -150,7 +150,7 @@
 				</div>
 				<div>
 					<?php 
- 					print $form->submit('Submit', array(
+ print $form->submit('Submit', array(
 					'class' => '',
 		 		)); 
  ?>

@@ -7,7 +7,7 @@ $template = template($name)
 	->parse()
 		->source('posts')->returnReplace()
 		->find('li')
-			->loopOne('$posts', '$post')
+			->loopOne('posts', 'post')
 				->find('a')
 					->replaceWithPHP('
 						print $html->link($post["Post"]["title"],
@@ -33,7 +33,7 @@ include(
 	plainTemplates::createTemplate(
 		'index.htm',
 		array(
-			'$posts',
+			'posts',
 			$posts,
 			'sidebar posts ul'
 		)

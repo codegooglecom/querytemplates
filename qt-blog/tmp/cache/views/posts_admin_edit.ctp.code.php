@@ -9,7 +9,7 @@
 <fieldset>
 <legend>Edit Post</legend>
 	<?php 
- 			print $form->hidden('id',
+ print $form->hidden('id',
 				array(
 					'class' => '',
 					'legend' => false,
@@ -17,7 +17,7 @@
 			)); 
  ?><div class="input text">
 <label for="title">Title</label><?php 
- 			print $form->error('title', null, array (
+ print $form->error('title', null, array (
   'before' => '<p class="errorField">',
   'class' => 'errorField',
   'after' => '</p>',
@@ -35,7 +35,7 @@
 </div>
 <div class="input textarea">
 <label for="body">Body</label><?php 
- 			print $form->error('body', null, array (
+ print $form->error('body', null, array (
   'before' => '<p class="errorField">',
   'class' => 'errorField',
   'after' => '</p>',
@@ -53,7 +53,7 @@
 </div>
 <div class="input text">
 <label for="comments_count">Comments Count</label><?php 
- 			print $form->error('comments_count', null, array (
+ print $form->error('comments_count', null, array (
   'before' => '<p class="errorField">',
   'class' => 'errorField',
   'after' => '</p>',
@@ -71,7 +71,7 @@
 </div>
 <div class="input text">
 <label for="slug">Slug</label><?php 
- 			print $form->error('slug', null, array (
+ print $form->error('slug', null, array (
   'before' => '<p class="errorField">',
   'class' => 'errorField',
   'after' => '</p>',
@@ -91,7 +91,7 @@
 					<div class="input radio">
 						<label>Published</label>
 						<?php 
- 			print $form->error('published', null, array (
+ print $form->error('published', null, array (
   'before' => '<p class="errorField">',
   'class' => 'errorField',
   'after' => '</p>',
@@ -110,7 +110,7 @@
 			); 
  ?> YES
 						<?php 
- 					print $form->input('published',
+ print $form->input('published',
 						array (
   'type' => 'radio',
   'options' => 
@@ -126,7 +126,7 @@
 					</div>
 <div class="input select">
 <label for="Tag">Tag</label><?php 
- 			print $form->error('Tag', null, array (
+ print $form->error('Tag', null, array (
   'before' => '<p class="errorField">',
   'class' => 'errorField',
   'after' => '</p>',

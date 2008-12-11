@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<meta name="generator" content="HTML Tidy, see www.w3.org">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="generator" content="HTML Tidy, see www.w3.org">
 <link rel="stylesheet" href="/QT-Blog/templates/../css/client.generic.css" type="text/css" media="screen" charset="utf-8">
 <title>QT Blog<?php 
  print $title_for_layout ? " &raquo; $title_for_layout" : null; 
@@ -20,6 +20,7 @@
             <div id="content">
                 <div class="sidebar column right">
                     <h3>QT Blog</h3>
+                    <p><a href="/QT-Blog/admin">Admin area</a></p>
                     <p>QueryTemplates Blog is an example implementation of using QueryTemplates with CakePHP framework.</p>
                     <h3>Latest posts</h3>
                     <?php 

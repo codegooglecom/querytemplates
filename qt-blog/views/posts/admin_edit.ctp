@@ -2,9 +2,9 @@
 // var_dump($this->data);
 // import markup from baked template (lazy)
 $formMarkup = new Callback(
-	create_function('$view',
-		'return $view->requestAction("/admin/posts/template/edit/", array("return"));'
-	), $this
+	create_function('$view', '
+		return $view->requestAction("/admin/posts/template/edit/", array("return"));
+	'), $this
 );
 $name = substr(__FILE__, strlen(VIEWS));
 $template = template($name)

@@ -12,7 +12,7 @@ $template = template($name)
 	->parse()
 		->source('post')->returnReplace()
 		->source('post-extends')->returnAppend()
-		->varsToSelector('$post["Post"]', $post['Post'], '.Post-%k')
+		->varsToSelector('post["Post"]', $post['Post'], '.Post-%k')
 		->find('a.title')
 			->replaceWithPHP('href', '
 				print $html->link($post["Post"]["title"],
@@ -23,7 +23,7 @@ $template = template($name)
 		->find('.tags')
 			->ifPHP('isset($post["Tag"]) && $post["Tag"]')
 			->find('em')
-				->loopOne('$post["Tag"]', '$tag')
+				->loopOne('post["Tag"]', 'tag')
 					->php('print
 						$html->link($tag[\'tag\'],
 							"/tags/view/{$tag[\'id\']}"
@@ -35,7 +35,7 @@ $template = template($name)
 		->end()
 		// COMMENTS
 		->find('.comments ul li')
-			->loopOne('$post["Comment"]', '$comment')
+			->loopOne('post["Comment"]', 'comment')
 				->find('.body')->php('print $comment["body"]')->end()
 				->find('.author')
 					->php('print $comment["email"]

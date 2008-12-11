@@ -9,7 +9,7 @@
 <legend>Add Post</legend>
 	<div class="input text">
 <label for="title">Title</label><?php 
- 			print $form->error('title', null, array (
+ print $form->error('title', null, array (
   'before' => '<p class="errorField">',
   'class' => 'errorField',
   'after' => '</p>',
@@ -27,7 +27,7 @@
 </div>
 <div class="input textarea">
 <label for="body">Body</label><?php 
- 			print $form->error('body', null, array (
+ print $form->error('body', null, array (
   'before' => '<p class="errorField">',
   'class' => 'errorField',
   'after' => '</p>',
@@ -48,7 +48,7 @@
 
 <div class="input select">
 <label for="Tag">Tag</label><?php 
- 			print $form->error('Tag', null, array (
+ print $form->error('Tag', null, array (
   'before' => '<p class="errorField">',
   'class' => 'errorField',
   'after' => '</p>',

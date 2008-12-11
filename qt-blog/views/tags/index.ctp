@@ -6,7 +6,7 @@ $template = template($name)
 	->parse()
 		->source('tags')->returnReplace()
 		->find('li')
-			->loopOne('$tags', '$tag')
+			->loopOne('tags', 'tag')
 				->find('a')
 					// FIXME no url is created
 					->replaceWithPHP('print

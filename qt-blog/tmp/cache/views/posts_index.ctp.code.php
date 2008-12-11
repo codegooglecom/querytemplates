@@ -9,15 +9,15 @@
 </h2>
 											<div class="Post-body"><?php 
  print is_object($post["Post"])
-						? $post["Post"]->body
-						: $post["Post"]['body'] 
+	? $post["Post"]->body
+	: $post["Post"]['body'] 
  ?>
 </div>
 											<p>
 												Comments: <span class="Post-comments_count"><?php 
  print is_object($post["Post"])
-						? $post["Post"]->comments_count
-						: $post["Post"]['comments_count'] 
+	? $post["Post"]->comments_count
+	: $post["Post"]['comments_count'] 
  ?></span>
 											</p>
 											<?php 
