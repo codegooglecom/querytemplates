@@ -4,7 +4,7 @@ There are 3 sections of examples:
  * [#Intermediate Intermediate]
  * [#Advanced Advanced]
 
-After reading all 8 examples you should be able to start implementing QueryTemplates in you application. Each example contains comments describing new things introduced in it and refers to previous one in same section. Comments from previous example are removed.  
+After reading all 10 examples you should be able to start implementing QueryTemplates in you application. Each example contains comments describing new things introduced in it and refers to previous one in same section. Comments from previous example are removed.  
 
 = Simple =
 == [http://code.google.com/p/querytemplates/source/browse/trunk/examples/simple-1/ Simple 1] ==
