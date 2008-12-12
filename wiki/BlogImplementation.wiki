@@ -25,7 +25,7 @@ You can browse source directly via [http://code.google.com/p/querytemplates/sour
    * [http://code.google.com/p/querytemplates/source/browse/qt-blog/tmp/cache/views/posts_admin_edit.ctp.code.php posts/admin_edit.ctp]
    * [http://code.google.com/p/querytemplates/source/browse/qt-blog/tmp/cache/views/posts_index.ctp.code.php posts/index.ctp]
    * [http://code.google.com/p/querytemplates/source/browse/qt-blog/tmp/cache/views/posts_latest.ctp.code.php posts/latest.ctp]
-   * [http://code.google.com/p/querytemplates/source/browse/qt-blog/tmp/cache/views/posts_view.ctp.code.php posts_view.ctp]
+   * [http://code.google.com/p/querytemplates/source/browse/qt-blog/tmp/cache/views/posts_view.ctp.code.php posts/view.ctp]
    * [http://code.google.com/p/querytemplates/source/browse/qt-blog/tmp/cache/views/tags_index.ctp.code.php tags/index.ctp]
 
 == Download ==
