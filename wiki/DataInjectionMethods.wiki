@@ -1,0 +1,14 @@
+Methods listed below are intended to *inject data* (from DB, localization strings, etc) into template's structure. You can read more about types of data sources and targets on [GettingStarted Getting Started] page.
+
+Each method is linked with it's API reference.
+
+ * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToForm valuesToForm]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToForm ($data, $selectorPattern)]
+ * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelector valuesToSelector]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelector ($data, $selectorPattern, $skipKeys)]
+ * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelectorReplace valuesToSelectorReplace]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelectorReplace ($data, $selectorPattern, $skipKeys)]
+ * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToStack valuesToStack]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToStack ($markup)]
+ * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToStackReplace valuesToStackReplace]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToStackReplace ($markup)]
+ * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToForm varsToForm]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToForm ($varName, $varValue, $selectorPattern)]
+ * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelector varsToSelector]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelector ($varName, $varValue, $selectorPattern, $skipKeys)]
+ * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelectorReplace varsToSelectorReplace]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelectorReplace ($varName, $varValue, $selectorPattern, $skipKeys)]
+ * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToStack varsToStack]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToStack ($varName, $varValue, $skipKeys)]
+ * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToStackReplace varsToStackReplace]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToStackReplace ($varName, $varValue, $skipKeys)]
