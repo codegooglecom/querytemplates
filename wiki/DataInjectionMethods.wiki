@@ -1,4 +1,4 @@
-Methods listed below are intended to *inject data* (from DB, localization strings, etc) into template's structure. You can read more about types of data sources and targets on [GettingStarted Getting Started] page.
+Methods listed below are intended to *inject data* (from DB, localization strings, etc) into template's structure. You can read more about types of data *sources* and *targets* on [GettingStarted Getting Started] page.
 
 Each method is linked with it's API reference.
 
