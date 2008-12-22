@@ -22,3 +22,5 @@ Data targets
    * eg valuesToForm() switches form state according to passed values
  * stack
    * eg valuesToStackReplace() replaces actually stacked nodes with passed values (array or object)
+
+You can find list of data injection methods on [DataInjectionMethods Data Injection Methods page] and [http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html API Reference].
