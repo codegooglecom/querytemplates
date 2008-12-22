@@ -8,19 +8,19 @@ QuerieTemplates works in following steps
 
 You can find [Examples examples here on the wiki] and download [http://code.google.com/p/querytemplates/downloads/list example blog implementation] using CakePHP framework.
 
-Data sources
- * values (static)
+== Data sources ==
+ * *values* (static)
    * eg user messages, something what can be saved inside template
- * vars (variables, dynamic)
+ * *vars* (variables, dynamic)
    * eg DB queries results, rss feeds, generaly fetched data
 Each data source can be an array or object. Difference between values and vars is that vars are injected as literally variables and values are injected as "hardcoded" strings. This means you can use same data source (array or object) in 2 different ways, but the source is still the same.
 
-Data targets
- * selector
-   * eg varsToSelector() propagates variable (array, object) contents replacing nodes matching by selector pattern based on variable key's
- * form
+== Data targets ==
+ * *selector*
+   * eg varsToSelector() propagates variable (array, object) contents replacing nodes matched by selector pattern based on variable key's
+ * *form*
    * eg valuesToForm() switches form state according to passed values
- * stack
+ * *stack*
    * eg valuesToStackReplace() replaces actually stacked nodes with passed values (array or object)
 
 You can find list of data injection methods on [DataInjectionMethods Data Injection Methods page] and [http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html API Reference].
