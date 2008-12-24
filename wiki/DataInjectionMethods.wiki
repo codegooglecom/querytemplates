@@ -1,6 +1,6 @@
 Methods listed below are intended to *inject data* (from DB, localization strings, etc) into template's structure. You can read more about types of data *sources* and *targets* on [GettingStarted Getting Started] page.
 
-Each method is linked with it's API reference.
+Each method is linked with it's API reference with an example.
 
  * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToForm valuesToForm]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToForm ($data, $selectorPattern)]
  * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelector valuesToSelector]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelector ($data, $selectorPattern, $skipKeys)]
