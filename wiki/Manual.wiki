@@ -1,16 +1,19 @@
 #labels Featured
 = Table of Contents =
- * [TemplateStructure Template Structure]
- * Data Injections
- * Code Injections
- * [TemplateSources Template Sources]
- * Preparing environment
- * jQuery API extensions
- * Events
- * [Integration Integration]
- * Template side includes
- * [ExtendingQueryTemplates Extending Query Templates]
- * [Debugging Debugging]
+   * Preparing environment
+   * [TemplateStructure Template Structure]
+   * [TemplateSources Template Sources]
+   * [DataInjectionMethods Data Injection Methods]
+   * Code Injection Methods
+   * Other Methods
+   * Final Template
+   * Supported Languages
+   * jQuery API extensions
+   * [Events Events]
+   * [Integration Integration]
+   * Template side includes
+   * [ExtendingQueryTemplates Extending QueryTemplates]
+   * [Debugging Debugging]
  
 *[http://meta20.net/querytemplates-api/ API Rerefence]* is also available.
 
