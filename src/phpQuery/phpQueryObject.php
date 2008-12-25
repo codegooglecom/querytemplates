@@ -1227,7 +1227,7 @@ class phpQueryObject
 											$pattern = '.*'.$val.'.*';
 											break;
 										case '$':
-											$pattern = $val.'$';
+											$pattern = '.*'.$val.'$';
 											break;
 									}
 									// cut last character
@@ -1314,12 +1314,12 @@ class phpQueryObject
 		if (mb_strpos($url, ' ') !== false) {
 			$matches = null;
 			if (extension_loaded('mbstring'))
-				mb_ereg_match('^([^ ]+) (.*)$', $url, $matches);
+				mb_ereg('^([^ ]+) (.*)$', $url, $matches);
 			else
 				preg_match('^([^ ]+) (.*)$', $url, $matches);
 			$url = $matches[1];
 			$selector = $matches[2];
-			// XXX this sucks, but what to do ?
+			// FIXME this sucks, pass as callback param
 			$this->_loadSelector = $selector;
 		}
 		$ajax = array(
@@ -1342,9 +1342,9 @@ class phpQueryObject
 			$html = phpQuery::newDocument($html)->find($this->_loadSelector);
 			unset($this->_loadSelector);
 		}
-		foreach($this as $node) {
+		foreach($this->stack(1) as $node) {
 			phpQuery::pq($node, $this->getDocumentID())
-				->html($html);
+				->markup($html);
 		}
 	}
 	/**
