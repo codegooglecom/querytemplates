@@ -61,7 +61,6 @@ abstract class QueryTemplatesPhpQuery
 	 * Example
 	 * <code>
 	 * $foo = array('field1' => 'foo', 'field2' => 'bar');
-	 * // notice single quotes
 	 * $template->varsToSelector('foo', $foo);
 	 * </code>
 	 *
@@ -83,7 +82,11 @@ abstract class QueryTemplatesPhpQuery
 	 * @param Array|Object $varValue
 	 * $varName's value with all keys (fields) OR array of $varName's keys (fields).
 	 * @param String $selectorPattern
-	 * By default it's class selector, where $varName's key (field) is a class name.
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * data source key.
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
 	 * @param Array $skipKeys
 	 * Array of keys from $varValue which should be skipped.
 	 * 
@@ -108,7 +111,6 @@ abstract class QueryTemplatesPhpQuery
 	 * Example
 	 * <code>
 	 * $foo = array('field1' => 'foo', 'field2' => 'bar');
-	 * // notice single quotes
 	 * $template->varsToSelector('foo', $foo);
 	 * </code>
 	 *
@@ -130,7 +132,11 @@ abstract class QueryTemplatesPhpQuery
 	 * @param Array|Object $varValue
 	 * $varName's value with all keys (fields) OR array of $varName's keys (fields).
 	 * @param String $selectorPattern
-	 * By default it's class selector, where $varName's key (field) is a class name.
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * data source key.
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
 	 * @param Array $skipKeys
 	 * Array of keys from $varValue which should be skipped.
 	 * 
@@ -312,8 +318,7 @@ abstract class QueryTemplatesPhpQuery
 	 *
 	 * Example
 	 * <code>
-	 * $values = array('<foo/>', '<bar/>');
-	 * // notice single quotes
+	 * $values = array('field1' => '<foo/>', 'field2' => '<bar/>');
 	 * $template['p']->valuesToSelector($values);
 	 * </code>
 	 *
@@ -332,7 +337,11 @@ abstract class QueryTemplatesPhpQuery
 	 * @param Array|Object $data
 	 * Associative array or Object containing markup.
 	 * @param String $selectorPattern
-	 * By default it's class selector, where $data's key (field) is a class name.
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * data source key.
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
 	 * @param Array $skipKeys
 	 * Array of keys from $varValue which should be skipped.
 	 * 
@@ -352,8 +361,7 @@ abstract class QueryTemplatesPhpQuery
 	 *
 	 * Example
 	 * <code>
-	 * $values = array('<foo/>', '<bar/>');
-	 * // notice single quotes
+	 * $values = array('field1' => '<foo/>', 'field2' => '<bar/>');
 	 * $template['p']->valuesToSelector($values);
 	 * </code>
 	 *
@@ -374,7 +382,11 @@ abstract class QueryTemplatesPhpQuery
 	 * @param Array|Object $data
 	 * Associative array or Object containing markup.
 	 * @param String $selectorPattern
-	 * By default it's class selector, where $data's key (field) is a class name.
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * data source key.
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
 	 * @param Array $skipKeys
 	 * Array of keys from $varValue which should be skipped.
 	 * 
@@ -547,7 +559,16 @@ abstract class QueryTemplatesPhpQuery
 		return $this;
 	}
 	/**
-	 * Injects executable code printing $arrayName's keys into form inputs.
+	 * Injects executable code which toggles form fields values and selection
+	 * states according to value of variable $varName.
+	 * 
+	 * This includes:
+	 * - input[type=radio][checked]
+	 * - input[type=checkbox][checked]
+	 * - select > option[selected]
+	 * - input[value]
+	 * - textarea
+	 * 
 	 * Inputs are selected according to $selectorPattern, where %k represents
 	 * variable's key.
 	 *
@@ -561,7 +582,6 @@ abstract class QueryTemplatesPhpQuery
 	 *   'radio-example' => 'foo',
 	 *   'checkbox-example' => 'foo',
 	 * );
-	 * // notice single quotes
 	 * $template->varsToForm('data', $data);
 	 * </code>
 	 *
@@ -609,7 +629,10 @@ abstract class QueryTemplatesPhpQuery
 	 * @param String $arrayName
 	 * @param Array|Object $arrayValue
 	 * @param String $selectorPattern
-	 * Defaults to name attribute containing variable's key.
+	 * Defines pattern matching form fields.
+	 * Defaults to "[name*='%k']", which matches fields containing variable's key in 
+	 * their names. For example, to match only names starting with "foo[bar]" change 
+	 * $selectorPattern to "[name^='foo[bar]'][name*='%k']"
 	 * 
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 * @TODO support select[multiple] (thou array)
@@ -674,8 +697,18 @@ abstract class QueryTemplatesPhpQuery
 		return $this;
 	}
 	/**
-	 * Toggles form fields selection states. This means radio checked, checkbox
-	 * checked, select selected and
+	 * Toggles form fields values and selection states according to static values 
+	 * from $data.
+	 * 
+	 * This includes:
+	 * - input[type=radio][checked]
+	 * - input[type=checkbox][checked]
+	 * - select > option[selected]
+	 * - input[value]
+	 * - textarea
+	 * 
+	 * Inputs are selected according to $selectorPattern, where %k represents
+	 * variable's key.
 	 *
 	 * Method doesn't change selected elements stack.
 	 *
@@ -721,7 +754,13 @@ abstract class QueryTemplatesPhpQuery
 	 * </form>
 	 * </code>
 	 *
-	 * @param $data
+	 * @param Array|Object $data
+	 * @param String $selectorPattern
+	 * Defines pattern matching form fields.
+	 * Defaults to "[name*='%k']", which matches fields containing $data's key in 
+	 * their names. For example, to match only names starting with "foo[bar]" change 
+	 * $selectorPattern to "[name^='foo[bar]'][name*='%k']"
+	 * 
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
 	public function valuesToForm($data, $selectorPattern = "[name*='%k']") {
@@ -762,13 +801,13 @@ abstract class QueryTemplatesPhpQuery
 			if ($select->length) {
 				$selected;
 				$select->find('option')
-						->filter("[value='{$v}']")
-							->toReference($selected)
-							->attr('selected', 'selected')
-						->end()
-						->not($selected)
-							->removeAttr('selected')
-						->end();
+					->filter("[value='{$v}']")
+						->toReference($selected)
+						->attr('selected', 'selected')
+					->end()
+					->not($selected)
+						->removeAttr('selected')
+					->end();
 			}
 			$textarea = $form->find("textarea$selector");
 			if ($textarea->length)

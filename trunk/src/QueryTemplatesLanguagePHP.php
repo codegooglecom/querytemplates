@@ -6,9 +6,7 @@ abstract class QueryTemplatesLanguagePHP {
 print \${$varName};
 EOF;
 		return <<<EOF
-print is_object(\${$varName})
-	? \${$varName}->{$f}
-	: \${$varName}['{$f}']
+print is_object(\${$varName}) ? \${$varName}->{$f} : \${$varName}['{$f}']
 EOF;
 	}
 	public static function loopVar($varName, $asVarName, $keyName) {
@@ -30,8 +28,7 @@ EOF;
 		$strict = $strict
 			? '=' : '';
 		return <<<EOF
-(is_object(\$$varName) && \${$varName}->{'$f'} ==$strict $value)
-			|| (! is_object(\$$varName) && \${$varName}['$f'] ==$strict $value)
+(is_object(\$$varName) && \${$varName}->{'$f'} ==$strict $value) || (! is_object(\$$varName) && \${$varName}['$f'] ==$strict $value)
 EOF;
 	}
 	public static function ifCode($code) {
