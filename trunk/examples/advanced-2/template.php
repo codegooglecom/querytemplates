@@ -58,8 +58,9 @@ function myFunction($node) {
 $myFunctionCallback = new Callback('myFunction');
 // intialize variable to be used as reference later
 // weird syntax prevents some IDEs from resetting $row type ;)
+${'row'} = null;
 /** @var QueryTemplatesParse */
-$row; ${'row'} = null;
+$row; 
 
 /* STEP 2 - create template */
 $template = template('output')
@@ -79,30 +80,33 @@ $template = template('output')
 				->find('> .title, > .body')
 					->varsToStack('r["Post"]', $postFields)
 				->end()
+				->dump()
 				// toReference saves actual matched elements inside variable
 				->toReference($row)
 ;
 // chain can be breaked in any place
-$row
-	->find('h3:first, .comments')
-		// wraps matched elements with an 'if' statement
-		// notice it uses one 'if' for 2 elements
-		->ifPHP('isset($r["Comment"]) && $r["Comment"]')
-	->end()
-	->find('.comments > li')
-		->loopOne('r["Comment"]', 'comment')
-			->varsToSelector('comment', $commentFields)
-	->end()->end()
-	->find('.tags')
-		->ifPHP('isset($r["Tag"]) && $r["Tag"]')
-		->contents()->not('*')->remove()->end()->end()
-		->find('strong')->after(' ')->end()
-		->prependPHP('$tagCount = count($r["Tag"]);')
-		->find('a')
-			->loopOne('r["Tag"]', 'k', 'tag')
-				->attrPHP('href', 'print "tag/{$tag["id"]}"')
-				->php('print $tag["tag"];')
-				->afterPHP('if ($k+1 < $tagCount) print ", ";')
+// but be careful - $row can be null if template is returned from cache
+if ($row)
+	$row
+		->find('h3:first, .comments')
+			// wraps matched elements with an 'if' statement
+			// notice it uses one 'if' for 2 elements
+			->ifPHP('isset($r["Comment"]) && $r["Comment"]')
+		->end()
+		->find('.comments > li')
+			->loopOne('r["Comment"]', 'comment')
+				->varsToSelector('comment', $commentFields)
+		->end()->end()
+		->find('.tags')
+			->ifPHP('isset($r["Tag"]) && $r["Tag"]')
+			->contents()->not('*')->remove()->end()->end()
+			->find('strong')->after(' ')->end()
+			->prependPHP('$tagCount = count($r["Tag"]);')
+			->find('a')
+				->loopOne('r["Tag"]', 'k', 'tag')
+					->attrPHP('href', 'print "tag/{$tag["id"]}"')
+					->php('print $tag["tag"];')
+					->afterPHP('if ($k+1 < $tagCount) print ", ";')
 ;
 
 /* STEP 3 - include generated template */
