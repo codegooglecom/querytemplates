@@ -100,6 +100,7 @@ class QueryTemplatesParse
 			QueryTemplates::$cacheTimeout = -1;
 		}
 		$params = func_get_args();
+		// XXX really, what is this ?
 		$params[1] = $activeCallback;
 		$return = QueryTemplates::saveTemplate(
 			$this->toRoot(),

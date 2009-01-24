@@ -124,18 +124,30 @@ class QueryTemplatesTemplate
 	/**
 	 * Start template parsing stage and changes namespace to @see QueryTemplatesParse.
 	 *
+	 * @param string $autoSource
+	 * Used to achieve equivalent of following code:
+	 * ->sourceCollect($source)->parse()->source($source)->returnReplace()
+	 * 
+	 * @TODO support multiplie $autoSources
 	 * @return String|QueryTemplatesParse
 	 */
-	public function parse() {
+	public function parse($autoSource = null) {
 		if (! $this->name)
 			$this->name = $this->generateName();
 		//check cache
 //		$this->includeFunctions();
+		if ($autoSource) {
+			$this->sourceCollect($autoSource);
+		}
 		$includePath = QueryTemplates::loadTemplate($this->name, null, $this->language);
 		if ($includePath)
 			return new QueryTemplatesParseVoid($includePath, $this);
 		$this->includeClasses();
-		return new QueryTemplatesParse($this);
+		if ($autoSource) {
+			$parse = new QueryTemplatesParse($this);
+			return $parse->source($autoSource)->returnReplace();
+		} else
+			return new QueryTemplatesParse($this);
 	}
 	/**
 	 * Disable or enables cache engine for this template.
