@@ -11,7 +11,7 @@
  * Library uses popular web 2.0 pattern load-traverse-modify thou jQuery like
  * chainable API and provides developer several rapid template filling methods.
  *
- * @version 1.0 Beta2
+ * @version 1.0 Dev3
  * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  * @link http://code.google.com/p/querytemplates/
@@ -39,7 +39,7 @@ abstract class QueryTemplates {
 	 * @var string
 	 * @see self::$cacheTimeout
 	 */
-	public static $targetsPath = './cache/';
+	public static $targetsPath = null;
 	/**
 	 * Checks if source template file exists and if it has been modified.
 	 * Can be turned off for performance reasons on production enviroment.
@@ -280,6 +280,7 @@ abstract class QueryTemplates {
 	 * @return	int
 	 */
 	public function clearCache($search = '*') {
+
 		$i = 0;
 		foreach( glob(self::$targetsPath.$search.'.code.php') as $file ) {
 			unlink($file);
@@ -288,6 +289,11 @@ abstract class QueryTemplates {
 		}
 		return $i;
 	}
+	/**
+	 * @TODO refactore it's name 
+	 * @param $file
+	 * @return unknown_type
+	 */
 	protected static function mapDepends($file) {
 		return $file."\t".filemtime($file);
 	}
@@ -303,15 +309,25 @@ abstract class QueryTemplates {
 		return preg_replace('@[^\\w$]@i', '_', $string);
 	}
 	protected static function validateCacheSettings() {
-		 if (! self::$targetsPath) {
-		 	throw new Exception('QueryTemplates::$targetsPath not set');
-		 }
-		 if (! file_exists(self::$targetsPath)) {
-		 	throw new Exception('Directory QueryTemplates::$targetsPath doesn\'t exist');
-		 }
-		 if (! is_writable(self::$targetsPath)) {
-			 if (! @chmod(self::$targetsPath, 0666)) {
-			 	throw new Exception('Directory QueryTemplates::$targetsPath isn\'t writtable');
+		 if (is_null(self::$targetsPath)) {
+		 	die('[QueryTemplates] QueryTemplates::$targetsPath not set; '
+		 		.QueryTemplates::$targetsPath);
+		 	throw new Exception('QueryTemplates::$targetsPath not set - '
+		 		.QueryTemplates::$targetsPath);
+		 } else {
+			 if (! file_exists(self::$targetsPath)) {
+			 	die('[QueryTemplates] Directory QueryTemplates::$targetsPath doesn\'t exist '
+			 		.QueryTemplates::$targetsPath);
+			 	throw new Exception('Directory QueryTemplates::$targetsPath doesn\'t exist - '
+			 		.QueryTemplates::$targetsPath);
+			 }
+			 if (! is_writable(self::$targetsPath)) {
+				 if (! @chmod(self::$targetsPath, 0666)) {
+				 	die('[QueryTemplates] Directory QueryTemplates::$targetsPath isn\'t writtable '
+				 		.QueryTemplates::$targetsPath);
+				 	throw new Exception('Directory QueryTemplates::$targetsPath isn\'t writtable - '
+				 		.QueryTemplates::$targetsPath);
+				 }
 			 }
 		 }
 		 $s = DIRECTORY_SEPARATOR;
@@ -436,3 +452,5 @@ abstract class QueryTemplates {
 		return $markup;
 	}
 }
+// set default targetsPath
+QueryTemplates::$targetsPath = dirname(__FILE__).'/cache';
