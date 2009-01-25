@@ -11,10 +11,12 @@
 class QueryTemplatesParseVoid {
 	protected $save;
 	protected $parent;
-	public function __construct($save, $parent) {
+	public function __construct($save, $parent = null) {
 		$this->save = $save;
-		$this->parent = $parent;
-		$this->parent->parse = $this;
+		if (isset($parent)) {
+			$this->parent = $parent;
+			$this->parent->parse = $this;
+		}
 	}
 	public function __call($name, $arguments) {
 		return $this;
@@ -24,5 +26,9 @@ class QueryTemplatesParseVoid {
 	}
 	public function __toString() {
 		return $this->save;
+	}
+	public function toReference(&$reference) {
+		$reference = new QueryTemplatesParseVoid($this->save);
+		return $this;
 	}
 }
