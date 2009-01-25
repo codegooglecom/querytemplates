@@ -49,6 +49,7 @@ require_once('../../src/QueryTemplates.php');
 QueryTemplates::$sourcesPath = dirname(__FILE__);
 QueryTemplates::$targetsPath = dirname(__FILE__);
 // QueryTemplates::$debug = 1;
+// QueryTemplates::$cacheTimeout = -1;
 // Callback example
 function myFunction($node) {
 	// dump() method var_dumps actual stack and doesn't break the chain
@@ -85,28 +86,26 @@ $template = template('output')
 				->toReference($row)
 ;
 // chain can be breaked in any place
-// but be careful - $row can be null if template is returned from cache
-if ($row)
-	$row
-		->find('h3:first, .comments')
-			// wraps matched elements with an 'if' statement
-			// notice it uses one 'if' for 2 elements
-			->ifPHP('isset($r["Comment"]) && $r["Comment"]')
-		->end()
-		->find('.comments > li')
-			->loopOne('r["Comment"]', 'comment')
-				->varsToSelector('comment', $commentFields)
-		->end()->end()
-		->find('.tags')
-			->ifPHP('isset($r["Tag"]) && $r["Tag"]')
-			->contents()->not('*')->remove()->end()->end()
-			->find('strong')->after(' ')->end()
-			->prependPHP('$tagCount = count($r["Tag"]);')
-			->find('a')
-				->loopOne('r["Tag"]', 'k', 'tag')
-					->attrPHP('href', 'print "tag/{$tag["id"]}"')
-					->php('print $tag["tag"];')
-					->afterPHP('if ($k+1 < $tagCount) print ", ";')
+$row
+	->find('h3:first, .comments')
+		// wraps matched elements with an 'if' statement
+		// notice it uses one 'if' for 2 elements
+		->ifPHP('isset($r["Comment"]) && $r["Comment"]')
+	->end()
+	->find('.comments > li')
+		->loopOne('r["Comment"]', 'comment')
+			->varsToSelector('comment', $commentFields)
+	->end()->end()
+	->find('.tags')
+		->ifPHP('isset($r["Tag"]) && $r["Tag"]')
+		->contents()->not('*')->remove()->end()->end()
+		->find('strong')->after(' ')->end()
+		->prependPHP('$tagCount = count($r["Tag"]);')
+		->find('a')
+			->loopOne('r["Tag"]', 'k', 'tag')
+				->attrPHP('href', 'print "tag/{$tag["id"]}"')
+				->php('print $tag["tag"];')
+				->afterPHP('if ($k+1 < $tagCount) print ", ";')
 ;
 
 /* STEP 3 - include generated template */
