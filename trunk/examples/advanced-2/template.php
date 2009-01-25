@@ -45,7 +45,9 @@ $commentFields = array_keys($posts[0]['Comment'][0]);
 $tagFields = array_keys($posts[0]['Tag'][0]);
 
 /* STEP 1 - set up environment */
+$time1 = microtime();
 require_once('../../src/QueryTemplates.php');
+$time2 = microtime();
 QueryTemplates::$sourcesPath = dirname(__FILE__);
 QueryTemplates::$targetsPath = dirname(__FILE__);
 // QueryTemplates::$debug = 1;
@@ -109,4 +111,13 @@ $row
 ;
 
 /* STEP 3 - include generated template */
+$template->save();
+$end1 = microtime();
 require($template);
+$end2 = microtime();
+var_dump(array(
+	'time tracked with library includes' => round($end1-$time1, 4),
+	'time tracked with library and template includes' => round($end2-$time1, 4),
+	'time tracked with template include' => round($end2-$time2, 4),
+	'time tracked without includes' => round($end1-$time2, 4),
+));
