@@ -1,24 +1,61 @@
 <?php
 abstract class QueryTemplatesLanguagePHP {
-	public static function printVar($varName, $f = null) {
-		if (! isset($f))
-			return <<<EOF
-print \${$varName};
-EOF;
+	public static function printVar($varName) {
+		if (! mb_strpos($varName, '.')) {
 		return <<<EOF
-print is_object(\${$varName}) ? \${$varName}->{$f} : \${$varName}['{$f}']
+if (isset(\$$varName)) print \$$varName;
 EOF;
+		}
+		$varNameArray = self::varNameArray($varName);
+		$varNameObject = self::varNameObject($varName);
+		return <<<EOF
+if (isset($varNameArray)) print $varNameArray;
+else if (isset($varNameObject)) print $varNameObject;
+EOF;
+	}
+	public static function printValue($value) {
+		$value = self::addslashes($value);
+		return "print '$value';";
+	}
+	public static function addslashes($target, $char = "'") {
+		return str_replace($char, '\\'.$char, $target);
 	}
 	public static function loopVar($varName, $asVarName, $keyName) {
 		$as = $keyName
 			? "{$asVarName} => \${$keyName}"
 			: $asVarName;
+		if (strpos($varName, '.')) {
+			$varNameObject = self::varNameObject($varName);
+			$varNameArray = self::varNameArray($varName);
+			$varName = "isset($varNameArray) ? $varNameArray : $varNameObject";
+		} else
+			$varName = '$'.$varName;
 		return array(
-			"foreach(\${$varName} as \${$as}):",
+			"foreach({$varName} as \${$as}):",
 			"endforeach;"
 		);
 	}
-	public static function compareVar($varName, $f, $value, $strict = false) {
+	public static function varNameObject($name) {
+		$return = '';
+		foreach(explode('.', $name) as $v) {
+			if (! $return)
+				$return = "\$$v";
+			else
+				$return .= "->{'$v'}";
+		}
+		return $return;
+	}
+	public static function varNameArray($name) {
+		$return = '';
+		foreach(explode('.', $name) as $v) {
+			if (! $return)
+				$return = "\$$v";
+			else
+				$return .= "['$v']";
+		}
+		return $return;
+	}
+	public static function compareVar($varName, $value, $strict = false) {
 		if (is_bool($value)) {
 			$value = $value
 				 ? 'true' : 'false';
@@ -27,9 +64,18 @@ EOF;
 		}
 		$strict = $strict
 			? '=' : '';
+		if (strpos($varName, '.')) {
+			$varNameObject = self::varNameObject($varName);
+			$varNameArray = self::varNameArray($varName);
+//			$varName = "(isset($varNameArray) ? $varNameArray : $varNameObject)";
+		} else {
+			$varNameObject = $varNameArray = "\$$varName";
+		}
 		return <<<EOF
-(is_object(\$$varName) && \${$varName}->{'$f'} ==$strict $value) || (! is_object(\$$varName) && \${$varName}['$f'] ==$strict $value)
+(isset($varNameArray) && $varNameArray ==$strict $value) 
+	|| (isset($varNameObject) && $varNameObject ==$strict $value)
 EOF;
+//(is_object(\$$varName) && \${$varName}->{'$f'} ==$strict $value) || (! is_object(\$$varName) && \${$varName}['$f'] ==$strict $value)
 	}
 	public static function ifCode($code) {
 		return array(
@@ -44,9 +90,10 @@ EOF;
 		);
 	}
 	public static function ifVar($var) {
-		$varName = implode('->', explode('.', $var));
+		$varNameArray = self::varNameArray($var);
+		$varNameObject = self::varNameObject($var);
 		return array(
-			"if (isset(\$$varName) && \$$varName) {",
+			"if ((isset($varNameArray) && $varNameArray) || (isset($varNameObject) && $varNameObject)) {",
 			"}"
 		);
 	}

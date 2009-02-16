@@ -132,20 +132,22 @@ class QueryTemplatesTemplate
 	 * @return String|QueryTemplatesParse
 	 */
 	public function parse($autoSource = null) {
+		if ($autoSource) {
+			$this->sourceCollect($autoSource);
+			// TODO fix namespace collisions
+//			$this->name = $autoSource;
+		}
 		if (! $this->name)
 			$this->name = $this->generateName();
 		//check cache
 //		$this->includeFunctions();
-		if ($autoSource) {
-			$this->sourceCollect($autoSource);
-		}
 		$includePath = QueryTemplates::loadTemplate($this->name, null, $this->language);
 		if ($includePath)
 			return new QueryTemplatesParseVoid($includePath, $this);
 		$this->includeClasses();
 		if ($autoSource) {
 			$parse = new QueryTemplatesParse($this);
-			return $parse->source($autoSource)->returnReplace();
+			return $parse->source((string)$autoSource)->returnReplace();
 		} else
 			return new QueryTemplatesParse($this);
 	}
@@ -173,10 +175,11 @@ class QueryTemplatesTemplate
 	 */
 	protected function generateName() {
 		$name = '';
+		// TODO names for callbacks !
 		foreach($this->toFetch['parts'] as $r)
-			$name .= QueryTemplates::$templatesDir.$r[0];
+			$name .= QueryTemplates::$sourcesPath.$r[0];
 		foreach($this->toFetch['full'] as $r)
-			$name .= QueryTemplates::$templatesDir.$r[0];
+			$name .= QueryTemplates::$sourcesPath.$r[0];
 		return md5($name);
 	}
 	/**
