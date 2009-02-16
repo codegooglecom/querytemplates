@@ -19,6 +19,8 @@ abstract class QueryTemplatesPhpQuery
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
 	 * 
+	 * @TODO support filters as 2nd and later arguments
+	 * Filter is a template-execution callback for value.
 	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
 	 */
 	public function varPrint($varName) {
@@ -170,12 +172,12 @@ abstract class QueryTemplatesPhpQuery
 			if ($replace)
 				$this->find($selector)
 					->replaceWith(phpQuery::code($lang, call_user_func_array(
-						array($languageClass, 'printVar'), array($varName, $f)
+						array($languageClass, 'printVar'), array("$varName.$f")
 					)));
 			else
 				$this->find($selector)
 					->{strtolower($lang)}(call_user_func_array(
-						array($languageClass, 'printVar'), array($varName, $f)
+						array($languageClass, 'printVar'), array("$varName.$f")
 					));
 		}
 		return $this;
@@ -299,12 +301,12 @@ abstract class QueryTemplatesPhpQuery
 			if ($replace)
 				$this->eq($i++)->replaceWith(phpQuery::code($lang, 
 					phpQuery::code($lang, call_user_func_array(
-						array($languageClass, 'printVar'), array($varName, $f)
+						array($languageClass, 'printVar'), array("$varName.$f")
 				))));
 			else
 				$this->eq($i++)->{strtolower($lang)}(
 					 call_user_func_array(
-						array($languageClass, 'printVar'), array($varName, $f)
+						array($languageClass, 'printVar'), array("$varName.$f")
 				));
 		}
 		return $this;
@@ -548,8 +550,8 @@ abstract class QueryTemplatesPhpQuery
 	 */
 	public function inputsFromValues($data, $type = 'hidden') {
 		$form = $this->is('form')
-			? $self->filter('form')
-			: $self->find('form');
+			? $this->filter('form')
+			: $this->find('form');
 		if ($form->find('fieldset')->size())
 			$form = $form->find('fieldset:first');
 		$data = array_reverse($data);
@@ -613,15 +615,15 @@ abstract class QueryTemplatesPhpQuery
 	 *   ?></select>
 	 *   <?php
    *     if ($data['radio-example'] == 'foo')
-   *       print "<input type='radio' name='radio-example' checked='checked'>";
+   *       print "<input type='radio' name='radio-example' checked='checked' value='foo'>";
    *     else
-   *       print "<input type='radio' name='radio-example'>";
+   *       print "<input type='radio' name='radio-example' value='foo'>";
    *   ?>
 	 *   <?php
    *     if ($data['checkbox-example'] == 'foo')
-   *       print "<input type='checkbox' name='checkbox-example' checked='checked'>";
+   *       print "<input type='checkbox' name='checkbox-example' checked='checked' value='foo'>";
    *     else
-   *       print "<input type='checkbox' name='checkbox-example'>";
+   *       print "<input type='checkbox' name='checkbox-example' value='foo'>";
    *   ?>
 	 * </form>
 	 * </code>
@@ -653,7 +655,7 @@ abstract class QueryTemplatesPhpQuery
 		$languageClass = 'QueryTemplatesLanguage'.$lang;
 		foreach($loop as $f) {
 			$code = call_user_func_array(
-				array($languageClass, 'printVar'), array($varName, $f)
+				array($languageClass, 'printVar'), array("$varName.$f")
 			);
 			// TODO addslashes
 			$selector = str_replace(array('%k'), array($f), $selectorPattern);
@@ -667,15 +669,17 @@ abstract class QueryTemplatesPhpQuery
 //				$input = pq($input, $this->getDocumentID());
 				$clone = $input->clone()->insertAfter($input);
 				// TODO addslashes needed
-				$value = $input->is(':checkbox')
-					? true : $input->attr('value');
+				// WTF ? no value for checbkxes ?
+//				$value = $input->is(':checkbox')
+//					? true : $input->attr('value');
+				$value = $input->attr('value');
 				$code = call_user_func_array(
 					array($languageClass, 'compareVar'),
-					array($varName, $f, $value)
+					array("$varName.$f", $value)
 				);
 //				$input->attr('checked', 'checked')->ifPHP($code, true);
 				$input->attr('checked', 'checked')->{"if$lang"}($code);
-				// FIXME!!!
+				// FIXME???
 				$clone->removeAttr('checked')->{"else$lang"}();
 			}
 			// selects
@@ -687,7 +691,7 @@ abstract class QueryTemplatesPhpQuery
 					// TODO addslashes needed
 					$code = call_user_func_array(
 						array($languageClass, 'compareVar'),
-						array($varName, $f, $option->attr('value'))
+						array("$varName.$f", $option->attr('value'))
 					);
 					$option->attr('selected', 'selected')->{"if$lang"}($code, true);
 					$clone->removeAttr('selected')->{"else$lang"}();
@@ -814,6 +818,421 @@ abstract class QueryTemplatesPhpQuery
 				$textarea->markup($v);
 		}
 		return $this;
+	}
+	/**
+	 * Method formFromVars acts as form helper. It creates the form without the 
+	 * need of suppling a line of markup. Created form have following features:
+	 * - shows data from record (array or object)
+	 * - shows errors
+	 * - supports default values
+	 * - supports radios and checkboxes
+	 * - supports select elements with optgroups 
+	 * 
+	 * @param $varNames
+	 * Array of names of following vars:
+	 * - record [0]
+	 *   Represents actual record as array of fields.
+	 * - errors [1]
+	 *   Represents actual errors as array of fields. Field can also be an array.
+	 * - additional data [2]
+	 *   Same purpose as $additionalData, but during template's execution.
+	 * Names should be without dollar signs. 
+	 * Ex:
+	 * array('row', 'errors.row', 'data');
+	 * $errors = array(
+	 *   'field1' => 'one error',
+	 *   'field2' => array('first error', 'second error')
+	 * );
+	 * 
+	 * @param $structure
+	 * Form structure information. This should be easily fetchable from ORM layer.
+	 * Possible types:
+	 * - text (default)
+	 * - password
+	 * - hidden
+	 * - checkbox
+	 * - radio
+	 * - textarea
+	 * Convention:
+	 * fieldName => array(
+	 *   fieldType, {options}
+	 * )
+	 * Where {options} can be:
+	 * - label
+	 * - id
+	 * - multiple (only select)
+	 * - optgroups (only select)
+	 * - values (only radio)
+	 * Ex:
+	 * <code>
+	 * $structure = array(
+	 *  // special field representing form element
+	 * 	'__form' => array('id' => 'dasdas'),
+	 * 	// TODO fieldsets
+	 * //	array('Legend Label', array(
+	 * //			'field1' => 'select',
+	 * //		),
+	 * //	),
+	 * 	'field2' => array('select', 
+	 * 		'optgroups' => array('optgroup1', 'optgroup2'),
+	 * 		'multiple' => true,	// TODO
+	 * 		'label' => 'Field Name',
+	 * 	),
+	 * 	'field12' => array('select', 
+	 * 		'label' => 'no optgroups',
+	 * 	),
+	 * 	'field3' => array('text',
+	 * 		'label' => 'Field3 Label',
+	 * 		'id' => 'someID',
+	 * 	),
+	 * 	'field4' => array(	// 'text' is default
+	 * 		'label' => 'Field4 Label',
+	 * 		'id' => 'someID2',
+	 * 	),
+	 * 	'field5' => 'hidden',
+	 * 	'field6' => array('radio', 
+	 * 		'values' => array('possibleValue1', 'possibleValue2')
+	 * 	),
+	 * 	'field7' => 'checkbox',
+	 * 	'field234' => 'textarea',
+	 * );
+	 * </code>
+	 * 
+	 * @param $defaults
+	 * Default field's value. Used when field isn't present within supplied record.
+	 * Ex:
+	 * <code>
+	 * $defaults = array(
+	 * 	'field2' => 'group2_1',
+	 * 	'field234' => 'lorem ipsum dolor sit sit sit...',
+	 * 	// TODO multipe
+	 * //	'field2' => array('value2', 'dadas', 'fsdsf'),
+	 * );
+	 * 
+	 * @param $additionalData
+	 * Additional data for fields. For now it's only used for populating select boxes.
+	 * Ex: 
+	 * $additionalData = array(
+	 * 	'field2' => array(
+	 * 		array(	// optgroup
+	 * 			'foo' => 'Foo',
+	 * 			'bar2' => 'Bar',
+	 * 		),
+	 * 		array(	// optgroup
+	 * 			'group2_1' => 'group2_1',
+	 * 			'group2_2' => 'group2_2',
+	 * 		),
+	 * 		'bar' => 'Bar',	// no optgroup
+	 * 	),
+	 * );
+	 * </code>
+	 * 
+	 * @param $template
+	 * Input wrapper template.
+	 * TODO support per field templates.
+	 * 
+	 * @param $selectors
+	 * Array of selectors indexed by it's type. Allows to customize lookups inside 
+	 * inputs wrapper. Possible values are: 
+	 * - error (default: .errors)
+	 * - label // TODO
+	 * - input (per field) // TODO
+	 * 
+	 * @return QueryTemplatesParse
+	 * 
+	 * @TODO support callbacks (per input type, before/after, maybe for errors too ?)
+	 * @TODO universalize language-specific injects
+	 */
+	function formFromVars($varNames, $structure, $defaults = null, $additionalData = null, $template = null, $selectors = null) {
+		// setup $template
+		if (! $template)
+			$template = <<<EOF
+<div class="input">
+  <label for=""></label>
+  <input type=""/>
+  <ul class="errors">
+    <li>error message</li>
+  </ul>
+</div>
+EOF;
+		// setup $varNames
+		if (! $varNames[0])
+			throw new Exception("Record's var name (\$varName[0]) is mandatory.");
+		$varRecord = $varNames[0];
+		$varErrors = isset($varNames[1]) && $varNames[1]
+			? $varNames[1] : null;
+		$varData = isset($varNames[2]) && $varNames[2]
+			? $varNames[2] : null;
+		// setup $selectors
+		if (! isset($selectors))
+			$selectors = array();
+		$selectors = array_merge(array(
+			'errors' => '.errors',
+		), $selectors);
+		// setup lang stuff
+		$lang = strtoupper($this->parent->language);
+		$languageClass = 'QueryTemplatesLanguage'.$lang;
+		// setup markup
+		$template = $this->newInstance($template);
+		$form = $this->is('form')
+			? $this->filter('form')->empty()
+			: $this->newInstance('<form/>');
+		$formID = $form->attr('id');
+		if (! $formID) {
+			$formID = 'f_'.substr(md5(microtime()), 0, 5);
+			$form->attr('id', $formID);
+		}
+		foreach($structure as $field => $info) {
+			if ($field == '__form') {
+				foreach($info as $attr => $value)
+					$form->attr($attr, $value);
+				$attr = $value = null;
+				continue;
+			}
+			if (! is_array($info))
+				$info = array($info);
+			$id = isset($info['id'])
+				? $info['id']
+				: "{$formID}_{$field}";
+			$markup = $template->clone();
+			switch($info[0]) {
+				// TEXTAREA
+				case 'textarea':
+					// TODO
+					$input = $this->newInstance("<textarea></textarea>")
+						->attr('id', $id);
+					$markup['input:first']->replaceWith($input);
+					if (isset($defaults[$field])) {
+						$input->{"$lang"}(
+							self::formFromVars_CodeValue(compact(
+								'input', 'languageClass', 'field', 'defaults', 'varRecord'
+							))
+						);
+					} else {
+						$input->{"$lang"}(
+							$input->qt_lang('printVar', "$varRecord.$field")
+						);
+					}
+					$markup['label:fist']->attr('for', $id);
+					break;
+				// SELECT
+				case 'select':
+					$input = $this->newInstance("<select name='$field'/>");
+					// TODO multiple
+					$markup['input:first']->replaceWith($input);
+					if (isset($info['optgroups'])) {
+						foreach($info['optgroups'] as $optgroup)
+							$input->append("<optgroup label='$optgroup'/>");
+					}
+					// inputFromValues
+					if (isset($additionalData[$field])) {
+						$target = null;
+						$selected = '';
+						foreach($additionalData[$field] as $value => $label) {
+							// optgroup
+							if (is_array($label)) {
+								$target = $input["optgroup:eq($value)"];
+								foreach($label as $_value => $_label) {
+									$selected = '';
+									// TODO multiple
+									if ($defaults && isset($defaults[$field]) 
+										&& $defaults[$field] == $_value)
+										$selected = "selected='selected'";
+									$target->append("<option value='$_value' $selected>$_label</option>");
+								}
+							// no optgroup
+							} else {
+								// TODO multiple
+								if ($defaults && isset($defaults[$field]) 
+									&& $defaults[$field] == $value)
+									$selected = "selected='selected'";
+								$input->append("<option value='$value' $selected>$label</option>");
+							}
+						}
+						$target = null;
+						$selected = null;
+						// TODO ifNotVar
+						$_varName = QueryTemplatesLanguagePHP::varNameArray($varRecord);
+						$input['> *']->ifPHP("! isset({$_varName}['$field'])");
+						$_varName = null;
+					}
+					if ($varData) {
+						if (isset($info['optgroups'])) {
+							$optgroupsDefault = $input['> optgroup'];
+							foreach($info['optgroups'] as $optgroup)
+								$input->append("<optgroup label='$optgroup'><option/></optgroup>");
+							$optgroups = $input['> optgroup']->not($optgroupsDefault);
+							if (isset($defaults[$field]))
+								$optgroups->elsePHP();
+							foreach($optgroups as $k => $group) {
+								$option = $group['option']->loop("$varData.$field.$k", 'value', 'label');
+								$option->attrPHP('value', 'print $value')->
+									varPrint('label');
+							}
+							// TODO field without optgroup (when optgroups present)
+						} else {
+							$option = $input->append("<option/>");
+							if (isset($defaults[$field]))
+								$option->elsePHP();
+							$option = $input['> option:last']->loop("$varData.$field", 'value', 'label');
+							$option->attrPHP('value', 'print $value')->
+								varPrint('label');
+						}
+					}
+	//				if (! $varData && ! isset($additionalData[$field])) {
+	//					throw new Exception("\$additionalData['$field'] should be present to "
+	//						."populate select element. Otherwise remove \$structure['$field'].");
+	//				}
+					$optgroups = $optgroupsDefault = $option = null;
+					$markup['label:fist']->attr('for', $id);
+					break;
+				// RADIO
+				case 'radio':
+					if (! $info['values'])
+						throw new Exception("'values' property needed for radio inputs");
+					$inputs = array();
+					$input = $markup['input:first']->
+						attr('type', 'radio')->
+						attr('name', $field)->
+						attr('value', $info['values'][0])->
+						removeAttr('checked');
+					$inputs[] = $input;
+					$lastInput = $input;
+					// inputFromValues
+					// TODO not safe
+					foreach(array_slice($info['values'], 1) as $value) {
+						$lastInput = $input->clone()->
+							insertAfter($input)->
+							attr('value', $value);
+						$inputs[] = $lastInput;
+					}
+					if (isset($defaults[$field])) {
+						$inputsDefault = null;
+						phpQuery::pq($inputs)->
+							toReference($inputsDefault)->clone()->
+							insertBefore($inputs->eq(0))->
+							filter("[value='{$defaults[$field]}']")->
+								attr('checked', 'checked')->
+							end()->
+							// TODO ifNotVar
+							ifPHP("! isset($\$varRecord['$field'])");
+						$inputsDefault = null;
+						$inputs->elsePHP();
+					}
+					foreach($inputs as $input) {
+		//				$input = pq($input, $this->getDocumentID());
+						$clone = $input->clone()->insertAfter($input);
+		//				$input->attr('checked', 'checked')->ifPHP($code, true);
+						$code = $this->qt_lang('compareVar', 
+							"$varRecord.$field", $input->attr('value')
+						);
+						$input->attr('checked', 'checked')->{"if$lang"}($code);
+						$clone->removeAttr('checked')->{"else$lang"}();
+					}
+					$inputs = null;
+					$markup['label:fist']->removeAttr('for');
+					break;
+				case 'hidden':
+					$markup = null;
+					$input = $this->newInstance('<input/>')->
+						attr('type', 'hidden')->
+						attr('name', $field)->
+						attr('id', $id);
+					$target = $form['fieldset']->length
+						? $form['fieldset:first']
+						: $form;
+					if (isset($defaults[$field])) {
+						$input->{"attr$lang"}('value', 
+							// TODO
+							self::formFromVars_CodeValue(compact(
+								'input', 'languageClass', 'field', 'defaults', 'varRecord'
+							))
+						);
+					} else {
+						$input->{"attr$lang"}('value', 
+							$input->qt_lang('printVar', "$varRecord.$field")
+						);
+					}
+					$target->prepend($input);
+					$target = null;
+					break;
+				// TEXT, HIDDEN, PASSWORD, others
+				default:
+					$markup = $template->clone();
+					if (! isset($info[0]))
+						$info[0] = 'text';
+					$input = $markup['input:first']->
+						attr('type', $info[0])->
+						attr('name', $field)->
+						attr('id', $id)->
+						removeAttr('checked');
+					// inputFromValues
+					if (isset($defaults[$field])) {
+						$input->{"attr$lang"}('value', 
+							// TODO
+							formFromVarsCodeValue(compact(
+								'input', 'languageClass', 'field', 'defaults', 'varRecord'
+							))
+						);
+					} else {
+						$input->{"attr$lang"}('value', 
+							$input->qt_lang('printVar', "$varRecord.$field")
+						);
+					}
+					$markup['label:fist']->attr('for', $id);
+					break;
+			}
+			if ($markup) {
+				$markup->addClass($info[0]);
+				// label
+				$label = isset($info['label'])
+					? $info['label'] : ucfirst($field);
+				$markup['label:fist'] = $label;
+				if ($varErrors) {
+					$_varName = QueryTemplatesLanguagePHP::varNameArray("$varErrors.$field");
+					$markup[ $selectors['errors'] ]->
+						ifVar("$varErrors.$field")->
+						// TODO: varToIterable
+						beforePHP("if (! is_array($_varName)) 
+							$_varName = array($_varName);")->
+						find('>*')->
+							loopOne("$varErrors.$field", 'error')->
+								varPrint('error');
+					$_varName = null;
+				}
+				$form->append($markup);
+			}
+		}
+		$input = $code = null;
+		$this->append($form);
+		return $this;
+	}
+	static function formFromVars_CodeValue($params) {
+		extract($params);
+		$code = array(
+			'if' => call_user_func_array(
+				array($languageClass, 'ifVar'),
+				array("$varRecord.$field")
+			),
+			'printVar' => call_user_func_array(
+				array($languageClass, 'printVar'),
+				array("$varRecord.$field")
+			),
+			'else' => call_user_func_array(
+				array($languageClass, 'elseStatement'),
+				array()
+			),
+			'printValue' => call_user_func_array(
+				array($languageClass, 'printValue'),
+				array($defaults[$field])
+			),
+		);
+		return $code['if'][0].
+				$code['printVar'].
+			$code['if'][1].
+			$code['else'][0].
+				$code['printValue'].
+			$code['else'][1];
 	}
 	/**
 	 * Behaves as var_export, dumps variables from $varsArray as $key = value for
@@ -961,6 +1380,9 @@ abstract class QueryTemplatesPhpQuery
 			$result[] = call_user_func_array(array($pq, $method), array());
 		}
 		return $result;
+	}
+	public function unWrap() {
+		return $this->after($this->contents())->remove();
 	}
 	/**
 	 * Replaces selected tag with PHP "if" statement containing $code as condition.
@@ -1403,6 +1825,14 @@ abstract class QueryTemplatesPhpQuery
 	public function elsePHP($separate = false) {
 		return $this->_else('php', $separate);
 	}
+	/**
+	 * XXX ??? fix name via __call
+	 * $lang = strtoupper($this->parent->language);
+		$languageClass = 'QueryTemplatesLanguage'.$lang;
+	 * @param $lang
+	 * @param $separate
+	 * @return unknown_type
+	 */
 	public function _else($lang, $separate = false) {
 		$lang = strtoupper($lang);
 		$languageClass = 'QueryTemplatesLanguage'.$lang;
@@ -1411,11 +1841,11 @@ abstract class QueryTemplatesPhpQuery
 		);
 		return $separate
 			? $this
-				->filter(':first')->{"before$lang"}($code[0])->end()
-				->filter(':last')->{"after$lang"}($code[1])->end()
-			: $this
 				->{"before$lang"}($code[0])
-				->{"after$lang"}($code[1]);
+				->{"after$lang"}($code[1])
+			: $this
+				->filter(':first')->{"before$lang"}($code[0])->end()
+				->filter(':last')->{"after$lang"}($code[1])->end();
 	}
 	/**
 	 * @see phpQueryObject::_clone()

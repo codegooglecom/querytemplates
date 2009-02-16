@@ -38,6 +38,18 @@ class QueryTemplatesParse
 			$this->collectAll();
 		}
 	}
+	public function qt_lang($method) {
+		$lang = $this->qt_getLanguage();
+		$languageClass = 'QueryTemplatesLanguage'.$lang;
+		$params = func_get_args();
+		return call_user_func_array(
+			array($languageClass, $method),
+			array_slice($params, 1)
+		);
+	}
+	protected function qt_getLanguage() {
+		return strtoupper($this->parent->language);
+	}
 	private function collectAll() {
 		$s = DIRECTORY_SEPARATOR;
 		QueryTemplates::$sourcesPath = rtrim(QueryTemplates::$sourcesPath, $s).$s;
@@ -62,8 +74,11 @@ class QueryTemplatesParse
 		foreach($this->parent->toFetch['full'] as $r) {
 			if ($r[0] instanceof Callback) {
 				$content = phpQuery::callbackRun($r[0]);
-				$name = $r[1];
-				if (! $name)
+				if ($r[1])
+					$name = $r[1];
+				else if ($r[0] instanceof ICallbackNamed && $r[0]->hasName())
+					$name = $r[0]->getName();
+				else
 					throw new Exception('Name needed when using Callback as source');
 			} else {
 				$name = $r[1]
@@ -125,6 +140,7 @@ class QueryTemplatesParse
 	 * Saves outerHtml() as value of variable $var avaible in template scope.
 	 *
 	 * @param unknown_type $name
+	 * TODO user self::parent for storing vars
 	 */
 	public function saveAsVar($name) {
 		$object = $this;
@@ -137,6 +153,7 @@ class QueryTemplatesParse
 	 * Saves text() as value of variable $var avaible in template scope.
 	 *
 	 * @param unknown_type $name
+	 * TODO user self::parent for storing vars
 	 */
 	public function saveTextAsVar($name) {
 		$object = $this;

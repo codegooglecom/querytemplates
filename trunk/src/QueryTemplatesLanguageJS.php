@@ -5,6 +5,7 @@ abstract class QueryTemplatesLanguageJS {
 			return <<<EOF
 	print({$varName});
 EOF;
+		$f = str_replace("'", "\\'", $f);
 		return <<<EOF
 	print({$varName}['$f']);
 EOF;
