@@ -7,7 +7,7 @@ function templateoutput(__data) {
 		__template += value;
 	}
 	__template += '<form>\
-		<legend>Form example</legend>\
+		<legend>JS-only label</legend>\
 		<fieldset><dl>\
 <dt><label>input[type=text]</label></dt>\
 				<dd>\
@@ -20,7 +20,7 @@ function templateoutput(__data) {
 				<dt><label>input[type=checkbox]</label></dt>\
 				<dd>\
 					';
- if (data['checkbox-example'] == true) { ;
+ if (data['checkbox-example'] == 'foo') { ;
 	__template += '<input type="checkbox" name="checkbox-example" value="foo" checked>';
  } 
  else { ;

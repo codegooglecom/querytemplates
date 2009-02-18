@@ -31,7 +31,13 @@ $template = template('output')
 					// it takes an associative array ($row) and injects it's content
 					// into nodes matching selector pattern
 					// by default it searches for classes same as key name
+					// $data[0] could be changed to array_keys($data[0])
 					->varsToSelector('row', $data[0])
+					// fields can also be printed separately
+					// this particular example presents smarty-way filter  
+					->find('.field3')
+						->varPrint('row.field3|htmlspecialchars')
+					->end()
 				->end()
 			->end()
 			// replace matched node (.my-div) with an 'if' statement

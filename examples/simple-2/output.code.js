@@ -8,8 +8,8 @@ function templateoutput(__data) {
 	}
 	__template += '<ul>\
 ';
- for (__keye0b4c in data) {
-		var row = data[__keye0b4c]; 
+ for (__key06f10 in data) {
+		var row = data[__key06f10]; 
 		if (row instanceof Function)
 			continue; ;
 	__template += '<li>';

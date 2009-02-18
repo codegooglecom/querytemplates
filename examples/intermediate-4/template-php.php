@@ -18,6 +18,6 @@ QueryTemplates::$targetsPath = dirname(__FILE__);
 /* STEP 2 - create template */
 $template = template('output');
 require('template.php');
-
+	
 /* STEP 3 - include generated template */
 require($template);

@@ -151,9 +151,9 @@ class phpQueryObject
 	/**
 	 * Enter description here...
 	 * NON JQUERY METHOD
-	 * 
+	 *
 	 * Watch out, it doesn't creates new instance, can be reverted with end().
-	 * 
+	 *
 	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery|QueryTemplatesPhpQuery
 	 */
 	public function toRoot() {
@@ -564,6 +564,8 @@ class phpQueryObject
 			$new->elements = $this->elements;
 			if ($this->elementsBackup)
 				$this->elements = $this->elementsBackup;
+		} else if (is_string($newStack)) {
+			$new->elements = phpQuery::pq($newStack, $this->getDocumentID())->stack();
 		} else {
 			$new->elements = $newStack;
 		}
@@ -616,6 +618,7 @@ class phpQueryObject
 		$stack = array();
 		if (! $this->elements )
 			$this->debug('Stack empty, skipping...');
+		// XXX foreach($this->stack(1) ???
 		foreach($this->elements as $k => $stackNode) {
 			$detachAfter = false;
 			// to work on detached nodes we need temporary place them somewhere
@@ -893,7 +896,7 @@ class phpQueryObject
 				$text = trim($args, "\"'");
 				$stack = array();
 				foreach($this->elements as $node) {
-					if ( mb_strpos( $node->textContent, $text) === false)
+					if (mb_stripos($node->textContent, $text) === false)
 						continue;
 					$stack[] = $node;
 				}
@@ -919,7 +922,7 @@ class phpQueryObject
 			case 'has':
 				$selector = trim($args, "\"'");
 				$stack = array();
-				foreach($this->elements as $el) {
+				foreach($this->stack(1) as $el) {
 					if ($this->find($selector, $el, true)->length)
 						$stack[] = $el;
 				}
@@ -1569,10 +1572,10 @@ class phpQueryObject
 	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery|QueryTemplatesPhpQuery
 	 */
 	public function wrapInnerPHP($codeBefore, $codeAfter) {
-		// TODO test this
 		foreach($this->stack(1) as $node)
 			phpQuery::pq($node, $this->getDocumentID())->contents()
-				->wrapAllPHP($codeBefore, $codeBefore);
+				->wrapAllPHP($codeBefore, $codeAfter);
+		return $this;
 	}
 
 	/**
@@ -1750,7 +1753,15 @@ class phpQueryObject
 				continue;
 			if (isset($node->tagName))
 				$this->debug("Removing '{$node->tagName}'");
-			$node->parentNode->removeChild( $node );
+			$node->parentNode->removeChild($node);
+			// Mutation event
+			$event = new DOMEvent(array(
+				'target' => $node,
+				'type' => 'DOMNodeRemoved'
+			));
+			phpQueryEvents::trigger($this->getDocumentID(),
+				$event->type, array($event), $node
+			);
 		}
 		return $this;
 	}
@@ -1859,7 +1870,7 @@ class phpQueryObject
 		return call_user_func_array(array($this, 'htmlOuter'), $args);
 	}
 	public function __toString() {
-		return $this->htmlOuter();
+		return $this->markupOuter();
 	}
 	/**
 	 * Just like html(), but returns markup with VALID (dangerous) PHP tags.
@@ -1868,11 +1879,25 @@ class phpQueryObject
 	 * @todo support returning markup with PHP tags when called without param
 	 */
 	public function php($code = null) {
-//		TODO
-//		$args = func_get_args();
-		return $code
+		return $this->markupPHP($code);
+	}
+	/**
+	 * TODO doc
+	 * @param $code
+	 * @return unknown_type
+	 */
+	public function markupPHP($code = null) {
+		return isset($code)
 			? $this->markup(phpQuery::php($code))
-			: phpQuery::markupToPHP($this->markupOuter());
+			: phpQuery::markupToPHP($this->markup());
+	}
+	/**
+	 * TODO doc
+	 * @param $code
+	 * @return unknown_type
+	 */
+	public function markupOuterPHP() {
+		return phpQuery::markupToPHP($this->markupOuter());
 	}
 	/**
 	 * Enter description here...
@@ -2127,7 +2152,7 @@ class phpQueryObject
 				$insert = $insertNumber
 					? $fromNode->cloneNode(true)
 					: $fromNode;
-				switch( $type) {
+				switch($type) {
 					case 'appendTo':
 					case 'append':
 //						$toNode->insertBefore(
@@ -2135,6 +2160,7 @@ class phpQueryObject
 //							$toNode->lastChild->nextSibling
 //						);
 						$toNode->appendChild($insert);
+						$eventTarget = $insert;
 						break;
 					case 'prependTo':
 					case 'prepend':
@@ -2164,6 +2190,14 @@ class phpQueryObject
 							);
 						break;
 				}
+				// Mutation event
+				$event = new DOMEvent(array(
+					'target' => $insert,
+					'type' => 'DOMNodeInserted'
+				));
+				phpQueryEvents::trigger($this->getDocumentID(),
+					$event->type, array($event), $insert
+				);
 			}
 		}
 		return $this;
@@ -2233,7 +2267,7 @@ class phpQueryObject
 		$return = '';
 		foreach($this->elements as $node) {
 			$text = $node->textContent;
-			if (count($this->elements) > 1 && $node->textContent)
+			if (count($this->elements) > 1 && $text)
 				$text .= "\n";
 			foreach($args as $callback) {
 				$text = phpQuery::callbackRun($callback, array($text));
@@ -2271,7 +2305,12 @@ class phpQueryObject
 	 */
 	public function __call($method, $args) {
 		$aliasMethods = array('clone', 'empty');
-		if (isset(phpQuery::$pluginsMethods[$method])) {
+		if (isset(phpQuery::$extendMethods[$method])) {
+			array_unshift($args, $this);
+			return phpQuery::callbackRun(
+				phpQuery::$extendMethods[$method], $args
+			);
+		} else if (isset(phpQuery::$pluginsMethods[$method])) {
 			array_unshift($args, $this);
 			$class = phpQuery::$pluginsMethods[$method];
 			$realClass = "phpQueryObjectPlugin_$class";
@@ -2279,6 +2318,7 @@ class phpQueryObject
 				array($realClass, $method),
 				$args
 			);
+			// XXX deprecate ?
 			return is_null($return)
 				? $this
 				: $return;
@@ -2348,7 +2388,7 @@ class phpQueryObject
 	protected function getElementSiblings($direction, $selector = null, $limitToOne = false) {
 		$stack = array();
 		$count = 0;
-		foreach($this->elements as $node) {
+		foreach($this->stack(1) as $node) {
 			$test = $node;
 			while( isset($test->{$direction}) && $test->{$direction}) {
 				$test = $test->{$direction};
@@ -2395,10 +2435,14 @@ class phpQueryObject
 		phpQuery::debug(array('not', $selector));
 		$stack = array();
 		if ($selector instanceof self || $selector instanceof DOMNODE) {
-			foreach($this->elements as $node) {
+			foreach($this->stack() as $node) {
 				if ($selector instanceof self) {
-					// XXX check all nodes ?
-					if (count($selector->elements) && ! $selector->elements[0]->isSameNode($node))
+					$matchFound = false;
+					foreach($selector->stack() as $notNode) {
+						if ($notNode->isSameNode($node))
+							$matchFound = true; 
+					}
+					if (! $matchFound)
 						$stack[] = $node;
 				} else if ($selector instanceof DOMNODE) {
 					if (! $selector->isSameNode($node))
@@ -2511,7 +2555,7 @@ class phpQueryObject
 
 	/**
 	 * Internal stack iterator.
-	 * 
+	 *
 	 * @access private
 	 */
 	public function stack($nodeTypes = null) {
@@ -2602,40 +2646,6 @@ class phpQueryObject
 		}
 		return $this;
 	}
-
-	/**
-	 * Enter description here...
-	 * jQuery difference.
-	 *
-	 * @param string $attr
-	 * @param mixed $value
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery|QueryTemplatesPhpQuery
-	 * @todo use attr() function (encoding issues etc).
-	 */
-	public function attrPrepend($attr, $value) {
-		foreach($this->elements as $node )
-			$node->setAttribute($attr,
-				$value.$node->getAttribute($attr)
-			);
-		return $this;
-	}
-
-	/**
-	 * Enter description here...
-	 * jQuery difference.
-	 *
-	 * @param string $attr
-	 * @param mixed $value
-	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery|QueryTemplatesPhpQuery
-	 * @todo use attr() function (encoding issues etc).
-	 */
-	public function attrAppend($attr, $value) {
-		foreach($this->elements as $node )
-			$node->setAttribute($attr,
-				$node->getAttribute($attr).$value
-			);
-		return $this;
-	}
 	/**
 	 * @access private
 	 */
@@ -2683,7 +2693,7 @@ class phpQueryObject
 	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery|QueryTemplatesPhpQuery
 	 */
 	public function removeAttr($attr) {
-		foreach($this->elements as $node) {
+		foreach($this->stack(1) as $node) {
 			$loop = $attr == '*'
 				? $this->getNodeAttrs($node)
 				: array($attr);
@@ -2725,13 +2735,30 @@ class phpQueryObject
 					else
 						$node->removeAttr('checked');
 				} else if ($node->get(0)->tagName == 'select') {
-					if (! isset($_val))
-						$_val = is_array($val)
-							? $val : array($val);
+					if (! isset($_val)) {
+						$_val = array();
+						if (! is_array($val))
+							$_val = array((string)$val);
+						else
+							foreach($val as $v)
+								$_val[] = $v;
+					}
 					foreach($node['option']->stack(1) as $option) {
 						$option = pq($option, $this->getDocumentID());
-						$selected = in_array($option->attr('value'), $_val)
-								|| in_array($option->text(), $_val);
+						$selected = false;
+						// XXX: workaround for string comparsion, see issue #96
+						// http://code.google.com/p/phpquery/issues/detail?id=96
+						$selected = is_null($option->attr('value'))
+							? in_array($option->markup(), $_val)
+							: in_array($option->attr('value'), $_val);
+//						$optionValue = $option->attr('value');
+//						$optionText = $option->text();
+//						$optionTextLenght = mb_strlen($optionText);
+//						foreach($_val as $v)
+//							if ($optionValue == $v)
+//								$selected = true;
+//							else if ($optionText == $v && $optionTextLenght == mb_strlen($v))
+//								$selected = true;
 						if ($selected)
 							$option->attr('selected', 'selected');
 						else
@@ -2765,7 +2792,7 @@ class phpQueryObject
 	public function addClass( $className) {
 		if (! $className)
 			return $this;
-		foreach($this->elements as $node) {
+		foreach($this->stack(1) as $node) {
 			if (! $this->is(".$className", $node))
 				$node->setAttribute(
 					'class',
@@ -2798,7 +2825,7 @@ class phpQueryObject
 	 * @return	bool
 	 */
 	public function hasClass($className) {
-		foreach($this->elements as $node) {
+		foreach($this->stack(1) as $node) {
 			if ( $this->is(".$className", $node))
 				return true;
 		}
@@ -2811,7 +2838,7 @@ class phpQueryObject
 	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery|QueryTemplatesPhpQuery
 	 */
 	public function removeClass($className) {
-		foreach($this->elements as $node) {
+		foreach($this->stack(1) as $node) {
 			$classes = explode( ' ', $node->getAttribute('class'));
 			if ( in_array($className, $classes)) {
 				$classes = array_diff($classes, array($className));
@@ -2830,7 +2857,7 @@ class phpQueryObject
 	 * @return phpQueryObject|QueryTemplatesSource|QueryTemplatesParse|QueryTemplatesSourceQuery|QueryTemplatesPhpQuery
 	 */
 	public function toggleClass($className) {
-		foreach($this->elements as $node) {
+		foreach($this->stack(1) as $node) {
 			if ( $this->is( $node, '.'.$className ))
 				$this->removeClass($className);
 			else
@@ -2857,8 +2884,8 @@ class phpQueryObject
 	 * @access private
 	 */
 	public function _empty() {
-		foreach($this->elements as $node) {
-			// many thx to 'dave at dgx dot cz' :)
+		foreach($this->stack(1) as $node) {
+			// thx to 'dave at dgx dot cz'
 			$node->nodeValue = '';
 		}
 		return $this;

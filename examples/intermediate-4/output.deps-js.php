@@ -1,1 +1,1 @@
-/home/bob/workspace/QueryTemplatesJs/examples/intermediate-4/input.html	1228925593
+/home/bob/workspace/QueryTemplates/examples/intermediate-4/input.html	1228925593
