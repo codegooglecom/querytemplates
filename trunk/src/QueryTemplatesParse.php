@@ -39,8 +39,7 @@ class QueryTemplatesParse
 		}
 	}
 	public function qt_langCode($type) {
-		$lang = $this->qt_lang();
-		$languageClass = 'QueryTemplatesLanguage'.$lang;
+		$languageClass = 'QueryTemplatesLanguage'.$this->qt_lang();
 		$params = func_get_args();
 		return call_user_func_array(
 			array($languageClass, $type),
@@ -48,12 +47,9 @@ class QueryTemplatesParse
 		);
 	}
 	public function qt_langMethod($method) {
-		$lang = ! $lang 
-			? $this->qt_lang()
-			: strtoupper($lang);
 		$params = func_get_args();
 		return call_user_func_array(
-			array($this, $method.$lang),
+			array($this, $method.$this->qt_lang()),
 			array_slice($params, 1)
 		);
 	}

@@ -5,7 +5,7 @@ abstract class QueryTemplatesLanguage {
 	}
 	public static function initialize() {
 	}
-	abstract public static function templateWrapper($content, $name, $vars, $saveParams);
+//	abstract public static function templateWrapper($content, $name, $vars, $saveParams);
 	public static function postFilterDom($dom) {
 		return $dom;
 	}

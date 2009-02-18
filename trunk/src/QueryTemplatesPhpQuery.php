@@ -952,8 +952,18 @@ abstract class QueryTemplatesPhpQuery
 	 * @TODO universalize language-specific injects
 	 */
 	function formFromVars($varNames, $structure, $defaults = null, $additionalData = null, $template = null, $selectors = null) {
+		// setup $varNames
+		if (! $varNames)
+			throw new Exception("Record's var name (\$varNames or \$varNames[0]) is mandatory.");
+		if (! is_array($varNames))
+			$varNames = array($varNames);
+		$varRecord = $varNames[0];
+		$varErrors = isset($varNames[1]) && $varNames[1]
+			? $varNames[1] : null;
+		$varData = isset($varNames[2]) && $varNames[2]
+			? $varNames[2] : null;
 		// setup $template
-		if (! $template)
+		if (! $template && $varErrors)
 			$template = <<<EOF
 <div class="input">
   <label for=""></label>
@@ -963,14 +973,13 @@ abstract class QueryTemplatesPhpQuery
   </ul>
 </div>
 EOF;
-		// setup $varNames
-		if (! $varNames[0])
-			throw new Exception("Record's var name (\$varName[0]) is mandatory.");
-		$varRecord = $varNames[0];
-		$varErrors = isset($varNames[1]) && $varNames[1]
-			? $varNames[1] : null;
-		$varData = isset($varNames[2]) && $varNames[2]
-			? $varNames[2] : null;
+		else if (! $template && ! $varErrors)
+			$template = <<<EOF
+<div class="input">
+  <label for=""></label>
+  <input type=""/>
+</div>
+EOF;
 		// setup $selectors
 		if (! isset($selectors))
 			$selectors = array();
