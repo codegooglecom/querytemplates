@@ -1,66 +1,52 @@
 <?php
-abstract class QueryTemplatesLanguagePHP {
+require_once(dirname(__FILE__)."/QueryTemplatesLanguage.php");
+abstract class QueryTemplatesLanguagePHP 
+	extends QueryTemplatesLanguage {
 	public static function printVar($varName) {
-		if (! mb_strpos($varName, '.')) {
-		return <<<EOF
-if (isset(\$$varName)) print \$$varName;
+		$callbacks = self::callbacks(self::filterVarNameCallbacks($varName));
+		if (! strpos($varName, '.')) {
+			return <<<EOF
+if (isset(\$$varName)) print {$callbacks[0]}\$$varName{$callbacks[1]};
 EOF;
 		}
 		$varNameArray = self::varNameArray($varName);
 		$varNameObject = self::varNameObject($varName);
 		return <<<EOF
-if (isset($varNameArray)) print $varNameArray;
-else if (isset($varNameObject)) print $varNameObject;
+if (isset($varNameArray)) print {$callbacks[0]}$varNameArray{$callbacks[1]};
+else if (isset($varNameObject)) print {$callbacks[0]}$varNameObject{$callbacks[1]};
 EOF;
 	}
 	public static function printValue($value) {
 		$value = self::addslashes($value);
 		return "print '$value';";
 	}
-	public static function addslashes($target, $char = "'") {
-		return str_replace($char, '\\'.$char, $target);
-	}
 	public static function loopVar($varName, $asVarName, $keyName) {
 		$as = $keyName
 			? "{$asVarName} => \${$keyName}"
 			: $asVarName;
+		$preCode = '';
 		if (strpos($varName, '.')) {
 			$varNameObject = self::varNameObject($varName);
 			$varNameArray = self::varNameArray($varName);
-			$varName = "isset($varNameArray) ? $varNameArray : $varNameObject";
+			$varName = '$__'.md5($varName);
+			$preCode = "if (isset($varNameArray)) $varName = $varNameArray; ";
+			$preCode .= "else if (isset($varNameObject)) $varName = $varNameObject; ";
 		} else
 			$varName = '$'.$varName;
+		$wrapper = self::ifCode(
+			"isset($varName) && (is_array($varName) || is_object($varName))"
+		);
 		return array(
-			"foreach({$varName} as \${$as}):",
-			"endforeach;"
+			"$preCode{$wrapper[0]} foreach({$varName} as \${$as}):",
+			"endforeach; {$wrapper[1]}"
 		);
 	}
-	public static function varNameObject($name) {
-		$return = '';
-		foreach(explode('.', $name) as $v) {
-			if (! $return)
-				$return = "\$$v";
-			else
-				$return .= "->{'$v'}";
-		}
-		return $return;
-	}
-	public static function varNameArray($name) {
-		$return = '';
-		foreach(explode('.', $name) as $v) {
-			if (! $return)
-				$return = "\$$v";
-			else
-				$return .= "['$v']";
-		}
-		return $return;
-	}
-	public static function compareVar($varName, $value, $strict = false) {
+	public static function compareVarValue($varName, $value, $strict = false) {
 		if (is_bool($value)) {
 			$value = $value
 				 ? 'true' : 'false';
 		} else {
-			$value = "'".str_replace("'", "\\'", $value)."'";
+			$value = "'".self::addslashes($value)."'";
 		}
 		$strict = $strict
 			? '=' : '';
@@ -85,22 +71,39 @@ EOF;
 	}
 	public static function elseIfCode($code) {
 		return array(
-			"if ($code) {",
+			"else if ($code) {",
 			"}"
 		);
 	}
 	public static function ifVar($var) {
-		$varNameArray = self::varNameArray($var);
-		$varNameObject = self::varNameObject($var);
+		if (! strpos($var, '.')) {
+			$code = "isset($var) && $var";
+		} else {
+			list($object, $array) = self::varName($var);
+			$code = "(isset($array) && $array) || (isset($object) && $object)";
+		}
+		return self::ifCode($code);
+	}
+	public static function ifNotVar($var) {
+		if (! strpos($var, '.')) {
+			$code = "isset($var) && ! $var";
+		} else {
+			list($object, $array) = self::varName($var);
+			$code = "(isset($array) && ! $array) || (isset($object) && ! $object)";
+		}
+		return self::ifCode($code);
+	}
+	public static function elseIfVar($var) {
+		$code = self::ifVar($var);
 		return array(
-			"if ((isset($varNameArray) && $varNameArray) || (isset($varNameObject) && $varNameObject)) {",
+			"else ".$code[0],
 			"}"
 		);
 	}
-	public static function elseIfVar($var) {
-		$varName = implode('->', explode('.', $var));
+	public static function elseIfNotVar($var) {
+		$code = self::ifNotVar($var);
 		return array(
-			"else if (isset(\$$varName) && \$$varName) {",
+			"else ".$code[0],
 			"}"
 		);
 	}
@@ -110,7 +113,44 @@ EOF;
 			"}"
 		);
 	}
-	public static function initialize() {
+	public static function varName($varName) {
+		if (strpos($varName, '.')) {
+			$varNameObject = self::varNameObject($varName);
+			$varNameArray = self::varNameArray($varName);
+		} else
+			$varNameObject = $varNameArray = '$'.$varName;
+		return array($varNameObject, $varNameArray);
+	}
+	public static function varNameObject($name) {
+		$return = '';
+		foreach(explode('.', $name) as $v) {
+			if (! $return)
+				$return = "\$$v";
+			else {
+				$v = self::addslashes($v);
+				$return .= "->{'$v'}";
+			}
+		}
+		return $return;
+	}
+	public static function varNameArray($name) {
+		$return = '';
+		foreach(explode('.', $name) as $v) {
+			if (! $return)
+				$return = "\$$v";
+			else {
+				$v = self::addslashes($v);
+				$return .= "['$v']";
+			}
+		}
+		return $return;
+	}
+	public static function valuesToVars($varsArray) {
+		$lines = array();
+		foreach($varsArray as $var => $value) {
+			$lines[] = "\$$var = ".var_export($value, true).";";
+		}
+		return implode("\n", $lines);
 	}
 	/**
 	 * @param $template
@@ -121,7 +161,7 @@ EOF;
 	public static function templateWrapper($content, $name, $vars, $saveParams) {
 		$varsCode = '';
 		if ($vars) {
-			$varsCode = "<?php\n";
+			$varsCode = "<"."?php\n";
 			foreach($vars as $var => $val) {
 				$varsCode .= "\$$var = ".var_export($val, true).";\n";
 			}

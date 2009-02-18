@@ -33,12 +33,12 @@ $template = template('output')
 				->loopOne('data', 'row')
 					->find('.field1')->php('print $row["field1"]')->end()
 					->find('.field2')->php('print $row["field2"]')->end()
-					->find('.field3')->php('print $row["field3"]')->end()
+					->find('.field3')->php('print htmlspecialchars($row["field3"])')->end()
 				->end()
 			->end()
 		->end()
 	->save()
 ;
-
+htmlspecialchars();
 /* STEP 3 - include generated template */
 require($template);

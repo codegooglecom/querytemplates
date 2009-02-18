@@ -21,6 +21,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * @TODO support filters as 2nd and later arguments
 	 * Filter is a template-execution callback for value.
+	 * 
 	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
 	 */
 	public function varPrint($varName) {
@@ -52,6 +53,17 @@ abstract class QueryTemplatesPhpQuery
 					array($languageClass, 'printVar'), array($varName)
 				));
 		return $this;
+	}
+	/**
+	 * TODO doc
+	 * 
+	 * @param $var
+	 * @param $attr
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 */
+	public function varPrintAttr($varName, $attr) {
+		$code = $this->qt_langCode('printVar', $varName);
+		return $this->qt_langMethod('attr', $attr, $code);
 	}
 	/**
 	 * Injects executable code printing $varName's content (rows or attributes) into nodes
@@ -96,9 +108,7 @@ abstract class QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::varsToSelectorReplace()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 *
-	 * @TODO support $arrayName to be a function (last char == ')'), 
-	 * then prepend \$$var = $arrayName
-	 * @TODO JS var notation (dot separated) +optional array support
+	 * @TODO support $varName to be a function (last char == ')'), 
 	 */
 	public function varsToSelector($varName, $varValue, $selectorPattern = '.%k', $skipKeys = null) {
 		return $this->_varsToSelector(false, $varName, $varValue, $selectorPattern, $skipKeys);
@@ -355,7 +365,7 @@ abstract class QueryTemplatesPhpQuery
 		return $this->_valuesToSelector(false, $data, $selectorPattern, $skipKeys);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) into document 
+	 * Injects markup from $data's content (rows or attributes) into document, 
 	 * replacing nodes matched by selector.
 	 * 
 	 * For injecting markup inside matched nodes use valuesToSelector().
@@ -383,16 +393,19 @@ abstract class QueryTemplatesPhpQuery
 	 *
 	 * @param Array|Object $data
 	 * Associative array or Object containing markup.
+	 * 
 	 * @param String $selectorPattern
 	 * Defines pattern matching target nodes. %k represents key.
 	 * Defaults to ".%k", which matches nodes with class name equivalent to 
 	 * data source key.
 	 * For example, to restrict match to nodes with additional class "foo" change 
 	 * $selectorPattern to ".foo.%k"
+	 * 
 	 * @param Array $skipKeys
 	 * Array of keys from $varValue which should be skipped.
 	 * 
 	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * 
 	 * @see QueryTemplatesPhpQuery::valuesToSelector()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
@@ -400,11 +413,12 @@ abstract class QueryTemplatesPhpQuery
 		return $this->_valuesToSelector(true, $data, $selectorPattern, $skipKeys);
 	}
 	protected function _valuesToSelector($replace, $data, $selectorPattern, $skipKeys) {
-		$isObject = is_object($data);
 		foreach($data as $k => $v) {
 			if ($skipKeys && in_array($f, $skipKeys))
 				continue;
 			$selector = str_replace(array('%k'), array($k), $selectorPattern);
+			if ($v instanceof Callback)
+				$v = phpQuery::callbackRun($v);
 			if ($replace)
 				$this->find($selector)->replaceWith($v);
 			else
@@ -448,12 +462,13 @@ abstract class QueryTemplatesPhpQuery
 		return $this;
 	}
 	/**
+	 * Acts as loop(), but affects each selected element separately.
 	 * 
 	 * @param $varName
 	 * @param $asVarName
 	 * @param $keyName
-	 * @return unknown_type
-	 * @todo
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::loop()
 	 */
 	public function loopSeparate($varName, $asVarName, $keyName = null) {
 		foreach($this->stack() as $node)
@@ -518,7 +533,7 @@ abstract class QueryTemplatesPhpQuery
 	}
 	/**
 	 * Creates markup with INPUT tags and prepends it to form.
-	 * If selected element isn't a FORM than find('form') is executed.
+	 * If selected element isn't a FORM then find('form') is executed.
 	 *
 	 * Method doesn't change selected elements stack.
 	 *
@@ -657,7 +672,6 @@ abstract class QueryTemplatesPhpQuery
 			$code = call_user_func_array(
 				array($languageClass, 'printVar'), array("$varName.$f")
 			);
-			// TODO addslashes
 			$selector = str_replace(array('%k'), array($f), $selectorPattern);
 			// texts, hiddens, passwords
 			$this->find("input$selector:not(:radio, :checkbox)")->{"attr$lang"}('value', $code);
@@ -668,18 +682,13 @@ abstract class QueryTemplatesPhpQuery
 			foreach($inputs as $input) {
 //				$input = pq($input, $this->getDocumentID());
 				$clone = $input->clone()->insertAfter($input);
-				// TODO addslashes needed
-				// WTF ? no value for checbkxes ?
-//				$value = $input->is(':checkbox')
-//					? true : $input->attr('value');
 				$value = $input->attr('value');
 				$code = call_user_func_array(
-					array($languageClass, 'compareVar'),
+					array($languageClass, 'compareVarValue'),
 					array("$varName.$f", $value)
 				);
 //				$input->attr('checked', 'checked')->ifPHP($code, true);
 				$input->attr('checked', 'checked')->{"if$lang"}($code);
-				// FIXME???
 				$clone->removeAttr('checked')->{"else$lang"}();
 			}
 			// selects
@@ -688,9 +697,8 @@ abstract class QueryTemplatesPhpQuery
 				foreach($select['option'] as $option) {
 					$option = pq($option, $this->getDocumentID());
 					$clone = $option->clone()->insertAfter($option);
-					// TODO addslashes needed
 					$code = call_user_func_array(
-						array($languageClass, 'compareVar'),
+						array($languageClass, 'compareVarValue'),
 						array("$varName.$f", $option->attr('value'))
 					);
 					$option->attr('selected', 'selected')->{"if$lang"}($code, true);
@@ -870,7 +878,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'__form' => array('id' => 'dasdas'),
 	 * 	// TODO fieldsets
 	 * //	array('Legend Label', array(
-	 * //			'field1' => 'select',
+	 * //			'field1' => array('select', ...),
 	 * //		),
 	 * //	),
 	 * 	'field2' => array('select', 
@@ -1010,7 +1018,7 @@ EOF;
 						);
 					} else {
 						$input->{"$lang"}(
-							$input->qt_lang('printVar', "$varRecord.$field")
+							$input->qt_langCode('printVar', "$varRecord.$field")
 						);
 					}
 					$markup['label:fist']->attr('for', $id);
@@ -1051,10 +1059,7 @@ EOF;
 						}
 						$target = null;
 						$selected = null;
-						// TODO ifNotVar
-						$_varName = QueryTemplatesLanguagePHP::varNameArray($varRecord);
-						$input['> *']->ifPHP("! isset({$_varName}['$field'])");
-						$_varName = null;
+						$input['> *']->ifNotVar($varRecord);
 					}
 					if ($varData) {
 						if (isset($info['optgroups'])) {
@@ -1063,19 +1068,19 @@ EOF;
 								$input->append("<optgroup label='$optgroup'><option/></optgroup>");
 							$optgroups = $input['> optgroup']->not($optgroupsDefault);
 							if (isset($defaults[$field]))
-								$optgroups->elsePHP();
+								$optgroups->elseStatement();
 							foreach($optgroups as $k => $group) {
 								$option = $group['option']->loop("$varData.$field.$k", 'value', 'label');
-								$option->attrPHP('value', 'print $value')->
+								$option->varPrintAttr('value', 'value')->
 									varPrint('label');
 							}
 							// TODO field without optgroup (when optgroups present)
 						} else {
 							$option = $input->append("<option/>");
 							if (isset($defaults[$field]))
-								$option->elsePHP();
+								$option->elseStatement();
 							$option = $input['> option:last']->loop("$varData.$field", 'value', 'label');
-							$option->attrPHP('value', 'print $value')->
+							$option->varPrintAttr('value', 'value')->
 								varPrint('label');
 						}
 					}
@@ -1099,7 +1104,7 @@ EOF;
 					$inputs[] = $input;
 					$lastInput = $input;
 					// inputFromValues
-					// TODO not safe
+					// XXX not safe ?
 					foreach(array_slice($info['values'], 1) as $value) {
 						$lastInput = $input->clone()->
 							insertAfter($input)->
@@ -1107,23 +1112,19 @@ EOF;
 						$inputs[] = $lastInput;
 					}
 					if (isset($defaults[$field])) {
-						$inputsDefault = null;
-						phpQuery::pq($inputs)->
-							toReference($inputsDefault)->clone()->
+						phpQuery::pq($inputs)->clone()->
 							insertBefore($inputs->eq(0))->
 							filter("[value='{$defaults[$field]}']")->
 								attr('checked', 'checked')->
 							end()->
-							// TODO ifNotVar
-							ifPHP("! isset($\$varRecord['$field'])");
-						$inputsDefault = null;
-						$inputs->elsePHP();
+							ifNotVar("varRecord.$field");
+						$inputs->elseStatement();
 					}
 					foreach($inputs as $input) {
 		//				$input = pq($input, $this->getDocumentID());
 						$clone = $input->clone()->insertAfter($input);
 		//				$input->attr('checked', 'checked')->ifPHP($code, true);
-						$code = $this->qt_lang('compareVar', 
+						$code = $this->qt_langCode('compareVarValue', 
 							"$varRecord.$field", $input->attr('value')
 						);
 						$input->attr('checked', 'checked')->{"if$lang"}($code);
@@ -1141,20 +1142,14 @@ EOF;
 					$target = $form['fieldset']->length
 						? $form['fieldset:first']
 						: $form;
-					if (isset($defaults[$field])) {
-						$input->{"attr$lang"}('value', 
-							// TODO
-							self::formFromVars_CodeValue(compact(
+					$code = isset($defaults[$field])
+						? self::formFromVars_CodeValue(compact(
 								'input', 'languageClass', 'field', 'defaults', 'varRecord'
 							))
-						);
-					} else {
-						$input->{"attr$lang"}('value', 
-							$input->qt_lang('printVar', "$varRecord.$field")
-						);
-					}
+						: $input->qt_langCode('printVar', "$varRecord.$field");
+					$input->qt_langMethod('attr', 'value', $code);
 					$target->prepend($input);
-					$target = null;
+					$target = $code = null;
 					break;
 				// TEXT, HIDDEN, PASSWORD, others
 				default:
@@ -1166,20 +1161,14 @@ EOF;
 						attr('name', $field)->
 						attr('id', $id)->
 						removeAttr('checked');
-					// inputFromValues
-					if (isset($defaults[$field])) {
-						$input->{"attr$lang"}('value', 
-							// TODO
-							formFromVarsCodeValue(compact(
+					$code = isset($defaults[$field])
+						? self::formFromVars_CodeValue(compact(
 								'input', 'languageClass', 'field', 'defaults', 'varRecord'
 							))
-						);
-					} else {
-						$input->{"attr$lang"}('value', 
-							$input->qt_lang('printVar', "$varRecord.$field")
-						);
-					}
+						: $input->qt_langCode('printVar', "$varRecord.$field");
+					$input->qt_langMethod('attr', 'value', $code);
 					$markup['label:fist']->attr('for', $id);
+					$code = null;
 					break;
 			}
 			if ($markup) {
@@ -1189,12 +1178,18 @@ EOF;
 					? $info['label'] : ucfirst($field);
 				$markup['label:fist'] = $label;
 				if ($varErrors) {
-					$_varName = QueryTemplatesLanguagePHP::varNameArray("$varErrors.$field");
+					$varNamePHP = QueryTemplatesLanguage::get('php', 'varNameArray', "$varErrors.$field");
+					$varNameJS = QueryTemplatesLanguage::get('js', 'varName', "$varErrors.$field");
 					$markup[ $selectors['errors'] ]->
 						ifVar("$varErrors.$field")->
-						// TODO: varToIterable
-						beforePHP("if (! is_array($_varName)) 
-							$_varName = array($_varName);")->
+						onlyPHP()->
+							beforePHP("if (! is_array($varNamePHP)) 
+								$varNamePHP = array($varNamePHP);")->
+						endOnly()->
+						onlyJS()->
+							beforeJS("if (typeof $varNameJS != 'object') 
+								var $varNameJS = array($varNameJS);")->
+						endOnly()->
 						find('>*')->
 							loopOne("$varErrors.$field", 'error')->
 								varPrint('error');
@@ -1207,7 +1202,7 @@ EOF;
 		$this->append($form);
 		return $this;
 	}
-	static function formFromVars_CodeValue($params) {
+	protected static function formFromVars_CodeValue($params) {
 		extract($params);
 		$code = array(
 			'if' => call_user_func_array(
@@ -1236,7 +1231,8 @@ EOF;
 	}
 	/**
 	 * Behaves as var_export, dumps variables from $varsArray as $key = value for
-	 * later use during template execution.
+	 * later use during template execution. Variables are prepended into selected 
+	 * elemets.
 	 *
 	 * Method doesn't change selected elements stack.
 	 *
@@ -1255,10 +1251,11 @@ EOF;
 	 *
 	 * Result
 	 * <code>
-   * <?php
-	 * $foo = 'bar';
-	 * $bar = 'foo';
-	 * ?><node1>
+	 * <node1>
+   *   <?php
+	 *   $foo = 'bar';
+	 *   $bar = 'foo';
+	 *   ?>
 	 *   <node2/>
 	 * </node1>
 	 * </code>
@@ -1267,15 +1264,9 @@ EOF;
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
 	public function valuesToVars($varsArray) {
-		// TODO JS version, mvoe to QueryTemplatesLanguage
-		$lines = array();
-		foreach($varsArray as $var => $value) {
-			$lines[] = "\$$var = ".var_export($value, true);
-		}
-		$this->prependPHP(
-			implode(";\n", $lines)
+		return $this->qt_langMethod('prepend', 
+			$this->qt_langCode('valuesToVars', $varsArray)
 		);
-		return $this;
 	}
 	/**
 	 * Replaces nodes from stack with $markup using replaceWith() insted of markup().
@@ -1381,6 +1372,11 @@ EOF;
 		}
 		return $result;
 	}
+	/**
+	 * Removes selected element and moves it's children into parent node.
+	 * 
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 */
 	public function unWrap() {
 		return $this->after($this->contents())->remove();
 	}
@@ -1696,15 +1692,23 @@ EOF;
 	 * @see QueryTemplatesPhpQuery::tagToIfVar()
 	 */
 	public function ifVar($var, $separate = false) {
-		$lang = strtoupper($this->parent->language);
 		$method = $separate
-			? 'wrap'
-			: 'wrapAll';
-		$languageClass = 'QueryTemplatesLanguage'.$lang;
-		$code = call_user_func_array(
-			array($languageClass, 'ifVar'), array($var)
-		);
-		$this->{$method.$lang}($code[0], $code[1]);
+			? 'wrap' : 'wrapAll';
+		$code = $this->qt_langCode('ifVar', $var);
+		$this->qt_langMethod($method, $code[0], $code[1]);
+		return $this;
+	}
+	/**
+	 * TODO
+	 * @param $var
+	 * @param $separate
+	 * @return unknown_type
+	 */
+	public function ifNotVar($var, $separate = false) {
+		$method = $separate
+			? 'wrap' : 'wrapAll';
+		$code = $this->qt_langCode('ifNotVar', $var);
+		$this->qt_langMethod($method, $code[0], $code[1]);
 		return $this;
 	}
 	/**
@@ -1796,16 +1800,23 @@ EOF;
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
 	public function elseIfVar($var, $separate = false) {
-		$lang = strtoupper($lang);
 		$method = $separate
-			? 'wrap'
-			: 'wrapAll';
-		$lang = $this->parent->language;
-		$languageClass = 'QueryTemplatesLanguage'.$lang;
-		$code = call_user_func_array(
-			array($languageClass, 'elseIfVar'), array($var)
-		);
-		$this->{$method.$lang}($code[0], $code[1]);
+			? 'wrap' : 'wrapAll';
+		$code = $this->qt_langCode('elseIfVar', $var);
+		$this->qt_langMethod($code[0], $code[1]);
+		return $this;
+	}
+	/**
+	 * TODO description
+	 * @param $var
+	 * @param $separate
+	 * @return unknown_type
+	 */
+	public function elseIfNotVar($var, $separate = false) {
+		$method = $separate
+			? 'wrap' : 'wrapAll';
+		$code = $this->qt_langCode('elseIfNotVar', $var);
+		$this->qt_langMethod($code[0], $code[1]);
 		return $this;
 	}
 	/**
@@ -1823,18 +1834,20 @@ EOF;
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
 	public function elsePHP($separate = false) {
-		return $this->_else('php', $separate);
+		return $this->elseStatement($separate, 'php');
 	}
 	/**
-	 * XXX ??? fix name via __call
+	 * TODO description
 	 * $lang = strtoupper($this->parent->language);
 		$languageClass = 'QueryTemplatesLanguage'.$lang;
 	 * @param $lang
 	 * @param $separate
-	 * @return unknown_type
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
-	public function _else($lang, $separate = false) {
-		$lang = strtoupper($lang);
+	public function elseStatement($separate = false, $lang = null) {
+		$lang = $lang 
+			? strtoupper($lang)
+			: $this->qt_lang();
 		$languageClass = 'QueryTemplatesLanguage'.$lang;
 		$code = call_user_func_array(
 			array($languageClass, 'elseStatement'), array()
@@ -1848,11 +1861,64 @@ EOF;
 				->filter(':last')->{"after$lang"}($code[1])->end();
 	}
 	/**
-	 * @see phpQueryObject::_clone()
-	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * Honors code between onlyPHP and endOnly, only for PHP templates.
+	 * 
+	 * TODO: Is theres something wrong with this name ? 
+	 * @return unknown_type
 	 */
-	public function _clone() {
-		// TODO clone also $this->parent ?
-		return parent::_clone();
+	public function onlyPHP() {
+		return strtolower($this->qt_lang()) == 'php'
+			? $this : new QueryTemplatesVoid($this, 'endOnly');
+	}
+	public function onlyJS() {
+		return strtolower($this->qt_lang()) == 'js'
+			? $this : new QueryTemplatesVoid($this, 'endOnly');
+	}
+	public function endOnly() {
+		return $this;
+	}
+	/**
+	 * Saves markupOuter() as value of variable $var avaible in template scope.
+	 *
+	 * @param unknown_type $name
+	 * TODO user self::parent for storing vars
+	 */
+	public function saveAsVar($name) {
+		$object = $this;
+		while($object->previous)
+			$object = $object->previous;
+		$object->vars[$name] = $this->markupOuter();
+		return $this;
+	}
+	/**
+	 * Saves text() as value of variable $var avaible in template scope.
+	 *
+	 * @param unknown_type $name
+	 * TODO user self::parent for storing vars
+	 */
+	public function saveTextAsVar($name) {
+		$object = $this;
+		while($object->previous)
+			$object = $object->previous;
+		$object->vars[$name] = $this->text();
+		return $this;
+	}
+	/**
+	 * @todo use attr() function (encoding issues etc)
+	 * @see src/phpQuery-stock/phpQueryObject#attrAppend()
+	 */
+	public function attrAppend($attr, $value) {
+		foreach($this->stack(1) as $node )
+			$node->setAttribute($attr,
+				$node->getAttribute($attr).$value
+			);
+		return $this;
+	}
+	public function attrPrepend($attr, $value) {
+		foreach($this->stack(1) as $node )
+			$node->setAttribute($attr,
+				$value.$node->getAttribute($attr)
+			);
+		return $this;
 	}
 }

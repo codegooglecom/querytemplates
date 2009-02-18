@@ -38,16 +38,26 @@ class QueryTemplatesParse
 			$this->collectAll();
 		}
 	}
-	public function qt_lang($method) {
-		$lang = $this->qt_getLanguage();
+	public function qt_langCode($type) {
+		$lang = $this->qt_lang();
 		$languageClass = 'QueryTemplatesLanguage'.$lang;
 		$params = func_get_args();
 		return call_user_func_array(
-			array($languageClass, $method),
+			array($languageClass, $type),
 			array_slice($params, 1)
 		);
 	}
-	protected function qt_getLanguage() {
+	public function qt_langMethod($method) {
+		$lang = ! $lang 
+			? $this->qt_lang()
+			: strtoupper($lang);
+		$params = func_get_args();
+		return call_user_func_array(
+			array($this, $method.$lang),
+			array_slice($params, 1)
+		);
+	}
+	protected function qt_lang() {
 		return strtoupper($this->parent->language);
 	}
 	private function collectAll() {
@@ -102,8 +112,9 @@ class QueryTemplatesParse
 	 * Function to call at the end of template source, with one argument, which
 	 * is template function or it's output (depending on $activeCallback).
 	 * Supported by following languages: JS
+	 * 
 	 * @param $activeCallback
-	 * Determines if argument passed to a callback is template's function name
+	 * Determines if argument passed to a $callback is template's function name
 	 * or it's result.
 	 * Supported by following languages: JS
 	 * 
@@ -135,32 +146,6 @@ class QueryTemplatesParse
 	public function documentCreate($source) {
 		$id = phpQuery::newDocument($source->markupOuter())->getDocumentId();
 		parent::__construct($id);
-	}
-	/**
-	 * Saves outerHtml() as value of variable $var avaible in template scope.
-	 *
-	 * @param unknown_type $name
-	 * TODO user self::parent for storing vars
-	 */
-	public function saveAsVar($name) {
-		$object = $this;
-		while($object->previous)
-			$object = $object->previous;
-		$object->vars[$name] = $this->markupOuter();
-		return $this;
-	}
-	/**
-	 * Saves text() as value of variable $var avaible in template scope.
-	 *
-	 * @param unknown_type $name
-	 * TODO user self::parent for storing vars
-	 */
-	public function saveTextAsVar($name) {
-		$object = $this;
-		while($object->previous)
-			$object = $object->previous;
-		$object->vars[$name] = $this->text();
-		return $this;
 	}
 	public function __toString() {
 		try {
@@ -205,15 +190,13 @@ class QueryTemplatesParse
 	 * @return QueryTemplatesParse
 	 */
 	public function templateCache($state = null) {
-		$this->parent->templateCache($state);
-		return $this;
+		return $this->parent->templateCache($state);
 	}
 	/**
 	 * @see QueryTemplatesTemplate::templateName()
 	 * @return QueryTemplatesParse
 	 */
 	public function templateName($newName = null) {
-		$this->parent->templateName($state);
-		return $this;
+		return $this->parent->templateName($newName);
 	}
 }

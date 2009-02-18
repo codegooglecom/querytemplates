@@ -1,14 +1,22 @@
 <?php
-abstract class QueryTemplatesLanguageJS {
-	public static function printVar($varName, $f = null) {
-		if (! isset($f))
-			return <<<EOF
-	print({$varName});
-EOF;
-		$f = str_replace("'", "\\'", $f);
+require_once(dirname(__FILE__)."/QueryTemplatesLanguage.php");
+/**
+ * 
+ * @TODO error safe prints
+ * @TODO error safe iterations
+ */
+abstract class QueryTemplatesLanguageJS
+	extends QueryTemplatesLanguage {
+	public static function printVar($varName) {
+		$callbacks = self::callbacks(self::filterVarNameCallbacks($varName));
+		$varName = self::varName($varName);
 		return <<<EOF
-	print({$varName}['$f']);
+	print({$callbacks[0]}$varName{$callbacks[1]});
 EOF;
+	}
+	public static function printValue($value) {
+		$value = self::addslashes($value);
+		return "print '$value';";
 	}
 	public static function loopVar($varName, $asVarName, $keyName) {
 		$as = $keyName
@@ -16,6 +24,7 @@ EOF;
 			: $asVarName;
 		if (! $keyName)
 			$keyName = '__key'.substr(md5(microtime()), 0, 5);
+		$varName = self::varName($varName);
 		return array(
 			"	for ($keyName in $varName) {
 		var $asVarName = {$varName}[$keyName]; 
@@ -24,17 +33,18 @@ EOF;
 			"	}"
 		);
 	}
-	public static function compareVar($varName, $f, $value, $strict = false) {
+	public static function compareVarValue($varName, $value, $strict = false) {
 		if (is_bool($value)) {
 			$value = $value
 				 ? 'true' : 'false';
 		} else {
-			$value = "'".str_replace("'", "\\'", $value)."'";
+			$value = "'".self::addslashes($value)."'";
 		}
+		$varName = self::varName($varName);
 		$strict = $strict
 			? '=' : '';
 		return <<<EOF
-{$varName}['$f'] ==$strict $value
+{$varName} ==$strict $value
 EOF;
 	}
 	public static function ifCode($code) {
@@ -50,15 +60,30 @@ EOF;
 		);
 	}
 	public static function ifVar($var) {
+		$var = self::varName($var);
 		return array(
 			"	if (typeof $var != undefined && $var) {",
 			"	}"
 		);
 	}
+	public static function ifNotVar($var) {
+		$var = self::varName($var);
+		return array(
+			"	if (typeof $var != undefined && ! $var) {",
+			"	}"
+		);
+	}
 	public static function elseIfVar($var) {
-		$varName = implode('->', explode('.', $var));
+		$var = self::varName($var);
 		return array(
 			"	else if (typeof $var != undefined && $var) {",
+			"	}"
+		);
+	}
+	public static function elseIfNotVar($var) {
+		$var = self::varName($var);
+		return array(
+			"	else if (typeof $var != undefined && ! $var) {",
 			"	}"
 		);
 	}
@@ -68,8 +93,31 @@ EOF;
 			"	}"
 		);
 	}
+	public static function varName($name) {
+		$return = '';
+		foreach(explode('.', $name) as $v) {
+			if (! $return)
+				$return = "$v";
+			else {
+				$v = self::addslashes($v);
+				$return .= "['$v']";
+			}
+		}
+		return $return;
+	}
 	public static function initialize() {
 		phpQuery::plugin('jsCode');
+	}
+	public static function valuesToVars($varsArray) {
+		$lines = array();
+		foreach($varsArray as $var => $value) {
+			$var = self::varName($var);
+			$value = is_array($value) || is_object($value)
+				? QueryTemplates::toJSON($value)
+				: "'".phpQuery::$plugins->jsVarValue($value)."'"; 
+			$lines[] = "var $var = $value;";
+		}
+		return implode("\n", $lines);
 	}
 	/** 
 	 * @param $content
@@ -82,7 +130,9 @@ EOF;
 		$varsCode = '';
 		if ($vars) {
 			$varsCode .= "\n";
+			// TODO use self::valuesToVars
 			foreach($vars as $varName => $varValue) {
+				$varName = self::varName($varName);
 				$varValue = is_array($varValue) || is_object($varValue)
 					? QueryTemplates::toJSON($varValue)
 					: "'".phpQuery::$plugins->jsVarValue($varValue)."'"; 
@@ -107,9 +157,6 @@ $content
 	return __template;
 }$callback
 EOF;
-	}
-	public static function postFilterDom($dom) {
-		return $dom;
 	}
 	public static function postFilterMarkup($markup, $isDocumentFragment) {
 		return phpQuery::$plugins->markupToJS($markup);

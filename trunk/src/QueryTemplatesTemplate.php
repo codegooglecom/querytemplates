@@ -201,6 +201,7 @@ class QueryTemplatesTemplate
 		require_once("$dir/QueryTemplatesSourceQuery.php");
 		require_once("$dir/QueryTemplatesSource.php");
 		require_once("$dir/QueryTemplatesParse.php");
+		require_once("$dir/QueryTemplatesVoid.php");
 	}
 	/**
 	 * Returns or changes template's name.

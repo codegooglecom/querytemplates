@@ -6,15 +6,9 @@
 </head>
 <body>
 	<ul>
-<?php 
- foreach($data as $row): 
- ?><li><?php 
- print $row 
- ?>
+<?php  foreach($data as $row):  ?><li><?php  print $row  ?>
 </li>
-<?php 
- endforeach; 
- ?>
+<?php  endforeach;  ?>
 		
 		
 	</ul>

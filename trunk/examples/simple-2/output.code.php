@@ -1,13 +1,7 @@
 <ul>
-<?php 
- foreach($data as $row): 
- ?><li><?php 
- print $row; 
- ?>
+<?php  if (isset($data) && (is_array($data) || is_object($data))) { foreach($data as $row):  ?><li><?php  if (isset($row)) print $row;  ?>
 </li>
-<?php 
- endforeach; 
- ?>
+<?php  endforeach; }  ?>
 		
 		
 	</ul>

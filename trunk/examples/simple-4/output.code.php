@@ -5,38 +5,21 @@
 <title>Example: simple-3</title>
 </head>
 <body>
-	<?php 
- if (isset($data[1])) { 
- ?>
+	<?php  if (isset($data[1])) {  ?>
 		<span>List</span>
 		<ul>
-<!-- notice structure of first LI and two following LIs --><?php 
- foreach($data as $row): 
- ?><li>
-				<span class="field1"><?php 
- print is_object($row)
-	? $row->field1
-	: $row['field1'] 
- ?></span>,
-				<span class="field2"><?php 
- print is_object($row)
-	? $row->field2
-	: $row['field2'] 
- ?></span>,
-				<span class="field3"><?php 
- print is_object($row)
-	? $row->field3
-	: $row['field3'] 
- ?></span>
+<!-- notice structure of first LI and two following LIs --><?php  if (isset($data) && (is_array($data) || is_object($data))) { foreach($data as $row):  ?><li>
+				<span class="field1"><?php  if (isset($row['field1'])) print $row['field1'];
+else if (isset($row->{'field1'})) print $row->{'field1'};  ?></span>,
+				<span class="field2"><?php  if (isset($row['field2'])) print $row['field2'];
+else if (isset($row->{'field2'})) print $row->{'field2'};  ?></span>,
+				<span class="field3"><?php  if (isset($row['field3'])) print htmlspecialchars($row['field3']);
+else if (isset($row->{'field3'})) print htmlspecialchars($row->{'field3'});  ?></span>
 			</li>
-<?php 
- endforeach; 
- ?>
+<?php  endforeach; }  ?>
 			
 			
 		</ul>
-<?php 
- } 
- ?>
+<?php  }  ?>
 </body>
 </html>

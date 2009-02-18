@@ -63,7 +63,7 @@ $myFunctionCallback = new Callback('myFunction');
 // weird syntax prevents some IDEs from resetting $row type ;)
 ${'row'} = null;
 /** @var QueryTemplatesParse */
-$row; 
+$row;
 
 /* STEP 2 - create template */
 $template = template('output')

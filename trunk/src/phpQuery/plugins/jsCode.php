@@ -8,7 +8,7 @@ abstract class phpQueryObjectPlugin_jsCode {
 		return $self->_if('js', $code, $separate);
 	}
 	public static function elseJS($self, $separate = false) {
-		return $self->_else('js', $separate);
+		return $self->elseStatement($separate, 'js');
 	}
 	public static function attrJS($self, $attr, $code) {
 		if (! is_null($code)) {
@@ -43,10 +43,16 @@ abstract class phpQueryObjectPlugin_jsCode {
 	public static function appendJS($self, $code) {
 		return $self->insert(phpQuery::code('js', $code), 'append');
 	} 
-	public static function js($self, $code) {
-		return $code
+	public static function js($self, $code = nul) {
+		return $self->markupJS($code);
+	}
+	public static function markupJS($self, $code = null) {
+		return isset($code)
 			? $self->markup(phpQuery::code('js', $code))
-			: phpQuery::markupToJS($self->markupOuter());
+			: phpQuery::markupToJS($self->markup());
+	}
+	public static function markupOuterJS($self) {
+		return phpQuery::markupToJS($self->markupOuter());
 	}
 	public static function wrapAllJS($self, $codeBefore, $codeAfter) {
 		return $self
