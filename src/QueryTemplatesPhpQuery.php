@@ -656,7 +656,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * @TODO JS var notation (dot separated) +optional array support
 	 */
-	public function varsToForm($varName, $varValue, $selectorPattern = "[name*='%k']") {
+	public function varsToForm($varName, $varValue, $selectorPattern = "[name*='%k'][name*='%k[]']") {
 		// determine if we have real values in $varValue or just list of fields
 		if (is_array($varValue) && array_key_exists(0, $varValue))
 			$loop = $varValue;
@@ -769,13 +769,13 @@ abstract class QueryTemplatesPhpQuery
 	 * @param Array|Object $data
 	 * @param String $selectorPattern
 	 * Defines pattern matching form fields.
-	 * Defaults to "[name*='%k']", which matches fields containing $data's key in 
-	 * their names. For example, to match only names starting with "foo[bar]" change 
-	 * $selectorPattern to "[name^='foo[bar]'][name*='%k']"
+	 * Defaults to "[name*='%k'][name*='%k[]']", which matches fields containing 
+	 * $data's key in their names. For example, to match only names starting with 
+	 * "foo[bar]" change $selectorPattern to "[name^='foo[bar]'][name*='%k']"
 	 * 
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
-	public function valuesToForm($data, $selectorPattern = "[name*='%k']") {
+	public function valuesToForm($data, $selectorPattern = "[name*='%k'][name*='%k[]']") {
 		$form = $this->is('form')
 			? $this->filter('form')
 			: $this->find('form');
