@@ -110,8 +110,8 @@ abstract class QueryTemplatesPhpQuery
 	 *
 	 * @TODO support $varName to be a function (last char == ')'), 
 	 */
-	public function varsToSelector($varName, $varValue, $selectorPattern = '.%k', $skipKeys = null) {
-		return $this->_varsToSelector(false, $varName, $varValue, $selectorPattern, $skipKeys);
+	public function varsToSelector($varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToSelector('markup', $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
 	}
 	/**
 	 * Injects executable code printing $varName's content (rows or attributes) into 
@@ -160,35 +160,62 @@ abstract class QueryTemplatesPhpQuery
 	 * then prepend \$$var = $arrayName
 	 * @TODO JS var notation (dot separated) +optional array support
 	 */
-	public function varsToSelectorReplace($varName, $varValue, $selectorPattern = '.%k', $skipKeys = null) {
-		return $this->_varsToSelector(true, $varName, $varValue, $selectorPattern, $skipKeys);
+	public function varsToSelectorReplace($varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToSelector('replaceWith', $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
 	}
-	protected function _varsToSelector($replace, $varName, $varValue, $selectorPattern, $skipKeys) {
+	public function varsToSelectorAppend($varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToSelector('append', $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function varsToSelectorPrepend($varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToSelector('prepend', $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function varsToSelectorAfter($varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToSelector('after', $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function varsToSelectorBefore($varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToSelector('before', $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function varsToSelectorAttr($attr, $varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToSelector(array('attr', $attr), $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	protected function varsParseFields($varFields) {
 		// determine if we have real values in $varValue or just list of fields
-		if (is_array($varValue) && array_key_exists(0, $varValue))
-			$loop = $varValue;
-		else if (is_object($varValue) && isset($varValue->{'0'}))
-			$loop = $varValue;
+		if (is_array($varFields) && array_key_exists(0, $varFields))
+			return $varFields;
+		else if (is_object($varFields) && isset($varFields->{'0'}))
+			return $varFields;
 		else
-			$loop = is_object($varValue)
-				? get_class_vars(get_class($varValue))
-				: array_keys($varValue);
-		$lang = $this->parent->language;
-		$languageClass = 'QueryTemplatesLanguage'.strtoupper($lang);
+			return is_object($varFields)
+				? get_class_vars(get_class($varFields))
+				: array_keys($varFields);
+	}
+	protected function _varsToSelector($target, $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback) {
+		$loop = $this->varsParseFields($varFields);
+		$_target = $target;
+		$targetData = null;
+		if (is_array($target)) {
+			$targetData = array_slice($target, 1);
+			$target = $target[0];
+		}
 		foreach($loop as $f) {
 			if ($skipKeys && in_array($f, $skipKeys))
 				continue;
 			$selector = str_replace(array('%k'), array($f), $selectorPattern);
-			if ($replace)
-				$this->find($selector)
-					->replaceWith(phpQuery::code($lang, call_user_func_array(
-						array($languageClass, 'printVar'), array("$varName.$f")
-					)));
-			else
-				$this->find($selector)
-					->{strtolower($lang)}(call_user_func_array(
-						array($languageClass, 'printVar'), array("$varName.$f")
-					));
+			$node = $this->find($selector);
+			switch($target) {
+				case 'attr':
+					$node->qt_langMethod('attr', $targetData[0], 
+						$this->qt_langCode('printVar', "$varName.$f")
+					);
+					break;
+				default:
+					$node->qt_langMethod($target, 
+						$this->qt_langCode('printVar', "$varName.$f")
+					);
+			}
+			if ($fieldCallback)
+				// TODO doc
+				phpQuery::callbackRun($fieldCallback, array($node, $f, $_target));
 		}
 		return $this;
 	}
