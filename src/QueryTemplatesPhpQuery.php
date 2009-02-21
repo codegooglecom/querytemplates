@@ -683,7 +683,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * @TODO JS var notation (dot separated) +optional array support
 	 */
-	public function varsToForm($varName, $varValue, $selectorPattern = "[name*='%k'][name*='%k[]']") {
+	public function varsToForm($varName, $varValue, $selectorPattern = "[name*='%k']") {
 		// determine if we have real values in $varValue or just list of fields
 		if (is_array($varValue) && array_key_exists(0, $varValue))
 			$loop = $varValue;
@@ -802,7 +802,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
-	public function valuesToForm($data, $selectorPattern = "[name*='%k'][name*='%k[]']") {
+	public function valuesToForm($data, $selectorPattern = "[name*='%k']") {
 		$form = $this->is('form')
 			? $this->filter('form')
 			: $this->find('form');
