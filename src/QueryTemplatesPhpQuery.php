@@ -7,8 +7,6 @@
  * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  * @link http://code.google.com/p/querytemplates/
- * 
- * @TODO safe variable interactions (if isset), as option
  */
 abstract class QueryTemplatesPhpQuery
 	extends phpQueryObject {
@@ -158,7 +156,6 @@ abstract class QueryTemplatesPhpQuery
 	 *
 	 * @TODO support $arrayName to be a function (last char == ')'), 
 	 * then prepend \$$var = $arrayName
-	 * @TODO JS var notation (dot separated) +optional array support
 	 */
 	public function varsToSelectorReplace($varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
 		return $this->_varsToSelector('replaceWith', $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
@@ -177,17 +174,6 @@ abstract class QueryTemplatesPhpQuery
 	}
 	public function varsToSelectorAttr($attr, $varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
 		return $this->_varsToSelector(array('attr', $attr), $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
-	}
-	protected function varsParseFields($varFields) {
-		// determine if we have real values in $varValue or just list of fields
-		if (is_array($varFields) && array_key_exists(0, $varFields))
-			return $varFields;
-		else if (is_object($varFields) && isset($varFields->{'0'}))
-			return $varFields;
-		else
-			return is_object($varFields)
-				? get_class_vars(get_class($varFields))
-				: array_keys($varFields);
 	}
 	protected function _varsToSelector($target, $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback) {
 		$loop = $this->varsParseFields($varFields);
@@ -220,14 +206,16 @@ abstract class QueryTemplatesPhpQuery
 		return $this;
 	}
 	/**
-	 * Replaces nodes from stack with $markup using markup() insted of replaceWith().
+	 * Replaces matched nodes with exacutable code printing variables contents
+	 * using markup(). Second param needs to be wrapped with array_keys for 
+	 * non-assosiative arrays.
 	 *
 	 * Method doesn't change selected elements stack.
 	 *
 	 * Example
 	 * <code>
-	 * $values = array('<foo/>', '<bar/>');
-	 * $template['node1']->varsToStack('values', $values);
+	 * $foo = array('<foo/>', '<bar/>');
+	 * $template['node1']->varsToStack('foo', array_keys($values));
 	 * </code>
 	 *
 	 * Source
@@ -257,28 +245,29 @@ abstract class QueryTemplatesPhpQuery
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
-	 * @param Array|Object $varValue
+	 * @param Array|Object $varFields
 	 * $varName's value with all keys (fields) OR array of $varName's keys (fields).
+	 * Param needs to be wrapped with array_keys for non-assosiative arrays.
 	 * @param Array $skipKeys
 	 * Array of keys from $varValue which should be skipped.
 	 *
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::varsToStackReplace()
-	 * 
-	 * @TODO JS var notation (dot separated) +optional array support
 	 */
-	public function varsToStack($varName, $varValue, $skipKeys = null) {
-		return $this->_varsToStack(false, $varName, $varValue, $skipKeys);
+	public function varsToStack($varName, $varFields, $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToStack('markup', $varName, $varFields, $skipKeys, $fieldCallback);
 	}
 	/**
-	 * Replaces nodes from stack with $markup using replaceWith() insted of markup().
+	 * Replaces matched nodes with exacutable code printing variables contents
+	 * using replaceWith(). Second param needs to be wrapped with array_keys for 
+	 * non-assosiative arrays.
 	 *
 	 * Method doesn't change selected elements stack.
 	 *
 	 * Example
 	 * <code>
-	 * $values = array('<foo/>', '<bar/>');
-	 * $template['node1']->varsToStackReplace('values', $values);
+	 * $foo = array('<foo/>', '<bar/>');
+	 * $template['node1']->varsToStackReplace('foo', $values);
 	 * </code>
 	 *
 	 * Source
@@ -306,45 +295,164 @@ abstract class QueryTemplatesPhpQuery
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
-	 * @param Array|Object $varValue
+	 * @param Array|Object $varFields
 	 * $varName's value with all keys (fields) OR array of $varName's keys (fields).
+	 * Param needs to be wrapped with array_keys for non-assosiative arrays.
 	 * @param Array $skipKeys
 	 * Array of keys from $varValue which should be skipped.
 	 *
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::varsToStac()
-	 * 
-	 * @TODO JS var notation (dot separated) +optional array support
 	 */
-	public function varsToStackReplace($varName, $varValue, $skipKeys = null) {
-		return $this->_varsToStack(true, $varName, $varValue, $skipKeys);
+	public function varsToStackReplace($varName, $varFields, $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToStack('replaceWith', $varName, $varFields, $skipKeys, $fieldCallback);
 	}
-	protected function _varsToStack($replace, $varName, $varValue, $skipKeys = null) {
-		// determine if we have real values in $varValue or just list of fields
-		if (is_array($varValue) && array_key_exists(0, $varValue))
-			$loop = $varValue;
-		else if (is_object($varValue) && isset($varValue->{'0'}))
-			$loop = $varValue;
-		else
-			$loop = is_object($varValue)
-				? get_class_vars(get_class($varValue))
-				: array_keys($varValue);
-		$lang = $this->parent->language;
-		$languageClass = 'QueryTemplatesLanguage'.strtoupper($lang);
+	public function varsToStackAppend($varName, $varFields, $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToStack('append', $varName, $varFields, $skipKeys, $fieldCallback);
+	}
+	public function varsToStackPrepend($varName, $varFields, $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToStack('prepend', $varName, $varFields, $skipKeys, $fieldCallback);
+	}
+	public function varsToStackAfter($varName, $varFields, $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToStack('after', $varName, $varFields, $skipKeys, $fieldCallback);
+	}
+	public function varsToStackBefore($varName, $varFields, $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToStack('before', $varName, $varFields, $skipKeys, $fieldCallback);
+	}
+	public function varsToStackAttr($attr, $varName, $varFields, $skipKeys = null, $fieldCallback = null) {
+		return $this->_varsToStack(array('attr', $attr), $varName, $varFields, $skipKeys, $fieldCallback);
+	}
+	protected function _varsToStack($target, $varName, $varValue, $skipKeys, $fieldCallback) {
+		$loop = $this->varsParseFields($varValue);
+		$_target = $target;
+		$targetData = null;
+		if (is_array($target)) {
+			$targetData = array_slice($target, 1);
+			$target = $target[0];
+		}
 		$i = 0;
 		foreach($loop as $f) {
 			if ($skipKeys && in_array($f, $skipKeys))
 				continue;
-			if ($replace)
-				$this->eq($i++)->replaceWith(phpQuery::code($lang, 
-					phpQuery::code($lang, call_user_func_array(
-						array($languageClass, 'printVar'), array("$varName.$f")
-				))));
-			else
-				$this->eq($i++)->{strtolower($lang)}(
-					 call_user_func_array(
-						array($languageClass, 'printVar'), array("$varName.$f")
-				));
+			$node = $this->eq($i++);
+			switch($target) {
+				case 'attr':
+					$node->qt_langMethod('attr', $targetData[0], 
+						$this->qt_langCode('printVar', "$varName.$f")
+					);
+					break;
+				default:
+					$node->qt_langMethod($target, 
+						$this->qt_langCode('printVar', "$varName.$f")
+					);
+			}
+			if ($fieldCallback)
+				// TODO doc
+				phpQuery::callbackRun($fieldCallback, array($node, $f, $_target));
+		}
+		return $this;
+	}
+	protected function varsParseFields($varFields) {
+		// determine if we have real values in $varValue or just list of fields
+		if (is_array($varFields) && array_key_exists(0, $varFields))
+			return $varFields;
+		else if (is_object($varFields) && isset($varFields->{'0'}))
+			return $varFields;
+		else
+			return is_object($varFields)
+//				? get_class_vars(get_class($varFields))
+				// TODO use this in other methods
+				? array_keys(get_object_vars($varFields))
+				: array_keys($varFields);
+	}
+	public function codeToSelector($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToSelector('markup', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function codeToSelectorReplace($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToSelector('replaceWith', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function codeToSelectorAppend($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToSelector('append', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function codeToSelectorPrepend($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToSelector('prepend', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function codeToSelectorAfter($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToSelector('after', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function codeToSelectorBefore($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToSelector('before', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function codeToSelectorAttr($attr, $codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToSelector(array('attr', $attr), $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	protected function _codeToSelector($target, $codeArray, $selectorPattern, $skipKeys, $fieldCallback) {
+		$_target = $target;
+		$targetData = null;
+		if (is_array($target)) {
+			$targetData = array_slice($target, 1);
+			$target = $target[0];
+		}
+		foreach($codeArray as $f => $code) {
+			if ($skipKeys && in_array($f, $skipKeys))
+				continue;
+			$selector = str_replace(array('%k'), array($f), $selectorPattern);
+			$node = $this->find($selector);
+			switch($target) {
+				case 'attr':
+					$node->qt_langMethod('attr', $targetData[0], $code);
+					break;
+				default:
+					$node->qt_langMethod($target, $code);
+			}
+			if ($fieldCallback)
+				phpQuery::callbackRun($fieldCallback, array($node, $f, $_target));
+		}
+		return $this;
+	}
+	public function codeToStack($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToStack('markup', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function codeToStackReplace($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToStack('replaceWith', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function codeToStackAppend($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToStack('append', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function codeToStackPrepend($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToStack('prepend', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function codeToStackAfter($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToStack('after', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function codeToStackBefore($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToStack('before', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function codeToStackAttr($attr, $codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_codeToStack(array('attr', $attr), $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	protected function _codeToStack($target, $codeArray, $selectorPattern, $skipKeys, $fieldCallback) {
+		$_target = $target;
+		$targetData = null;
+		if (is_array($target)) {
+			$targetData = array_slice($target, 1);
+			$target = $target[0];
+		}
+		$i = 0;
+		foreach($codeArray as $f => $code) {
+			if ($skipKeys && in_array($f, $skipKeys))
+				continue;
+			$node = $this->eq($i++);
+			switch($target) {
+				case 'attr':
+					$node->qt_langMethod('attr', $targetData[0], $code);
+					break;
+				default:
+					$node->qt_langMethod($target, $code);
+			}
+			if ($fieldCallback)
+				// TODO doc
+				phpQuery::callbackRun($fieldCallback, array($node, $f, $_target));
 		}
 		return $this;
 	}
