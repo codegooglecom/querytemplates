@@ -46,6 +46,10 @@ class QueryTemplatesParse
 			array_slice($params, 1)
 		);
 	}
+	public function qt_langCodeRaw($code) {
+		$lang = strtolower($this->qt_lang());
+		return phpQuery::code($lang, $code);
+	}
 	public function qt_langMethod($method) {
 		$params = func_get_args();
 		return call_user_func_array(

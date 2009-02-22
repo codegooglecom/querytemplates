@@ -496,8 +496,8 @@ abstract class QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::valuesToSelectorReplace()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelector($data, $selectorPattern = '.%k', $skipKeys = null) {
-		return $this->_valuesToSelector(false, $data, $selectorPattern, $skipKeys);
+	public function valuesToSelector($data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('markup', $data, $selectorPattern, $skipKeys, $fieldCallback);
 	}
 	/**
 	 * Injects markup from $data's content (rows or attributes) into document, 
@@ -544,20 +544,48 @@ abstract class QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::valuesToSelector()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorReplace($data, $selectorPattern = '.%k', $skipKeys = null) {
-		return $this->_valuesToSelector(true, $data, $selectorPattern, $skipKeys);
+	public function valuesToSelectorReplace($data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('replaceWith', $data, $selectorPattern, $skipKeys, $fieldCallback);
 	}
-	protected function _valuesToSelector($replace, $data, $selectorPattern, $skipKeys) {
+	public function valuesToSelectorBefore($data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('before', $data, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function valuesToSelectorAfter($data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('after', $data, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function valuesToSelectorPrepend($data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('prepend', $data, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function valuesToSelectorAppend($data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('append', $data, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	public function valuesToSelectorAttr($attr, $data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToSelector(array('attr', $attr), $data, $selectorPattern, $skipKeys, $fieldCallback);
+	}
+	protected function _valuesToSelector($replace, $data, $selectorPattern, $skipKeys, $fieldCallback) {
+		$_target = $target;
+		$targetData = null;
+		if (is_array($target)) {
+			$targetData = array_slice($target, 1);
+			$target = $target[0];
+		}
 		foreach($data as $k => $v) {
 			if ($skipKeys && in_array($f, $skipKeys))
 				continue;
-			$selector = str_replace(array('%k'), array($k), $selectorPattern);
 			if ($v instanceof Callback)
 				$v = phpQuery::callbackRun($v);
-			if ($replace)
-				$this->find($selector)->replaceWith($v);
-			else
-				$this->find($selector)->markup($v);
+			$selector = str_replace(array('%k'), array($k), $selectorPattern);
+			$node = $this->find($selector);
+			switch($target) {
+				case 'attr':
+					$node->attr($targetData[0], $v);
+					break;
+				default:
+					$node->$target($v);
+			}
+			if ($fieldCallback)
+				// TODO doc
+				phpQuery::callbackRun($fieldCallback, array($node, $f, $_target));
 		}
 		return $this;
 	}
@@ -1443,15 +1471,8 @@ EOF;
 	 * @param Array|String|phpQueryObject $markup
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
-	public function valuesToStackReplace($markup) {
-		if (! is_array($markup) && !($markup instanceof Iterator)) {
-			$this->replaceWith($v);
-		} else {
-			$i = 0;
-			foreach($markup as $v)
-				$this->eq($i)->replaceWith($v);
-		}
-		return $this;
+	public function valuesToStackReplace($values, $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToStack('replaceWith', $values, $skipKeys, $fieldCallback);
 	}
 	/**
 	 * Replaces nodes from stack with $markup using markup() insted of replaceWith().
@@ -1484,16 +1505,52 @@ EOF;
 	 * </node1>
 	 * </code>
 	 *
-	 * @param Array|String|phpQueryObject $markup
+	 * @param Array|String|phpQueryObject $values
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
-	public function valuesToStack($markup) {
-		if (! is_array($markup) && !($markup instanceof Iterator)) {
-			$this->markup($v);
-		} else {
-			$i = 0;
-			foreach($markup as $v)
-				$this->eq($i++)->markup($v);
+	public function valuesToStack($values, $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToStack('markup', $values, $skipKeys, $fieldCallback);
+	}
+	public function valuesToStackBefore($values, $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToStack('before', $values, $skipKeys, $fieldCallback);
+	}
+	public function valuesToStackAfter($values, $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToStack('after', $values, $skipKeys, $fieldCallback);
+	}
+	public function valuesToStackPrepend($values, $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToStack('prepend', $values, $skipKeys, $fieldCallback);
+	}
+	public function valuesToStackAppend($values, $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToStack('append', $values, $skipKeys, $fieldCallback);
+	}
+	public function valuesToStackAttr($attr, $values, $skipKeys = null, $fieldCallback = null) {
+		return $this->_valuesToStack(array('attr', $attr), $values, $skipKeys, $fieldCallback);
+	}
+	protected function _valuesToStack($target, $data, $skipKeys, $fieldCallback) {
+		$_target = $target;
+		$targetData = null;
+		if (is_array($target)) {
+			$targetData = array_slice($target, 1);
+			$target = $target[0];
+		}
+		$i = 0;
+		foreach($data as $k => $v) {
+			if ($skipKeys && in_array($f, $skipKeys))
+				continue;
+			if ($v instanceof Callback)
+				$v = phpQuery::callbackRun($v);
+			$selector = str_replace(array('%k'), array($k), $selectorPattern);
+			$node = $this->eq($i++);
+			switch($target) {
+				case 'attr':
+					$node->attr($targetData[0], $v);
+					break;
+				default:
+					$node->$target($v);
+			}
+			if ($fieldCallback)
+				// TODO doc
+				phpQuery::callbackRun($fieldCallback, array($node, $f, $_target));
 		}
 		return $this;
 	}
@@ -2008,12 +2065,16 @@ EOF;
 	 * Honors code between onlyPHP and endOnly, only for PHP templates.
 	 * 
 	 * TODO: Is theres something wrong with this name ? 
-	 * @return unknown_type
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
 	public function onlyPHP() {
 		return strtolower($this->qt_lang()) == 'php'
 			? $this : new QueryTemplatesVoid($this, 'endOnly');
 	}
+	/**
+	 * TODO Move to jsCode plugin.
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 */
 	public function onlyJS() {
 		return strtolower($this->qt_lang()) == 'js'
 			? $this : new QueryTemplatesVoid($this, 'endOnly');
