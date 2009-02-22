@@ -38,6 +38,8 @@
 		</a><br>
 			<a href="../QueryTemplates/_IQueryTemplatesTemplate.php.html">		IQueryTemplatesTemplate.php
 		</a><br>
+			<a href="../QueryTemplates/_QueryTemplates.php.html">		QueryTemplates.php
+		</a><br>
 			<a href="../QueryTemplates/_QueryTemplatesParse.php.html">		QueryTemplatesParse.php
 		</a><br>
 			<a href="../QueryTemplates/_QueryTemplatesPhpQuery.php.html">		QueryTemplatesPhpQuery.php
@@ -69,7 +71,8 @@
 	QueryTemplatesPlugins<br />	    &nbsp;&nbsp;		<a href="../QueryTemplates/QueryTemplatesPlugins/phpQueryObjectPlugin_CakeForms.html">phpQueryObjectPlugin_CakeForms</a><br />
 	  </div>
   <div class="package">
-		    		<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a><br />
+		    		<a href="../QueryTemplates/QueryTemplates.html">QueryTemplates</a><br />
+	    		<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a><br />
 	    		<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a><br />
 	    		<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a><br />
 	    		<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a><br />
@@ -107,23 +110,37 @@ require_once(dirname(__FILE__)."/phpQuery/Callback.php") [line 9]<br />
 <br />
   <hr />
 	<a name="functiontemplate"></a>
-	<h3>template <span class="smalllinenumber">[line 195]</span></h3>
+	<h3>template <span class="smalllinenumber">[line 226]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code><a href="../QueryTemplates/QueryTemplatesTemplate.html">QueryTemplatesTemplate</a> template(
-[string $name = null])</code>
+[string $name = null], [string $language = &#039;php&#039;])</code>
     </td></tr></table>
     </td></tr></table><br />
 
-		Create new template using QueryTemplates.<br /><br />    <br /><br />
+		Create new template using QueryTemplates.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>QueryTemplatesTemplate::__construct</td>
+  </tr>
+</table>
+</div>
+    <br /><br />
 	
     		<h4>Parameters</h4>
     <table border="0" cellspacing="0" cellpadding="0">
 		      <tr>
         <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$name</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Template's name. Will be used as part of output filename.</td>
+      </tr>
+		      <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$language</b>&nbsp;&nbsp;</td>
+        <td>Template's language needs to be explicitly defined here and can't be changed  later. Although 2 templates with separate languages can share same chain.</td>
       </tr>
 				</table>
     	<div class="top">[ <a href="#top">Top</a> ]</div><br /><br />
@@ -131,7 +148,7 @@ require_once(dirname(__FILE__)."/phpQuery/Callback.php") [line 9]<br />
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Wed, 03 Dec 2008 11:40:03 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
+		    Documentation generated on Wed, 24 Dec 2008 18:01:21 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
 	      </div>
       </td></tr></table>
     </td>
