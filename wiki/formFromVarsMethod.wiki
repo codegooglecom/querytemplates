@@ -9,11 +9,15 @@
    Represents actual errors as array of fields. Field can also be an array.
    * additional data `[2]`
    Same purpose as $additionalData, but during template's execution.
- Names should be without dollar signs.  Ex:   array('row', 'errors.row', 'data');
+ Names should be without dollar signs.  Ex:  
+{{{
+ array('row', 'errors.row', 'data');
  $errors = array(
    'field1' => 'one error',
    'field2' => array('first error', 'second error')
  );
+
+}}}
  * *$structure* _structure_
   Form structure information. This should be easily fetchable from ORM layer.  Possible types: 
    * text (default)
@@ -28,7 +32,9 @@
    * multiple (only select)
    * optgroups (only select)
    * values (only radio)
- Ex:   $structure = array(
+ Ex:  
+{{{
+ $structure = array(
   // special field representing form element
      '__form' => array('id' => 'dasdas'),
      // TODO fieldsets
@@ -59,15 +65,23 @@
      'field7' => 'checkbox',
      'field234' => 'textarea',
  );
+
+}}}
  * *$defaults* _defaults_ = `null`
-  Default field's value. Used when field isn't present within supplied record.  Ex:   $defaults = array(
+  Default field's value. Used when field isn't present within supplied record.  Ex:  
+{{{
+ $defaults = array(
      'field2' => 'group2_1',
      'field234' => 'lorem ipsum dolor sit sit sit...',
      // TODO multipe
  //    'field2' => array('value2', 'dadas', 'fsdsf'),
  );
+
+}}}
  * *$additionalData* _additionalData_ = `null`
-  Additional data for fields. For now it's only used for populating select boxes.  Ex:   $additionalData = array(
+  Additional data for fields. For now it's only used for populating select boxes.  Ex:  
+{{{
+ $additionalData = array(
      'field2' => array(
          array(    // optgroup
              'foo' => 'Foo',
@@ -80,6 +94,8 @@
          'bar' => 'Bar',    // no optgroup
      ),
  );
+
+}}}
  * *$template* _template_ = `null`
   Input wrapper template.  TODO support per field templates.
  * *$selectors* _selectors_ = `null`
