@@ -1,5 +1,5 @@
 = ifVar =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [ifVarMethod ifVar]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ifSyntax if] > [ifVarMethod ifVar]
 === Parameters ===
  * *$var* _string_
   Dot-separated object path, eg Object.property.inneProperty

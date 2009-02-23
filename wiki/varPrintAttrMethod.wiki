@@ -1,5 +1,5 @@
 = varPrintAttr =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [varPrintAttrMethod varPrintAttr]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varPrintSyntax varPrint] > [varPrintAttrMethod varPrintAttr]
 === Parameters ===
  * *$attr* _String_
   Target attribute name.

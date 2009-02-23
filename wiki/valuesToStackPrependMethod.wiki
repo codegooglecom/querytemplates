@@ -1,5 +1,5 @@
 = valuesToStackPrepend =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [valuesToStackPrependMethod valuesToStackPrepend]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToStackPrependMethod valuesToStackPrepend]
 === Parameters ===
  * *$values* __
 

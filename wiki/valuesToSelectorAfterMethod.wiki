@@ -1,5 +1,5 @@
 = valuesToSelectorAfter =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [valuesToSelectorAfterMethod valuesToSelectorAfter]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorAfterMethod valuesToSelectorAfter]
 === Parameters ===
  * *$data* __
 

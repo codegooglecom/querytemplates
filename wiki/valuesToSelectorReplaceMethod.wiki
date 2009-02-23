@@ -1,5 +1,5 @@
 = valuesToSelectorReplace =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [valuesToSelectorReplaceMethod valuesToSelectorReplace]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorReplaceMethod valuesToSelectorReplace]
 === Parameters ===
  * *$data* _Array|Object_
   Associative array or Object containing markup.

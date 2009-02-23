@@ -1,5 +1,5 @@
 = valuesToSelector =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [valuesToSelectorMethod valuesToSelector]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorMethod valuesToSelector]
 === Parameters ===
  * *$data* _Array|Object_
   Associative array or Object containing markup.

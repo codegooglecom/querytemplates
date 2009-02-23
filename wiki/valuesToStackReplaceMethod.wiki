@@ -1,5 +1,5 @@
 = valuesToStackReplace =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [valuesToStackReplaceMethod valuesToStackReplace]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToStackReplaceMethod valuesToStackReplace]
 === Parameters ===
  * *$markup* _Array|String|phpQueryObject_
 

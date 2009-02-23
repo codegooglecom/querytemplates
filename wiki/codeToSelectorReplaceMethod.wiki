@@ -1,5 +1,5 @@
 = codeToSelectorReplace =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [codeToSelectorReplaceMethod codeToSelectorReplace]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorReplaceMethod codeToSelectorReplace]
 === Parameters ===
  * *$codeArray* _String_
   Array of raw code, where key is the field.
