@@ -1,4 +1,4 @@
-= elsePHP =
+= `elsePHP` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [elsePHPMethod elsePHP]
 === Parameters ===
  * *$separate* _bool_ = false

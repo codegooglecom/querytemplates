@@ -1,7 +1,25 @@
-= ToStack =
+= `ToStack` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ToStackSyntax ToStack]
 
 == Methods ==
  * [codeToStackMethod codeToStack]
+ * [codeToStackAfterMethod codeToStackAfter]
+ * [codeToStackAppendMethod codeToStackAppend]
+ * [codeToStackAttrMethod codeToStackAttr]
+ * [codeToStackBeforeMethod codeToStackBefore]
+ * [codeToStackPrependMethod codeToStackPrepend]
+ * [codeToStackReplaceMethod codeToStackReplace]
  * [valuesToStackMethod valuesToStack]
+ * [valuesToStackAfterMethod valuesToStackAfter]
+ * [valuesToStackAppendMethod valuesToStackAppend]
+ * [valuesToStackAttrMethod valuesToStackAttr]
+ * [valuesToStackBeforeMethod valuesToStackBefore]
+ * [valuesToStackPrependMethod valuesToStackPrepend]
+ * [valuesToStackReplaceMethod valuesToStackReplace]
  * [varsToStackMethod varsToStack]
+ * [varsToStackAfterMethod varsToStackAfter]
+ * [varsToStackAppendMethod varsToStackAppend]
+ * [varsToStackAttrMethod varsToStackAttr]
+ * [varsToStackBeforeMethod varsToStackBefore]
+ * [varsToStackPrependMethod varsToStackPrepend]
+ * [varsToStackReplaceMethod varsToStackReplace]

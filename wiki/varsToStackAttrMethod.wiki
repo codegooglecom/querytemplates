@@ -1,4 +1,4 @@
-= varsToStackAttr =
+= `varsToStackAttr` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToStackAttrMethod varsToStackAttr]
 === Parameters ===
  * *$varName* _String_

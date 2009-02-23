@@ -1,4 +1,4 @@
-= varsToStackAfter =
+= `varsToStackAfter` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToStackAfterMethod varsToStackAfter]
 === Parameters ===
  * *$varName* _String_

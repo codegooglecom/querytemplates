@@ -1,4 +1,4 @@
-= varsToSelectorAttr =
+= `varsToSelectorAttr` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToSelectorAttrMethod varsToSelectorAttr]
 === Parameters ===
  * *$attr* _String_

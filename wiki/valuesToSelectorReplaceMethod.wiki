@@ -1,4 +1,4 @@
-= valuesToSelectorReplace =
+= `valuesToSelectorReplace` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorReplaceMethod valuesToSelectorReplace]
 === Parameters ===
  * *$data* _Array|Object_

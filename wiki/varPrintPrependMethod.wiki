@@ -1,4 +1,4 @@
-= varPrintPrepend =
+= `varPrintPrepend` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varPrintSyntax varPrint] > [varPrintPrependMethod varPrintPrepend]
 === Parameters ===
  * *$varName* _String_

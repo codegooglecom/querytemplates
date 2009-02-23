@@ -1,4 +1,4 @@
-= codeToSelectorBefore =
+= `codeToSelectorBefore` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorBeforeMethod codeToSelectorBefore]
 === Parameters ===
  * *$codeArray* _String_

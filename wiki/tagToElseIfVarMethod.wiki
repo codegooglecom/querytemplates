@@ -1,0 +1,41 @@
+= `tagToElseIfVar` =
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [tagToElseIfVarMethod tagToElseIfVar]
+=== Parameters ===
+ * *$var* _string_
+  Dot-separated object path, eg Object.property.inneProperty
+
+
+Replaces selected tag with PHP "else if" statement checking if $var evaluates  to true. $var must be an object available inside template's scope.
+
+
+
+
+$var is passed in JS object convention (dot separated).
+Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.
+Notice-safe.
+Example  
+{{{
+ $template['.else-if-var']->tagToElseIfVar('foo.bar');
+
+}}}
+Source  
+{{{
+ <div class='else-if-var'><node1/></div>
+
+}}}
+Result  
+{{{
+ <?php
+ else if ($foo->bar) {
+ ?><node1/><?php
+ }
+ ?>
+
+}}}
+----
+
+== See also ==
+ * [ifVarMethod ifVar]
+
+
+=== Comments allowed ===

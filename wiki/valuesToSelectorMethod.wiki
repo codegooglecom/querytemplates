@@ -1,4 +1,4 @@
-= valuesToSelector =
+= `valuesToSelector` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorMethod valuesToSelector]
 === Parameters ===
  * *$data* _Array|Object_

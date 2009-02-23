@@ -1,4 +1,4 @@
-= codeToSelectorAttr =
+= `codeToSelectorAttr` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorAttrMethod codeToSelectorAttr]
 === Parameters ===
  * *$codeArray* _String_

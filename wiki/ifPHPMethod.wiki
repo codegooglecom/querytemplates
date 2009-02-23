@@ -1,4 +1,4 @@
-= ifPHP =
+= `ifPHP` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ifSyntax if] > [ifPHPMethod ifPHP]
 === Parameters ===
  * *$code* _string_

@@ -1,4 +1,4 @@
-= varsToStackReplace =
+= `varsToStackReplace` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToStackReplaceMethod varsToStackReplace]
 === Parameters ===
  * *$varName* _String_

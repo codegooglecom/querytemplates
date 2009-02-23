@@ -1,4 +1,4 @@
-= valuesToVars =
+= `valuesToVars` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToVarsMethod valuesToVars]
 === Parameters ===
  * *$varsArray* _array_

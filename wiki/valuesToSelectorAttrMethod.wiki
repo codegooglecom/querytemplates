@@ -1,4 +1,4 @@
-= valuesToSelectorAttr =
+= `valuesToSelectorAttr` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorAttrMethod valuesToSelectorAttr]
 === Parameters ===
  * *$attr* 

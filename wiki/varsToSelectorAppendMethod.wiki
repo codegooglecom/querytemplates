@@ -1,4 +1,4 @@
-= varsToSelectorAppend =
+= `varsToSelectorAppend` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToSelectorAppendMethod varsToSelectorAppend]
 === Parameters ===
  * *$varName* _String_

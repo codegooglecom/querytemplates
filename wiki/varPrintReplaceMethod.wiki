@@ -1,4 +1,4 @@
-= varPrintReplace =
+= `varPrintReplace` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varPrintSyntax varPrint] > [varPrintReplaceMethod varPrintReplace]
 === Parameters ===
  * *$varName* _String_

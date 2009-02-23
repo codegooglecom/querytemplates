@@ -1,4 +1,4 @@
-= loopOne =
+= `loopOne` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [loopSyntax loop] > [loopOneMethod loopOne]
 === Parameters ===
  * *$varName* _String_

@@ -1,0 +1,41 @@
+= `tagToIfVar` =
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ifSyntax if] > [tagToIfVarMethod tagToIfVar]
+=== Parameters ===
+ * *$var* _string_
+  Dot-separated object path, eg Object.property.inneProperty
+
+
+Replaces selected tag with PHP "if" statement checking if $var evaluates  to true. $var must be an object available inside template's scope.
+
+
+
+
+$var is passed in JS object convention (dot separated).
+Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.
+Notice-safe.
+Example  
+{{{
+ $template['.if-var']->tagToIfVar('foo.bar');
+
+}}}
+Source  
+{{{
+ <div class='if-var'><node1/></div>
+
+}}}
+Result  
+{{{
+ <?php
+ if ($foo->bar) {
+ ?><node1/><?php
+ }
+ ?>
+
+}}}
+----
+
+== See also ==
+ * [ifVarMethod ifVar]
+
+
+=== Comments allowed ===

@@ -1,4 +1,4 @@
-= varsToForm =
+= `varsToForm` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToFormMethod varsToForm]
 === Parameters ===
  * *$arrayName* _String_

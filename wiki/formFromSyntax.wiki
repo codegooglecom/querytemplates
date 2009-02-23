@@ -1,4 +1,4 @@
-= formFrom =
+= `formFrom` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [formFromSyntax formFrom]
 
 == Methods ==

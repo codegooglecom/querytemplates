@@ -1,4 +1,4 @@
-= elseIfNotVar =
+= `elseIfNotVar` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [elseIfNotVarMethod elseIfNotVar]
 === Parameters ===
  * *$var* _var_

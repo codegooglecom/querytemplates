@@ -1,4 +1,4 @@
-= elseStatement =
+= `elseStatement` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [elseStatementMethod elseStatement]
 === Parameters ===
  * *$separate* _lang_ = false

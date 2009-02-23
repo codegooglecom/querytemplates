@@ -1,4 +1,4 @@
-= codeToStackAfter =
+= `codeToStackAfter` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToStackAfterMethod codeToStackAfter]
 === Parameters ===
  * *$codeArray* _String_

@@ -1,4 +1,4 @@
-= else =
+= `else` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else]
 
 == Methods ==
@@ -7,3 +7,7 @@
  * [elseIfVarMethod elseIfVar]
  * [elsePHPMethod elsePHP]
  * [elseStatementMethod elseStatement]
+ * [tagToElseIfPHPMethod tagToElseIfPHP]
+ * [tagToElseIfVarMethod tagToElseIfVar]
+ * [tagToElsePHPMethod tagToElsePHP]
+ * [_tagToElseMethod _tagToElse]

@@ -1,4 +1,4 @@
-= ifNotVar =
+= `ifNotVar` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ifSyntax if] > [ifNotVarMethod ifNotVar]
 === Parameters ===
  * *$var* _var_

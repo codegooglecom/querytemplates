@@ -1,4 +1,4 @@
-= valuesToStack =
+= `valuesToStack` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToStackMethod valuesToStack]
 === Parameters ===
  * *$values* _Array|String|phpQueryObject_

@@ -1,4 +1,4 @@
-= codeToSelectorReplace =
+= `codeToSelectorReplace` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorReplaceMethod codeToSelectorReplace]
 === Parameters ===
  * *$codeArray* _String_

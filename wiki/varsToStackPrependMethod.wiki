@@ -1,4 +1,4 @@
-= varsToStackPrepend =
+= `varsToStackPrepend` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToStackPrependMethod varsToStackPrepend]
 === Parameters ===
  * *$varName* _String_

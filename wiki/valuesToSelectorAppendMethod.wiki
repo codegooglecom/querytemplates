@@ -1,4 +1,4 @@
-= valuesToSelectorAppend =
+= `valuesToSelectorAppend` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorAppendMethod valuesToSelectorAppend]
 === Parameters ===
  * *$data* 

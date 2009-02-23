@@ -1,4 +1,4 @@
-= loopSeparate =
+= `loopSeparate` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [loopSyntax loop] > [loopSeparateMethod loopSeparate]
 === Parameters ===
  * *$varName* _varName_

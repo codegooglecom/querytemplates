@@ -1,7 +1,25 @@
-= ToSelector =
+= `ToSelector` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ToSelectorSyntax ToSelector]
 
 == Methods ==
  * [codeToSelectorMethod codeToSelector]
+ * [codeToSelectorAfterMethod codeToSelectorAfter]
+ * [codeToSelectorAppendMethod codeToSelectorAppend]
+ * [codeToSelectorAttrMethod codeToSelectorAttr]
+ * [codeToSelectorBeforeMethod codeToSelectorBefore]
+ * [codeToSelectorPrependMethod codeToSelectorPrepend]
+ * [codeToSelectorReplaceMethod codeToSelectorReplace]
  * [valuesToSelectorMethod valuesToSelector]
+ * [valuesToSelectorAfterMethod valuesToSelectorAfter]
+ * [valuesToSelectorAppendMethod valuesToSelectorAppend]
+ * [valuesToSelectorAttrMethod valuesToSelectorAttr]
+ * [valuesToSelectorBeforeMethod valuesToSelectorBefore]
+ * [valuesToSelectorPrependMethod valuesToSelectorPrepend]
+ * [valuesToSelectorReplaceMethod valuesToSelectorReplace]
  * [varsToSelectorMethod varsToSelector]
+ * [varsToSelectorAfterMethod varsToSelectorAfter]
+ * [varsToSelectorAppendMethod varsToSelectorAppend]
+ * [varsToSelectorAttrMethod varsToSelectorAttr]
+ * [varsToSelectorBeforeMethod varsToSelectorBefore]
+ * [varsToSelectorPrependMethod varsToSelectorPrepend]
+ * [varsToSelectorReplaceMethod varsToSelectorReplace]

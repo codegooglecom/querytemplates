@@ -1,4 +1,4 @@
-= valuesToForm =
+= `valuesToForm` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToFormMethod valuesToForm]
 === Parameters ===
  * *$data* _Array|Object_

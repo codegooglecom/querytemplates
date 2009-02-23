@@ -1,4 +1,4 @@
-= valuesToSelectorBefore =
+= `valuesToSelectorBefore` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorBeforeMethod valuesToSelectorBefore]
 === Parameters ===
  * *$data* 

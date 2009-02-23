@@ -1,4 +1,4 @@
-= valuesToStackAfter =
+= `valuesToStackAfter` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToStackAfterMethod valuesToStackAfter]
 === Parameters ===
  * *$values* 
