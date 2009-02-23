@@ -2,14 +2,14 @@
 = Syntax =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax]
 
- * === [codeToSyntax codeTo] ===
- * === [ToSelectorSyntax ToSelector] ===
- * === [ToStackSyntax ToStack] ===
- * === [elseSyntax else] ===
- * === [formFromSyntax formFrom] ===
- * === [ifSyntax if] ===
- * === [loopSyntax loop] ===
- * === [valuesToSyntax valuesTo] ===
- * === [ToFormSyntax ToForm] ===
- * === [varPrintSyntax varPrint] ===
- * === [varsToSyntax varsTo] ===
+ * === [varPrintSyntax varPrint] ====
+ * === [varsToSyntax varsTo] ====
+ * === [valuesToSyntax valuesTo] ====
+ * === [codeToSyntax codeTo] ====
+ * === [ToStackSyntax ToStack] ====
+ * === [ToSelectorSyntax ToSelector] ====
+ * === [loopSyntax loop] ====
+ * === [formFromSyntax formFrom] ====
+ * === [ToFormSyntax ToForm] ====
+ * === [ifSyntax if] ====
+ * === [elseSyntax else] ====
