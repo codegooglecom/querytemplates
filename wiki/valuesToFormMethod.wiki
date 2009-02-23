@@ -12,10 +12,15 @@ Toggles form fields values and selection states according to static values  from
 
 This includes:
 
+
    * input`[type=radio]``[checked]`
+
    * input`[type=checkbox]``[checked]`
+
    * select > option`[selected]`
+
    * input`[value]`
+
    * textarea
 
 Inputs are selected according to $selectorPattern, where %k represents  variable's key.

@@ -13,7 +13,7 @@ Method doesn't change selected elements stack. Returned is source element,  deta
 
 Example
 {{{
- $template`['.else-if']`->tagToElseIfPHP('$foo == 1');
+ $template['.else-if']->tagToElseIfPHP('$foo == 1');
 
 }}}
 Source

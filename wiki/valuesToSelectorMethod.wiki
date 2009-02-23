@@ -20,7 +20,7 @@ For replacing matched nodes with content use valuesToSelectorReplace().  For inj
 Example
 {{{
  $values = array('field1' => '<foo/>', 'field2' => '<bar/>');
- $template`['p']`->valuesToSelector($values);
+ $template['p']->valuesToSelector($values);
 
 }}}
 Source

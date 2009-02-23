@@ -19,7 +19,7 @@ Notice-safe.
 
 Example
 {{{
- $template`['.if-var']`->tagToIfVar('foo.bar');
+ $template['.if-var']->tagToIfVar('foo.bar');
 
 }}}
 Source

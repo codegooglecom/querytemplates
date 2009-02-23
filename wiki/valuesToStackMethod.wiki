@@ -18,7 +18,7 @@ Method doesn't change selected elements stack.
 Example
 {{{
  $values = array('<foo/>', '<bar/>');
- $template`['node1']`->valuesToStack($values);
+ $template['node1']->valuesToStack($values);
 
 }}}
 Source

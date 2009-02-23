@@ -20,7 +20,7 @@ For injecting markup inside matched nodes use valuesToSelector().  For injecting
 Example
 {{{
  $values = array('field1' => '<foo/>', 'field2' => '<bar/>');
- $template`['p']`->valuesToSelector($values);
+ $template['p']->valuesToSelector($values);
 
 }}}
 Source

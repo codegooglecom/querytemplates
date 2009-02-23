@@ -40,10 +40,10 @@ Method doesn't change selected elements stack.
 === Template ===
 {{{
  <p class="field1">lorem ipsum</p>
- <?php  if (isset($foo`['field1']`)) print $foo`['field1']`;
+ <?php  if (isset($foo['field1'])) print $foo['field1'];
  else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?>
  <p class="field2">lorem ipsum</p>
- <?php  if (isset($foo`['field2']`)) print $foo`['field2']`;
+ <?php  if (isset($foo['field2'])) print $foo['field2'];
  else if (isset($foo->{'field2'})) print $foo->{'field2'};  ?>
 
 }}}

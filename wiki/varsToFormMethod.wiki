@@ -16,10 +16,15 @@ Injects executable code which toggles form fields values and selection  states a
 
 This includes:
 
+
    * input`[type=radio]``[checked]`
+
    * input`[type=checkbox]``[checked]`
+
    * select > option`[selected]`
+
    * input`[value]`
+
    * textarea
 
 Inputs are selected according to $selectorPattern, where %k represents  variable's key.
@@ -42,7 +47,7 @@ Source
 {{{
  <form>
    <input name='input-example'>
-   <input name='array`[array-example]`'>
+   <input name='array[array-example]'>
    <textarea name='textarea-example'></textarea>
    <select name='select-example'>
      <option value='first' selected='selected'></option>
@@ -55,23 +60,23 @@ Source
 Result
 {{{
  <form>
-   <input name='input-example' value='<?php print $data`['input-example']` ?>'>
-   <input name='array`[array-example]`' value='<?php print $data`['array-example']` ?>'>
-   <textarea name='textarea-example'><?php print $data`['textarea-example']` ?></textarea>
+   <input name='input-example' value='<?php print $data['input-example'] ?>'>
+   <input name='array[array-example]' value='<?php print $data['array-example'] ?>'>
+   <textarea name='textarea-example'><?php print $data['textarea-example'] ?></textarea>
    <select name='select-example'><?php
-     if ($data`['select-example']` == 'first')
+     if ($data['select-example'] == 'first')
        print "<option value='first' selected='selected'></option>";
      else
        print "<option value='first'></option>";
    ?></select>
    <?php
-     if ($data`['radio-example']` == 'foo')
+     if ($data['radio-example'] == 'foo')
        print "<input type='radio' name='radio-example' checked='checked' value='foo'>";
      else
        print "<input type='radio' name='radio-example' value='foo'>";
    ?>
    <?php
-     if ($data`['checkbox-example']` == 'foo')
+     if ($data['checkbox-example'] == 'foo')
        print "<input type='checkbox' name='checkbox-example' checked='checked' value='foo'>";
      else
        print "<input type='checkbox' name='checkbox-example' value='foo'>";

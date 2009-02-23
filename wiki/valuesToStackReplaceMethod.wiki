@@ -20,7 +20,7 @@ Method doesn't change selected elements stack. Returned is source element,  deta
 Example
 {{{
  $markups = array('<foo/>', '<bar/>');
- $template`['node1']`->markupToStackOuter($markups);
+ $template['node1']->markupToStackOuter($markups);
 
 }}}
 Source

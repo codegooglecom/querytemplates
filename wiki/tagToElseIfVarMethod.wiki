@@ -19,7 +19,7 @@ Notice-safe.
 
 Example
 {{{
- $template`['.else-if-var']`->tagToElseIfVar('foo.bar');
+ $template['.else-if-var']->tagToElseIfVar('foo.bar');
 
 }}}
 Source
