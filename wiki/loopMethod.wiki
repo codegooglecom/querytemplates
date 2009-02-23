@@ -1,0 +1,32 @@
+= loop =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [loopMethod loop]
+=== Parameters ===
+ * *$varName* _String_
+  Variable which will be looped. Must contain $ at the beggining.
+ * *$asVarName* _String_
+  Name of variable being result of iteration.
+ * *$keyName* _String_ = null
+  Optional. Use it when you want to have $varName's key available.
+
+
+Wrap selected elements with PHP foreach loop iterating $varName.
+Method doesn't change selected elements stack. Returned is source element.
+Example  
+{{{
+ $pq['node1']->loop('foo', 'bar', 'i');
+
+}}}
+Source  <node1/>
+Result  
+{{{
+ <?php
+ foreach($foo as $i => $bar) {
+ ?><node1/><?php
+ }
+ ?>
+
+}}}
+----
+
+
+=== Comments allowed ===

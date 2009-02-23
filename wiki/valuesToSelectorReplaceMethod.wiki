@@ -1,0 +1,43 @@
+= valuesToSelectorReplace =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [valuesToSelectorReplaceMethod valuesToSelectorReplace]
+=== Parameters ===
+ * *$data* _Array|Object_
+  Associative array or Object containing markup.
+ * *$selectorPattern* _String_ = '.%k'
+  Defines pattern matching target nodes. %k represents key.  Defaults to ".%k", which matches nodes with class name equivalent to  data source key.  For example, to restrict match to nodes with additional class "foo" change  $selectorPattern to ".foo.%k"
+ * *$skipFields* _Array_ = null
+  Array of keys from $varValue which should be skipped.
+ * *$fieldCallback* __ = null
+
+
+
+Injects markup from $data's content (rows or attributes) into document,  replacing nodes matched by selector.
+For injecting markup inside matched nodes use valuesToSelector().  For injecting values into forms use valuesToForm().
+Example  
+{{{
+ $values = array('field1' => '<foo/>', 'field2' => '<bar/>');
+ $template['p']->valuesToSelector($values);
+
+}}}
+Source  
+{{{
+ <p class='field1'>lorem ipsum</p>
+ <node1/>
+ <p class='field2'>lorem ipsum</p>
+
+}}}
+Result  
+{{{
+ <foo/>
+ <node1/>
+ <bar/>
+
+}}}
+----
+
+== See also ==
+ * [valuesToSelectorMethod valuesToSelector]
+ * [valuesToFormMethod valuesToForm]
+
+
+=== Comments allowed ===

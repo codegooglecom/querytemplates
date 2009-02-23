@@ -1,0 +1,14 @@
+= varPrintAttr =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [varPrintAttrMethod varPrintAttr]
+=== Parameters ===
+ * *$attr* _String_
+  Target attribute name.
+ * *$varName* _String_
+  Variable avaible in scope of type Array or Object.  $varName should NOT start with $.
+
+
+Prints variable $varName as attribute $attr of matched elements.
+----
+
+
+=== Comments allowed ===

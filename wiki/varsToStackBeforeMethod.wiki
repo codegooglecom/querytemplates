@@ -1,0 +1,51 @@
+= varsToStackBefore =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [varsToStackBeforeMethod varsToStackBefore]
+=== Parameters ===
+ * *$varName* _String_
+  Variable avaible in scope of type Array or Object.  $varName should NOT start with $.
+ * *$varFields* _Array|Object_
+  Variable value with all fields (keys) OR array of variable fields (keys).  Param needs to be passed thou array_keys for non-assosiative arrays.
+ * *$skipFields* _Array_ = null
+  Array of keys from $varValue which should be skipped.
+ * *$fieldCallback* _Callback|string_ = null
+  Callback triggered after every insertion. Three parameters are passed to  this callback: 
+   * phpQueryObject $node
+   * string $field
+   * string|array $target
+
+
+Injects executable code printing variable's fields before actually matched  nodes. Second param needs to be wrapped with array_keys for  non-assosiative arrays.
+Method doesn't change selected elements stack.
+== Example ==
+=== Markup ===  
+{{{
+ <node1>
+   <node2></node2>
+ </node1>
+ <node2></node2>
+ <node1>
+   <node2></node2>
+ </node1>
+
+}}}
+=== Formula ===  
+{{{
+ $foo = array('<foo/>', '<bar/>');
+ $template['node1']->varsToStackBefore('foo', array_keys($foo));
+
+}}}
+=== Template ===  
+{{{
+ <?php  if (isset($foo['0'])) print $foo['0'];
+ else if (isset($foo->{'0'})) print $foo->{'0'};  ?><node1><node2></node2></node1><node2></node2><?php  if (isset($foo['1'])) print $foo['1'];
+ else if (isset($foo->{'1'})) print $foo->{'1'};  ?><node1><node2></node2></node1>
+
+}}}
+----
+
+== See also ==
+ * [varsToSelectorMethod varsToSelector]
+ * [varsToFormMethod varsToForm]
+
+
+=== Comments allowed ===

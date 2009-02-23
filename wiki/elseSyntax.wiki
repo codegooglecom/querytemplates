@@ -1,0 +1,9 @@
+= else =
+[w/list Wiki] > [Syntax Syntax] > [else else]
+
+== Methods ==
+ * [elseIfNotVarMethod elseIfNotVar]
+ * [elseIfPHPMethod elseIfPHP]
+ * [elseIfVarMethod elseIfVar]
+ * [elsePHPMethod elsePHP]
+ * [elseStatementMethod elseStatement]

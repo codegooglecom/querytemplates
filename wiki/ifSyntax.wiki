@@ -1,0 +1,7 @@
+= if =
+[w/list Wiki] > [Syntax Syntax] > [if if]
+
+== Methods ==
+ * [ifNotVarMethod ifNotVar]
+ * [ifPHPMethod ifPHP]
+ * [ifVarMethod ifVar]

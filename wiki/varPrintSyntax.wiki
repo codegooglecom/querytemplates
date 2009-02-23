@@ -1,0 +1,11 @@
+= varPrint =
+[w/list Wiki] > [Syntax Syntax] > [varPrint varPrint]
+
+== Methods ==
+ * [varPrintMethod varPrint]
+ * [varPrintAfterMethod varPrintAfter]
+ * [varPrintAppendMethod varPrintAppend]
+ * [varPrintAttrMethod varPrintAttr]
+ * [varPrintBeforeMethod varPrintBefore]
+ * [varPrintPrependMethod varPrintPrepend]
+ * [varPrintReplaceMethod varPrintReplace]

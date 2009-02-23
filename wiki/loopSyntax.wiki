@@ -1,0 +1,7 @@
+= loop =
+[w/list Wiki] > [Syntax Syntax] > [loop loop]
+
+== Methods ==
+ * [loopMethod loop]
+ * [loopOneMethod loopOne]
+ * [loopSeparateMethod loopSeparate]

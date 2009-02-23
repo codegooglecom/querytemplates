@@ -1,0 +1,15 @@
+= elseStatement =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [elseStatementMethod elseStatement]
+=== Parameters ===
+ * *$separate* _lang_ = false
+
+ * *$lang* _separate_ = null
+
+
+
+TODO description
+$lang = strtoupper($this->parent->language);
+----
+
+
+=== Comments allowed ===

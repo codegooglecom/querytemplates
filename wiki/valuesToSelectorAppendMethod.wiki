@@ -1,0 +1,18 @@
+= valuesToSelectorAppend =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [valuesToSelectorAppendMethod valuesToSelectorAppend]
+=== Parameters ===
+ * *$data* __
+
+ * *$selectorPattern* __ = '.%k'
+
+ * *$skipFields* __ = null
+
+ * *$fieldCallback* __ = null
+
+
+
+
+----
+
+
+=== Comments allowed ===

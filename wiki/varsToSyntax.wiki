@@ -1,0 +1,19 @@
+= varsTo =
+[w/list Wiki] > [Syntax Syntax] > [varsTo varsTo]
+
+== Methods ==
+ * [varsToFormMethod varsToForm]
+ * [varsToSelectorMethod varsToSelector]
+ * [varsToSelectorAfterMethod varsToSelectorAfter]
+ * [varsToSelectorAppendMethod varsToSelectorAppend]
+ * [varsToSelectorAttrMethod varsToSelectorAttr]
+ * [varsToSelectorBeforeMethod varsToSelectorBefore]
+ * [varsToSelectorPrependMethod varsToSelectorPrepend]
+ * [varsToSelectorReplaceMethod varsToSelectorReplace]
+ * [varsToStackMethod varsToStack]
+ * [varsToStackAfterMethod varsToStackAfter]
+ * [varsToStackAppendMethod varsToStackAppend]
+ * [varsToStackAttrMethod varsToStackAttr]
+ * [varsToStackBeforeMethod varsToStackBefore]
+ * [varsToStackPrependMethod varsToStackPrepend]
+ * [varsToStackReplaceMethod varsToStackReplace]

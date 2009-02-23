@@ -1,0 +1,14 @@
+= ifNotVar =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [ifNotVarMethod ifNotVar]
+=== Parameters ===
+ * *$var* _var_
+
+ * *$separate* _separate_ = false
+
+
+
+TODO
+----
+
+
+=== Comments allowed ===

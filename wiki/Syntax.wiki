@@ -1,0 +1,13 @@
+= Syntax =
+[w/list Wiki] > [Syntax Syntax]
+
+== Syntax types ==
+ * [codeToSyntax codeTo]
+ * [ToFormSyntax ToForm]
+ * [elseSyntax else]
+ * [formFromSyntax formFrom]
+ * [ifSyntax if]
+ * [loopSyntax loop]
+ * [valuesToSyntax valuesTo]
+ * [varPrintSyntax varPrint]
+ * [varsToSyntax varsTo]

@@ -1,0 +1,18 @@
+= valuesToStackAttr =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [valuesToStackAttrMethod valuesToStackAttr]
+=== Parameters ===
+ * *$attr* __
+
+ * *$values* __
+
+ * *$skipFields* __ = null
+
+ * *$fieldCallback* __ = null
+
+
+
+
+----
+
+
+=== Comments allowed ===

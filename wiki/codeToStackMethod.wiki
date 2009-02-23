@@ -1,0 +1,51 @@
+= codeToStack =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [codeToStackMethod codeToStack]
+=== Parameters ===
+ * *$codeArray* _String_
+  Array of raw code, where key is the field.
+ * *$skipFields* _Array_ = null
+  Array of fields from $codeArray which should be skipped.
+ * *$fieldCallback* _Callback|string_ = null
+  Callback triggered after every insertion. Three parameters are passed to  this callback: 
+   * phpQueryObject $node
+   * string $field
+   * string|array $target
+ * *$selectorPattern* __ = '.%k'
+
+
+
+Injects raw executable code inside actually matched nodes.
+Method doesn't change selected elements stack.
+== Example ==
+=== Markup ===  
+{{{
+ <node1>
+   <node2></node2>
+ </node1>
+ <node2></node2>
+ <node1>
+   <node2></node2>
+ </node1>
+
+}}}
+=== Formula ===  
+{{{
+ $code = array(
+   'field1' => 'print "abba";',
+   'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
+ );
+ $template['node1']->codeToStack($code);
+
+}}}
+=== Template ===  
+{{{
+ <node1><?php  print "abba";  ?></node1><node2></node2><node1><?php  foreach(array(1, 2, 3) as $i) print $i  ?></node1>
+
+}}}
+----
+
+== See also ==
+ * [codeToSelectorMethod codeToSelector]
+
+
+=== Comments allowed ===

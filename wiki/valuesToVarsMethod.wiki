@@ -1,0 +1,37 @@
+= valuesToVars =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [valuesToVarsMethod valuesToVars]
+=== Parameters ===
+ * *$varsArray* _array_
+
+
+
+Behaves as var_export, dumps variables from $varsArray as $key = value for  later use during template execution. Variables are prepended into selected  elemets.
+Method doesn't change selected elements stack.
+Example  
+{{{
+ $data = array('foo' => 'bar', 'bar' => 'foo');
+ $template['node1']->valuesToVars($data);
+
+}}}
+Source  
+{{{
+ <node1>
+   <node2></node2>
+ </node1>
+
+}}}
+Result  
+{{{
+ <node1>
+   <?php
+   $foo = 'bar';
+   $bar = 'foo';
+   ?>
+   <node2></node2>
+ </node1>
+
+}}}
+----
+
+
+=== Comments allowed ===

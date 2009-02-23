@@ -1,0 +1,12 @@
+= varPrintReplace =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [varPrintReplaceMethod varPrintReplace]
+=== Parameters ===
+ * *$varName* _String_
+  Variable avaible in scope of type Array or Object.  $varName should NOT start with $.
+
+
+Prints variable $varName replacing matched elements.
+----
+
+
+=== Comments allowed ===

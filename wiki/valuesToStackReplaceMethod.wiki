@@ -1,0 +1,41 @@
+= valuesToStackReplace =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [valuesToStackReplaceMethod valuesToStackReplace]
+=== Parameters ===
+ * *$markup* _Array|String|phpQueryObject_
+
+ * *$values* __
+
+ * *$skipFields* __ = null
+
+ * *$fieldCallback* __ = null
+
+
+
+Replaces nodes from stack with $markup using replaceWith() insted of markup().
+Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.
+Example  
+{{{
+ $markups = array('<foo/>', '<bar/>');
+ $template['node1']->markupToStackOuter($markups);
+
+}}}
+Source  
+{{{
+ <node1>
+   <node2></node2>
+ </node1>
+ <node1>
+   <node2></node2>
+ </node1>
+
+}}}
+Result  
+{{{
+ <foo/>
+ <bar/>
+
+}}}
+----
+
+
+=== Comments allowed ===

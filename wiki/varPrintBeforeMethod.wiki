@@ -1,0 +1,12 @@
+= varPrintBefore =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [varPrintBeforeMethod varPrintBefore]
+=== Parameters ===
+ * *$varName* _String_
+  Variable avaible in scope of type Array or Object.  $varName should NOT start with $.
+
+
+Prints variable $varName before matched elements.
+----
+
+
+=== Comments allowed ===

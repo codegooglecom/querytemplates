@@ -1,0 +1,6 @@
+= formFrom =
+[w/list Wiki] > [Syntax Syntax] > [formFrom formFrom]
+
+== Methods ==
+ * [formFromVarsMethod formFromVars]
+ * [inputsFromValuesMethod inputsFromValues]

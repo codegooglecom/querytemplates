@@ -1,0 +1,16 @@
+= valuesToStackPrepend =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [valuesToStackPrependMethod valuesToStackPrepend]
+=== Parameters ===
+ * *$values* __
+
+ * *$skipFields* __ = null
+
+ * *$fieldCallback* __ = null
+
+
+
+
+----
+
+
+=== Comments allowed ===

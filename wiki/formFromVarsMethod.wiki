@@ -1,0 +1,77 @@
+= formFromVars =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [formFromVarsMethod formFromVars]
+=== Parameters ===
+ * *$varNames* _varNames_
+  Array of names of following vars: 
+   * record [0]
+   Represents actual record as array of fields.
+   * errors [1]
+   Represents actual errors as array of fields. Field can also be an array.
+   * additional data [2]
+   Same purpose as $additionalData, but during template's execution.
+ Names should be without dollar signs.  Ex:  array('row', 'errors.row', 'data');  $errors = array(    'field1' => 'one error',    'field2' => array('first error', 'second error')  );
+ * *$structure* _structure_
+  Form structure information. This should be easily fetchable from ORM layer.  Possible types: 
+   * text (default)
+   * password
+   * hidden
+   * checkbox
+   * radio
+   * textarea
+ Convention:  fieldName => array(    fieldType, {options}  )  Where {options} can be: 
+   * label
+   * id
+   * multiple (only select)
+   * optgroups (only select)
+   * values (only radio)
+ Ex:   $structure = array(
+  // special field representing form element
+     '__form' => array('id' => 'dasdas'),
+     // TODO fieldsets
+ //    array('Legend Label', array(
+ //            'field1' => array('select', ...),
+ //        ),
+ //    ),
+     'field2' => array('select',
+         'optgroups' => array('optgroup1', 'optgroup2'),
+         'multiple' => true,    // TODO
+         'label' => 'Field Name',
+     ),
+     'field12' => array('select',
+         'label' => 'no optgroups',
+     ),
+     'field3' => array('text',
+         'label' => 'Field3 Label',
+         'id' => 'someID',
+     ),
+     'field4' => array(    // 'text' is default
+         'label' => 'Field4 Label',
+         'id' => 'someID2',
+     ),
+     'field5' => 'hidden',
+     'field6' => array('radio',
+         'values' => array('possibleValue1', 'possibleValue2')
+     ),
+     'field7' => 'checkbox',
+     'field234' => 'textarea',
+ );
+ * *$defaults* _defaults_ = null
+  Default field's value. Used when field isn't present within supplied record.  Ex:
+ * *$additionalData* _additionalData_ = null
+  Additional data for fields. For now it's only used for populating select boxes.  Ex:  $additionalData = array(      'field2' => array(          array(    // optgroup              'foo' => 'Foo',              'bar2' => 'Bar',          ),          array(    // optgroup              'group2_1' => 'group2_1',              'group2_2' => 'group2_2',          ),          'bar' => 'Bar',    // no optgroup      ),  );  </code>
+ * *$template* _template_ = null
+  Input wrapper template.  TODO support per field templates.
+ * *$selectors* _selectors_ = null
+  Array of selectors indexed by it's type. Allows to customize lookups inside  inputs wrapper. Possible values are: 
+   * error (default: .errors)
+   * label // TODO
+   * input (per field) // TODO
+
+
+Method formFromVars acts as form helper. It creates the form without the
+need of suppling a line of markup. Created form have following features: 
+shows data from record (array or object)shows errorssupports default valuessupports radios and checkboxessupports select elements with optgroups
+----
+
+
+=== Comments allowed ===

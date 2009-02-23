@@ -1,0 +1,44 @@
+= loopOne =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [loopOneMethod loopOne]
+=== Parameters ===
+ * *$varName* _String_
+  Variable which will be looped. Must contain $ at the beggining.
+ * *$asVarName* _String_
+  Name of variable being result of iteration.
+ * *$keyName* _String_ = null
+  Optional. Use it when you want to have $varName's key available.
+
+
+Remove (detach) all matched nodes besided first one and than wrap it with  PHP foreach loop iterating $varName.
+Method DOES change selected elements stack. Returned is first element.
+Example  
+{{{
+ $template['ul li']->loopOne('foo', 'bar', 'i');
+
+}}}
+Source  
+{{{
+ <ul>
+   <li>first</li>
+   <li>second</li>
+ </ul>
+
+}}}
+Result  
+{{{
+ <ul><?php
+ foreach($foo as $i => $bar) {
+ ?><li>first</li><?php
+ }
+ ?></ul>
+
+}}}
+Proposed names: 
+loopFirst
+----
+
+== See also ==
+ * [loopMethod loop]
+
+
+=== Comments allowed ===

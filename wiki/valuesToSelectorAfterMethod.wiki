@@ -1,0 +1,18 @@
+= valuesToSelectorAfter =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [valuesToSelectorAfterMethod valuesToSelectorAfter]
+=== Parameters ===
+ * *$data* __
+
+ * *$selectorPattern* __ = '.%k'
+
+ * *$skipFields* __ = null
+
+ * *$fieldCallback* __ = null
+
+
+
+
+----
+
+
+=== Comments allowed ===

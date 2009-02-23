@@ -1,0 +1,12 @@
+= varPrint =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [varPrintMethod varPrint]
+=== Parameters ===
+ * *$varName* _String_
+  Variable avaible in scope of type Array or Object.  $varName should NOT start with $.
+
+
+Prints variable $varName as matched elements' content.
+----
+
+
+=== Comments allowed ===

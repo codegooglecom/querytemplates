@@ -1,0 +1,19 @@
+= loopSeparate =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [loopSeparateMethod loopSeparate]
+=== Parameters ===
+ * *$varName* _varName_
+
+ * *$asVarName* _asVarName_
+
+ * *$keyName* _keyName_ = null
+
+
+
+Acts as loop(), but affects each selected element separately.
+----
+
+== See also ==
+ * [loopMethod loop]
+
+
+=== Comments allowed ===

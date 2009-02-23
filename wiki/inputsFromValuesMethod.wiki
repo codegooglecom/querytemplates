@@ -1,0 +1,38 @@
+= inputsFromValues =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [inputsFromValuesMethod inputsFromValues]
+=== Parameters ===
+ * *$data* _data_
+
+ * *$type* _type_ = 'hidden'
+
+
+
+Creates markup with INPUT tags and prepends it to form.
+If selected element isn't a FORM then find('form') is executed.
+Method doesn't change selected elements stack.
+Example  
+{{{
+ $data = array('field1' => 'foo', 'field2' => 'bar');
+ $template->inputsFromValues($data);
+
+}}}
+Source  
+{{{
+ <form>
+   <input name='was-here-before'>
+ </form>
+
+}}}
+Result  
+{{{
+ <form>
+   <input name='field1' value='foo'>
+   <input name='field2' value='bar'>
+   <input name='was-here-before'>
+ </form>
+
+}}}
+----
+
+
+=== Comments allowed ===

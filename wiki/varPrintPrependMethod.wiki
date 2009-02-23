@@ -1,0 +1,12 @@
+= varPrintPrepend =
+[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [varPrintPrependMethod varPrintPrepend]
+=== Parameters ===
+ * *$varName* _String_
+  Variable avaible in scope of type Array or Object.  $varName should NOT start with $.
+
+
+Prints variable $varName on beggining of matched elements.
+----
+
+
+=== Comments allowed ===

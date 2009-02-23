@@ -1,0 +1,12 @@
+= ToForm =
+[w/list Wiki] > [Syntax Syntax] > [ToForm ToForm]
+
+== Methods ==
+ * [codeToSelectorMethod codeToSelector]
+ * [codeToStackMethod codeToStack]
+ * [valuesToFormMethod valuesToForm]
+ * [valuesToSelectorMethod valuesToSelector]
+ * [valuesToStackMethod valuesToStack]
+ * [varsToFormMethod varsToForm]
+ * [varsToSelectorMethod varsToSelector]
+ * [varsToStackMethod varsToStack]
