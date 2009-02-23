@@ -1,0 +1,7 @@
+= ToStack =
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ToStackSyntax ToStack]
+
+== Methods ==
+ * [codeToStackMethod codeToStack]
+ * [valuesToStackMethod valuesToStack]
+ * [varsToStackMethod varsToStack]
