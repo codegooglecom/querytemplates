@@ -22,18 +22,7 @@ $template->varsToSelector('foo', $foo);
 <p class='field1'><?php print $foo['field1'] ?></p>
 <p class='field2'><?php print $foo['field2'] ?></p>
 }}}
-For more examples see methods listed below. Each method is linked with it's API reference.
 
-== Inserting dynamic data ==
- * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelector varsToSelector]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelector ($varName, $varValue, $selectorPattern, $skipKeys)]
- * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelectorReplace varsToSelectorReplace]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToSelectorReplace ($varName, $varValue, $selectorPattern, $skipKeys)]
- * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToForm varsToForm]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToForm ($varName, $varValue, $selectorPattern)]
- * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToStack varsToStack]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToStack ($varName, $varValue, $skipKeys)]
- * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToStackReplace varsToStackReplace]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvarsToStackReplace ($varName, $varValue, $skipKeys)]
-
-== Inserting static data ==
- * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelector valuesToSelector]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelector ($data, $selectorPattern, $skipKeys)]
- * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelectorReplace valuesToSelectorReplace]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToSelectorReplace ($data, $selectorPattern, $skipKeys)]
- * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToForm valuesToForm]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToForm ($data, $selectorPattern)]
- * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToStack valuesToStack]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToStack ($markup)]
- * *[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToStackReplace valuesToStackReplace]*[http://meta20.net/querytemplates-api/QueryTemplates/QueryTemplatesPhpQuery.html#methodvaluesToStackReplace ($markup)]
+== Data insertion methods ==
+ * === [varsToSyntax varsTo - inserting dynamic data] ===
+ * === [valuesToSyntax valuesTo - inserting static data] ===
