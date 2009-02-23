@@ -1,5 +1,5 @@
 = else =
-[w/list Wiki] > [Syntax Syntax] > [else else]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else]
 
 == Methods ==
  * [elseIfNotVarMethod elseIfNotVar]

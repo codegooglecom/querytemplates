@@ -1,5 +1,5 @@
 = varPrintPrepend =
-[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [varPrintPrependMethod varPrintPrepend]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [varPrintPrependMethod varPrintPrepend]
 === Parameters ===
  * *$varName* _String_
   Variable avaible in scope of type Array or Object.  $varName should NOT start with $.

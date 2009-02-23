@@ -1,5 +1,5 @@
 = ToForm =
-[w/list Wiki] > [Syntax Syntax] > [ToForm ToForm]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ToFormSyntax ToForm]
 
 == Methods ==
  * [codeToSelectorMethod codeToSelector]

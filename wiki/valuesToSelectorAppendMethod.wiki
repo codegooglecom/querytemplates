@@ -1,5 +1,5 @@
 = valuesToSelectorAppend =
-[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [valuesToSelectorAppendMethod valuesToSelectorAppend]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [valuesToSelectorAppendMethod valuesToSelectorAppend]
 === Parameters ===
  * *$data* __
 

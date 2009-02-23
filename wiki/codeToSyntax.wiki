@@ -1,5 +1,5 @@
 = codeTo =
-[w/list Wiki] > [Syntax Syntax] > [codeTo codeTo]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo]
 
 == Methods ==
  * [codeToSelectorMethod codeToSelector]

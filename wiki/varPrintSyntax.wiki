@@ -1,5 +1,5 @@
 = varPrint =
-[w/list Wiki] > [Syntax Syntax] > [varPrint varPrint]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varPrintSyntax varPrint]
 
 == Methods ==
  * [varPrintMethod varPrint]

@@ -1,5 +1,5 @@
 = valuesToStack =
-[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [valuesToStackMethod valuesToStack]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [valuesToStackMethod valuesToStack]
 === Parameters ===
  * *$values* _Array|String|phpQueryObject_
 

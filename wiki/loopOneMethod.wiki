@@ -1,5 +1,5 @@
 = loopOne =
-[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [loopOneMethod loopOne]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [loopOneMethod loopOne]
 === Parameters ===
  * *$varName* _String_
   Variable which will be looped. Must contain $ at the beggining.

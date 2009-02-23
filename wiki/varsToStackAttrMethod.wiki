@@ -1,5 +1,5 @@
 = varsToStackAttr =
-[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [varsToStackAttrMethod varsToStackAttr]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [varsToStackAttrMethod varsToStackAttr]
 === Parameters ===
  * *$varName* _String_
   Variable avaible in scope of type Array or Object.  $varName should NOT start with $.

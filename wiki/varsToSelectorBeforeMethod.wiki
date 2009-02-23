@@ -1,5 +1,5 @@
 = varsToSelectorBefore =
-[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [varsToSelectorBeforeMethod varsToSelectorBefore]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [varsToSelectorBeforeMethod varsToSelectorBefore]
 === Parameters ===
  * *$varName* _String_
   Variable avaible in scope of type Array or Object.  $varName should NOT start with $.

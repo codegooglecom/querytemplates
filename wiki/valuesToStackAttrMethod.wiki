@@ -1,5 +1,5 @@
 = valuesToStackAttr =
-[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [valuesToStackAttrMethod valuesToStackAttr]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [valuesToStackAttrMethod valuesToStackAttr]
 === Parameters ===
  * *$attr* __
 

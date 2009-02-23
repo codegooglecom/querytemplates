@@ -1,5 +1,5 @@
 = if =
-[w/list Wiki] > [Syntax Syntax] > [if if]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ifSyntax if]
 
 == Methods ==
  * [ifNotVarMethod ifNotVar]

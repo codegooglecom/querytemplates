@@ -1,5 +1,5 @@
 = elsePHP =
-[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [elsePHPMethod elsePHP]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [elsePHPMethod elsePHP]
 === Parameters ===
  * *$separate* _bool_ = false
   Determines if selected elements should be wrapped together or one-by-one

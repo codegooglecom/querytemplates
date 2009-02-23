@@ -1,5 +1,5 @@
 = inputsFromValues =
-[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [inputsFromValuesMethod inputsFromValues]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [inputsFromValuesMethod inputsFromValues]
 === Parameters ===
  * *$data* _data_
 

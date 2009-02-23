@@ -1,5 +1,5 @@
 = codeToStackPrepend =
-[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [codeToStackPrependMethod codeToStackPrepend]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [codeToStackPrependMethod codeToStackPrepend]
 === Parameters ===
  * *$codeArray* _String_
   Array of raw code, where key is the field.

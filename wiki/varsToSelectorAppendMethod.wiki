@@ -1,5 +1,5 @@
 = varsToSelectorAppend =
-[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [varsToSelectorAppendMethod varsToSelectorAppend]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [varsToSelectorAppendMethod varsToSelectorAppend]
 === Parameters ===
  * *$varName* _String_
   Variable avaible in scope of type Array or Object.  $varName should NOT start with $.

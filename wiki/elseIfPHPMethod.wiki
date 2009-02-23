@@ -1,5 +1,5 @@
 = elseIfPHP =
-[http://code.google.com/p/tobiasz-cudnik-repository/w/list Wiki] > [Syntax Syntax] > [ ] > [elseIfPHPMethod elseIfPHP]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [Syntax ] > [elseIfPHPMethod elseIfPHP]
 === Parameters ===
  * *$code* _string_
   Valid PHP condition code
