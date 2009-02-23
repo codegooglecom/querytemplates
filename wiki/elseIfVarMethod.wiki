@@ -3,30 +3,36 @@
 === Parameters ===
  * *$var* _string_
   Dot-separated object path, eg Object.property.inneProperty
- * *$separate* _bool_ = false
+ * *$separate* _bool_ = `false`
   Determines if selected elements should be wrapped together or one-by-one
 
 
 Wraps selected tag with PHP "else if" statement checking if $var evaluates  to true. $var must be an object available inside template's scope.
 
 
-
-
 $var is passed in JS object convention (dot separated).
+
+
 Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.
+
+
 Method doesn't change selected elements stack. Returned is source element.
+
+
 Notice-safe.
-Example  
+
+
+Example
 {{{
  $template['node1']->elseIfVar('foo.bar.1');
 
 }}}
-Source  
+Source
 {{{
  <node1/>
 
 }}}
-Result  
+Result
 {{{
  <?php
  else if ($foo->bar->{1}) {

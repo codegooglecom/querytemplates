@@ -3,25 +3,25 @@
 === Parameters ===
  * *$values* _Array|String|phpQueryObject_
 
- * *$skipFields*  = null
+ * *$skipFields*  = `null`
 
- * *$fieldCallback*  = null
+ * *$fieldCallback*  = `null`
 
 
 
 Replaces nodes from stack with $markup using markup() insted of replaceWith().
 
 
-
-
 Method doesn't change selected elements stack.
-Example  
+
+
+Example
 {{{
  $values = array('<foo/>', '<bar/>');
  $template['node1']->valuesToStack($values);
 
 }}}
-Source  
+Source
 {{{
  <node1>
    <node2></node2>
@@ -31,7 +31,7 @@ Source
  </node1>
 
 }}}
-Result  
+Result
 {{{
  <node1>
    <foo/>

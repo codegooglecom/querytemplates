@@ -1,15 +1,13 @@
 = `elseStatement` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [elseStatementMethod elseStatement]
 === Parameters ===
- * *$separate* _lang_ = false
+ * *$separate* _lang_ = `false`
 
- * *$lang* _separate_ = null
+ * *$lang* _separate_ = `null`
 
 
 
 TODO description
-
-
 
 
 $lang = strtoupper($this->parent->language);

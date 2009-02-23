@@ -5,9 +5,9 @@
   Variable avaible in scope of type Array or Object.  $varName should NOT start with $.
  * *$varFields* _Array|Object_
   Variable value with all fields (keys) OR array of variable fields (keys).  Param needs to be passed thou array_keys for non-assosiative arrays.
- * *$skipFields* _Array_ = null
+ * *$skipFields* _Array_ = `null`
   Array of keys from $varValue which should be skipped.
- * *$fieldCallback* _Callback|string_ = null
+ * *$fieldCallback* _Callback|string_ = `null`
   Callback triggered after every insertion. Three parameters are passed to  this callback: 
    * phpQueryObject $node
    * string $field
@@ -17,11 +17,13 @@
 Injects executable code printing variable's fields after actually matched  nodes. Second param needs to be wrapped with array_keys for  non-assosiative arrays.
 
 
-
-
 Method doesn't change selected elements stack.
+
+
 == Example ==
-=== Markup ===  
+
+
+=== Markup ===
 {{{
  <node1>
    <node2></node2>
@@ -32,13 +34,13 @@ Method doesn't change selected elements stack.
  </node1>
 
 }}}
-=== Formula ===  
+=== Formula ===
 {{{
  $foo = array('<foo/>', '<bar/>');
  $template['node1']->varsToStackAfter('foo', array_keys($foo));
 
 }}}
-=== Template ===  
+=== Template ===
 {{{
  <node1><node2></node2></node1><?php  if (isset($foo['0'])) print $foo['0'];
  else if (isset($foo->{'0'})) print $foo->{'0'};  ?><node2></node2><node1><node2></node2></node1><?php  if (isset($foo['1'])) print $foo['1'];

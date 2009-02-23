@@ -3,7 +3,7 @@
 === Parameters ===
  * *$var* _var_
 
- * *$separate* _separate_ = false
+ * *$separate* _separate_ = `false`
 
 
 

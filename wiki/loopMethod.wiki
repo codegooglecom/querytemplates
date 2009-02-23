@@ -5,23 +5,25 @@
   Variable which will be looped. Must contain $ at the beggining.
  * *$asVarName* _String_
   Name of variable being result of iteration.
- * *$keyName* _String_ = null
+ * *$keyName* _String_ = `null`
   Optional. Use it when you want to have $varName's key available.
 
 
 Wrap selected elements with PHP foreach loop iterating $varName.
 
 
-
-
 Method doesn't change selected elements stack. Returned is source element.
-Example  
+
+
+Example
 {{{
  $pq['node1']->loop('foo', 'bar', 'i');
 
 }}}
 Source  <node1/>
-Result  
+
+
+Result
 {{{
  <?php
  foreach($foo as $i => $bar) {

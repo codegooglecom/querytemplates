@@ -55,13 +55,13 @@
      'field7' => 'checkbox',
      'field234' => 'textarea',
  );
- * *$defaults* _defaults_ = null
+ * *$defaults* _defaults_ = `null`
   Default field's value. Used when field isn't present within supplied record.  Ex:
- * *$additionalData* _additionalData_ = null
+ * *$additionalData* _additionalData_ = `null`
   Additional data for fields. For now it's only used for populating select boxes.  Ex:  $additionalData = array(      'field2' => array(          array(    // optgroup              'foo' => 'Foo',              'bar2' => 'Bar',          ),          array(    // optgroup              'group2_1' => 'group2_1',              'group2_2' => 'group2_2',          ),          'bar' => 'Bar',    // no optgroup      ),  );  </code>
- * *$template* _template_ = null
+ * *$template* _template_ = `null`
   Input wrapper template.  TODO support per field templates.
- * *$selectors* _selectors_ = null
+ * *$selectors* _selectors_ = `null`
   Array of selectors indexed by it's type. Allows to customize lookups inside  inputs wrapper. Possible values are: 
    * error (default: .errors)
    * label // TODO
@@ -71,10 +71,13 @@
 Method formFromVars acts as form helper. It creates the form without the
 
 
+need of suppling a line of markup. Created form have following features:
 
-
-need of suppling a line of markup. Created form have following features: 
-shows data from record (array or object)shows errorssupports default valuessupports radios and checkboxessupports select elements with optgroups
+   * shows data from record (array or object)
+   * shows errors
+   * supports default values
+   * supports radios and checkboxes
+   * supports select elements with optgroups
 ----
 
 

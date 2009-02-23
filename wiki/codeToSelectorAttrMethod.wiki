@@ -3,11 +3,11 @@
 === Parameters ===
  * *$codeArray* _String_
   Array of raw code, where key is the field.
- * *$selectorPattern* _String_ = '.%k'
-  Defines pattern matching target nodes. %k represents key.  Defaults to ".%k", which matches nodes with class name equivalent to  variables key (field).  For example, to restrict match to nodes with additional class "foo" change  $selectorPattern to ".foo.%k"
- * *$skipFields* _Array_ = null
+ * *$selectorPattern* _String_ = `'.%k'`
+  Defines pattern matching target nodes. %k represents key.  Defaults to `".%k"`, which matches nodes with class name equivalent to  variables key (field).  For example, to restrict match to nodes with additional class `"foo"` change  $selectorPattern to `".foo.%k"`
+ * *$skipFields* _Array_ = `null`
   Array of keys from $varValue which should be skipped.
- * *$fieldCallback* _Callback|string_ = null
+ * *$fieldCallback* _Callback|string_ = `null`
   Callback triggered after every insertion. Three parameters are passed to  this callback: 
    * phpQueryObject $node
    * string $field
@@ -19,18 +19,22 @@
 Injects raw executable code inside attribute of nodes matched by selector.
 
 
-
-
 Method uses actually matched elements as root for the query.
+
+
 Method doesn't change selected elements stack.
+
+
 == Example ==
-=== Markup ===  
+
+
+=== Markup ===
 {{{
  <p class='field1'>lorem ipsum</p>
  <p class='field2'>lorem ipsum</p>
 
 }}}
-=== Formula ===  
+=== Formula ===
 {{{
  $code = array(
    'field1' => 'print "abba";',
@@ -39,7 +43,7 @@ Method doesn't change selected elements stack.
  $template['node1']->codeToSelectorAttr('rel', $code);
 
 }}}
-=== Template ===  
+=== Template ===
 {{{
  <?php  print "abba";  ?><p class="field1">lorem ipsum</p>
  <?php  foreach(array(1, 2, 3) as $i) print $i  ?><p class="field2">lorem ipsum</p>

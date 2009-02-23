@@ -5,22 +5,22 @@
   Variable which will be looped. Must contain $ at the beggining.
  * *$asVarName* _String_
   Name of variable being result of iteration.
- * *$keyName* _String_ = null
+ * *$keyName* _String_ = `null`
   Optional. Use it when you want to have $varName's key available.
 
 
 Remove (detach) all matched nodes besided first one and than wrap it with  PHP foreach loop iterating $varName.
 
 
-
-
 Method DOES change selected elements stack. Returned is first element.
-Example  
+
+
+Example
 {{{
  $template['ul li']->loopOne('foo', 'bar', 'i');
 
 }}}
-Source  
+Source
 {{{
  <ul>
    <li>first</li>
@@ -28,7 +28,7 @@ Source
  </ul>
 
 }}}
-Result  
+Result
 {{{
  <ul><?php
  foreach($foo as $i => $bar) {
@@ -37,8 +37,9 @@ Result
  ?></ul>
 
 }}}
-Proposed names: 
-loopFirst
+Proposed names:
+
+   * loopFirst
 ----
 
 == See also ==

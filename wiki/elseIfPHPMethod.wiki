@@ -3,28 +3,30 @@
 === Parameters ===
  * *$code* _string_
   Valid PHP condition code
- * *$separate* _bool_ = false
+ * *$separate* _bool_ = `false`
   Determines if selected elements should be wrapped together or one-by-one
 
 
 Wraps selected tag with PHP "else if" statement containing $code as condition.
 
 
-
-
 Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.
+
+
 Method doesn't change selected elements stack. Returned is source element.
-Example  
+
+
+Example
 {{{
  $template['node1']->elseIfPHP('$foo == 1');
 
 }}}
-Source  
+Source
 {{{
  <node1/>
 
 }}}
-Result  
+Result
 {{{
  <?php
  else if ($foo == 1) {

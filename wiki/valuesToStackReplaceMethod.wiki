@@ -5,25 +5,25 @@
 
  * *$values* 
 
- * *$skipFields*  = null
+ * *$skipFields*  = `null`
 
- * *$fieldCallback*  = null
+ * *$fieldCallback*  = `null`
 
 
 
 Replaces nodes from stack with $markup using replaceWith() insted of markup().
 
 
-
-
 Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.
-Example  
+
+
+Example
 {{{
  $markups = array('<foo/>', '<bar/>');
  $template['node1']->markupToStackOuter($markups);
 
 }}}
-Source  
+Source
 {{{
  <node1>
    <node2></node2>
@@ -33,7 +33,7 @@ Source
  </node1>
 
 }}}
-Result  
+Result
 {{{
  <foo/>
  <bar/>

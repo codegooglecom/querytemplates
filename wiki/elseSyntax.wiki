@@ -10,4 +10,3 @@
  * [tagToElseIfPHPMethod tagToElseIfPHP]
  * [tagToElseIfVarMethod tagToElseIfVar]
  * [tagToElsePHPMethod tagToElsePHP]
- * [_tagToElseMethod _tagToElse]

@@ -3,20 +3,28 @@
 === Parameters ===
  * *$data* _Array|Object_
 
- * *$selectorPattern* _String_ = "[name*='%k']"
-  Defines pattern matching form fields.  Defaults to "[name*='%k'][name*='%k[]']", which matches fields containing  $data's key in their names. For example, to match only names starting with  "foo[bar]" change $selectorPattern to "[name^='foo[bar]'][name*='%k']"
+ * *$selectorPattern* _String_ = `"[name*='%k']"`
+  Defines pattern matching form fields.  Defaults to `"[name*='%k'][name*='%k[]']"`, which matches fields containing  $data's key in their names. For example, to match only names starting with  `"foo[bar]"` change $selectorPattern to `"[name^='foo[bar]'][name*='%k']"`
 
 
 Toggles form fields values and selection states according to static values  from $data.
 
 
+This includes:
+
+   * input[type=radio][checked]
+   * input[type=checkbox][checked]
+   * select > option[selected]
+   * input[value]
+   * textarea
+
+Inputs are selected according to $selectorPattern, where %k represents  variable's key.
 
 
-This includes: 
-input[type=radio][checked]input[type=checkbox][checked]select > option[selected]input[value]textarea
-  Inputs are selected according to $selectorPattern, where %k represents  variable's key.
 Method doesn't change selected elements stack.
-Example  
+
+
+Example
 {{{
  $data = array(
    'text-example' => 'new',
@@ -28,7 +36,7 @@ Example
  $template->valuesToForm($data);
 
 }}}
-Source  
+Source
 {{{
  <form>
    <input type='text' name='text-example' value='old'>
@@ -43,7 +51,7 @@ Source
  </form>
 
 }}}
-Result  
+Result
 {{{
  <form>
    <input type='text' name='text-example' value='new'>

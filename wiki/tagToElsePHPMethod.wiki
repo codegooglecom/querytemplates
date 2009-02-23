@@ -6,20 +6,20 @@
 Replaces selected tag with PHP "else" statement.
 
 
-
-
 Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.
-Example  
+
+
+Example
 {{{
  $template['.else']->tagToElsePHP();
 
 }}}
-Source  
+Source
 {{{
  <div class='else'><node1/></div>
 
 }}}
-Result  
+Result
 {{{
  <?php
  else {

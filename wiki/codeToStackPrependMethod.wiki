@@ -3,25 +3,27 @@
 === Parameters ===
  * *$codeArray* _String_
   Array of raw code, where key is the field.
- * *$skipFields* _Array_ = null
+ * *$skipFields* _Array_ = `null`
   Array of fields from $codeArray which should be skipped.
- * *$fieldCallback* _Callback|string_ = null
+ * *$fieldCallback* _Callback|string_ = `null`
   Callback triggered after every insertion. Three parameters are passed to  this callback: 
    * phpQueryObject $node
    * string $field
    * string|array $target
- * *$selectorPattern*  = '.%k'
+ * *$selectorPattern*  = `'.%k'`
 
 
 
 Injects raw executable code at the end of actually matched nodes.
 
 
-
-
 Method doesn't change selected elements stack.
+
+
 == Example ==
-=== Markup ===  
+
+
+=== Markup ===
 {{{
  <node1>
    <node2></node2>
@@ -32,7 +34,7 @@ Method doesn't change selected elements stack.
  </node1>
 
 }}}
-=== Formula ===  
+=== Formula ===
 {{{
  $code = array(
    'field1' => 'print "abba";',
@@ -41,7 +43,7 @@ Method doesn't change selected elements stack.
  $template['node1']->codeToStackPrepend($code);
 
 }}}
-=== Template ===  
+=== Template ===
 {{{
  <node1><?php  print "abba";  ?><node2></node2></node1><node2></node2><node1><?php  foreach(array(1, 2, 3) as $i) print $i  ?><node2></node2></node1>
 

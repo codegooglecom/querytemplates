@@ -8,20 +8,20 @@
 Replaces selected tag with PHP "else if" statement containing $code as condition.
 
 
-
-
 Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.
-Example  
+
+
+Example
 {{{
  $template['.else-if']->tagToElseIfPHP('$foo == 1');
 
 }}}
-Source  
+Source
 {{{
  <div class='else-if'><node1/></div>
 
 }}}
-Result  
+Result
 {{{
  <?php
  else if ($foo == 1) {

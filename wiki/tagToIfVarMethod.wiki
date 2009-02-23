@@ -8,22 +8,26 @@
 Replaces selected tag with PHP "if" statement checking if $var evaluates  to true. $var must be an object available inside template's scope.
 
 
-
-
 $var is passed in JS object convention (dot separated).
+
+
 Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.
+
+
 Notice-safe.
-Example  
+
+
+Example
 {{{
  $template['.if-var']->tagToIfVar('foo.bar');
 
 }}}
-Source  
+Source
 {{{
  <div class='if-var'><node1/></div>
 
 }}}
-Result  
+Result
 {{{
  <?php
  if ($foo->bar) {
