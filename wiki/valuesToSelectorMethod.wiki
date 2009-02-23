@@ -7,11 +7,15 @@
   Defines pattern matching target nodes. %k represents key.  Defaults to ".%k", which matches nodes with class name equivalent to  data source key.  For example, to restrict match to nodes with additional class "foo" change  $selectorPattern to ".foo.%k"
  * *$skipFields* _Array_ = null
   Array of keys from $varValue which should be skipped.
- * *$fieldCallback* __ = null
+ * *$fieldCallback*  = null
 
 
 
 Injects markup from $data's content (rows or attributes) into nodes  matched by selector.
+
+
+
+
 For replacing matched nodes with content use valuesToSelectorReplace().  For injecting values into forms use valuesToForm().
 Example  
 {{{

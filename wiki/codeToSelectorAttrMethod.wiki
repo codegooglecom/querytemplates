@@ -12,11 +12,15 @@
    * phpQueryObject $node
    * string $field
    * string|array $target
- * *$attr* __
+ * *$attr* 
 
 
 
 Injects raw executable code inside attribute of nodes matched by selector.
+
+
+
+
 Method uses actually matched elements as root for the query.
 Method doesn't change selected elements stack.
 == Example ==

@@ -3,11 +3,13 @@
 
 == Syntax types ==
  * [codeToSyntax codeTo]
- * [ToFormSyntax ToForm]
+ * [ToSelectorSyntax ToSelector]
+ * [ToStackSyntax ToStack]
  * [elseSyntax else]
  * [formFromSyntax formFrom]
  * [ifSyntax if]
  * [loopSyntax loop]
  * [valuesToSyntax valuesTo]
+ * [ToFormSyntax ToForm]
  * [varPrintSyntax varPrint]
  * [varsToSyntax varsTo]

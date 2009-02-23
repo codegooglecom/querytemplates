@@ -1,13 +1,13 @@
 = valuesToStackAttr =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToStackAttrMethod valuesToStackAttr]
 === Parameters ===
- * *$attr* __
+ * *$attr* 
 
- * *$values* __
+ * *$values* 
 
- * *$skipFields* __ = null
+ * *$skipFields*  = null
 
- * *$fieldCallback* __ = null
+ * *$fieldCallback*  = null
 
 
 

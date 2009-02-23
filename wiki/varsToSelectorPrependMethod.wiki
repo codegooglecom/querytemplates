@@ -17,6 +17,10 @@
 
 
 Injects executable code printing variable's fields at the beggining of nodes  matched by selector. Method uses actually matched elements as root for the  query.
+
+
+
+
 Method doesn't change selected elements stack.
 == Example ==
 === Markup ===  

@@ -15,6 +15,10 @@
 
 
 Injects executable code printing variable's fields at the beggining of actually  matched nodes. Second param needs to be wrapped with array_keys for  non-assosiative arrays.
+
+
+
+
 Method doesn't change selected elements stack.
 == Example ==
 === Markup ===  

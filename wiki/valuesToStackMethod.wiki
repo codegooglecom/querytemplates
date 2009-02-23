@@ -3,13 +3,17 @@
 === Parameters ===
  * *$values* _Array|String|phpQueryObject_
 
- * *$skipFields* __ = null
+ * *$skipFields*  = null
 
- * *$fieldCallback* __ = null
+ * *$fieldCallback*  = null
 
 
 
 Replaces nodes from stack with $markup using markup() insted of replaceWith().
+
+
+
+
 Method doesn't change selected elements stack.
 Example  
 {{{

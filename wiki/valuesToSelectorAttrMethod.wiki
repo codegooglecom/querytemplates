@@ -1,15 +1,15 @@
 = valuesToSelectorAttr =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorAttrMethod valuesToSelectorAttr]
 === Parameters ===
- * *$attr* __
+ * *$attr* 
 
- * *$data* __
+ * *$data* 
 
- * *$selectorPattern* __ = '.%k'
+ * *$selectorPattern*  = '.%k'
 
- * *$skipFields* __ = null
+ * *$skipFields*  = null
 
- * *$fieldCallback* __ = null
+ * *$fieldCallback*  = null
 
 
 

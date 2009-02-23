@@ -10,6 +10,10 @@
 
 
 Remove (detach) all matched nodes besided first one and than wrap it with  PHP foreach loop iterating $varName.
+
+
+
+
 Method DOES change selected elements stack. Returned is first element.
 Example  
 {{{

@@ -10,11 +10,15 @@
    * phpQueryObject $node
    * string $field
    * string|array $target
- * *$selectorPattern* __ = '.%k'
+ * *$selectorPattern*  = '.%k'
 
 
 
 Injects raw executable code after actually matched nodes.
+
+
+
+
 Method doesn't change selected elements stack.
 == Example ==
 === Markup ===  

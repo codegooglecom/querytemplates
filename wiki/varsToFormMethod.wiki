@@ -7,11 +7,15 @@
 
  * *$selectorPattern* _String_ = "[name*='%k']"
   Defines pattern matching form fields.  Defaults to "[name*='%k']", which matches fields containing variable's key in  their names. For example, to match only names starting with "foo[bar]" change  $selectorPattern to "[name^='foo[bar]'][name*='%k']"
- * *$varName* __
+ * *$varName* 
 
 
 
 Injects executable code which toggles form fields values and selection  states according to value of variable $varName.
+
+
+
+
 This includes: 
 input[type=radio][checked]input[type=checkbox][checked]select > option[selected]input[value]textarea
   Inputs are selected according to $selectorPattern, where %k represents  variable's key.

@@ -8,6 +8,10 @@
 
 
 Creates markup with INPUT tags and prepends it to form.
+
+
+
+
 If selected element isn't a FORM then find('form') is executed.
 Method doesn't change selected elements stack.
 Example  

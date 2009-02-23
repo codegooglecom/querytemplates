@@ -69,6 +69,10 @@
 
 
 Method formFromVars acts as form helper. It creates the form without the
+
+
+
+
 need of suppling a line of markup. Created form have following features: 
 shows data from record (array or object)shows errorssupports default valuessupports radios and checkboxessupports select elements with optgroups
 ----

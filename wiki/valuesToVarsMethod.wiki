@@ -6,6 +6,10 @@
 
 
 Behaves as var_export, dumps variables from $varsArray as $key = value for  later use during template execution. Variables are prepended into selected  elemets.
+
+
+
+
 Method doesn't change selected elements stack.
 Example  
 {{{

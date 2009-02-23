@@ -1,11 +1,11 @@
 = valuesToStackPrepend =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToStackPrependMethod valuesToStackPrepend]
 === Parameters ===
- * *$values* __
+ * *$values* 
 
- * *$skipFields* __ = null
+ * *$skipFields*  = null
 
- * *$fieldCallback* __ = null
+ * *$fieldCallback*  = null
 
 
 
