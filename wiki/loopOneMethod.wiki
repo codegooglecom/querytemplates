@@ -17,7 +17,7 @@ Method DOES change selected elements stack. Returned is first element.
 
 Example
 {{{
- $template['ul li']->loopOne('foo', 'bar', 'i');
+ $template`['ul li']`->loopOne('foo', 'bar', 'i');
 
 }}}
 Source

@@ -14,7 +14,7 @@ Method doesn't change selected elements stack.
 Example
 {{{
  $data = array('foo' => 'bar', 'bar' => 'foo');
- $template['node1']->valuesToVars($data);
+ $template`['node1']`->valuesToVars($data);
 
 }}}
 Source

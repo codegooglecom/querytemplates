@@ -18,7 +18,7 @@ Method doesn't change selected elements stack. Returned is source element.
 
 Example
 {{{
- $template['node1']->elseIfPHP('$foo == 1');
+ $template`['node1']`->elseIfPHP('$foo == 1');
 
 }}}
 Source

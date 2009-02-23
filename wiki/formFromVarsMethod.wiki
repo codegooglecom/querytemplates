@@ -3,11 +3,11 @@
 === Parameters ===
  * *$varNames* _varNames_
   Array of names of following vars: 
-   * record [0]
+   * record `[0]`
    Represents actual record as array of fields.
-   * errors [1]
+   * errors `[1]`
    Represents actual errors as array of fields. Field can also be an array.
-   * additional data [2]
+   * additional data `[2]`
    Same purpose as $additionalData, but during template's execution.
  Names should be without dollar signs.  Ex:  array('row', 'errors.row', 'data');  $errors = array(    'field1' => 'one error',    'field2' => array('first error', 'second error')  );
  * *$structure* _structure_

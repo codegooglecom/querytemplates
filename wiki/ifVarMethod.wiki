@@ -24,7 +24,7 @@ Notice-safe.
 
 Example
 {{{
- $template['node1']->ifVar('foo.bar.1');
+ $template`['node1']`->ifVar('foo.bar.1');
 
 }}}
 Source

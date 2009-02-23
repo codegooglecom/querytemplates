@@ -17,7 +17,7 @@ Method doesn't change selected elements stack. Returned is source element.
 
 Example
 {{{
- $pq['node1']->loop('foo', 'bar', 'i');
+ $pq`['node1']`->loop('foo', 'bar', 'i');
 
 }}}
 Source  <node1/>

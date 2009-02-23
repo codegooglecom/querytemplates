@@ -40,7 +40,7 @@ Method doesn't change selected elements stack.
    'field1' => 'print "abba";',
    'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
  );
- $template['node1']->codeToStackAppend($code);
+ $template`['node1']`->codeToStackAppend($code);
 
 }}}
 === Template ===
