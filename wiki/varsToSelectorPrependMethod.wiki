@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `varsToSelectorPrepend` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToSelectorPrependMethod varsToSelectorPrepend]
 === Parameters ===
@@ -16,6 +17,7 @@
    * string|array $target
 
 
+=== Description ===
 Injects executable code printing variable's fields at the beggining of nodes  matched by selector. Method uses actually matched elements as root for the  query.
 
 

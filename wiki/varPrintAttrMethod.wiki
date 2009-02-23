@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `varPrintAttr` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varPrintSyntax varPrint] > [varPrintAttrMethod varPrintAttr]
 === Parameters ===
@@ -7,6 +8,7 @@
   Variable avaible in scope of type Array or Object.  $varName should NOT start with $.
 
 
+=== Description ===
 Prints variable $varName as attribute $attr of matched elements.
 ----
 

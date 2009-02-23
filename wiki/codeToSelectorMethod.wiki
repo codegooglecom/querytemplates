@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `codeToSelector` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorMethod codeToSelector]
 === Parameters ===
@@ -14,6 +15,7 @@
    * string|array $target
 
 
+=== Description ===
 Injects raw executable code inside nodes matched by selector. Method uses  actually matched elements as root for the query.
 
 

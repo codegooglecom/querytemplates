@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `codeToSelectorPrepend` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorPrependMethod codeToSelectorPrepend]
 === Parameters ===
@@ -14,6 +15,7 @@
    * string|array $target
 
 
+=== Description ===
 Injects raw executable code at the beggining of nodes matched by selector.
 
 

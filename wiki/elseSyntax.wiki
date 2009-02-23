@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `else` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else]
 

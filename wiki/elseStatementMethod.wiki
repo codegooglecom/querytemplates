@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `elseStatement` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [elseStatementMethod elseStatement]
 === Parameters ===
@@ -7,6 +8,7 @@
 
 
 
+=== Description ===
 TODO description
 
 

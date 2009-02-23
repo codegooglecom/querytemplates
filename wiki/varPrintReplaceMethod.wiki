@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `varPrintReplace` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varPrintSyntax varPrint] > [varPrintReplaceMethod varPrintReplace]
 === Parameters ===
@@ -5,6 +6,7 @@
   Variable avaible in scope of type Array or Object.  $varName should NOT start with $.
 
 
+=== Description ===
 Prints variable $varName replacing matched elements.
 ----
 

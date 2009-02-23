@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `codeToSelectorAttr` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorAttrMethod codeToSelectorAttr]
 === Parameters ===
@@ -16,6 +17,7 @@
 
 
 
+=== Description ===
 Injects raw executable code inside attribute of nodes matched by selector.
 
 

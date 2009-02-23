@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `varsToSelectorAttr` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToSelectorAttrMethod varsToSelectorAttr]
 === Parameters ===
@@ -18,6 +19,7 @@
    * string|array $target
 
 
+=== Description ===
 Injects executable code printing variable's fields as attribute of nodes  matched by selector. Method uses actually matched elements as root for the  query.
 
 

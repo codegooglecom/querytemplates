@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `tagToIfPHP` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ifSyntax if] > [tagToIfPHPMethod tagToIfPHP]
 === Parameters ===
@@ -5,6 +6,7 @@
   Valid PHP condition code
 
 
+=== Description ===
 Replaces selected tag with PHP "if" statement containing $code as condition.
 
 

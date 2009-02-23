@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `loopOne` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [loopSyntax loop] > [loopOneMethod loopOne]
 === Parameters ===
@@ -9,6 +10,7 @@
   Optional. Use it when you want to have $varName's key available.
 
 
+=== Description ===
 Remove (detach) all matched nodes besided first one and than wrap it with  PHP foreach loop iterating $varName.
 
 

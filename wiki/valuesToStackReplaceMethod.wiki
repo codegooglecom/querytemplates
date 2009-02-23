@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `valuesToStackReplace` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToStackReplaceMethod valuesToStackReplace]
 === Parameters ===
@@ -11,6 +12,7 @@
 
 
 
+=== Description ===
 Replaces nodes from stack with $markup using replaceWith() insted of markup().
 
 

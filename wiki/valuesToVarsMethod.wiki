@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `valuesToVars` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToVarsMethod valuesToVars]
 === Parameters ===
@@ -5,6 +6,7 @@
 
 
 
+=== Description ===
 Behaves as var_export, dumps variables from $varsArray as $key = value for  later use during template execution. Variables are prepended into selected  elemets.
 
 

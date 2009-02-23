@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `codeTo` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo]
 

@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `varsToStackPrepend` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToStackPrependMethod varsToStackPrepend]
 === Parameters ===
@@ -14,6 +15,7 @@
    * string|array $target
 
 
+=== Description ===
 Injects executable code printing variable's fields at the beggining of actually  matched nodes. Second param needs to be wrapped with array_keys for  non-assosiative arrays.
 
 

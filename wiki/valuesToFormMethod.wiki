@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `valuesToForm` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToFormMethod valuesToForm]
 === Parameters ===
@@ -7,6 +8,7 @@
   Defines pattern matching form fields.  Defaults to "`[name*='%k']`", which matches fields containing  $data's key in their names. For example, to match only names starting with  "foo`[bar]`" change $selectorPattern to "`[name^='foo[bar]`']`[name*='%k']`"
 
 
+=== Description ===
 Toggles form fields values and selection states according to static values  from $data.
 
 

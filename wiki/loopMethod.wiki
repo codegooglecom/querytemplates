@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `loop` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [loopSyntax loop] > [loopMethod loop]
 === Parameters ===
@@ -9,6 +10,7 @@
   Optional. Use it when you want to have $varName's key available.
 
 
+=== Description ===
 Wrap selected elements with PHP foreach loop iterating $varName.
 
 

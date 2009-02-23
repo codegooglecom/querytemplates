@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `elsePHP` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [elsePHPMethod elsePHP]
 === Parameters ===
@@ -5,6 +6,7 @@
   Determines if selected elements should be wrapped together or one-by-one
 
 
+=== Description ===
 Wraps selected tag with PHP "else" statement.
 
 

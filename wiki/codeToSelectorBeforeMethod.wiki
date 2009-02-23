@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `codeToSelectorBefore` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorBeforeMethod codeToSelectorBefore]
 === Parameters ===
@@ -14,6 +15,7 @@
    * string|array $target
 
 
+=== Description ===
 Injects raw executable code before nodes matched by selector. Method uses  actually matched elements as root for the query.
 
 

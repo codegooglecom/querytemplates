@@ -17,6 +17,7 @@
 
 
 
+=== Description ===
 Injects raw executable code inside attribute of actually matched nodes.
 
 

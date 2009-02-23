@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `valuesToSelectorPrepend` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorPrependMethod valuesToSelectorPrepend]
 === Parameters ===
@@ -11,6 +12,7 @@
 
 
 
+=== Description ===
 
 ----
 

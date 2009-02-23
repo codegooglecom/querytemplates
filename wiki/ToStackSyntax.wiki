@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `ToStack` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ToStackSyntax ToStack]
 

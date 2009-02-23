@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `valuesToSelector` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorMethod valuesToSelector]
 === Parameters ===
@@ -11,6 +12,7 @@
 
 
 
+=== Description ===
 Injects markup from $data's content (rows or attributes) into nodes  matched by selector.
 
 

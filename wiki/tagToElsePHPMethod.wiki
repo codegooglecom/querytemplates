@@ -1,8 +1,10 @@
+#sidebar SyntaxSidebar
 = `tagToElsePHP` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [tagToElsePHPMethod tagToElsePHP]
 === Parameters ===
 
 
+=== Description ===
 Replaces selected tag with PHP "else" statement.
 
 

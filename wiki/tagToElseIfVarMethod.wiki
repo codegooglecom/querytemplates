@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `tagToElseIfVar` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [tagToElseIfVarMethod tagToElseIfVar]
 === Parameters ===
@@ -5,6 +6,7 @@
   Dot-separated object path, eg Object.property.inneProperty
 
 
+=== Description ===
 Replaces selected tag with PHP "else if" statement checking if $var evaluates  to true. $var must be an object available inside template's scope.
 
 

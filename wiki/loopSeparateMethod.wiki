@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `loopSeparate` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [loopSyntax loop] > [loopSeparateMethod loopSeparate]
 === Parameters ===
@@ -9,6 +10,7 @@
 
 
 
+=== Description ===
 Acts as loop(), but affects each selected element separately.
 ----
 

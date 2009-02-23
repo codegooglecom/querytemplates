@@ -1,3 +1,4 @@
+#sidebar SyntaxSidebar
 = `inputsFromValues` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [formFromSyntax formFrom] > [inputsFromValuesMethod inputsFromValues]
 === Parameters ===
@@ -7,6 +8,7 @@
 
 
 
+=== Description ===
 Creates markup with INPUT tags and prepends it to form.
 
 
