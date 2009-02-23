@@ -2,14 +2,14 @@
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax]
 
 == Syntax types ==
- * [codeToSyntax codeTo]
- * [ToSelectorSyntax ToSelector]
- * [ToStackSyntax ToStack]
- * [elseSyntax else]
- * [formFromSyntax formFrom]
- * [ifSyntax if]
- * [loopSyntax loop]
- * [valuesToSyntax valuesTo]
- * [ToFormSyntax ToForm]
- * [varPrintSyntax varPrint]
- * [varsToSyntax varsTo]
+ * ===[codeToSyntax codeTo]====
+ * ===[ToSelectorSyntax ToSelector]===
+ * ===[ToStackSyntax ToStack]===
+ * ===[elseSyntax else]===
+ * ===[formFromSyntax formFrom]===
+ * ===[ifSyntax if]===
+ * ===[loopSyntax loop]===
+ * ===[valuesToSyntax valuesTo]===
+ * ===[ToFormSyntax ToForm]===
+ * ===[varPrintSyntax varPrint]===
+ * ===[varsToSyntax varsTo]===
