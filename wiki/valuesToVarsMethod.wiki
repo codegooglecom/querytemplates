@@ -13,28 +13,43 @@ Behaves as var_export, dumps variables from $varsArray as $key = value for  late
 Method doesn't change selected elements stack.
 
 
-Example
-{{{
- $data = array('foo' => 'bar', 'bar' => 'foo');
- $template['node1']->valuesToVars($data);
+== Example ==
 
-}}}
-Source
+
+=== Markup ===
 {{{
  <node1>
-   <node2></node2>
+     <node2></node2>
  </node1>
 
 }}}
-Result
+=== Data ===
 {{{
- <node1>
-   <?php
-   $foo = 'bar';
-   $bar = 'foo';
-   ?>
-   <node2></node2>
- </node1>
+ $values = array('<foo/>', '<bar/>');
+
+}}}
+=== `QueryTemplates` formula ===
+{{{
+ $template['node1']->valuesToVars($values);
+
+}}}
+=== Template ===
+{{{
+ <node1><?php  $0 = '<foo/>';
+ $1 = '<bar/>';  ?><node2></node2></node1>
+
+}}}
+=== Template tree before ===
+{{{
+ node1
+  - node2
+
+}}}
+=== Template tree after ===
+{{{
+ node1
+  - PHP
+  - node2
 
 }}}
 ----

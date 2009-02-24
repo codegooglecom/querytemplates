@@ -2,9 +2,9 @@
 = `elseStatement` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [elseStatementMethod elseStatement]
 === Parameters ===
- * *$separate* _lang_ = `false`
+ * *$separate* _separate_ = `false`
 
- * *$lang* _separate_ = `null`
+ * *$lang* _lang_ = `null`
 
 
 
@@ -12,7 +12,60 @@
 TODO description
 
 
-$lang = strtoupper($this->parent->language);
+== Example ==
+
+
+=== Markup ===
+{{{
+ <div>1</div>
+ <div>2</div>
+ <div>3</div>
+
+}}}
+=== Data ===
+{{{
+ $data = array(
+   'foo' => array(
+       'bar' => array(true)
+   )
+ );
+
+}}}
+=== `QueryTemplates` formula ===
+{{{
+ $template['div:eq(1)']->elseStatement();
+
+}}}
+=== Template ===
+{{{
+ <div>1</div>
+ <?php  else {  ?><div>2</div>
+ <?php  }  ?>
+ <div>3</div>
+
+}}}
+=== Template tree before ===
+{{{
+ div
+  - Text:1
+ div
+  - Text:2
+ div
+  - Text:3
+
+}}}
+=== Template tree after ===
+{{{
+ div
+  - Text:1
+ PHP
+ div
+  - Text:2
+ PHP
+ div
+  - Text:3
+
+}}}
 ----
 
 

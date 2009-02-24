@@ -6,5 +6,6 @@
  * [ifNotVarMethod ifNotVar]
  * [ifPHPMethod ifPHP]
  * [ifVarMethod ifVar]
+ * [tagToIfNotVarMethod tagToIfNotVar]
  * [tagToIfPHPMethod tagToIfPHP]
  * [tagToIfVarMethod tagToIfVar]

@@ -1,13 +1,13 @@
 #sidebar SyntaxSidebar
-= `tagToElseIfVar` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [tagToElseIfVarMethod tagToElseIfVar]
+= `tagToElseIfNotVar` =
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [tagToElseIfNotVarMethod tagToElseIfNotVar]
 === Parameters ===
  * *$var* _string_
   Dot-separated object path, eg Object.property.inneProperty
 
 
 === Description ===
-Replaces selected tag with PHP "else if" statement checking if $var evaluates  to TRUE. $var must be available inside template's scope.
+Replaces selected tag with PHP "else if" statement checking if $var evaluates  to FALSE. $var must be available inside template's scope.
 
 
 $var is passed in JS object convention (dot separated).
@@ -40,13 +40,13 @@ Notice-safe.
 }}}
 === `QueryTemplates` formula ===
 {{{
- $template['div:eq(1)']->tagToElseIfVar('data.foo.bar.0');
+ $template['div:eq(1)']->tagToElseIfNotVar('data.foo.bar.0');
 
 }}}
 === Template ===
 {{{
  <div>1</div>
- <?php  else if ((isset($data['foo']['bar']['0']) && $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && $data->{'foo'}->{'bar'}->{'0'})) {  ?>2<?php  }  ?>
+ <?php  else if ((isset($data['foo']['bar']['0']) && ! $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && ! $data->{'foo'}->{'bar'}->{'0'})) {  ?>2<?php  }  ?>
  <div>3</div>
 
 }}}

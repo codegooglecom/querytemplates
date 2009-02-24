@@ -7,7 +7,7 @@
 
 
 === Description ===
-Replaces selected tag with PHP "if" statement checking if $var evaluates  to true. $var must be an object available inside template's scope.
+Replaces selected tag with PHP "if" statement checking if $var evaluates  to TRUE. $var must be available inside template's scope.
 
 
 $var is passed in JS object convention (dot separated).
@@ -19,23 +19,56 @@ Method doesn't change selected elements stack. Returned is source element,  deta
 Notice-safe.
 
 
-Example
+== Example ==
+
+
+=== Markup ===
 {{{
- $template['.if-var']->tagToIfVar('foo.bar');
+ <div>1</div>
+ <div>2</div>
+ <div>3</div>
 
 }}}
-Source
+=== Data ===
 {{{
- <div class='if-var'><node1/></div>
+ $data = array(
+   'foo' => array(
+       'bar' => array(true)
+   )
+ );
 
 }}}
-Result
+=== `QueryTemplates` formula ===
 {{{
- <?php
- if ($foo->bar) {
- ?><node1/><?php
- }
- ?>
+ $template['div:eq(1)']->tagToIfVar('data.foo.bar.0');
+
+}}}
+=== Template ===
+{{{
+ <div>1</div>
+ <?php  if ((isset($data['foo']['bar']['0']) && $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && $data->{'foo'}->{'bar'}->{'0'})) {  ?>2<?php  }  ?>
+ <div>3</div>
+
+}}}
+=== Template tree before ===
+{{{
+ div
+  - Text:1
+ div
+  - Text:2
+ div
+  - Text:3
+
+}}}
+=== Template tree after ===
+{{{
+ div
+  - Text:1
+ PHP
+ Text:2
+ PHP
+ div
+  - Text:3
 
 }}}
 ----

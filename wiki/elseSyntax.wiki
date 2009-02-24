@@ -8,6 +8,7 @@
  * [elseIfVarMethod elseIfVar]
  * [elsePHPMethod elsePHP]
  * [elseStatementMethod elseStatement]
+ * [tagToElseIfNotVarMethod tagToElseIfNotVar]
  * [tagToElseIfPHPMethod tagToElseIfPHP]
  * [tagToElseIfVarMethod tagToElseIfVar]
  * [tagToElsePHPMethod tagToElsePHP]

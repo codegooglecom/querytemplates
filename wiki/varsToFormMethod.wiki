@@ -86,36 +86,36 @@ Inputs are selected according to $selectorPattern, where %k represents  variable
   - input[name="array[array-example]"]
   - textarea[name="textarea-example"]
   - select[name="select-example"]
-  -  - option
-  - input[name="radio-example"]
-  - input[name="checkbox-example"]
+  -  - option[selected][value="first"]
+  - input[name="radio-example"][value="foo"]
+  - input[name="checkbox-example"][value="foo"]
 
 }}}
 === Template tree after ===
 {{{
  form
-  - input[name="input-example"]
-  - input[name="array[array-example]"]
+  - input[name="input-example"][value=PHP]
+  - input[name="array[array-example]"][value=PHP]
   - textarea[name="textarea-example"]
   -  - PHP
   - select[name="select-example"]
   -  - PHP
-  -  - option
+  -  - option[selected][value="first"]
   -  - PHP
   -  - PHP
-  -  - option
+  -  - option[value="first"]
   -  - PHP
   - PHP
-  - input[name="radio-example"]
+  - input[name="radio-example"][checked][value="foo"]
   - PHP
   - PHP
-  - input[name="radio-example"]
+  - input[name="radio-example"][value="foo"]
   - PHP
   - PHP
-  - input[name="checkbox-example"]
+  - input[name="checkbox-example"][checked][value="foo"]
   - PHP
   - PHP
-  - input[name="checkbox-example"]
+  - input[name="checkbox-example"][value="foo"]
   - PHP
 
 }}}

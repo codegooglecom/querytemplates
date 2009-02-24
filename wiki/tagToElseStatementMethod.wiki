@@ -11,23 +11,56 @@ Replaces selected tag with PHP "else" statement.
 Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.
 
 
-Example
+== Example ==
+
+
+=== Markup ===
 {{{
- $template['.else']->tagToElsePHP();
+ <div>1</div>
+ <div>2</div>
+ <div>3</div>
 
 }}}
-Source
+=== Data ===
 {{{
- <div class='else'><node1/></div>
+ $data = array(
+   'foo' => array(
+       'bar' => array(true)
+   )
+ );
 
 }}}
-Result
+=== `QueryTemplates` formula ===
 {{{
- <?php
- else {
- ?><node1/><?php
- }
- ?>
+ $template['div:eq(1)']->tagToElseStatement();
+
+}}}
+=== Template ===
+{{{
+ <div>1</div>
+ <?php  else {  ?>2<?php  }  ?>
+ <div>3</div>
+
+}}}
+=== Template tree before ===
+{{{
+ div
+  - Text:1
+ div
+  - Text:2
+ div
+  - Text:3
+
+}}}
+=== Template tree after ===
+{{{
+ div
+  - Text:1
+ PHP
+ Text:2
+ PHP
+ div
+  - Text:3
 
 }}}
 ----
