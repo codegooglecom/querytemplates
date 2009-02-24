@@ -49,6 +49,17 @@ Method doesn't change selected elements stack.
  else if (isset($foo->{'1'})) print $foo->{'1'};  ?><node2></node2></node1>
 
 }}}
+=== Template tree ===
+{{{
+ node1
+  - PHP
+  - node2
+ node2
+ node1
+  - PHP
+  - node2
+
+}}}
 ----
 
 == See also ==

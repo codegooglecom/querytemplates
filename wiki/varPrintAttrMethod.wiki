@@ -10,6 +10,38 @@
 
 === Description ===
 Prints variable $varName as attribute $attr of matched elements.
+
+
+== Example ==
+
+
+=== Markup ===
+{{{
+ <div>
+     <p>FOO</p>
+ </div>
+
+}}}
+=== Formula ===
+{{{
+ $template['p']->varPrintAttr('rel', 'name.key');
+
+}}}
+=== Template ===
+{{{
+ <div>
+     <p name.key="<?php  if (isset($name['key'])) print $name['key'];
+ else if (isset($name->{'key'})) print $name->{'key'};  ?>">FOO</p>
+ </div>
+
+}}}
+=== Template tree ===
+{{{
+ div
+  - p
+  -  - Text:FOO
+
+}}}
 ----
 
 

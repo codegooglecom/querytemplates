@@ -8,6 +8,39 @@
 
 === Description ===
 Prints variable $varName on beggining of matched elements.
+
+
+== Example ==
+
+
+=== Markup ===
+{{{
+ <div>
+     <p>FOO</p>
+ </div>
+
+}}}
+=== Formula ===
+{{{
+ $template['p']->varPrintPrepend('name.key');
+
+}}}
+=== Template ===
+{{{
+ <div>
+     <p><?php  if (isset($name['key'])) print $name['key'];
+ else if (isset($name->{'key'})) print $name->{'key'};  ?>FOO</p>
+ </div>
+
+}}}
+=== Template tree ===
+{{{
+ div
+  - p
+  -  - PHP
+  -  - Text:FOO
+
+}}}
 ----
 
 

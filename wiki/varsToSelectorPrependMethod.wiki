@@ -47,6 +47,16 @@ Method doesn't change selected elements stack.
  else if (isset($foo->{'field2'})) print $foo->{'field2'};  ?>lorem ipsum</p>
 
 }}}
+=== Template tree ===
+{{{
+ p.field1
+  - PHP
+  - Text:lorem ipsum
+ p.field2
+  - PHP
+  - Text:lorem ipsum
+
+}}}
 ----
 
 == See also ==

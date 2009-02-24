@@ -8,6 +8,39 @@
 
 === Description ===
 Prints variable $varName before matched elements.
+
+
+== Example ==
+
+
+=== Markup ===
+{{{
+ <div>
+     <p>FOO</p>
+ </div>
+
+}}}
+=== Formula ===
+{{{
+ $template['p']->varPrintBefore('name.key');
+
+}}}
+=== Template ===
+{{{
+ <div>
+     <?php  if (isset($name['key'])) print $name['key'];
+ else if (isset($name->{'key'})) print $name->{'key'};  ?><p>FOO</p>
+ </div>
+
+}}}
+=== Template tree ===
+{{{
+ div
+  - PHP
+  - p
+  -  - Text:FOO
+
+}}}
 ----
 
 

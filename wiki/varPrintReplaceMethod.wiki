@@ -8,6 +8,34 @@
 
 === Description ===
 Prints variable $varName replacing matched elements.
+
+
+== Example ==
+
+
+=== Markup ===
+{{{
+ <div>
+     <p>FOO</p>
+ </div>
+
+}}}
+=== Formula ===
+{{{
+ $template['p']->varPrintReplace('name.key');
+
+}}}
+=== Template ===
+{{{
+ <div>
+     <?php  if (isset($name['key'])) print $name['key'];
+ else if (isset($name->{'key'})) print $name->{'key'};  ?>
+ </div>
+
+}}}
+=== Template tree ===
+{{{
+}}}
 ----
 
 

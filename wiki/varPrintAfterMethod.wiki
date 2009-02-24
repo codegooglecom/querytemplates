@@ -8,6 +8,40 @@
 
 === Description ===
 Prints variable $varName after matched elements.
+
+
+== Example ==
+
+
+=== Markup ===
+{{{
+ <div>
+     <p>FOO</p>
+ </div>
+
+}}}
+=== Formula ===
+{{{
+ $template['p']->varPrintAfter('name.key');
+
+}}}
+=== Template ===
+{{{
+ <div>
+     <p>FOO</p>
+ <?php  if (isset($name['key'])) print $name['key'];
+ else if (isset($name->{'key'})) print $name->{'key'};  ?>
+ </div>
+
+}}}
+=== Template tree ===
+{{{
+ div
+  - p
+  -  - Text:FOO
+  - PHP
+
+}}}
 ----
 
 
