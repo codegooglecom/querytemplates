@@ -6,7 +6,7 @@
  * [codeToSyntax codeTo]
  * [ToStackSyntax ToStack]
  * [ToSelectorSyntax ToSelector]
- * [loopSyntax loop]
+ * [loopSyntax ToLoop]
  * [ifSyntax if]
  * [elseSyntax else]
  * [ToFormSyntax ToForm]
