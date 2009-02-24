@@ -46,6 +46,12 @@ Method doesn't change selected elements stack.
  <?php  foreach(array(1, 2, 3) as $i) print $i  ?>
 
 }}}
+=== Template tree ===
+{{{
+ PHP
+ PHP
+
+}}}
 ----
 
 == See also ==

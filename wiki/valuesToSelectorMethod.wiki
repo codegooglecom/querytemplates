@@ -3,44 +3,69 @@
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorMethod valuesToSelector]
 === Parameters ===
  * *$data* _Array|Object_
-  Associative array or Object containing markup.
+  Associative array or Object containing markup, text or instance of Callback.
  * *$selectorPattern* _String_ = `'.%k'`
   Defines pattern matching target nodes. %k represents key.  Defaults to ".%k", which matches nodes with class name equivalent to  data source key.  For example, to restrict match to nodes with additional class "foo" change  $selectorPattern to ".foo.%k"
  * *$skipFields* _Array_ = `null`
-  Array of keys from $varValue which should be skipped.
- * *$fieldCallback*  = `null`
-
+  Array of fields from $data which should be skipped.
+ * *$fieldCallback* _Callback|string_ = `null`
+  Callback triggered after every insertion. Three parameters are passed to  this callback: 
+   * phpQueryObject $node
+   * string $field
+   * string|array $target
 
 
 === Description ===
-Injects markup from $data's content (rows or attributes) into nodes  matched by selector.
+Injects markup from $data's content (rows or attributes) into nodes  matched by selector. Method uses actually matched elements as root for the  query.
 
 
-For replacing matched nodes with content use valuesToSelectorReplace().  For injecting values into forms use valuesToForm().
+Method doesn't change selected elements stack.
 
 
-Example
-{{{
- $values = array('field1' => '<foo/>', 'field2' => '<bar/>');
- $template['p']->valuesToSelector($values);
+== Example ==
 
-}}}
-Source
+
+=== Markup ===
 {{{
  <p class='field1'>lorem ipsum</p>
  <p class='field2'>lorem ipsum</p>
 
 }}}
-Result
+=== Data ===
 {{{
- <p class='field1'><foo/></p>
- <p class='field2'><bar/></p>
+ $values = array('field1' => '<foo/>', 'field2' => '<bar/>');
+
+}}}
+=== `QueryTemplates` formula ===
+{{{
+ $template->valuesToSelector($values);
+
+}}}
+=== Template ===
+{{{
+ <p class="field1"><foo></foo></p> <p class="field2"><bar></bar></p>
+
+}}}
+=== Template tree before ===
+{{{
+ p.field1
+  - Text:lorem ipsum
+ p.field2
+  - Text:lorem ipsum
+
+}}}
+=== Template tree after ===
+{{{
+ p.field1
+  - foo
+ p.field2
+  - bar
 
 }}}
 ----
 
 == See also ==
- * [valuesToSelectorReplaceMethod valuesToSelectorReplace]
+ * [valuesToStackMethod valuesToStack]
  * [valuesToFormMethod valuesToForm]
 
 

@@ -2,6 +2,8 @@
 = `codeToSelectorAttr` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorAttrMethod codeToSelectorAttr]
 === Parameters ===
+ * *$attr* _String_
+  Target attribute name.
  * *$codeArray* _String_
   Array of raw code, where key is the field.
  * *$selectorPattern* _String_ = `'.%k'`
@@ -13,8 +15,6 @@
    * phpQueryObject $node
    * string $field
    * string|array $target
- * *$attr* 
-
 
 
 === Description ===
@@ -49,6 +49,14 @@ Method doesn't change selected elements stack.
 {{{
  <?php  print "abba";  ?><p class="field1">lorem ipsum</p>
  <?php  foreach(array(1, 2, 3) as $i) print $i  ?><p class="field2">lorem ipsum</p>
+
+}}}
+=== Template tree ===
+{{{
+ p.field1
+ - Text:lorem ipsum
+ p.field2
+  - Text:lorem ipsum
 
 }}}
 ----

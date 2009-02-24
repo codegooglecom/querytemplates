@@ -9,7 +9,7 @@
 
 
 === Description ===
-Wraps selected tag with PHP "else if" statement checking if $var evaluates  to true. $var must be an object available inside template's scope.
+Wraps selected tag with PHP "else if" statement checking if $var evaluates  to true. $var must be available inside template's scope.
 
 
 $var is passed in JS object convention (dot separated).
@@ -24,23 +24,58 @@ Method doesn't change selected elements stack. Returned is source element.
 Notice-safe.
 
 
-Example
+== Example ==
+
+
+=== Markup ===
 {{{
- $template['node1']->elseIfVar('foo.bar.1');
+ <div>1</div>
+ <div>2</div>
+ <div>3</div>
 
 }}}
-Source
+=== Data ===
 {{{
- <node1/>
+ $data = array(
+   'foo' => array(
+       'bar' => array(true)
+   )
+ );
 
 }}}
-Result
+=== `QueryTemplates` formula ===
 {{{
- <?php
- else if ($foo->bar->{1}) {
- ?>
- <node/>
- <?php } ?>
+ $template['div:eq(1)']->elseIfVar('data.foo.bar.0');
+
+}}}
+=== Template ===
+{{{
+ <div>1</div>
+ <?php  else if ((isset($data['foo']['bar']['0']) && $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && $data->{'foo'}->{'bar'}->{'0'})) {  ?><div>2</div>
+ <?php  }  ?>
+ <div>3</div>
+
+}}}
+=== Template tree before ===
+{{{
+ div
+  - Text:1
+ div
+  - Text:2
+ div
+  - Text:3
+
+}}}
+=== Template tree after ===
+{{{
+ div
+  - Text:1
+ PHP
+ div
+  - Text:2
+ PHP
+ div
+  - Text:3
 
 }}}
 ----

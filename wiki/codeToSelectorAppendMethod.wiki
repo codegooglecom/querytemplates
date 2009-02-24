@@ -2,6 +2,8 @@
 = `codeToSelectorAppend` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorAppendMethod codeToSelectorAppend]
 === Parameters ===
+ * *$attr* _String_
+  Target attribute name.
  * *$codeArray* _String_
   Array of raw code, where key is the field.
  * *$selectorPattern* _String_ = `'.%k'`
@@ -44,6 +46,16 @@ Method doesn't change selected elements stack.
 {{{
  <?php  print "abba";  ?>
  <?php  foreach(array(1, 2, 3) as $i) print $i  ?>
+
+}}}
+=== Template tree ===
+{{{
+ p.field1
+  - Text:lorem ipsum
+  - PHP
+ p.field2
+  - Text:lorem ipsum
+  - PHP
 
 }}}
 ----

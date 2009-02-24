@@ -5,31 +5,7 @@
 
 
 === Description ===
-Replaces selected tag with PHP "else" statement.
 
-
-Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.
-
-
-Example
-{{{
- $template['.else']->tagToElsePHP();
-
-}}}
-Source
-{{{
- <div class='else'><node1/></div>
-
-}}}
-Result
-{{{
- <?php
- else {
- ?><node1/><?php
- }
- ?>
-
-}}}
 ----
 
 

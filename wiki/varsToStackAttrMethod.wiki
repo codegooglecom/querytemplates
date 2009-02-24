@@ -2,6 +2,8 @@
 = `varsToStackAttr` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToStackAttrMethod varsToStackAttr]
 === Parameters ===
+ * *$attr* _String_
+  Target attribute name.
  * *$varName* _String_
   Variable avaible in scope of type Array or Object.  $varName should NOT start with $.
  * *$varFields* _Array|Object_
@@ -13,8 +15,6 @@
    * phpQueryObject $node
    * string $field
    * string|array $target
- * *$attr* 
-
 
 
 === Description ===

@@ -2,6 +2,8 @@
 = `codeToStackAttr` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToStackAttrMethod codeToStackAttr]
 === Parameters ===
+ * *$attr* _String_
+  Target attribute name.
  * *$codeArray* _String_
   Array of raw code, where key is the field.
  * *$skipFields* _Array_ = `null`
@@ -11,8 +13,6 @@
    * phpQueryObject $node
    * string $field
    * string|array $target
- * *$attr* 
-
  * *$selectorPattern*  = `'.%k'`
 
 
@@ -50,6 +50,15 @@ Method doesn't change selected elements stack.
 === Template ===
 {{{
  <node1 rel='<?php  print "abba";  ?>'><node2></node2></node1><node2></node2><node1 rel="<?php  foreach(array(1, 2, 3) as $i) print $i  ?>"><node2></node2></node1>
+
+}}}
+=== Template tree ===
+{{{
+ node1
+  - node2
+ node2
+ node1
+  - node2
 
 }}}
 ----

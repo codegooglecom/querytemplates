@@ -27,6 +27,7 @@
  * [varsToStackPrependMethod varsToStackPrepend]
  * [varsToStackReplaceMethod varsToStackReplace]
 
+
 == Example ==
 === Markup ===
 {{{
@@ -36,7 +37,7 @@
  <node2></node2>
  <node1>
    <node2></node2>
- </node1>	
+ </node1>
 }}}
 === Data ===
 {{{

@@ -2,7 +2,7 @@
 = `ToSelector` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ToSelectorSyntax ToSelector]
 
-ToSelector methods injects data (dynamic / static / executable) into nodes matched by *dynamic selector pattern*, based on provided *fields list*.
+[ToSelectorSyntax ToSelector] methods injects data (dynamic / static / executable) into nodes matched by *dynamic selector pattern*, based on provided *fields list*.
 
 == Methods ==
  * [codeToSelectorMethod codeToSelector]
@@ -27,12 +27,12 @@ ToSelector methods injects data (dynamic / static / executable) into nodes match
  * [varsToSelectorPrependMethod varsToSelectorPrepend]
  * [varsToSelectorReplaceMethod varsToSelectorReplace]
 
+
 == Example ==
 === Markup ===
 {{{
  <p class='field1'>lorem ipsum</p>
  <p class='field2'>lorem ipsum</p>
-
 }}}
 === Data ===
 {{{
@@ -41,7 +41,6 @@ ToSelector methods injects data (dynamic / static / executable) into nodes match
 === `QueryTemplates` Formula ===
 {{{
  $template->varsToSelector('foo', $foo);
-
 }}}
 === Template ===
 {{{
@@ -49,7 +48,6 @@ ToSelector methods injects data (dynamic / static / executable) into nodes match
  else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?></p>
  <p class="field2"><?php  if (isset($foo['field2'])) print $foo['field2'];
  else if (isset($foo->{'field2'})) print $foo->{'field2'};  ?></p>
-
 }}}
 === Template tree before ===
 {{{
@@ -64,5 +62,4 @@ ToSelector methods injects data (dynamic / static / executable) into nodes match
   - PHP
  p.field2
   - PHP
-
 }}}

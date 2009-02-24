@@ -50,6 +50,17 @@ Method doesn't change selected elements stack.
  <node1><node2></node2></node1><?php  print "abba";  ?><node2></node2><node1><node2></node2></node1><?php  foreach(array(1, 2, 3) as $i) print $i  ?>
 
 }}}
+=== Template tree ===
+{{{
+ PHP
+ node1
+  - node2
+ node2
+ PHP
+ node1
+  - node2
+
+}}}
 ----
 
 == See also ==

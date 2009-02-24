@@ -46,6 +46,16 @@ Method doesn't change selected elements stack.
  <?php  foreach(array(1, 2, 3) as $i) print $i  ?><p class="field2">lorem ipsum</p>
 
 }}}
+=== Template tree ===
+{{{
+ PHP
+ p.field1
+  - Text:lorem ipsum
+ PHP
+ p.field2
+  - Text:lorem ipsum
+
+}}}
 ----
 
 == See also ==

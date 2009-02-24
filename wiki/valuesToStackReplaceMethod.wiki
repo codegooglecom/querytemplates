@@ -2,46 +2,71 @@
 = `valuesToStackReplace` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToStackReplaceMethod valuesToStackReplace]
 === Parameters ===
- * *$markup* _Array|String|phpQueryObject_
-
- * *$values* 
-
+ * *$data* _Array|Object_
+  Associative array or Object containing markup, text or instance of Callback.
+ * *$fieldCallback* _Callback|string_ = `null`
+  Callback triggered after every insertion. Three parameters are passed to  this callback: 
+   * phpQueryObject $node
+   * string $field
+   * string|array $target
  * *$skipFields*  = `null`
-
- * *$fieldCallback*  = `null`
 
 
 
 === Description ===
-Replaces nodes from stack with $markup using replaceWith() insted of markup().
+Injects markup from $data's content (rows or attributes) inside actually  selected nodes.
 
 
-Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.
+Method doesn't change selected nodes stack.
 
 
-Example
-{{{
- $markups = array('<foo/>', '<bar/>');
- $template['node1']->markupToStackOuter($markups);
+== Example ==
 
-}}}
-Source
+
+=== Markup ===
 {{{
  <node1>
-   <node2></node2>
+     <node2></node2>
  </node1>
  <node1>
-   <node2></node2>
+     <node2></node2>
  </node1>
 
 }}}
-Result
+=== Data ===
 {{{
- <foo/>
- <bar/>
+ $values = array('<foo/>', '<bar/>');
+
+}}}
+=== `QueryTemplates` formula ===
+{{{
+ $template['node1']->valuesToStackReplace($values);
+
+}}}
+=== Template ===
+{{{
+ <foo></foo><bar></bar>
+
+}}}
+=== Template tree before ===
+{{{
+ node1
+  - node2
+ node1
+  - node2
+
+}}}
+=== Template tree after ===
+{{{
+ foo
+ bar
 
 }}}
 ----
+
+== See also ==
+ * [valuesToSelectorMethod valuesToSelector]
+ * [valuesToFormMethod valuesToForm]
 
 
 === Comments allowed ===
