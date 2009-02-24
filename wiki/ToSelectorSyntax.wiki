@@ -2,6 +2,8 @@
 = `ToSelector` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ToSelectorSyntax ToSelector]
 
+ToSelector methods injects data (dynamic / static / executable) into nodes matched by *dynamic selector pattern*, based on provided *fields list*.
+
 == Methods ==
  * [codeToSelectorMethod codeToSelector]
  * [codeToSelectorAfterMethod codeToSelectorAfter]
@@ -24,3 +26,43 @@
  * [varsToSelectorBeforeMethod varsToSelectorBefore]
  * [varsToSelectorPrependMethod varsToSelectorPrepend]
  * [varsToSelectorReplaceMethod varsToSelectorReplace]
+
+== Example ==
+=== Markup ===
+{{{
+ <p class='field1'>lorem ipsum</p>
+ <p class='field2'>lorem ipsum</p>
+
+}}}
+=== Data ===
+{{{
+ $foo = array('field1' => 'foo', 'field2' => 'bar');
+}}}
+=== `QueryTemplates` Formula ===
+{{{
+ $template->varsToSelector('foo', $foo);
+
+}}}
+=== Template ===
+{{{
+ <p class="field1"><?php  if (isset($foo['field1'])) print $foo['field1'];
+ else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?></p>
+ <p class="field2"><?php  if (isset($foo['field2'])) print $foo['field2'];
+ else if (isset($foo->{'field2'})) print $foo->{'field2'};  ?></p>
+
+}}}
+=== Template tree before ===
+{{{
+ p.field1
+  - Text:lorem ipsum
+ p.field2
+  - Text:lorem ipsum
+}}}
+=== Template tree after ===
+{{{
+ p.field1
+  - PHP
+ p.field2
+  - PHP
+
+}}}
