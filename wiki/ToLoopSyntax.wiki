@@ -4,8 +4,8 @@
 
 == Methods ==
  * [valuesToLoopMethodPHP valuesToLoop]
- * [valuesToLoopOneMethodPHP valuesToLoopOne]
+ * [valuesToLoopFirstMethodPHP valuesToLoopFirst]
  * [valuesToLoopSeparateMethodPHP valuesToLoopSeparate]
  * [varsToLoopMethodPHP varsToLoop]
- * [varsToLoopOneMethodPHP varsToLoopOne]
+ * [varsToLoopFirstMethodPHP varsToLoopFirst]
  * [varsToLoopSeparateMethodPHP varsToLoopSeparate]

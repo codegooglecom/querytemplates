@@ -5,7 +5,7 @@
 == Methods ==
  * [valuesToFormMethodPHP valuesToForm]
  * [valuesToLoopMethodPHP valuesToLoop]
- * [valuesToLoopOneMethodPHP valuesToLoopOne]
+ * [valuesToLoopFirstMethodPHP valuesToLoopFirst]
  * [valuesToLoopSeparateMethodPHP valuesToLoopSeparate]
  * [valuesToSelectorMethodPHP valuesToSelector]
  * [valuesToSelectorAfterMethodPHP valuesToSelectorAfter]

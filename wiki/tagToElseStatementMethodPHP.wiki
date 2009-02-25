@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `tagToElseStatement` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [tagToElseStatementMethod tagToElseStatement]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [tagToElseStatementMethodPHP tagToElseStatement]
 === Parameters ===
 
 
@@ -8,7 +8,7 @@
 Replaces selected tag with PHP "else" statement.
 
 
-Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.
+Method doesn't change selected nodes stack.  detached from it's parent.
 
 
 == Example ==

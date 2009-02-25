@@ -1,8 +1,8 @@
 #sidebar SyntaxSidebar
 = `valuesToForm` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToFormMethod valuesToForm]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToFormMethodPHP valuesToForm]
 === Parameters ===
- * *$data* _Array|Object_
+ * *$values* _Array|Object_
 
  * *$selectorPattern* _String_ = `"[name*='%k']"`
   Defines pattern matching form fields.  Defaults to "`[name*='%k']`", which matches fields containing  $data's key in their names. For example, to match only names starting with  "foo`[bar]`" change $selectorPattern to "`[name^='foo[bar]`']`[name*='%k']`"

@@ -1,37 +1,120 @@
 #sidebar SyntaxSidebar
 = `varsToLoop` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToLoopMethod varsToLoop]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToLoopMethodPHP varsToLoop]
 === Parameters ===
  * *$varName* _String_
   Variable which will be looped. Must contain $ at the beggining.
- * *$asVarName* _String_
+ * *$rowName* _String_
   Name of variable being result of iteration.
- * *$keyName* _String_ = `null`
-  Optional. Use it when you want to have $varName's key available.
+ * *$indexName* _String_ = `null`
+  Optional. Use it when you want to have $varName's key available in the scope.
 
 
 === Description ===
-Wrap selected elements with PHP foreach loop iterating $varName.
+Wraps selected elements with executable code iterating $varName as $rowName.
 
 
-Method doesn't change selected elements stack. Returned is source element.
+Method doesn't change selected nodes stack.
 
 
-Example
+== Example ==
+
+
+=== Markup ===
 {{{
- $pq['node1']->loop('foo', 'bar', 'i');
+ <ul>
+   <li class='row'>
+     <span class='name'></span>
+     <ul class='tags'>
+       <li class='tag'>
+         <span class='tag'></span>
+       </li>
+     </ul>
+   </li>
+ </ul>
 
 }}}
-Source  <node1/>
-
-
-Result
+=== Data ===
 {{{
- <?php
- foreach($foo as $i => $bar) {
- ?><node1/><?php
- }
- ?>
+ $data = array(
+   array(
+     'User' => array('name' => 'foo'),
+     'Tags' => array(
+       array('tag' => 'php'),
+       array('tag' => 'js'),
+     ),
+   ),
+   array(
+     'User' => array('name' => 'bar'),
+     'Tags' => array(
+       array('tag' => 'perl'),
+     ),
+   ),
+   array(
+     'User' => array('name' => 'fooBar'),
+     'Tags' => array(
+       array('tag' => 'php'),
+       array('tag' => 'js'),
+       array('tag' => 'perl'),
+     ),
+   ),
+ );
+
+}}}
+=== `QueryTemplates` formula ===
+{{{
+ $template->
+   find('> ul > li')->
+     varsToLoop('data', 'row')->
+     varsToSelector('row', array('name'), 'span.%k')->
+     find('> ul > li')->
+       varsToLoop('row.Tags', 'tag')->
+       varsToSelector('tag', array('tag'))
+ ;
+
+}}}
+=== Template ===
+{{{
+ <ul>
+ <?php  if (isset($data) && (is_array($data) || is_object($data))) { foreach($data as $row):  ?><li class="row">
+     <span class="name"><?php  if (isset($row['name'])) print $row['name'];
+ else if (isset($row->{'name'})) print $row->{'name'};  ?></span>
+     <ul class="tags">
+ <?php  if (isset($row['Tags'])) $__8daca = $row['Tags']; else if (isset($row->{'Tags'})) $__8daca = $row->{'Tags'}; if (isset($__8daca) && (is_array($__8daca) || is_object($__8daca))) { foreach($__8daca as $tag):  ?><li class="tag">
+         <span class="tag"><?php  if (isset($tag['tag'])) print $tag['tag'];
+ else if (isset($tag->{'tag'})) print $tag->{'tag'};  ?></span>
+       </li>
+ <?php  endforeach; }  ?>
+     </ul>
+ </li>
+ <?php  endforeach; }  ?>
+ </ul>
+
+}}}
+=== Template tree before ===
+{{{
+ ul
+  - li.row
+  -  - span.name
+  -  - ul.tags
+  -  -  - li.tag
+  -  -  -  - span.tag
+
+}}}
+=== Template tree after ===
+{{{
+ ul
+  - PHP
+  - li.row
+  -  - span.name
+  -  -  - PHP
+  -  - ul.tags
+  -  -  - PHP
+  -  -  - li.tag
+  -  -  -  - span.tag
+  -  -  -  -  - PHP
+  -  -  - PHP
+  - PHP
 
 }}}
 ----

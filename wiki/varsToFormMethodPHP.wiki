@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `varsToForm` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToFormMethod varsToForm]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToFormMethodPHP varsToForm]
 === Parameters ===
  * *$varName* _String_
   Variable avaible in scope of type Array or Object.  $varName should NOT start with $.

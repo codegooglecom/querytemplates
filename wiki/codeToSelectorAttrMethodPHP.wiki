@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `codeToSelectorAttr` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorAttrMethod codeToSelectorAttr]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorAttrMethodPHP codeToSelectorAttr]
 === Parameters ===
  * *$attr* _String_
   Target attribute name.
@@ -62,7 +62,7 @@ Method doesn't change selected elements stack.
 ----
 
 == See also ==
- * [varsToStackMethod varsToStack]
+ * [varsToStackMethodPHP varsToStack]
 
 
 === Comments allowed ===

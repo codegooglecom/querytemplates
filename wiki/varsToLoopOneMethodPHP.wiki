@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `varsToLoopOne` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToLoopOneMethod varsToLoopOne]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToLoopOneMethodPHP varsToLoopOne]
 === Parameters ===
  * *$varName* _String_
   Variable which will be looped. Must contain $ at the beggining.
@@ -46,7 +46,7 @@ Proposed names:
 ----
 
 == See also ==
- * [loopMethod loop]
+ * [loopMethodPHP loop]
 
 
 === Comments allowed ===

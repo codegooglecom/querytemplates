@@ -5,7 +5,7 @@
 == Methods ==
  * [varsToFormMethodPHP varsToForm]
  * [varsToLoopMethodPHP varsToLoop]
- * [varsToLoopOneMethodPHP varsToLoopOne]
+ * [varsToLoopFirstMethodPHP varsToLoopFirst]
  * [varsToLoopSeparateMethodPHP varsToLoopSeparate]
  * [varsToSelectorMethodPHP varsToSelector]
  * [varsToSelectorAfterMethodPHP varsToSelectorAfter]

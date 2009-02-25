@@ -1,10 +1,10 @@
 #sidebar SyntaxSidebar
 = `valuesToStackAttr` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToStackAttrMethod valuesToStackAttr]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToStackAttrMethodPHP valuesToStackAttr]
 === Parameters ===
  * *$attr* _String_
   Target attribute name.
- * *$data* _Array|Object_
+ * *$values* _Array|Object_
   Associative array or Object containing markup, text or instance of Callback.
  * *$fieldCallback* _Callback|string_ = `null`
   Callback triggered after every insertion. Three parameters are passed to  this callback: 
@@ -69,8 +69,8 @@ Method doesn't change selected nodes stack.
 ----
 
 == See also ==
- * [valuesToSelectorMethod valuesToSelector]
- * [valuesToFormMethod valuesToForm]
+ * [valuesToSelectorMethodPHP valuesToSelector]
+ * [valuesToFormMethodPHP valuesToForm]
 
 
 === Comments allowed ===

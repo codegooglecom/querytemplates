@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `inputsFromValues` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [formFromSyntax formFrom] > [inputsFromValuesMethod inputsFromValues]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [formFromSyntax formFrom] > [inputsFromValuesMethodPHP inputsFromValues]
 === Parameters ===
  * *$data* _data_
 
@@ -18,20 +18,27 @@ If selected element isn't a FORM then find('form') is executed.
 Method doesn't change selected elements stack.
 
 
-Example
-{{{
- $data = array('field1' => 'foo', 'field2' => 'bar');
- $template->inputsFromValues($data);
+== Example ==
 
-}}}
-Source
+
+=== Markup ===
 {{{
  <form>
    <input name='was-here-before'>
  </form>
 
 }}}
-Result
+=== Data ===
+{{{
+ $data = array('field1' => 'foo', 'field2' => 'bar');
+
+}}}
+=== `QueryTemplates` formula ===
+{{{
+ $template->inputsFromValues($data);
+
+}}}
+=== Template ===
 {{{
  <form>
    <input name='field1' value='foo'>

@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `ifVar` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ifSyntax if] > [ifVarMethod ifVar]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ifSyntax if] > [ifVarMethodPHP ifVar]
 === Parameters ===
  * *$var* _string_
   Dot-separated object path, eg Object.property.inneProperty
@@ -18,7 +18,7 @@ $var is passed in JS object convention (dot separated).
 Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.
 
 
-Method doesn't change selected elements stack. Returned is source element.
+Method doesn't change selected nodes stack.
 
 
 Notice-safe.
@@ -81,7 +81,7 @@ Notice-safe.
 ----
 
 == See also ==
- * [elseStatementMethod elseStatement]
+ * [elseStatementMethodPHP elseStatement]
 
 
 === Comments allowed ===

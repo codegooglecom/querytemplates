@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
-= `valuesToLoopSeparate` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToLoopSeparateMethodPHP valuesToLoopSeparate]
+= `valuesToLoopFirst` =
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToLoopFirstMethodPHP valuesToLoopFirst]
 === Parameters ===
  * *$values* _Array|Object_
   Associative array or Object.
@@ -15,10 +15,10 @@
 Method loops provided $values on actually selected nodes. Each time new row  is inserted, provided callback is triggered with $dataRow, $node and $dataIndex.
 
 
-Acts as valuesToLoop(), but affects each selected element separately.
+Acts as valuesToLoop(), but loops only first node from stack. Rest is removed  from the DOM.
 
 
-Method doesn't change selected nodes stack.
+Method DOES change selected nodes stack. Returned is first node.
 ----
 
 == See also ==

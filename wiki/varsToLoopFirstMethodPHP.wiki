@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
-= `varsToLoopSeparate` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToLoopSeparateMethodPHP varsToLoopSeparate]
+= `varsToLoopFirst` =
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToLoopFirstMethodPHP varsToLoopFirst]
 === Parameters ===
  * *$varName* _String_
   Variable which will be looped. Must contain $ at the beggining.
@@ -18,10 +18,10 @@
 Wraps selected elements with executable code iterating $varName as $rowName.
 
 
-Acts as varsToLoop(), but affects each selected element separately.
+Acts as varsToLoop(), but loops only first node from stack. Rest is removed  from the DOM.
 
 
-Method doesn't change selected nodes stack.
+Method DOES change selected nodes stack. Returned is first node.
 ----
 
 == See also ==

@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `tagToIfPHP` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ifSyntax if] > [tagToIfPHPMethod tagToIfPHP]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ifSyntax if] > [tagToIfPHPMethodPHP tagToIfPHP]
 === Parameters ===
  * *$code* _string_
   Valid PHP condition code
@@ -10,7 +10,7 @@
 Replaces selected tag with PHP "if" statement containing $code as condition.
 
 
-Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.
+Method doesn't change selected nodes stack.  detached from it's parent.
 
 
 Example

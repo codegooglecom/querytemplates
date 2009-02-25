@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `valuesToLoopOne` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToLoopOneMethod valuesToLoopOne]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToLoopOneMethodPHP valuesToLoopOne]
 === Parameters ===
  * *$values* _values_
 

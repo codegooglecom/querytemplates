@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `tagToElseIfNotVar` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [tagToElseIfNotVarMethod tagToElseIfNotVar]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [tagToElseIfNotVarMethodPHP tagToElseIfNotVar]
 === Parameters ===
  * *$var* _string_
   Dot-separated object path, eg Object.property.inneProperty
@@ -13,7 +13,7 @@ Replaces selected tag with PHP "else if" statement checking if $var evaluates  t
 $var is passed in JS object convention (dot separated).
 
 
-Method doesn't change selected elements stack. Returned is source element,  detached from it's parent.
+Method doesn't change selected nodes stack.  detached from it's parent.
 
 
 Notice-safe.
@@ -74,7 +74,7 @@ Notice-safe.
 ----
 
 == See also ==
- * [ifVarMethod ifVar]
+ * [ifVarMethodPHP ifVar]
 
 
 === Comments allowed ===

@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `varsFromStack` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [FromStackSyntax FromStack] > [varsFromStackMethod varsFromStack]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [FromStackSyntax FromStack] > [varsFromStackMethodPHP varsFromStack]
 === Parameters ===
  * *$name* _String_
   New variable name.

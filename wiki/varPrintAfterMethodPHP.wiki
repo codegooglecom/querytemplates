@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `varPrintAfter` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varPrintSyntax varPrint] > [varPrintAfterMethod varPrintAfter]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varPrintSyntax varPrint] > [varPrintAfterMethodPHP varPrintAfter]
 === Parameters ===
  * *$varName* _String_
   Variable avaible in scope of type Array or Object.  $varName should NOT start with $.

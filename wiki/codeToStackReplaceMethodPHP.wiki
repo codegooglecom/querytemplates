@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `codeToStackReplace` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToStackReplaceMethod codeToStackReplace]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToStackReplaceMethodPHP codeToStackReplace]
 === Parameters ===
  * *$codeArray* _String_
   Array of raw code, where key is the field.
@@ -60,7 +60,7 @@ Method doesn't change selected elements stack.
 ----
 
 == See also ==
- * [codeToSelectorMethod codeToSelector]
+ * [codeToSelectorMethodPHP codeToSelector]
 
 
 === Comments allowed ===

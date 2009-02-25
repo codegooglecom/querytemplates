@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `elseStatement` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [elseStatementMethod elseStatement]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [elseSyntax else] > [elseStatementMethodPHP elseStatement]
 === Parameters ===
  * *$separate* _separate_ = `false`
 

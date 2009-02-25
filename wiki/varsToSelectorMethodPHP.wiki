@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `varsToSelector` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToSelectorMethod varsToSelector]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToSelectorMethodPHP varsToSelector]
 === Parameters ===
  * *$varName* _String_
   Variable avaible in scope of type Array or Object.  $varName should NOT start with $.
@@ -58,8 +58,8 @@ Method doesn't change selected elements stack.
 ----
 
 == See also ==
- * [varsToStackMethod varsToStack]
- * [varsToFormMethod varsToForm]
+ * [varsToStackMethodPHP varsToStack]
+ * [varsToFormMethodPHP varsToForm]
 
 
 === Comments allowed ===

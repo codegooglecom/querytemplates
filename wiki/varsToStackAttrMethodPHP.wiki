@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `varsToStackAttr` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToStackAttrMethod varsToStackAttr]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToStackAttrMethodPHP varsToStackAttr]
 === Parameters ===
  * *$attr* _String_
   Target attribute name.
@@ -63,8 +63,8 @@ Method doesn't change selected elements stack.
 ----
 
 == See also ==
- * [varsToSelectorMethod varsToSelector]
- * [varsToFormMethod varsToForm]
+ * [varsToSelectorMethodPHP varsToSelector]
+ * [varsToFormMethodPHP varsToForm]
 
 
 === Comments allowed ===

@@ -1,8 +1,8 @@
 #sidebar SyntaxSidebar
 = `valuesToSelectorReplace` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorReplaceMethod valuesToSelectorReplace]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToSelectorReplaceMethodPHP valuesToSelectorReplace]
 === Parameters ===
- * *$data* _Array|Object_
+ * *$values* _Array|Object_
   Associative array or Object containing markup, text or instance of Callback.
  * *$selectorPattern* _String_ = `'.%k'`
   Defines pattern matching target nodes. %k represents key.  Defaults to ".%k", which matches nodes with class name equivalent to  data source key.  For example, to restrict match to nodes with additional class "foo" change  $selectorPattern to ".foo.%k"
@@ -13,6 +13,8 @@
    * phpQueryObject $node
    * string $field
    * string|array $target
+ * *$data* 
+
 
 
 === Description ===
@@ -63,8 +65,8 @@ Method doesn't change selected elements stack.
 ----
 
 == See also ==
- * [valuesToStackMethod valuesToStack]
- * [valuesToFormMethod valuesToForm]
+ * [valuesToStackMethodPHP valuesToStack]
+ * [valuesToFormMethodPHP valuesToForm]
 
 
 === Comments allowed ===

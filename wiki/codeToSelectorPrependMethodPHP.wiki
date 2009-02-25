@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `codeToSelectorPrepend` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorPrependMethod codeToSelectorPrepend]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [codeToSyntax codeTo] > [codeToSelectorPrependMethodPHP codeToSelectorPrepend]
 === Parameters ===
  * *$codeArray* _String_
   Array of raw code, where key is the field.
@@ -62,7 +62,7 @@ Method doesn't change selected elements stack.
 ----
 
 == See also ==
- * [varsToStackMethod varsToStack]
+ * [varsToStackMethodPHP varsToStack]
 
 
 === Comments allowed ===

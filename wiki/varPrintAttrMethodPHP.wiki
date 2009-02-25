@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `varPrintAttr` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varPrintSyntax varPrint] > [varPrintAttrMethod varPrintAttr]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varPrintSyntax varPrint] > [varPrintAttrMethodPHP varPrintAttr]
 === Parameters ===
  * *$attr* _String_
   Target attribute name.
