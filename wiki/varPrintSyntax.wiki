@@ -3,10 +3,10 @@
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varPrintSyntax varPrint]
 
 == Methods ==
- * [varPrintMethod varPrint]
- * [varPrintAfterMethod varPrintAfter]
- * [varPrintAppendMethod varPrintAppend]
- * [varPrintAttrMethod varPrintAttr]
- * [varPrintBeforeMethod varPrintBefore]
- * [varPrintPrependMethod varPrintPrepend]
- * [varPrintReplaceMethod varPrintReplace]
+ * [varPrintMethodPHP varPrint]
+ * [varPrintAfterMethodPHP varPrintAfter]
+ * [varPrintAppendMethodPHP varPrintAppend]
+ * [varPrintAttrMethodPHP varPrintAttr]
+ * [varPrintBeforeMethodPHP varPrintBefore]
+ * [varPrintPrependMethodPHP varPrintPrepend]
+ * [varPrintReplaceMethodPHP varPrintReplace]

@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
-= `loop` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [loopSyntax loop] > [loopMethod loop]
+= `varsToLoop` =
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToLoopMethod varsToLoop]
 === Parameters ===
  * *$varName* _String_
   Variable which will be looped. Must contain $ at the beggining.

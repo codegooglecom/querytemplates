@@ -1,0 +1,63 @@
+#sidebar SyntaxSidebar
+= `valuesToLoop` =
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToLoopMethod valuesToLoop]
+=== Parameters ===
+ * *$values* _values_
+
+ * *$rowCallback* _rowCallback_
+
+
+
+=== Description ===
+== Example ==
+
+
+=== Template tree before ===
+{{{
+ ul
+  - li.row
+  -  - span.name
+  -  - ul.tags
+  -  -  - li.tag
+  -  -  -  - span.tag
+
+}}}
+=== Template tree after ===
+{{{
+ ul
+  - li.row
+  -  - span.name
+  -  -  - Text:foo
+  -  - ul.tags
+  -  -  - li.tag
+  -  -  -  - span.tag
+  -  -  -  -  - Text:php
+  -  -  - li.tag
+  -  -  -  - span.tag
+  -  -  -  -  - Text:js
+  - li.row
+  -  - span.name
+  -  -  - Text:bar
+  -  - ul.tags
+  -  -  - li.tag
+  -  -  -  - span.tag
+  -  -  -  -  - Text:perl
+  - li.row
+  -  - span.name
+  -  -  - Text:fooBar
+  -  - ul.tags
+  -  -  - li.tag
+  -  -  -  - span.tag
+  -  -  -  -  - Text:php
+  -  -  - li.tag
+  -  -  -  - span.tag
+  -  -  -  -  - Text:js
+  -  -  - li.tag
+  -  -  -  - span.tag
+  -  -  -  -  - Text:perl
+
+}}}
+----
+
+
+=== Comments allowed ===

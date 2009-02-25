@@ -3,9 +3,9 @@
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ifSyntax if]
 
 == Methods ==
- * [ifNotVarMethod ifNotVar]
- * [ifPHPMethod ifPHP]
- * [ifVarMethod ifVar]
- * [tagToIfNotVarMethod tagToIfNotVar]
- * [tagToIfPHPMethod tagToIfPHP]
- * [tagToIfVarMethod tagToIfVar]
+ * [ifNotVarMethodPHP ifNotVar]
+ * [ifPHPMethodPHP ifPHP]
+ * [ifVarMethodPHP ifVar]
+ * [tagToIfNotVarMethodPHP tagToIfNotVar]
+ * [tagToIfPHPMethodPHP tagToIfPHP]
+ * [tagToIfVarMethodPHP tagToIfVar]

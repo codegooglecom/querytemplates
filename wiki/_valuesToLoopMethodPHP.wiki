@@ -1,0 +1,18 @@
+#sidebar SyntaxSidebar
+= `_valuesToLoop` =
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ToLoopSyntax ToLoop] > [_valuesToLoopMethod _valuesToLoop]
+=== Parameters ===
+ * *$pq* 
+
+ * *$values* 
+
+ * *$rowCallback* 
+
+
+
+=== Description ===
+
+----
+
+
+=== Comments allowed ===

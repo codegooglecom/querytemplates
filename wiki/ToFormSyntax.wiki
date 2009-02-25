@@ -3,5 +3,5 @@
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ToFormSyntax ToForm]
 
 == Methods ==
- * [valuesToFormMethod valuesToForm]
- * [varsToFormMethod varsToForm]
+ * [valuesToFormMethodPHP valuesToForm]
+ * [varsToFormMethodPHP varsToForm]

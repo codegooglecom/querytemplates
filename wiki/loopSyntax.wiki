@@ -1,8 +1,0 @@
-#sidebar SyntaxSidebar
-= `loop` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [loopSyntax loop]
-
-== Methods ==
- * [loopMethod loop]
- * [loopOneMethod loopOne]
- * [loopSeparateMethod loopSeparate]

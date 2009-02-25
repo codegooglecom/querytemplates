@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
-= `loopSeparate` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [loopSyntax loop] > [loopSeparateMethod loopSeparate]
+= `varsToLoopSeparate` =
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [varsToSyntax varsTo] > [varsToLoopSeparateMethod varsToLoopSeparate]
 === Parameters ===
  * *$varName* _varName_
 
