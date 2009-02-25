@@ -10,15 +10,15 @@
   Array of fields from $data which should be skipped.
  * *$fieldCallback* _Callback|string_ = `null`
   Callback triggered after every insertion. Three parameters are passed to  this callback: 
-   * phpQueryObject $node
-   * string $field
-   * string|array $target
+   * $node phpQueryObject
+   * $field String
+   * $target String|array
  * *$data* 
 
 
 
 === Description ===
-Injects markup from $data's content (rows or attributes) at the beggining of  nodes matched by selector. Method uses actually matched elements as root  for the query.
+Injects markup from $data's content (rows or attributes) at the beggining of  nodes matched by selector. Method uses actually matched nodes as root  for the query.
 
 
 Method doesn't change selected elements stack.
@@ -35,12 +35,17 @@ Method doesn't change selected elements stack.
 }}}
 === Data ===
 {{{
- $values = array('field1' => '<foo/>', 'field2' => '<bar/>');
+ $values = array(
+     'field1' => '<foo/>',
+     'field2' => '<bar/>'
+ );
 
 }}}
 === `QueryTemplates` formula ===
 {{{
- $template->valuesToSelectorPrepend($values);
+ $template->
+     valuesToSelectorPrepend($values)
+ ;
 
 }}}
 === Template ===

@@ -75,5 +75,8 @@ Result
 }}}
 ----
 
+== See also ==
+ * [varsToFormMethodPHP varsToForm]
+
 
 === Comments allowed ===

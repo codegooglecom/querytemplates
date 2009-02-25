@@ -10,9 +10,9 @@
   Array of keys from $varValue which should be skipped.
  * *$fieldCallback* _Callback|string_ = `null`
   Callback triggered after every insertion. Three parameters are passed to  this callback: 
-   * phpQueryObject $node
-   * string $field
-   * string|array $target
+   * $node phpQueryObject
+   * $field String
+   * $target String|array
 
 
 === Description ===
@@ -28,36 +28,53 @@ Method doesn't change selected elements stack.
 === Markup ===
 {{{
  <node1>
-   <node2></node2>
+   <node2/>
  </node1>
- <node2></node2>
+ <node2/>
  <node1>
-   <node2></node2>
+   <node2/>
  </node1>
 
 }}}
-=== Formula ===
+=== Data ===
 {{{
- $foo = array('<foo/>', '<bar/>');
- $template['node1']->varsToStackBefore('foo', array_keys($foo));
+ $foo = new stdClass();
+ $foo->first = 'foo';
+ $foo->second = 'bar';
+
+}}}
+=== `QueryTemplates` formula ===
+{{{
+ $template['node1']->
+     varsToStackBefore('foo', $foo)
+ ;
 
 }}}
 === Template ===
 {{{
- <?php  if (isset($foo['0'])) print $foo['0'];
- else if (isset($foo->{'0'})) print $foo->{'0'};  ?><node1><node2></node2></node1><node2></node2><?php  if (isset($foo['1'])) print $foo['1'];
- else if (isset($foo->{'1'})) print $foo->{'1'};  ?><node1><node2></node2></node1>
+ <?php  if (isset($foo['first'])) print $foo['first'];
+ else if (isset($foo->{'first'})) print $foo->{'first'};  ?><node1><node2></node2></node1><node2></node2><?php  if (isset($foo['second'])) print $foo['second'];
+ else if (isset($foo->{'second'})) print $foo->{'second'};  ?><node1><node2></node2></node1>
 
 }}}
-=== Template tree ===
+=== Template tree before ===
 {{{
  node1
   - node2
- PHP
  node2
  node1
   - node2
+
+}}}
+=== Template tree after ===
+{{{
  PHP
+ node1
+  - node2
+ node2
+ PHP
+ node1
+  - node2
 
 }}}
 ----

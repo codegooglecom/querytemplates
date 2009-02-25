@@ -49,5 +49,8 @@ Method doesn't change selected elements stack.
 }}}
 ----
 
+== See also ==
+ * [formFromValuesMethodPHP formFromValues]
+
 
 === Comments allowed ===

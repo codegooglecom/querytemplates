@@ -61,7 +61,9 @@ Inputs are selected according to $selectorPattern, where %k represents  variable
 }}}
 === `QueryTemplates` formula ===
 {{{
- $template->varsToForm('data', $data);
+ $template->
+     varsToForm('data', $data)
+ ;
 
 }}}
 === Template ===
@@ -86,7 +88,7 @@ Inputs are selected according to $selectorPattern, where %k represents  variable
   - input[name="array[array-example]"]
   - textarea[name="textarea-example"]
   - select[name="select-example"]
-  -  - option[selected][value="first"]
+  -  - option[value="first"][selected]
   - input[name="radio-example"][value="foo"]
   - input[name="checkbox-example"][value="foo"]
 
@@ -100,19 +102,19 @@ Inputs are selected according to $selectorPattern, where %k represents  variable
   -  - PHP
   - select[name="select-example"]
   -  - PHP
-  -  - option[selected][value="first"]
+  -  - option[value="first"][selected]
   -  - PHP
   -  - PHP
   -  - option[value="first"]
   -  - PHP
   - PHP
-  - input[name="radio-example"][checked][value="foo"]
+  - input[name="radio-example"][value="foo"][checked]
   - PHP
   - PHP
   - input[name="radio-example"][value="foo"]
   - PHP
   - PHP
-  - input[name="checkbox-example"][checked][value="foo"]
+  - input[name="checkbox-example"][value="foo"][checked]
   - PHP
   - PHP
   - input[name="checkbox-example"][value="foo"]
@@ -120,6 +122,10 @@ Inputs are selected according to $selectorPattern, where %k represents  variable
 
 }}}
 ----
+
+== See also ==
+ * [valuesToFormMethodPHP valuesToForm]
+ * [formFromVarsMethodPHP formFromVars]
 
 
 === Comments allowed ===

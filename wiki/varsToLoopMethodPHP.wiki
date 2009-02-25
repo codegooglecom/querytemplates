@@ -23,53 +23,55 @@ Method doesn't change selected nodes stack.
 === Markup ===
 {{{
  <ul>
-   <li class='row'>
-     <span class='name'></span>
-     <ul class='tags'>
-       <li class='tag'>
-         <span class='tag'></span>
-       </li>
-     </ul>
-   </li>
+     <li class='row'>
+         <span class='name'></span>
+         <ul class='tags'>
+             <li class='tag'>
+                 <span class='name'></span>
+             </li>
+         </ul>
+     </li>
  </ul>
 
 }}}
 === Data ===
 {{{
  $data = array(
-   array(
-     'User' => array('name' => 'foo'),
-     'Tags' => array(
-       array('tag' => 'php'),
-       array('tag' => 'js'),
+     array(
+         'User' => array('name' => 'foo'),
+         'Tags' => array(
+             array('name' => 'php'),
+             array('name' => 'js'),
+         ),
      ),
-   ),
-   array(
-     'User' => array('name' => 'bar'),
-     'Tags' => array(
-       array('tag' => 'perl'),
+     array(
+         'User' => array('name' => 'bar'),
+         'Tags' => array(
+             array('name' => 'perl'),
+         ),
      ),
-   ),
-   array(
-     'User' => array('name' => 'fooBar'),
-     'Tags' => array(
-       array('tag' => 'php'),
-       array('tag' => 'js'),
-       array('tag' => 'perl'),
+     array(
+         'User' => array('name' => 'fooBar'),
+         'Tags' => array(
+             array('name' => 'php'),
+             array('name' => 'js'),
+             array('name' => 'perl'),
+         ),
      ),
-   ),
  );
+ $userFields = array('name');
+ $tagFields = array('name');
 
 }}}
 === `QueryTemplates` formula ===
 {{{
  $template->
-   find('> ul > li')->
-     varsToLoop('data', 'row')->
-     varsToSelector('row', array('name'), 'span.%k')->
      find('> ul > li')->
-       varsToLoop('row.Tags', 'tag')->
-       varsToSelector('tag', array('tag'))
+         varsToLoop('data', 'row')->
+         varsToSelector('row', $userFields, 'span.%k')->
+         find('> ul > li')->
+             varsToLoop('row.Tags', 'tag')->
+             varsToSelector('tag', $tagFields)
  ;
 
 }}}
@@ -77,15 +79,15 @@ Method doesn't change selected nodes stack.
 {{{
  <ul>
  <?php  if (isset($data) && (is_array($data) || is_object($data))) { foreach($data as $row):  ?><li class="row">
-     <span class="name"><?php  if (isset($row['name'])) print $row['name'];
+         <span class="name"><?php  if (isset($row['name'])) print $row['name'];
  else if (isset($row->{'name'})) print $row->{'name'};  ?></span>
-     <ul class="tags">
+         <ul class="tags">
  <?php  if (isset($row['Tags'])) $__8daca = $row['Tags']; else if (isset($row->{'Tags'})) $__8daca = $row->{'Tags'}; if (isset($__8daca) && (is_array($__8daca) || is_object($__8daca))) { foreach($__8daca as $tag):  ?><li class="tag">
-         <span class="tag"><?php  if (isset($tag['tag'])) print $tag['tag'];
- else if (isset($tag->{'tag'})) print $tag->{'tag'};  ?></span>
-       </li>
+                 <span class="name"><?php  if (isset($tag['name'])) print $tag['name'];
+ else if (isset($tag->{'name'})) print $tag->{'name'};  ?></span>
+             </li>
  <?php  endforeach; }  ?>
-     </ul>
+         </ul>
  </li>
  <?php  endforeach; }  ?>
  </ul>
@@ -98,7 +100,7 @@ Method doesn't change selected nodes stack.
   -  - span.name
   -  - ul.tags
   -  -  - li.tag
-  -  -  -  - span.tag
+  -  -  -  - span.name
 
 }}}
 === Template tree after ===
@@ -111,13 +113,16 @@ Method doesn't change selected nodes stack.
   -  - ul.tags
   -  -  - PHP
   -  -  - li.tag
-  -  -  -  - span.tag
+  -  -  -  - span.name
   -  -  -  -  - PHP
   -  -  - PHP
   - PHP
 
 }}}
 ----
+
+== See also ==
+ * [valuesToLoopMethodPHP valuesToLoop]
 
 
 === Comments allowed ===

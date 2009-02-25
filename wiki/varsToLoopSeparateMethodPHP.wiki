@@ -6,12 +6,8 @@
   Variable which will be looped. Must contain $ at the beggining.
  * *$rowName* _String_
   Name of variable being result of iteration.
- * *$indexName* _String_
+ * *$indexName* _String_ = `null`
   Optional. Use it when you want to have $varName's key available in the scope.
- * *$asVarName* 
-
- * *$keyName*  = `null`
-
 
 
 === Description ===

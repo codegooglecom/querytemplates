@@ -20,20 +20,38 @@ Prints variable $varName on the end of matched elements.
  </div>
 
 }}}
-=== Formula ===
+=== Data ===
 {{{
- $template['p']->varPrintAppend('name.key');
+ $data = array(
+   'foo' => array(
+       'bar' => array('printMe')
+   )
+ );
+
+}}}
+=== `QueryTemplates` formula ===
+{{{
+ $template['p']->
+     varPrintAppend('data.foo.bar.0')
+ ;
 
 }}}
 === Template ===
 {{{
  <div>
-     <p>FOO<?php  if (isset($name['key'])) print $name['key'];
- else if (isset($name->{'key'})) print $name->{'key'};  ?></p>
+     <p>FOO<?php  if (isset($data['foo']['bar']['0'])) print $data['foo']['bar']['0'];
+ else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?></p>
  </div>
 
 }}}
-=== Template tree ===
+=== Template tree before ===
+{{{
+ div
+  - p
+  -  - Text:FOO
+
+}}}
+=== Template tree after ===
 {{{
  div
   - p

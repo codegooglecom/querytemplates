@@ -12,7 +12,7 @@
 Wraps selected tag with PHP "else if" statement checking if $var evaluates  to true. $var must be available inside template's scope.
 
 
-$var is passed in JS object convention (dot separated).
+$var is passed in JavaScript object notation (dot separated).
 
 
 Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.

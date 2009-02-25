@@ -165,5 +165,8 @@ This example requires PHP 5.3. For versions before, degradate closures to normal
 }}}
 ----
 
+== See also ==
+ * [varsToLoopMethodPHP varsToLoop]
+
 
 === Comments allowed ===

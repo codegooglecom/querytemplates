@@ -12,13 +12,13 @@
   Array of keys from $varValue which should be skipped.
  * *$fieldCallback* _Callback|string_ = `null`
   Callback triggered after every insertion. Three parameters are passed to  this callback: 
-   * phpQueryObject $node
-   * string $field
-   * string|array $target
+   * $node phpQueryObject
+   * $field String
+   * $target String|array
 
 
 === Description ===
-Injects raw executable code at the end of nodes matched by selector. Method  uses actually matched elements as root for the query.
+Injects raw executable code at the end of nodes matched by selector. Method  uses actually matched nodes as root for the query.
 
 
 Method doesn't change selected elements stack.
@@ -33,22 +33,36 @@ Method doesn't change selected elements stack.
  <p class='field2'>lorem ipsum</p>
 
 }}}
-=== Formula ===
+=== Data ===
 {{{
  $code = array(
-   'field1' => 'print "abba";',
-   'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
+     'field1' => 'print "abba";',
+     'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
  );
- $template['node1']->codeToSelectorAppend($code);
+
+}}}
+=== `QueryTemplates` formula ===
+{{{
+ $template->
+     codeToSelectorAppend($code)
+ ;
 
 }}}
 === Template ===
 {{{
- <?php  print "abba";  ?>
- <?php  foreach(array(1, 2, 3) as $i) print $i  ?>
+ <p class="field1">lorem ipsum<?php  print "abba";  ?></p>
+ <p class="field2">lorem ipsum<?php  foreach(array(1, 2, 3) as $i) print $i  ?></p>
 
 }}}
-=== Template tree ===
+=== Template tree before ===
+{{{
+ p.field1
+  - Text:lorem ipsum
+ p.field2
+  - Text:lorem ipsum
+
+}}}
+=== Template tree after ===
 {{{
  p.field1
   - Text:lorem ipsum

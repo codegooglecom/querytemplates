@@ -24,16 +24,12 @@ TODO description
 }}}
 === Data ===
 {{{
- $data = array(
-   'foo' => array(
-       'bar' => array(true)
-   )
- );
-
 }}}
 === `QueryTemplates` formula ===
 {{{
- $template['div:eq(1)']->elseStatement();
+ $template['div:eq(1)']->
+     elseStatement()
+ ;
 
 }}}
 === Template ===

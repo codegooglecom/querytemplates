@@ -124,5 +124,9 @@ need of suppling a line of markup. Created form have following features:
    * supports select elements with optgroups
 ----
 
+== See also ==
+ * [valuesToFormMethodPHP valuesToForm]
+ * [varsToFormMethodPHP varsToForm]
+
 
 === Comments allowed ===
