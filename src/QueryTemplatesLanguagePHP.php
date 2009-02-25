@@ -28,7 +28,7 @@ EOF;
 		if (strpos($varName, '.')) {
 			$varNameObject = self::varNameObject($varName);
 			$varNameArray = self::varNameArray($varName);
-			$varName = '$__'.md5($varName);
+			$varName = '$__'.substr(md5($varName), 0, 5);
 			$preCode = "if (isset($varNameArray)) $varName = $varNameArray; ";
 			$preCode .= "else if (isset($varNameObject)) $varName = $varNameObject; ";
 		} else

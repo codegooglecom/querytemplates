@@ -83,13 +83,13 @@ class QueryTemplatesParse
 		}
 		foreach($this->parent->toFetch['full'] as $r) {
 			if ($r[0] instanceof Callback) {
-				$content = phpQuery::callbackRun($r[0]);
 				if ($r[1])
 					$name = $r[1];
 				else if ($r[0] instanceof ICallbackNamed && $r[0]->hasName())
 					$name = $r[0]->getName();
 				else
 					throw new Exception('Name needed when using Callback as source');
+				$content = phpQuery::callbackRun($r[0]);
 			} else {
 				$name = $r[1]
 					? $r[1]
