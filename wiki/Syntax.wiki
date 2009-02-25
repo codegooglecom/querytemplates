@@ -8,7 +8,7 @@
  * === [codeToSyntax codeTo] ====
  * === [ToStackSyntax ToStack] ====
  * === [ToSelectorSyntax ToSelector] ====
- * === [loopSyntax loop] ====
+ * === [ToLoopSyntax ToLoop] ====
  * === [formFromSyntax formFrom] ====
  * === [ToFormSyntax ToForm] ====
  * === [ifSyntax if] ====
