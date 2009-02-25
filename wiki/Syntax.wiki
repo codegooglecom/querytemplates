@@ -1,15 +1,15 @@
 #labels Featured
 = Syntax =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax]
-
- * === [varPrintSyntax varPrint] ====
- * === [varsToSyntax varsTo] ====
- * === [valuesToSyntax valuesTo] ====
- * === [codeToSyntax codeTo] ====
- * === [ToStackSyntax ToStack] ====
- * === [ToSelectorSyntax ToSelector] ====
- * === [ToLoopSyntax ToLoop] ====
- * === [formFromSyntax formFrom] ====
- * === [ToFormSyntax ToForm] ====
- * === [ifSyntax if] ====
- * === [elseSyntax else] ====
+ * === [varPrintSyntax varPrint] ===
+ * === [varsToSyntax varsTo] ===
+ * === [valuesToSyntax valuesTo] ===
+ * === [codeToSyntax codeTo] ===
+ * === [ToStackSyntax ToStack] ===
+ * === [ToSelectorSyntax ToSelector] ===
+ * === [ToLoopSyntax ToLoop] ===
+ * === [ifSyntax if] ===
+ * === [elseSyntax else] ===
+ * === [ToFormSyntax ToForm] ===
+ * === [formFromSyntax formFrom] ===
+ * === [VarsFromSyntax VarsFrom] ===
