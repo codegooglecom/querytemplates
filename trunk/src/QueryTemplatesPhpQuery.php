@@ -11,23 +11,113 @@
 abstract class QueryTemplatesPhpQuery
 	extends phpQueryObject {
 	/**
-	 * Prints variable $varName as elements' content.
+	 * Prints variable $varName as matched elements' content.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <div>
+	 * 	<p>FOO</p>
+	 * </div>
+	 * </code>
 	 *
+	 * === Data ===
+	 * <code>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array('printMe')
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['p']->
+	 * 	varPrint('data.foo.bar.0')
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * <div>
+	 * 	<p><?php  if (isset($data['foo']['bar']['0'])) print $data['foo']['bar']['0'];
+	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?></p>
+	 * </div>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - p
+	 *  -  - Text:FOO
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - p
+	 *  -  - PHP
+	 * </code>
+	 * 
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
 	 * 
-	 * @TODO support filters as 2nd and later arguments
-	 * Filter is a template-execution callback for value.
-	 * 
 	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
 	 */
 	public function varPrint($varName) {
-		return $this->_varPrint(false, $varName);
+		return $this->_varPrint('markup', $varName);
 	}
 	/**
-	 * Prints variable $varName replacing elements.
+	 * Prints variable $varName replacing matched elements.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <div>
+	 * 	<p>FOO</p>
+	 * </div>
+	 * </code>
 	 *
+	 * === Data ===
+	 * <code>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array('printMe')
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['p']->
+	 * 	varPrintReplace('data.foo.bar.0')
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * <div>
+	 * 	<?php  if (isset($data['foo']['bar']['0'])) print $data['foo']['bar']['0'];
+	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?>
+	 * </div>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - p
+	 *  -  - Text:FOO
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - PHP
+	 * </code>
+	 * 
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -35,148 +125,937 @@ abstract class QueryTemplatesPhpQuery
 	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
 	 */
 	public function varPrintReplace($varName) {
-		return $this->_varPrint(false, $varName);
+		return $this->_varPrint('replaceWith', $varName);
 	}
-	public function _varPrint($replace, $varName) {
-		$lang = $this->parent->language;
-		$languageClass = 'QueryTemplatesLanguage'.strtoupper($lang);
-		if ($replace)
-			$this
-				->replaceWith(phpQuery::code($lang, call_user_func_array(
-					array($languageClass, 'printVar'), array($varName)
-				)));
-		else
-			$this
-				->{strtolower($lang)}(call_user_func_array(
-					array($languageClass, 'printVar'), array($varName)
-				));
+	/**
+	 * Prints variable $varName before matched elements.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <div>
+	 * 	<p>FOO</p>
+	 * </div>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array('printMe')
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['p']->
+	 * 	varPrintBefore('data.foo.bar.0')
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * <div>
+	 * 	<?php  if (isset($data['foo']['bar']['0'])) print $data['foo']['bar']['0'];
+	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?><p>FOO</p>
+	 * </div>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - p
+	 *  -  - Text:FOO
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - PHP
+	 *  - p
+	 *  -  - Text:FOO
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 */
+	public function varPrintBefore($varName) {
+		return $this->_varPrint('before', $varName);
+	}
+	/**
+	 * Prints variable $varName after matched elements.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <div>
+	 * 	<p>FOO</p>
+	 * </div>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array('printMe')
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['p']->
+	 * 	varPrintAfter('data.foo.bar.0')
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * <div>
+	 * 	<p>FOO</p>
+	 * <?php  if (isset($data['foo']['bar']['0'])) print $data['foo']['bar']['0'];
+	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?>
+	 * </div>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - p
+	 *  -  - Text:FOO
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - p
+	 *  -  - Text:FOO
+	 *  - PHP
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 */
+	public function varPrintAfter($varName) {
+		return $this->_varPrint('after', $varName);
+	}
+	/**
+	 * Prints variable $varName on beggining of matched elements.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <div>
+	 * 	<p>FOO</p>
+	 * </div>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array('printMe')
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['p']->
+	 * 	varPrintPrepend('data.foo.bar.0')
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * <div>
+	 * 	<p><?php  if (isset($data['foo']['bar']['0'])) print $data['foo']['bar']['0'];
+	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?>FOO</p>
+	 * </div>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - p
+	 *  -  - Text:FOO
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - p
+	 *  -  - PHP
+	 *  -  - Text:FOO
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 */
+	public function varPrintPrepend($varName) {
+		return $this->_varPrint('prepend', $varName);
+	}
+	/**
+	 * Prints variable $varName on the end of matched elements.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <div>
+	 * 	<p>FOO</p>
+	 * </div>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array('printMe')
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['p']->
+	 * 	varPrintAppend('data.foo.bar.0')
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * <div>
+	 * 	<p>FOO<?php  if (isset($data['foo']['bar']['0'])) print $data['foo']['bar']['0'];
+	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?></p>
+	 * </div>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - p
+	 *  -  - Text:FOO
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - p
+	 *  -  - Text:FOO
+	 *  -  - PHP
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 */
+	public function varPrintAppend($varName) {
+		return $this->_varPrint('append', $varName);
+	}
+	public function _varPrint($target, $varName) {
+		$_target = $target;
+		$targetData = null;
+		if (is_array($target)) {
+			$targetData = array_slice($target, 1);
+			$target = $target[0];
+		}
+		switch($target) {
+			case 'attr':
+				$this->qt_langMethod('attr', $targetData[0], 
+					$this->qt_langCode('printVar', $varName)
+				);
+				break;
+			default:
+				$this->qt_langMethod($target, 
+					$this->qt_langCode('printVar', $varName)
+				);
+		}
 		return $this;
 	}
 	/**
-	 * TODO doc
+	 * Prints variable $varName as attribute $attr of matched elements.
 	 * 
-	 * @param $var
-	 * @param $attr
-	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
-	 */
-	public function varPrintAttr($varName, $attr) {
-		$code = $this->qt_langCode('printVar', $varName);
-		return $this->qt_langMethod('attr', $attr, $code);
-	}
-	/**
-	 * Injects executable code printing $varName's content (rows or attributes) into nodes
-	 * matched by selector.
+	 * == Example ==
 	 * 
-	 * For replacing matched nodes with content use varsToSelectorReplace().
-	 * For injecting vars into forms use varsToForm().
-	 *
-	 * Example
+	 * === Markup ===
 	 * <code>
-	 * $foo = array('field1' => 'foo', 'field2' => 'bar');
-	 * $template->varsToSelector('foo', $foo);
+	 * <div>
+	 * 	<p>FOO</p>
+	 * </div>
 	 * </code>
 	 *
-	 * Source
+	 * === Data ===
+	 * <code>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array('printMe')
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['p']->
+	 * 	varPrintAttr('rel', 'data.foo.bar.0')
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * <div>
+	 * 	<p data.foo.bar.0="<?php  if (isset($data['foo']['bar']['0'])) print $data['foo']['bar']['0'];
+	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?>">FOO</p>
+	 * </div>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - p
+	 *  -  - Text:FOO
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - p
+	 *  -  - Text:FOO
+	 * </code>
+	 * 
+	 * @param String $attr
+	 * Target attribute name.
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 */
+	public function varPrintAttr($attr, $varName) {
+		return $this->_varPrint(array('attr', $varName), $varName);
+	}
+	/**
+	 * Injects executable code printing variable's fields inside nodes matched by 
+	 * selector. Method uses actually matched nodes as root for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
 	 * <p class='field2'>lorem ipsum</p>
 	 * </code>
 	 *
-	 * Result
+	 * === Data ===
 	 * <code>
-	 * <p class='field1'><?php print $foo['field1'] ?></p>
-	 * <p class='field2'><?php print $foo['field2'] ?></p>
+	 * $foo = new stdClass();
+	 * $foo->field1 = 'foo';
+	 * $foo->field1 = 'bar';
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	varsToSelector('foo', $foo)
+	 * ;
 	 * </code>
 	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1"><?php  if (isset($foo['field1'])) print $foo['field1'];
+	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?></p>
+	 * <p class="field2">lorem ipsum</p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - PHP
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
-	 * @param Array|Object $varValue
-	 * $varName's value with all keys (fields) OR array of $varName's keys (fields).
+	 * 
+	 * @param Array|Object $varFields
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * variables key (field).
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::varsToStack()
+	 * @see QueryTemplatesPhpQuery::varsToForm() 
+	 */
+	public function varsToSelector($varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector('markup', $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
+	}
+	/**
+	 * Injects executable code printing variable's fields replacing nodes matched by 
+	 * selector. Method uses actually matched nodes as root for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $foo = new stdClass();
+	 * $foo->field1 = 'foo';
+	 * $foo->field1 = 'bar';
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	varsToSelectorReplace('foo', $foo)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <?php  if (isset($foo['field1'])) print $foo['field1'];
+	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?>
+	 * <p class="field2">lorem ipsum</p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * PHP
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @param Array|Object $varFields
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * 
 	 * @param String $selectorPattern
 	 * Defines pattern matching target nodes. %k represents key.
 	 * Defaults to ".%k", which matches nodes with class name equivalent to 
 	 * data source key.
 	 * For example, to restrict match to nodes with additional class "foo" change 
 	 * $selectorPattern to ".foo.%k"
-	 * @param Array $skipKeys
+	 * 
+	 * @param Array $skipFields
 	 * Array of keys from $varValue which should be skipped.
 	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
 	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
-	 * @see QueryTemplatesPhpQuery::varsToSelectorReplace()
+	 * @see QueryTemplatesPhpQuery::varsToStack()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
-	 *
-	 * @TODO support $varName to be a function (last char == ')'), 
 	 */
-	public function varsToSelector($varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToSelector('markup', $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
+	public function varsToSelectorReplace($varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector('replaceWith', $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects executable code printing $varName's content (rows or attributes) into 
-	 * document replacing nodes matched by selector.
+	 * Injects executable code printing variable's fields at the end of nodes 
+	 * matched by selector. Method uses actually matched nodes as root for the 
+	 * query.
+	 *
+	 * Method doesn't change selected elements stack.
 	 * 
-	 * For injecting vars inside matched nodes use varsToSelectorReplace().
-	 * For injecting vars into forms use varsToForm().
-	 *
-	 * Example
-	 * <code>
-	 * $foo = array('field1' => 'foo', 'field2' => 'bar');
-	 * $template->varsToSelector('foo', $foo);
-	 * </code>
-	 *
-	 * Source
+	 * == Example ==
+	 * 
+	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
 	 * <p class='field2'>lorem ipsum</p>
 	 * </code>
 	 *
-	 * Result
+	 * === Data ===
 	 * <code>
-	 * <?php print $foo['field1'] ?>
-	 * <?php print $foo['field2'] ?>
+	 * $foo = new stdClass();
+	 * $foo->field1 = 'foo';
+	 * $foo->field1 = 'bar';
 	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	varsToSelectorAppend('foo', $foo)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1">lorem ipsum<?php  if (isset($foo['field1'])) print $foo['field1'];
+	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?></p>
+	 * <p class="field2">lorem ipsum</p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 *  - PHP
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @param Array|Object $varFields
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * variables key (field).
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::varsToStack()
+	 * @see QueryTemplatesPhpQuery::varsToForm() 
+	 */
+	public function varsToSelectorAppend($varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector('append', $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
+	}
+	/**
+	 * Injects executable code printing variable's fields at the beggining of nodes 
+	 * matched by selector. Method uses actually matched nodes as root for the 
+	 * query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $foo = new stdClass();
+	 * $foo->field1 = 'foo';
+	 * $foo->field1 = 'bar';
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	varsToSelectorPrepend('foo', $foo)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1"><?php  if (isset($foo['field1'])) print $foo['field1'];
+	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?>lorem ipsum</p>
+	 * <p class="field2">lorem ipsum</p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - PHP
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @param Array|Object $varFields
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * variables key (field).
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::varsToStack()
+	 * @see QueryTemplatesPhpQuery::varsToForm() 
+	 */
+	public function varsToSelectorPrepend($varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector('prepend', $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
+	}
+	/**
+	 * Injects executable code printing variable's fields after nodes matched by 
+	 * selector. Method uses actually matched nodes as root for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $foo = new stdClass();
+	 * $foo->field1 = 'foo';
+	 * $foo->field1 = 'bar';
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	varsToSelectorAfter('foo', $foo)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1">lorem ipsum</p>
+	 * <?php  if (isset($foo['field1'])) print $foo['field1'];
+	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?>
+	 * <p class="field2">lorem ipsum</p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * PHP
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @param Array|Object $varFields
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * variables key (field).
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::varsToStack()
+	 * @see QueryTemplatesPhpQuery::varsToForm() 
+	 */
+	public function varsToSelectorAfter($varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector('after', $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
+	}
+	/**
+	 * Injects executable code printing variable's fields before nodes matched by 
+	 * selector. Method uses actually matched nodes as root for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $foo = new stdClass();
+	 * $foo->field1 = 'foo';
+	 * $foo->field1 = 'bar';
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	varsToSelectorBefore('foo', $foo)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <?php  if (isset($foo['field1'])) print $foo['field1'];
+	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?><p class="field1">lorem ipsum</p>
+	 * <p class="field2">lorem ipsum</p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * PHP
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @param Array|Object $varFields
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * variables key (field).
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::varsToStack()
+	 * @see QueryTemplatesPhpQuery::varsToForm() 
+	 */
+	public function varsToSelectorBefore($varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector('before', $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
+	}
+	/**
+	 * Injects executable code printing variable's fields as attribute of nodes 
+	 * matched by selector. Method uses actually matched nodes as root for the 
+	 * query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $foo = new stdClass();
+	 * $foo->field1 = 'foo';
+	 * $foo->field1 = 'bar';
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	varsToSelectorAttr('rel', 'foo', $foo)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1" rel="<?php  if (isset($foo['field1'])) print $foo['field1'];
+	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?>">lorem ipsum</p>
+	 * <p class="field2">lorem ipsum</p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * @param String $attr
+	 * Target attribute name.
 	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
-	 * @param Array|Object $varValue
-	 * $varName's value with all keys (fields) OR array of $varName's keys (fields).
+	 * 
+	 * @param Array|Object $varFields
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * 
 	 * @param String $selectorPattern
 	 * Defines pattern matching target nodes. %k represents key.
 	 * Defaults to ".%k", which matches nodes with class name equivalent to 
-	 * data source key.
+	 * variables key (field).
 	 * For example, to restrict match to nodes with additional class "foo" change 
 	 * $selectorPattern to ".foo.%k"
-	 * @param Array $skipKeys
+	 * 
+	 * @param Array $skipFields
 	 * Array of keys from $varValue which should be skipped.
 	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
 	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
-	 * @see QueryTemplatesPhpQuery::varsToSelector()
-	 * @see QueryTemplatesPhpQuery::varsToForm()
-	 *
-	 * @TODO support $arrayName to be a function (last char == ')'), 
-	 * then prepend \$$var = $arrayName
+	 * @see QueryTemplatesPhpQuery::varsToStack()
+	 * @see QueryTemplatesPhpQuery::varsToForm() 
 	 */
-	public function varsToSelectorReplace($varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToSelector('replaceWith', $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
+	public function varsToSelectorAttr($attr, $varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector(array('attr', $attr), $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function varsToSelectorAppend($varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToSelector('append', $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
-	}
-	public function varsToSelectorPrepend($varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToSelector('prepend', $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
-	}
-	public function varsToSelectorAfter($varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToSelector('after', $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
-	}
-	public function varsToSelectorBefore($varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToSelector('before', $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
-	}
-	public function varsToSelectorAttr($attr, $varName, $varFields, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToSelector(array('attr', $attr), $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback);
-	}
-	protected function _varsToSelector($target, $varName, $varFields, $selectorPattern, $skipKeys, $fieldCallback) {
-		$loop = $this->varsParseFields($varFields);
+	/**
+	 * Internal method.
+	 * 
+	 * @param $target
+	 * @param $varName
+	 * @param $varFields
+	 * @param $selectorPattern
+	 * @param $skipFields
+	 * @param $fieldCallback
+	 * @return unknown_type
+	 *
+	 * @TODO support $varName to be a function (last char == ')'),
+	 */
+	protected function _varsToSelector($target, $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback) {
+		$loop = $this->_varsParseFields($varFields);
 		$_target = $target;
 		$targetData = null;
 		if (is_array($target)) {
@@ -184,7 +1063,7 @@ abstract class QueryTemplatesPhpQuery
 			$target = $target[0];
 		}
 		foreach($loop as $f) {
-			if ($skipKeys && in_array($f, $skipKeys))
+			if ($skipFields && in_array($f, $skipFields))
 				continue;
 			$selector = str_replace(array('%k'), array($f), $selectorPattern);
 			$node = $this->find($selector);
@@ -206,71 +1085,183 @@ abstract class QueryTemplatesPhpQuery
 		return $this;
 	}
 	/**
-	 * Replaces matched nodes with exacutable code printing variables contents
-	 * using markup(). Second param needs to be wrapped with array_keys for 
-	 * non-assosiative arrays.
+	 * Injects executable code printing variable's fields inside actually matched 
+	 * nodes. Second param needs to be wrapped with array_keys for non-assosiative
+	 * arrays.
 	 *
 	 * Method doesn't change selected elements stack.
-	 *
-	 * Example
-	 * <code>
-	 * $foo = array('<foo/>', '<bar/>');
-	 * $template['node1']->varsToStack('foo', array_keys($values));
-	 * </code>
-	 *
-	 * Source
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
 	 * <code>
 	 * <node1>
 	 *   <node2/>
 	 * </node1>
+	 * <node2/>
 	 * <node1>
 	 *   <node2/>
 	 * </node1>
 	 * </code>
 	 *
-	 * Result
+	 * === Data ===
 	 * <code>
-	 * <node1>
-   * 	<?php
-   * 		print $values[0]
-   * 	?>
-	 * </node1>
-	 * <node1>
-   * 	<?php
-   * 		print $values[1]
-   * 	?>
-	 * </node1>
+	 * $foo = new stdClass();
+	 * $foo->first = 'foo';
+	 * $foo->second = 'bar';
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['node1']->
+	 * 	varsToStack('foo', $foo)
+	 * ;
 	 * </code>
 	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><?php  if (isset($foo['first'])) print $foo['first'];
+	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?></node1><node2></node2><node1><?php  if (isset($foo['second'])) print $foo['second'];
+	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - PHP
+	 * node2
+	 * node1
+	 *  - PHP
+	 * </code>
+	 * 
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
+	 * 
 	 * @param Array|Object $varFields
-	 * $varName's value with all keys (fields) OR array of $varName's keys (fields).
-	 * Param needs to be wrapped with array_keys for non-assosiative arrays.
-	 * @param Array $skipKeys
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * Param needs to be passed thou array_keys for non-assosiative arrays.
+	 * 
+	 * @param Array $skipFields
 	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
 	 *
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
-	 * @see QueryTemplatesPhpQuery::varsToStackReplace()
+	 * @see QueryTemplatesPhpQuery::varsToSelector()
+	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToStack($varName, $varFields, $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToStack('markup', $varName, $varFields, $skipKeys, $fieldCallback);
+	public function varsToStack($varName, $varFields, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack('markup', $varName, $varFields, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Replaces matched nodes with exacutable code printing variables contents
-	 * using replaceWith(). Second param needs to be wrapped with array_keys for 
+	 * Injects executable code printing variable's fields replacing actually matched 
+	 * nodes. Second param needs to be wrapped with array_keys for non-assosiative
+	 * arrays.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * <node2/>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $foo = new stdClass();
+	 * $foo->first = 'foo';
+	 * $foo->second = 'bar';
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['node1']->
+	 * 	varsToStackReplace('foo', $foo)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <?php  if (isset($foo['first'])) print $foo['first'];
+	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?><node2></node2><?php  if (isset($foo['second'])) print $foo['second'];
+	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * PHP
+	 * node2
+	 * PHP
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @param Array|Object $varFields
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * Param needs to be passed thou array_keys for non-assosiative arrays.
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToSelector()
+	 * @see QueryTemplatesPhpQuery::varsToForm()
+	 */
+	public function varsToStackReplace($varName, $varFields, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack('replaceWith', $varName, $varFields, $skipFields, $fieldCallback);
+	}
+	/**
+	 * Injects executable code printing variable's fields at the end of actually 
+	 * matched nodes. Second param needs to be wrapped with array_keys for 
 	 * non-assosiative arrays.
 	 *
 	 * Method doesn't change selected elements stack.
-	 *
-	 * Example
-	 * <code>
-	 * $foo = array('<foo/>', '<bar/>');
-	 * $template['node1']->varsToStackReplace('foo', $values);
-	 * </code>
-	 *
-	 * Source
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
 	 * <code>
 	 * <node1>
 	 *   <node2/>
@@ -281,49 +1272,424 @@ abstract class QueryTemplatesPhpQuery
 	 * </node1>
 	 * </code>
 	 *
-	 * Result
+	 * === Data ===
 	 * <code>
-   * <?php
-   * 	print $values[0]
-   * ?>
-	 * <node2/>
-   * <?php
-   * 	print $values[1]
-   * ?>
+	 * $foo = new stdClass();
+	 * $foo->first = 'foo';
+	 * $foo->second = 'bar';
 	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['node1']->
+	 * 	varsToStackAppend('foo', $foo)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><node2></node2><?php  if (isset($foo['first'])) print $foo['first'];
+	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?></node1><node2></node2><node1><node2></node2><?php  if (isset($foo['second'])) print $foo['second'];
+	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 *  - PHP
+	 * node2
+	 * node1
+	 *  - node2
+	 *  - PHP
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @param Array|Object $varFields
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * Param needs to be passed thou array_keys for non-assosiative arrays.
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToSelector()
+	 * @see QueryTemplatesPhpQuery::varsToForm()
+	 */
+	public function varsToStackAppend($varName, $varFields, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack('append', $varName, $varFields, $skipFields, $fieldCallback);
+	}
+	/**
+	 * Injects executable code printing variable's fields at the beggining of actually 
+	 * matched nodes. Second param needs to be wrapped with array_keys for 
+	 * non-assosiative arrays.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * <node2/>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $foo = new stdClass();
+	 * $foo->first = 'foo';
+	 * $foo->second = 'bar';
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['node1']->
+	 * 	varsToStackPrepend('foo', $foo)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><?php  if (isset($foo['first'])) print $foo['first'];
+	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?><node2></node2></node1><node2></node2><node1><?php  if (isset($foo['second'])) print $foo['second'];
+	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - PHP
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - PHP
+	 *  - node2
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @param Array|Object $varFields
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * Param needs to be passed thou array_keys for non-assosiative arrays.
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToSelector()
+	 * @see QueryTemplatesPhpQuery::varsToForm()
+	 */
+	public function varsToStackPrepend($varName, $varFields, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack('prepend', $varName, $varFields, $skipFields, $fieldCallback);
+	}
+	/**
+	 * Injects executable code printing variable's fields after actually matched 
+	 * nodes. Second param needs to be wrapped with array_keys for 
+	 * non-assosiative arrays.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * <node2/>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $foo = new stdClass();
+	 * $foo->first = 'foo';
+	 * $foo->second = 'bar';
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['node1']->
+	 * 	varsToStackAfter('foo', $foo)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><node2></node2></node1><?php  if (isset($foo['first'])) print $foo['first'];
+	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?><node2></node2><node1><node2></node2></node1><?php  if (isset($foo['second'])) print $foo['second'];
+	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * PHP
+	 * node2
+	 * node1
+	 *  - node2
+	 * PHP
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @param Array|Object $varFields
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * Param needs to be passed thou array_keys for non-assosiative arrays.
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToSelector()
+	 * @see QueryTemplatesPhpQuery::varsToForm()
+	 */
+	public function varsToStackAfter($varName, $varFields, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack('after', $varName, $varFields, $skipFields, $fieldCallback);
+	}
+	/**
+	 * Injects executable code printing variable's fields before actually matched 
+	 * nodes. Second param needs to be wrapped with array_keys for 
+	 * non-assosiative arrays.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * <node2/>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $foo = new stdClass();
+	 * $foo->first = 'foo';
+	 * $foo->second = 'bar';
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['node1']->
+	 * 	varsToStackBefore('foo', $foo)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <?php  if (isset($foo['first'])) print $foo['first'];
+	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?><node1><node2></node2></node1><node2></node2><?php  if (isset($foo['second'])) print $foo['second'];
+	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?><node1><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * PHP
+	 * node1
+	 *  - node2
+	 * node2
+	 * PHP
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @param Array|Object $varFields
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * Param needs to be passed thou array_keys for non-assosiative arrays.
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToSelector()
+	 * @see QueryTemplatesPhpQuery::varsToForm()
+	 */
+	public function varsToStackBefore($varName, $varFields, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack('before', $varName, $varFields, $skipFields, $fieldCallback);
+	}
+	/**
+	 * Injects executable code printing variable's fields as attribute of actually 
+	 * matched nodes. Second param needs to be wrapped with array_keys for 
+	 * non-assosiative arrays.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * <node2/>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $foo = new stdClass();
+	 * $foo->first = 'foo';
+	 * $foo->second = 'bar';
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['node1']->
+	 * 	varsToStackAttr('rel', 'foo', $foo)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1 rel="<?php  if (isset($foo['first'])) print $foo['first'];
+	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?>"><node2></node2></node1><node2></node2><node1 rel="<?php  if (isset($foo['second'])) print $foo['second'];
+	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?>"><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * @param String $attr
+	 * Target attribute name.
 	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
+	 * 
 	 * @param Array|Object $varFields
-	 * $varName's value with all keys (fields) OR array of $varName's keys (fields).
-	 * Param needs to be wrapped with array_keys for non-assosiative arrays.
-	 * @param Array $skipKeys
+	 * Variable value with all fields (keys) OR array of variable fields (keys).
+	 * Param needs to be passed thou array_keys for non-assosiative arrays.
+	 * 
+	 * @param Array $skipFields
 	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
 	 *
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
-	 * @see QueryTemplatesPhpQuery::varsToStac()
+	 * @see QueryTemplatesPhpQuery::varsToSelector()
+	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToStackReplace($varName, $varFields, $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToStack('replaceWith', $varName, $varFields, $skipKeys, $fieldCallback);
+	public function varsToStackAttr($attr, $varName, $varFields, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack(array('attr', $attr), $varName, $varFields, $skipFields, $fieldCallback);
 	}
-	public function varsToStackAppend($varName, $varFields, $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToStack('append', $varName, $varFields, $skipKeys, $fieldCallback);
-	}
-	public function varsToStackPrepend($varName, $varFields, $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToStack('prepend', $varName, $varFields, $skipKeys, $fieldCallback);
-	}
-	public function varsToStackAfter($varName, $varFields, $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToStack('after', $varName, $varFields, $skipKeys, $fieldCallback);
-	}
-	public function varsToStackBefore($varName, $varFields, $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToStack('before', $varName, $varFields, $skipKeys, $fieldCallback);
-	}
-	public function varsToStackAttr($attr, $varName, $varFields, $skipKeys = null, $fieldCallback = null) {
-		return $this->_varsToStack(array('attr', $attr), $varName, $varFields, $skipKeys, $fieldCallback);
-	}
-	protected function _varsToStack($target, $varName, $varValue, $skipKeys, $fieldCallback) {
-		$loop = $this->varsParseFields($varValue);
+	protected function _varsToStack($target, $varName, $varValue, $skipFields, $fieldCallback) {
+		$loop = $this->_varsParseFields($varValue);
 		$_target = $target;
 		$targetData = null;
 		if (is_array($target)) {
@@ -332,7 +1698,7 @@ abstract class QueryTemplatesPhpQuery
 		}
 		$i = 0;
 		foreach($loop as $f) {
-			if ($skipKeys && in_array($f, $skipKeys))
+			if ($skipFields && in_array($f, $skipFields))
 				continue;
 			$node = $this->eq($i++);
 			switch($target) {
@@ -352,7 +1718,7 @@ abstract class QueryTemplatesPhpQuery
 		}
 		return $this;
 	}
-	protected function varsParseFields($varFields) {
+	protected function _varsParseFields($varFields) {
 		// determine if we have real values in $varValue or just list of fields
 		if (is_array($varFields) && array_key_exists(0, $varFields))
 			return $varFields;
@@ -365,28 +1731,567 @@ abstract class QueryTemplatesPhpQuery
 				? array_keys(get_object_vars($varFields))
 				: array_keys($varFields);
 	}
-	public function codeToSelector($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToSelector('markup', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code inside nodes matched by selector. Method uses 
+	 * actually matched nodes as root for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'field1' => 'print "abba";',
+	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToSelector($code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1"><?php  print "abba";  ?></p>
+	 * <p class="field2"><?php  foreach(array(1, 2, 3) as $i) print $i  ?></p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - PHP
+	 * p.field2
+	 *  - PHP
+	 * </code>
+	 * 
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * variables key (field).
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToStack()
+	 */
+	public function codeToSelector($codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToSelector('markup', $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function codeToSelectorReplace($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToSelector('replaceWith', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code replacing nodes matched by selector. Method uses 
+	 * actually matched nodes as root for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'field1' => 'print "abba";',
+	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToSelectorReplace($code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <?php  print "abba";  ?>
+	 * <?php  foreach(array(1, 2, 3) as $i) print $i  ?>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * PHP
+	 * PHP
+	 * </code>
+	 * 
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * variables key (field).
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToStack()
+	 */
+	public function codeToSelectorReplace($codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToSelector('replaceWith', $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function codeToSelectorAppend($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToSelector('append', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code at the end of nodes matched by selector. Method 
+	 * uses actually matched nodes as root for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'field1' => 'print "abba";',
+	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToSelectorAppend($code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1">lorem ipsum<?php  print "abba";  ?></p>
+	 * <p class="field2">lorem ipsum<?php  foreach(array(1, 2, 3) as $i) print $i  ?></p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 *  - PHP
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 *  - PHP
+	 * </code>
+	 * 
+	 * @param String $attr
+	 * Target attribute name.
+	 *
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * variables key (field).
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToStack()
+	 */
+	public function codeToSelectorAppend($codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToSelector('append', $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function codeToSelectorPrepend($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToSelector('prepend', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code at the beggining of nodes matched by selector. 
+	 * Method uses actually matched nodes as root for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'field1' => 'print "abba";',
+	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToSelectorPrepend($code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1"><?php  print "abba";  ?>lorem ipsum</p>
+	 * <p class="field2"><?php  foreach(array(1, 2, 3) as $i) print $i  ?>lorem ipsum</p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - PHP
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - PHP
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * variables key (field).
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToStack()
+	 */
+	public function codeToSelectorPrepend($codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToSelector('prepend', $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function codeToSelectorAfter($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToSelector('after', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code after nodes matched by selector. Method uses 
+	 * actually matched nodes as root for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'field1' => 'print "abba";',
+	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToSelectorAfter($code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1">lorem ipsum</p>
+	 * <?php  print "abba";  ?>
+	 * <p class="field2">lorem ipsum</p>
+	 * <?php  foreach(array(1, 2, 3) as $i) print $i  ?>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * PHP
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * PHP
+	 * </code>
+	 * 
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * variables key (field).
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToStack()
+	 */
+	public function codeToSelectorAfter($codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToSelector('after', $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function codeToSelectorBefore($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToSelector('before', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code before nodes matched by selector. Method uses 
+	 * actually matched nodes as root for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'field1' => 'print "abba";',
+	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToSelectorBefore($code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <?php  print "abba";  ?><p class="field1">lorem ipsum</p>
+	 * <?php  foreach(array(1, 2, 3) as $i) print $i  ?><p class="field2">lorem ipsum</p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * PHP
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * PHP
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * variables key (field).
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToStack()
+	 */
+	public function codeToSelectorBefore($codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToSelector('before', $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function codeToSelectorAttr($attr, $codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToSelector(array('attr', $attr), $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code inside attribute of nodes matched by selector. 
+	 * Method uses actually matched nodes as root for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'field1' => 'print "abba";',
+	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToSelectorAttr('rel', $code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1" rel='<?php  print "abba";  ?>'>lorem ipsum</p>
+	 * <p class="field2" rel="<?php  foreach(array(1, 2, 3) as $i) print $i  ?>">lorem ipsum</p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * @param String $attr
+	 * Target attribute name.
+	 *
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * variables key (field).
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToStack()
+	 */
+	public function codeToSelectorAttr($attr, $codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToSelector(array('attr', $attr), $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	protected function _codeToSelector($target, $codeArray, $selectorPattern, $skipKeys, $fieldCallback) {
+	protected function _codeToSelector($target, $codeArray, $selectorPattern, $skipFields, $fieldCallback) {
 		$_target = $target;
 		$targetData = null;
 		if (is_array($target)) {
@@ -394,7 +2299,7 @@ abstract class QueryTemplatesPhpQuery
 			$target = $target[0];
 		}
 		foreach($codeArray as $f => $code) {
-			if ($skipKeys && in_array($f, $skipKeys))
+			if ($skipFields && in_array($f, $skipFields))
 				continue;
 			$selector = str_replace(array('%k'), array($f), $selectorPattern);
 			$node = $this->find($selector);
@@ -410,28 +2315,540 @@ abstract class QueryTemplatesPhpQuery
 		}
 		return $this;
 	}
-	public function codeToStack($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToStack('markup', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code inside actually matched nodes.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * <node2/>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'print "abba";',
+	 * 	'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToStack($code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * <?php  print "abba";  ?>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * PHP
+	 * </code>
+	 * 
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param Array $skipFields
+	 * Array of fields from $codeArray which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::codeToSelector()
+	 */
+	public function codeToStack($codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToStack('markup', $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function codeToStackReplace($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToStack('replaceWith', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code replacing actually matched nodes.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * <node2/>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'print "abba";',
+	 * 	'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToStackReplace($code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><node2></node2></node1><node2></node2><node1><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param Array $skipFields
+	 * Array of fields from $codeArray which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::codeToSelector()
+	 */
+	public function codeToStackReplace($codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToStack('replaceWith', $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function codeToStackAppend($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToStack('append', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code at the beggining of actually matched nodes.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * <node2/>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'print "abba";',
+	 * 	'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToStackAppend($code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><node2></node2></node1><node2></node2><node1><node2></node2></node1><?php  print "abba";  ?>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * PHP
+	 * </code>
+	 * 
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param Array $skipFields
+	 * Array of fields from $codeArray which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::codeToSelector()
+	 */
+	public function codeToStackAppend($codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToStack('append', $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function codeToStackPrepend($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToStack('prepend', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code at the end of actually matched nodes.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * <node2/>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'print "abba";',
+	 * 	'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToStackPrepend($code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <?php  print "abba";  ?>
+	 * <node1><node2></node2></node1><node2></node2><node1><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * PHP
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param Array $skipFields
+	 * Array of fields from $codeArray which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::codeToSelector()
+	 */
+	public function codeToStackPrepend($codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToStack('prepend', $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function codeToStackAfter($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToStack('after', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code after actually matched nodes.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * <node2/>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'print "abba";',
+	 * 	'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToStackAfter($code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><node2></node2></node1><node2></node2><node1><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param Array $skipFields
+	 * Array of fields from $codeArray which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::codeToSelector()
+	 */
+	public function codeToStackAfter($codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToStack('after', $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function codeToStackBefore($codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToStack('before', $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code before actually matched nodes.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * <node2/>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'print "abba";',
+	 * 	'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToStackBefore($code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><node2></node2></node1><node2></node2><node1><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param Array $skipFields
+	 * Array of fields from $codeArray which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::codeToSelector()
+	 */
+	public function codeToStackBefore($codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToStack('before', $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function codeToStackAttr($attr, $codeArray, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_codeToStack(array('attr', $attr), $codeArray, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects raw executable code inside attribute of actually matched nodes.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * <node2/>
+	 * <node1>
+	 *   <node2/>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $code = array(
+	 * 	'print "abba";',
+	 * 	'foreach(array(1, 2, 3) as $i) print $i'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	codeToStackAttr('rel', $code)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><node2></node2></node1><node2></node2><node1><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * @param String $attr
+	 * Target attribute name.
+	 *
+	 * @param String $codeArray
+	 * Array of raw code, where key is the field.
+	 * 
+	 * @param Array $skipFields
+	 * Array of fields from $codeArray which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::codeToSelector()
+	 */
+	public function codeToStackAttr($attr, $codeArray, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_codeToStack(array('attr', $attr), $codeArray, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	protected function _codeToStack($target, $codeArray, $selectorPattern, $skipKeys, $fieldCallback) {
+	protected function _codeToStack($target, $codeArray, $selectorPattern, $skipFields, $fieldCallback) {
 		$_target = $target;
 		$targetData = null;
 		if (is_array($target)) {
@@ -440,7 +2857,7 @@ abstract class QueryTemplatesPhpQuery
 		}
 		$i = 0;
 		foreach($codeArray as $f => $code) {
-			if ($skipKeys && in_array($f, $skipKeys))
+			if ($skipFields && in_array($f, $skipFields))
 				continue;
 			$node = $this->eq($i++);
 			switch($target) {
@@ -458,76 +2875,137 @@ abstract class QueryTemplatesPhpQuery
 	}
 	/**
 	 * Injects markup from $data's content (rows or attributes) into nodes
-	 * matched by selector.
+	 * matched by selector. Method uses actually matched nodes as root for the 
+	 * query.
+	 *
+	 * Method doesn't change selected elements stack.
 	 * 
-	 * For replacing matched nodes with content use valuesToSelectorReplace().
-	 * For injecting values into forms use valuesToForm().
-	 *
-	 * Example
-	 * <code>
-	 * $values = array('field1' => '<foo/>', 'field2' => '<bar/>');
-	 * $template['p']->valuesToSelector($values);
-	 * </code>
-	 *
-	 * Source
+	 * == Example ==
+	 * 
+	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
 	 * <p class='field2'>lorem ipsum</p>
 	 * </code>
 	 *
-	 * Result
+	 * === Data ===
 	 * <code>
-	 * <p class='field1'><foo/></p>
-	 * <p class='field2'><bar/></p>
+	 * $values = array(
+	 * 	'field1' => '<foo/>',
+	 * 	'field2' => '<bar/>'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	valuesToSelector($values)
+	 * ;
 	 * </code>
 	 *
-	 * @param Array|Object $data
-	 * Associative array or Object containing markup.
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1"><foo></foo></p>
+	 * <p class="field2"><bar></bar></p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - foo
+	 * p.field2
+	 *  - bar
+	 * </code>
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
+	 * 
 	 * @param String $selectorPattern
 	 * Defines pattern matching target nodes. %k represents key.
 	 * Defaults to ".%k", which matches nodes with class name equivalent to 
 	 * data source key.
 	 * For example, to restrict match to nodes with additional class "foo" change 
 	 * $selectorPattern to ".foo.%k"
-	 * @param Array $skipKeys
-	 * Array of keys from $varValue which should be skipped.
+	 * 
+	 * @param Array $skipFields
+	 * Array of fields from $data which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
 	 * 
 	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
-	 * @see QueryTemplatesPhpQuery::valuesToSelectorReplace()
+	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelector($data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('markup', $data, $selectorPattern, $skipKeys, $fieldCallback);
+	public function valuesToSelector($data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('markup', $data, $selectorPattern, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) into document, 
-	 * replacing nodes matched by selector.
+	 * Injects markup from $data's content (rows or attributes) replacing nodes
+	 * matched by selector. Method uses actually matched nodes as root for the 
+	 * query.
+	 *
+	 * Method doesn't change selected elements stack.
 	 * 
-	 * For injecting markup inside matched nodes use valuesToSelector().
-	 * For injecting values into forms use valuesToForm().
-	 *
-	 * Example
-	 * <code>
-	 * $values = array('field1' => '<foo/>', 'field2' => '<bar/>');
-	 * $template['p']->valuesToSelector($values);
-	 * </code>
-	 *
-	 * Source
+	 * == Example ==
+	 * 
+	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
-	 * <node1/>
 	 * <p class='field2'>lorem ipsum</p>
 	 * </code>
 	 *
-	 * Result
+	 * === Data ===
 	 * <code>
-	 * <foo/>
-	 * <node1/>
-	 * <bar/>
+	 * $values = array(
+	 * 	'field1' => '<foo/>',
+	 * 	'field2' => '<bar/>'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	valuesToSelectorReplace($values)
+	 * ;
 	 * </code>
 	 *
-	 * @param Array|Object $data
-	 * Associative array or Object containing markup.
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <foo></foo>
+	 * <bar></bar>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * foo
+	 * bar
+	 * </code>
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
 	 * 
 	 * @param String $selectorPattern
 	 * Defines pattern matching target nodes. %k represents key.
@@ -536,33 +3014,437 @@ abstract class QueryTemplatesPhpQuery
 	 * For example, to restrict match to nodes with additional class "foo" change 
 	 * $selectorPattern to ".foo.%k"
 	 * 
-	 * @param Array $skipKeys
-	 * Array of keys from $varValue which should be skipped.
+	 * @param Array $skipFields
+	 * Array of fields from $data which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
 	 * 
 	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
-	 * 
-	 * @see QueryTemplatesPhpQuery::valuesToSelector()
+	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorReplace($data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('replaceWith', $data, $selectorPattern, $skipKeys, $fieldCallback);
+	public function valuesToSelectorReplace($data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('replaceWith', $data, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function valuesToSelectorBefore($data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('before', $data, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects markup from $data's content (rows or attributes) before nodes
+	 * matched by selector. Method uses actually matched nodes as root for the 
+	 * query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $values = array(
+	 * 	'field1' => '<foo/>',
+	 * 	'field2' => '<bar/>'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	valuesToSelectorBefore($values)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <foo></foo><p class="field1">lorem ipsum</p>
+	 * <bar></bar><p class="field2">lorem ipsum</p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * foo
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * bar
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * data source key.
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of fields from $data which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::valuesToStack()
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 */
+	public function valuesToSelectorBefore($data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('before', $data, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function valuesToSelectorAfter($data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('after', $data, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects markup from $data's content (rows or attributes) after nodes
+	 * matched by selector. Method uses actually matched nodes as root for the 
+	 * query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $values = array(
+	 * 	'field1' => '<foo/>',
+	 * 	'field2' => '<bar/>'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	valuesToSelectorAfter($values)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1">lorem ipsum</p>
+	 * <foo></foo>
+	 * <p class="field2">lorem ipsum</p>
+	 * <bar></bar>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * foo
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * bar
+	 * </code>
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * data source key.
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of fields from $data which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::valuesToStack()
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 */
+	public function valuesToSelectorAfter($data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('after', $data, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function valuesToSelectorPrepend($data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('prepend', $data, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects markup from $data's content (rows or attributes) at the beggining of 
+	 * nodes matched by selector. Method uses actually matched nodes as root 
+	 * for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $values = array(
+	 * 	'field1' => '<foo/>',
+	 * 	'field2' => '<bar/>'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	valuesToSelectorPrepend($values)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1"><foo></foo>lorem ipsum</p>
+	 * <p class="field2"><bar></bar>lorem ipsum</p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - foo
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - bar
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * data source key.
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of fields from $data which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::valuesToStack()
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 */
+	public function valuesToSelectorPrepend($data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('prepend', $data, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function valuesToSelectorAppend($data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('append', $data, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects markup from $data's content (rows or attributes) at the end of 
+	 * nodes matched by selector. Method uses actually matched nodes as root 
+	 * for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $values = array(
+	 * 	'field1' => '<foo/>',
+	 * 	'field2' => '<bar/>'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	valuesToSelectorAppend($values)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1">lorem ipsum<foo></foo></p>
+	 * <p class="field2">lorem ipsum<bar></bar></p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 *  - foo
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 *  - bar
+	 * </code>
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * data source key.
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of fields from $data which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::valuesToStack()
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 */
+	public function valuesToSelectorAppend($data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('append', $data, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	public function valuesToSelectorAttr($attr, $data, $selectorPattern = '.%k', $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToSelector(array('attr', $attr), $data, $selectorPattern, $skipKeys, $fieldCallback);
+	/**
+	 * Injects markup from $data's content (rows or attributes) as attribute of 
+	 * nodes matched by selector. Method uses actually matched nodes as root 
+	 * for the query.
+	 *
+	 * Method doesn't change selected elements stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <p class='field1'>lorem ipsum</p>
+	 * <p class='field2'>lorem ipsum</p>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $values = array(
+	 * 	'field1' => '<foo/>',
+	 * 	'field2' => '<bar/>'
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	valuesToSelectorAttr('rel', $values)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <p class="field1" rel="&lt;foo/&gt;">lorem ipsum</p>
+	 * <p class="field2" rel="&lt;bar/&gt;">lorem ipsum</p>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * p.field1
+	 *  - Text:lorem ipsum
+	 * p.field2
+	 *  - Text:lorem ipsum
+	 * </code>
+	 * 
+	 * @param String $attr
+	 * Target attribute name.
+	 *
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
+	 * 
+	 * @param String $selectorPattern
+	 * Defines pattern matching target nodes. %k represents key.
+	 * Defaults to ".%k", which matches nodes with class name equivalent to 
+	 * data source key.
+	 * For example, to restrict match to nodes with additional class "foo" change 
+	 * $selectorPattern to ".foo.%k"
+	 * 
+	 * @param Array $skipFields
+	 * Array of fields from $data which should be skipped.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::valuesToStack()
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 */
+	public function valuesToSelectorAttr($attr, $data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector(array('attr', $attr), $data, $selectorPattern, $skipFields, $fieldCallback);
 	}
-	protected function _valuesToSelector($replace, $data, $selectorPattern, $skipKeys, $fieldCallback) {
+	protected function _valuesToSelector($target, $data, $selectorPattern, $skipFields, $fieldCallback) {
 		$_target = $target;
 		$targetData = null;
 		if (is_array($target)) {
@@ -570,11 +3452,12 @@ abstract class QueryTemplatesPhpQuery
 			$target = $target[0];
 		}
 		foreach($data as $k => $v) {
-			if ($skipKeys && in_array($f, $skipKeys))
+			if ($skipFields && in_array($f, $skipFields))
 				continue;
 			if ($v instanceof Callback)
 				$v = phpQuery::callbackRun($v);
 			$selector = str_replace(array('%k'), array($k), $selectorPattern);
+//			$node = $this->find($selector)->add($this->filter($selector));
 			$node = $this->find($selector);
 			switch($target) {
 				case 'attr':
@@ -590,109 +3473,442 @@ abstract class QueryTemplatesPhpQuery
 		return $this;
 	}
 	/**
-	 * Wrap selected elements with PHP foreach loop iterating $varName.
+	 * Wraps selected elements with executable code iterating $varName as $rowName.
 	 *
-	 * Method doesn't change selected elements stack. Returned is source element.
-	 *
-	 * Example
-	 * <code>
-	 * $pq['node1']->loop('foo', 'bar', 'i');
-	 * </code>
-	 *
-	 * Source
-	 * <node1/>
-	 *
-	 * Result
-	 * <code>
-	 * <?php
-	 * foreach($foo as $i => $bar) {
-	 * ?><node1/><?php
-	 * }
-	 * ?>
-	 * </code>
-	 *
-	 * @param String $varName
-	 * Variable which will be looped. Must contain $ at the beggining.
-	 * @param String $asVarName
-	 * Name of variable being result of iteration.
-	 * @param String $keyName
-	 * Optional. Use it when you want to have $varName's key available.
+	 * Method doesn't change selected nodes stack.
 	 * 
-	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
-	 */
-	public function loop($varName, $asVarName, $keyName = null) {
-		$this->_loop($this, $varName, $asVarName, $keyName);
-		return $this;
-	}
-	/**
-	 * Acts as loop(), but affects each selected element separately.
+	 * == Example ==
 	 * 
-	 * @param $varName
-	 * @param $asVarName
-	 * @param $keyName
-	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
-	 * @see QueryTemplatesPhpQuery::loop()
-	 */
-	public function loopSeparate($varName, $asVarName, $keyName = null) {
-		foreach($this->stack() as $node)
-			$this->_loop($node, $varName, $asVarName, $keyName);
-		return $this;
-	}
-	/**
-	 * Remove (detach) all matched nodes besided first one and than wrap it with
-	 * PHP foreach loop iterating $varName.
-	 *
-	 * Method DOES change selected elements stack. Returned is first element.
-	 *
-	 * Example
-	 * <code>
-	 * $template['ul li']->loopOne('foo', 'bar', 'i');
-	 * </code>
-	 *
-	 * Source
+	 * === Markup ===
 	 * <code>
 	 * <ul>
-	 *   <li>first</li>
-	 *   <li>second</li>
+	 * 	<li class='row'>
+	 * 		<span class='name'></span>
+	 * 		<ul class='tags'>
+	 * 			<li class='tag'>
+	 * 				<span class='name'></span>
+	 * 			</li>
+	 * 		</ul>
+	 * 	</li>
 	 * </ul>
 	 * </code>
 	 *
-	 * Result
+	 * === Data ===
 	 * <code>
-	 * <ul><?php
-	 * foreach($foo as $i => $bar) {
-	 * ?><li>first</li><?php
-	 * }
-	 * ?></ul>
+	 * $data = array(
+	 * 	array(
+	 * 		'User' => array('name' => 'foo'),
+	 * 		'Tags' => array(
+	 * 			array('name' => 'php'),
+	 * 			array('name' => 'js'),
+	 * 		),
+	 * 	),
+	 * 	array(
+	 * 		'User' => array('name' => 'bar'),
+	 * 		'Tags' => array(
+	 * 			array('name' => 'perl'),
+	 * 		),
+	 * 	),
+	 * 	array(
+	 * 		'User' => array('name' => 'fooBar'),
+	 * 		'Tags' => array(
+	 * 			array('name' => 'php'),
+	 * 			array('name' => 'js'),
+	 * 			array('name' => 'perl'),
+	 * 		),
+	 * 	),
+	 * );
+	 * $userFields = array('name');
+	 * $tagFields = array('name');
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	find('> ul > li')->
+	 * 		varsToLoop('data', 'row')->
+	 * 		varsToSelector('row', $userFields, 'span.%k')->
+	 * 		find('> ul > li')->
+	 * 			varsToLoop('row.Tags', 'tag')->
+	 * 			varsToSelector('tag', $tagFields)
+	 * ;
 	 * </code>
 	 *
-	 * Proposed names:
-	 * - loopFirst
+	 * === Template ===
+	 * <code>
+	 * <ul>
+	 * <?php  if (isset($data) && (is_array($data) || is_object($data))) { foreach($data as $row):  ?><li class="row">
+	 * 		<span class="name"><?php  if (isset($row['name'])) print $row['name'];
+	 * else if (isset($row->{'name'})) print $row->{'name'};  ?></span>
+	 * 		<ul class="tags">
+	 * <?php  if (isset($row['Tags'])) $__8daca = $row['Tags']; else if (isset($row->{'Tags'})) $__8daca = $row->{'Tags'}; if (isset($__8daca) && (is_array($__8daca) || is_object($__8daca))) { foreach($__8daca as $tag):  ?><li class="tag">
+	 * 				<span class="name"><?php  if (isset($tag['name'])) print $tag['name'];
+	 * else if (isset($tag->{'name'})) print $tag->{'name'};  ?></span>
+	 * 			</li>
+	 * <?php  endforeach; }  ?>
+	 * 		</ul>
+	 * </li>
+	 * <?php  endforeach; }  ?>
+	 * </ul>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * ul
+	 *  - li.row
+	 *  -  - span.name
+	 *  -  - ul.tags
+	 *  -  -  - li.tag
+	 *  -  -  -  - span.name
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * ul
+	 *  - PHP
+	 *  - li.row
+	 *  -  - span.name
+	 *  -  -  - PHP
+	 *  -  - ul.tags
+	 *  -  -  - PHP
+	 *  -  -  - li.tag
+	 *  -  -  -  - span.name
+	 *  -  -  -  -  - PHP
+	 *  -  -  - PHP
+	 *  - PHP
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable which will be looped. Must contain $ at the beggining.
+	 *
+	 * @param String $rowName
+	 * Name of variable being result of iteration.
+	 *
+	 * @param String $indexName
+	 * Optional. Use it when you want to have $varName's key available in the scope.
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::valuesToLoop()
+	 */
+	public function varsToLoop($varName, $rowName, $indexName = null) {
+		$this->_varsToLoop($this, $varName, $rowName, $indexName);
+		return $this;
+	}
+	/**
+	 * Wraps selected elements with executable code iterating $varName as $rowName.
+	 * Acts as varsToLoop(), but affects each selected element separately.
+	 * 
+	 * Method doesn't change selected nodes stack.
 	 *
 	 * @param String $varName
 	 * Variable which will be looped. Must contain $ at the beggining.
-	 * @param String $asVarName
+	 *
+	 * @param String $rowName
 	 * Name of variable being result of iteration.
-	 * @param String $keyName
-	 * Optional. Use it when you want to have $varName's key available.
+	 *
+	 * @param String $indexName
+	 * Optional. Use it when you want to have $varName's key available in the scope.
 	 * 
 	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
-	 * @see QueryTemplatesPhpQuery::loop()
+	 * @see QueryTemplatesPhpQuery::varsToLoop()
 	 */
-	public function loopOne($varName, $asVarName, $keyName = null) {
+	public function varsToLoopSeparate($varName, $rowName, $indexName = null) {
+		foreach($this->stack() as $node)
+			$this->_varsToLoop($node, $varName, $rowName, $indexName);
+		return $this;
+	}
+	protected function _varsToLoop($pq, $varName, $asVarName, $keyName) {
+		$code = $this->qt_langCode('loopVar', $varName, $asVarName, $keyName);
+		$pq->
+			eq(0)->qt_langMethod('before', $code[0])->end()->
+			slice(-1, 1)->qt_langMethod('after', $code[1]);
+	}
+	/**
+	 * Wraps selected elements with executable code iterating $varName as $rowName.
+	 * Acts as varsToLoop(), but loops only first node from stack. Rest is removed 
+	 * from the DOM.
+	 *
+	 * Method DOES change selected nodes stack. Returned is first node.
+	 *
+	 * @param String $varName
+	 * Variable which will be looped. Must contain $ at the beggining.
+	 *
+	 * @param String $rowName
+	 * Name of variable being result of iteration.
+	 *
+	 * @param String $indexName
+	 * Optional. Use it when you want to have $varName's key available in the scope.
+	 * 
+	 * @return QueryTemplatesPhpQuery|QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::varsToLoop()
+	 */
+	public function varsToLoopFirst($varName, $rowName, $indexName = null) {
 		$return = $this->eq(0);
 		$this->slice(1)->remove();
-		$this->_loop($return, $varName, $asVarName, $keyName);
+		$this->_varsToLoop($return, $varName, $rowName, $indexName);
 		return $return;
 	}
-	protected function _loop($pq, $varName, $asVarName, $keyName) {
-		$lang = strtoupper($this->parent->language);
-		$languageClass = 'QueryTemplatesLanguage'.$lang;
-		$code = call_user_func_array(
-			array($languageClass, 'loopVar'), array($varName, $asVarName, $keyName)
-		);
-		$pq->eq(0)->{"before$lang"}($code[0]);
-		$pq->slice(-1, 1)->{"after$lang"}($code[1]);
+	/**
+	 * @deprecated
+	 * @param $varName
+	 * @param $asVarName
+	 * @param $keyName
+	 * @return unknown_type
+	 */
+	public function loopSeparate($varName, $asVarName, $keyName = null) {
+		return $this->varsToLoopSeparate($varName, $asVarName, $keyName);
+	}
+	/**
+	 * @deprecated
+	 * @param $varName
+	 * @param $asVarName
+	 * @param $keyName
+	 * @return unknown_type
+	 */
+	public function loopOne($varName, $asVarName, $keyName = null) {
+		return $this->varsToLoopOne($varName, $asVarName, $keyName);
+	}
+	/**
+	 * @deprecated
+	 * @param $varName
+	 * @param $asVarName
+	 * @param $keyName
+	 * @return unknown_type
+	 */
+	public function loop($varName, $asVarName, $keyName = null) {
+		return $this->varsToLoop($varName, $asVarName, $keyName);
+	}
+	/**
+	 * Method loops provided $values on actually selected nodes. Each time new row 
+	 * is inserted, provided callback is triggered with $dataRow, $node and $dataIndex.
+	 * Acts as valuesToLoop(), but affects each selected element separately.
+	 *
+	 * Method doesn't change selected nodes stack.
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object.
+	 * 
+	 * @param $rowCallback
+	 * Callback triggered for every inserted row. Should support following 
+	 * parameters: 
+	 * - $dataRow mixed
+	 * - $node phpQueryObject
+	 * - $dataIndex mixed
+	 * 
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::valuesToLoop() 
+	 */
+	public function valuesToLoopSeparate($values, $rowCallback) {
+		foreach($this->stack() as $node)
+			$this->_valuesToLoop($node, $values, $rowCallback);
+		return $this;
+	}
+	/**
+	 * Method loops provided $values on actually selected nodes. Each time new row 
+	 * is inserted, provided callback is triggered with $dataRow, $node and $dataIndex.
+	 * Acts as valuesToLoop(), but loops only first node from stack. Rest is removed 
+	 * from the DOM.
+	 *
+	 * Method DOES change selected nodes stack. Returned is first node.
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object.
+	 * 
+	 * @param $rowCallback
+	 * Callback triggered for every inserted row. Should support following 
+	 * parameters: 
+	 * - $dataRow mixed
+	 * - $node phpQueryObject
+	 * - $dataIndex mixed
+	 * 
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::valuesToLoop() 
+	 */
+	public function valuesToLoopFirst($values, $rowCallback) {
+		$return = $this->eq(0);
+		$this->slice(1)->remove();
+		$this->_valuesToLoop($return, $values, $rowCallback);
+		return $return;
+	}
+	/**
+	 * Method loops provided $values on actually selected nodes. Each time new row 
+	 * is inserted, provided callback is triggered with $dataRow, $node and $dataIndex.
+	 *
+	 * Method doesn't change selected nodes stack.
+	 * 
+	 * == Example ==
+	 *
+	 * This example requires PHP 5.3. For versions before, degradate closures to normal functions.
+	 *
+	 * === Markup ===
+	 * <code>
+	 * <ul>
+	 *      <li class='row'>
+	 *	      <span class='name'></span>
+	 *	      <ul class='tags'>
+	 *		      <li class='tag'>
+	 *			      <span class='tag'></span>
+	 *		      </li>
+	 *	      </ul>
+	 *      </li>
+	 * </ul>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $data = array(
+	 *      array(
+	 *	      'User' => array('name' => 'foo'),
+	 *	      'Tags' => array(
+	 *		      array('tag' => 'php'),
+	 *		      array('tag' => 'js'),
+	 *	      ),
+	 *      ),
+	 *      array(
+	 *	      'User' => array('name' => 'bar'),
+	 *	      'Tags' => array(
+	 *		      array('tag' => 'perl'),
+	 *	      ),
+	 *      ),
+	 *      array(
+	 *	      'User' => array('name' => 'fooBar'),
+	 *	      'Tags' => array(
+	 *		      array('tag' => 'php'),
+	 *		      array('tag' => 'js'),
+	 *		      array('tag' => 'perl'),
+	 *	      ),
+	 *      ),
+	 * );
+	 * </code>
+	 *
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template
+	 *      ->find('> ul > li')
+	 *	      ->valuesToLoop($data, function($row, $li1) {
+	 *		      $li1->valuesToSelector($row['User'], 'span.%k')
+	 *			      ->find('> ul > li')
+	 *				      ->valuesToLoop($row['Tags'], function($tag, $li2) {
+	 *					      $li2->valuesToSelector($tag);
+	 *				      })
+	 *		      ;
+	 *	      });
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * <ul>
+	 * <li class="row">
+	 *	      <span class="name">foo</span>
+	 *	      <ul class="tags">
+	 * <li class="tag">
+	 *			      <span class="tag">php</span>
+	 *		      </li>
+	 * <li class="tag">
+	 *			      <span class="tag">js</span>
+	 *		      </li>
+	 *	      </ul>
+	 * </li>
+	 * <li class="row">
+	 *	      <span class="name">bar</span>
+	 *	      <ul class="tags">
+	 * <li class="tag">
+	 *			      <span class="tag">perl</span>
+	 *		      </li>
+	 *	      </ul>
+	 * </li>
+	 * <li class="row">
+	 *	      <span class="name">fooBar</span>
+	 *	      <ul class="tags">
+	 * <li class="tag">
+	 *			      <span class="tag">php</span>
+	 *		      </li>
+	 * <li class="tag">
+	 *			      <span class="tag">js</span>
+	 *		      </li>
+	 * <li class="tag">
+	 *			      <span class="tag">perl</span>
+	 *		      </li>
+	 *	      </ul>
+	 * </li>
+	 * </ul>
+	 * </code>
+	 *
+	 * === Template tree before ===
+	 * <code>
+	 * ul
+	 *  - li.row
+	 *  -  - span.name
+	 *  -  - ul.tags
+	 *  -  -  - li.tag
+	 *  -  -  -  - span.tag
+	 * </code>
+	 *
+	 * === Template tree after ===
+	 * <code>
+	 * ul
+	 *  - li.row
+	 *  -  - span.name
+	 *  -  -  - Text:foo
+	 *  -  - ul.tags
+	 *  -  -  - li.tag
+	 *  -  -  -  - span.tag
+	 *  -  -  -  -  - Text:php
+	 *  -  -  - li.tag
+	 *  -  -  -  - span.tag
+	 *  -  -  -  -  - Text:js
+	 *  - li.row
+	 *  -  - span.name
+	 *  -  -  - Text:bar
+	 *  -  - ul.tags
+	 *  -  -  - li.tag
+	 *  -  -  -  - span.tag
+	 *  -  -  -  -  - Text:perl
+	 *  - li.row
+	 *  -  - span.name
+	 *  -  -  - Text:fooBar
+	 *  -  - ul.tags
+	 *  -  -  - li.tag
+	 *  -  -  -  - span.tag
+	 *  -  -  -  -  - Text:php
+	 *  -  -  - li.tag
+	 *  -  -  -  - span.tag
+	 *  -  -  -  -  - Text:js
+	 *  -  -  - li.tag
+	 *  -  -  -  - span.tag
+	 *  -  -  -  -  - Text:perl
+	 * </code>
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object.
+	 * 
+	 * @param $rowCallback
+	 * Callback triggered for every inserted row. Should support following 
+	 * parameters: 
+	 * - $dataRow mixed
+	 * - $node phpQueryObject
+	 * - $dataIndex mixed
+	 * 
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToLoop()
+	 */
+	public function valuesToLoop($values, $rowCallback) {
+		return $this->_valuesToLoop($this, $values, $rowCallback);
+	}
+	protected function _valuesToLoop($pq, $values, $rowCallback) {
+		$i = 0;
+		$lastNode = $pq;
+		foreach($values as $k => $v) {
+			$stack = array();
+			foreach($pq as $node) {
+				$stack[] = $node->clone()->insertAfter($lastNode)->get(0);
+			}
+			$lastNode = $this->newInstance($stack);
+			phpQuery::callbackRun($rowCallback, array($v, $lastNode, $k));
+		}
+		// we used those nodes as template
+		$pq->remove();
+		return $this;
 	}
 	/**
 	 * Creates markup with INPUT tags and prepends it to form.
@@ -700,20 +3916,26 @@ abstract class QueryTemplatesPhpQuery
 	 *
 	 * Method doesn't change selected elements stack.
 	 *
-	 * Example
-	 * <code>
-	 * $data = array('field1' => 'foo', 'field2' => 'bar');
-	 * $template->inputsFromValues($data);
-	 * </code>
+	 * == Example ==
 	 *
-	 * Source
+	 * === Markup ===
 	 * <code>
 	 * <form>
 	 *   <input name='was-here-before'>
 	 * </form>
 	 * </code>
 	 *
-	 * Result
+	 * === Data ===
+	 * <code>
+	 * $data = array('field1' => 'foo', 'field2' => 'bar');
+	 * </code>
+	 *
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->inputsFromValues($data);
+	 * </code>
+	 *
+	 * === Template ===
 	 * <code>
 	 * <form>
 	 *   <input name='field1' value='foo'>
@@ -725,6 +3947,7 @@ abstract class QueryTemplatesPhpQuery
 	 * @param $data
 	 * @param $type
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::formFromValues()
 	 */
 	public function inputsFromValues($data, $type = 'hidden') {
 		$form = $this->is('form')
@@ -751,8 +3974,24 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * Inputs are selected according to $selectorPattern, where %k represents
 	 * variable's key.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <form>
+	 *   <input name='input-example'>
+	 *   <input name='array[array-example]'>
+	 *   <textarea name='textarea-example'></textarea>
+	 *   <select name='select-example'>
+	 *     <option value='first' selected='selected'></option>
+	 *   </select>
+	 *   <input type='radio' name='radio-example' value='foo'>
+	 *   <input type='checkbox' name='checkbox-example' value='foo'>
+	 * </form>
+	 * </code>
 	 *
-	 * Example
+	 * === Data ===
 	 * <code>
 	 * $data = array(
 	 *   'input-example' => 'foo',
@@ -762,52 +4001,76 @@ abstract class QueryTemplatesPhpQuery
 	 *   'radio-example' => 'foo',
 	 *   'checkbox-example' => 'foo',
 	 * );
-	 * $template->varsToForm('data', $data);
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	varsToForm('data', $data)
+	 * ;
 	 * </code>
 	 *
-	 * Source
+	 * === Template ===
 	 * <code>
 	 * <form>
-	 *   <input name='input-example'>
-	 *   <input name='array[array-example]'>
-	 *   <textarea name='textarea-example'></textarea>
-   *   <select name='select-example'>
-	 *     <option value='first' selected='selected'></option>
-   *   </select>
-	 *   <input type='radio' name='radio-example' value='foo'>
-	 *   <input type='checkbox' name='checkbox-example' value='foo'>
+	 *   <input name="input-example" value="<?php  if (isset($data['input-example'])) print $data['input-example'];
+	 * else if (isset($data->{'input-example'})) print $data->{'input-example'};  ?>"><input name="array[array-example]" value="<?php  if (isset($data['array-example'])) print $data['array-example'];
+	 * else if (isset($data->{'array-example'})) print $data->{'array-example'};  ?>"><textarea name="textarea-example"><?php  if (isset($data['textarea-example'])) print $data['textarea-example'];
+	 * else if (isset($data->{'textarea-example'})) print $data->{'textarea-example'};  ?></textarea><select name="select-example"><?php  if ((isset($data['select-example']) && $data['select-example'] == 'first') 
+	 * 	|| (isset($data->{'select-example'}) && $data->{'select-example'} == 'first')) {  ?><option value="first" selected></option>
+	 * <?php  }    else {  ?><option value="first"></option>
+	 * <?php  }  ?></select><?php  if ((isset($data['radio-example']) && $data['radio-example'] == 'foo') 
+	 * 	|| (isset($data->{'radio-example'}) && $data->{'radio-example'} == 'foo')) {  ?><input type="radio" name="radio-example" value="foo" checked><?php  }    else {  ?><input type="radio" name="radio-example" value="foo"><?php  }    if ((isset($data['checkbox-example']) && $data['checkbox-example'] == 'foo') 
+	 * 	|| (isset($data->{'checkbox-example'}) && $data->{'checkbox-example'} == 'foo')) {  ?><input type="checkbox" name="checkbox-example" value="foo" checked><?php  }    else {  ?><input type="checkbox" name="checkbox-example" value="foo"><?php  }  ?>
 	 * </form>
 	 * </code>
-	 *
-	 * Result
+	 * 
+	 * === Template tree before ===
 	 * <code>
-	 * <form>
-	 *   <input name='input-example' value='<?php print $data['input-example'] ?>'>
-	 *   <input name='array[array-example]' value='<?php print $data['array-example'] ?>'>
-	 *   <textarea name='textarea-example'><?php print $data['textarea-example'] ?></textarea>
-   *   <select name='select-example'><?php
-   *     if ($data['select-example'] == 'first')
-   *       print "<option value='first' selected='selected'></option>";
-	 *     else
-   *       print "<option value='first'></option>";
-	 *   ?></select>
-	 *   <?php
-   *     if ($data['radio-example'] == 'foo')
-   *       print "<input type='radio' name='radio-example' checked='checked' value='foo'>";
-   *     else
-   *       print "<input type='radio' name='radio-example' value='foo'>";
-   *   ?>
-	 *   <?php
-   *     if ($data['checkbox-example'] == 'foo')
-   *       print "<input type='checkbox' name='checkbox-example' checked='checked' value='foo'>";
-   *     else
-   *       print "<input type='checkbox' name='checkbox-example' value='foo'>";
-   *   ?>
-	 * </form>
+	 * form
+	 *  - input[name="input-example"]
+	 *  - input[name="array[array-example]"]
+	 *  - textarea[name="textarea-example"]
+	 *  - select[name="select-example"]
+	 *  -  - option[value="first"][selected]
+	 *  - input[name="radio-example"][value="foo"]
+	 *  - input[name="checkbox-example"][value="foo"]
 	 * </code>
-	 *
-	 * @param String $arrayName
-	 * @param Array|Object $arrayValue
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * form
+	 *  - input[name="input-example"][value=PHP]
+	 *  - input[name="array[array-example]"][value=PHP]
+	 *  - textarea[name="textarea-example"]
+	 *  -  - PHP
+	 *  - select[name="select-example"]
+	 *  -  - PHP
+	 *  -  - option[value="first"][selected]
+	 *  -  - PHP
+	 *  -  - PHP
+	 *  -  - option[value="first"]
+	 *  -  - PHP
+	 *  - PHP
+	 *  - input[name="radio-example"][value="foo"][checked]
+	 *  - PHP
+	 *  - PHP
+	 *  - input[name="radio-example"][value="foo"]
+	 *  - PHP
+	 *  - PHP
+	 *  - input[name="checkbox-example"][value="foo"][checked]
+	 *  - PHP
+	 *  - PHP
+	 *  - input[name="checkbox-example"][value="foo"]
+	 *  - PHP
+	 * </code>
+	 * 
+	 * @param String $varName
+	 * Variable avaible in scope of type Array or Object.
+	 * $varName should NOT start with $.
+	 * 
+	 * @param Array|Object $varFields
+	 * 
 	 * @param String $selectorPattern
 	 * Defines pattern matching form fields.
 	 * Defaults to "[name*='%k']", which matches fields containing variable's key in 
@@ -815,20 +4078,13 @@ abstract class QueryTemplatesPhpQuery
 	 * $selectorPattern to "[name^='foo[bar]'][name*='%k']"
 	 * 
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
-	 * @TODO support select[multiple] (thou array)
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 * @see QueryTemplatesPhpQuery::formFromVars()
 	 * 
-	 * @TODO JS var notation (dot separated) +optional array support
+	 * @TODO support select[multiple] (thou array)
 	 */
-	public function varsToForm($varName, $varValue, $selectorPattern = "[name*='%k']") {
-		// determine if we have real values in $varValue or just list of fields
-		if (is_array($varValue) && array_key_exists(0, $varValue))
-			$loop = $varValue;
-		else if (is_object($varValue) && isset($varValue->{'0'}))
-			$loop = $varValue;
-		else
-			$loop = is_object($varValue)
-				? get_class_vars(get_class($varValue))
-				: array_keys($varValue);
+	public function varsToForm($varName, $varFields, $selectorPattern = "[name*='%k']") {
+		$loop = $this->_varsParseFields($varFields);
 		$lang = strtoupper($this->parent->language);
 		$languageClass = 'QueryTemplatesLanguage'.$lang;
 		foreach($loop as $f) {
@@ -929,21 +4185,23 @@ abstract class QueryTemplatesPhpQuery
 	 * </form>
 	 * </code>
 	 *
-	 * @param Array|Object $data
+	 * @param Array|Object $values
+	 * 
 	 * @param String $selectorPattern
 	 * Defines pattern matching form fields.
-	 * Defaults to "[name*='%k'][name*='%k[]']", which matches fields containing 
+	 * Defaults to "[name*='%k']", which matches fields containing 
 	 * $data's key in their names. For example, to match only names starting with 
 	 * "foo[bar]" change $selectorPattern to "[name^='foo[bar]'][name*='%k']"
 	 * 
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function valuesToForm($data, $selectorPattern = "[name*='%k']") {
+	public function valuesToForm($values, $selectorPattern = "[name*='%k']") {
 		$form = $this->is('form')
 			? $this->filter('form')
 			: $this->find('form');
 		// $arrayValue represents target data
-		foreach($data as $f => $v) {
+		foreach($values as $f => $v) {
 			// TODO addslashes to $f
 			$selector = str_replace(array('%k'), array($f), $selectorPattern);
 //			if (is_array($v) || is_object($v))
@@ -1009,11 +4267,13 @@ abstract class QueryTemplatesPhpQuery
 	 *   Same purpose as $additionalData, but during template's execution.
 	 * Names should be without dollar signs. 
 	 * Ex:
+	 * <code>
 	 * array('row', 'errors.row', 'data');
 	 * $errors = array(
 	 *   'field1' => 'one error',
 	 *   'field2' => array('first error', 'second error')
 	 * );
+	 * </code>
 	 * 
 	 * @param $structure
 	 * Form structure information. This should be easily fetchable from ORM layer.
@@ -1079,10 +4339,12 @@ abstract class QueryTemplatesPhpQuery
 	 * 	// TODO multipe
 	 * //	'field2' => array('value2', 'dadas', 'fsdsf'),
 	 * );
+	 * </code>
 	 * 
 	 * @param $additionalData
 	 * Additional data for fields. For now it's only used for populating select boxes.
 	 * Ex: 
+	 * <code>
 	 * $additionalData = array(
 	 * 	'field2' => array(
 	 * 		array(	// optgroup
@@ -1110,6 +4372,8 @@ abstract class QueryTemplatesPhpQuery
 	 * - input (per field) // TODO
 	 * 
 	 * @return QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 * 
 	 * @TODO support callbacks (per input type, before/after, maybe for errors too ?)
 	 * @TODO universalize language-specific injects
@@ -1157,16 +4421,21 @@ EOF;
 		$form = $this->is('form')
 			? $this->filter('form')->empty()
 			: $this->newInstance('<form/>');
+		if ($structure['__form']) {
+			foreach($structure['__form'] as $attr => $value)
+				$form->attr($attr, $value);
+			$attr = $value = null;
+		}
 		$formID = $form->attr('id');
 		if (! $formID) {
 			$formID = 'f_'.substr(md5(microtime()), 0, 5);
 			$form->attr('id', $formID);
 		}
 		foreach($structure as $field => $info) {
-			if ($field == '__form') {
-				foreach($info as $attr => $value)
-					$form->attr($attr, $value);
-				$attr = $value = null;
+			if ($field == '__form')
+				continue;
+			if (is_int($field)) {
+				// TODO fieldset
 				continue;
 			}
 			if (! is_array($info))
@@ -1408,125 +4677,544 @@ EOF;
 	 *
 	 * Method doesn't change selected elements stack.
 	 *
-	 * Example
-	 * <code>
-	 * $data = array('foo' => 'bar', 'bar' => 'foo');
-	 * $template['node1']->valuesToVars($data);
-	 * </code>
+	 * == Example ==
 	 *
-	 * Source
+	 * === Markup ===
 	 * <code>
 	 * <node1>
-	 *   <node2/>
+	 * 	<node2></node2>
 	 * </node1>
 	 * </code>
 	 *
-	 * Result
+	 * === Data ===
 	 * <code>
-	 * <node1>
-   *   <?php
-	 *   $foo = 'bar';
-	 *   $bar = 'foo';
-	 *   ?>
-	 *   <node2/>
-	 * </node1>
+	 * $values = array('<foo/>', '<bar/>');
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['node1']->valuesToVars($values);
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * <node1><?php  $0 = '<foo/>';
+	 * $1 = '<bar/>';  ?><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - PHP
+	 *  - node2
 	 * </code>
 	 *
 	 * @param array $varsArray
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
-	public function valuesToVars($varsArray) {
+	public function varsFromValues($varsArray) {
 		return $this->qt_langMethod('prepend', 
 			$this->qt_langCode('valuesToVars', $varsArray)
 		);
 	}
 	/**
-	 * Replaces nodes from stack with $markup using replaceWith() insted of markup().
-	 *
-	 * Method doesn't change selected elements stack. Returned is source element,
-	 * detached from it's parent.
-	 *
-	 * Example
-	 * <code>
-	 * $markups = array('<foo/>', '<bar/>');
-	 * $template['node1']->markupToStackOuter($markups);
-	 * </code>
-	 *
-	 * Source
-	 * <code>
-	 * <node1>
-	 *   <node2/>
-	 * </node1>
-	 * <node1>
-	 *   <node2/>
-	 * </node1>
-	 * </code>
-	 *
-	 * Result
-	 * <code>
-   * <foo/>
-   * <bar/>
-	 * </code>
-	 *
-	 * @param Array|String|phpQueryObject $markup
-	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @deprecated
 	 */
-	public function valuesToStackReplace($values, $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToStack('replaceWith', $values, $skipKeys, $fieldCallback);
+	public function valuesToVars($varsArray) {
+		return varsFromValues($varsArray);
 	}
 	/**
-	 * Replaces nodes from stack with $markup using markup() insted of replaceWith().
+	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * selected nodes.
 	 *
-	 * Method doesn't change selected elements stack.
+	 * Method doesn't change selected nodes stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * </code>
 	 *
-	 * Example
+	 * === Data ===
 	 * <code>
 	 * $values = array('<foo/>', '<bar/>');
-	 * $template['node1']->valuesToStack($values);
 	 * </code>
-	 *
-	 * Source
+	 * 
+	 * === `QueryTemplates` formula ===
 	 * <code>
-	 * <node1>
-	 *   <node2/>
-	 * </node1>
-	 * <node1>
-	 *   <node2/>
-	 * </node1>
+	 * $template->
+	 * 	valuesToStack($values)
+	 * ;
 	 * </code>
 	 *
-	 * Result
+	 * === Template ===
 	 * <code>
-	 * <node1>
-   *   <foo/>
-	 * </node1>
-	 * <node1>
-   *   <bar/>
-	 * </node1>
+	 * <foo></foo>
 	 * </code>
-	 *
-	 * @param Array|String|phpQueryObject $values
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * foo
+	 * </code>
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::valuesToSelector()
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToStack($values, $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToStack('markup', $values, $skipKeys, $fieldCallback);
+	public function valuesToStack($values, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToStack('markup', $values, $skipFields, $fieldCallback);
 	}
-	public function valuesToStackBefore($values, $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToStack('before', $values, $skipKeys, $fieldCallback);
+	/**
+	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * selected nodes.
+	 *
+	 * Method doesn't change selected nodes stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $values = array('<foo/>', '<bar/>');
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	valuesToStackReplace($values)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><node2></node2></node1><node1><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::valuesToSelector()
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 */
+	public function valuesToStackReplace($values, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToStack('replaceWith', $values, $skipFields, $fieldCallback);
 	}
-	public function valuesToStackAfter($values, $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToStack('after', $values, $skipKeys, $fieldCallback);
+	/**
+	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * selected nodes.
+	 *
+	 * Method doesn't change selected nodes stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $values = array('<foo/>', '<bar/>');
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	valuesToStackBefore($values)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><node2></node2></node1><node1><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::valuesToSelector()
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 */
+	public function valuesToStackBefore($values, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToStack('before', $values, $skipFields, $fieldCallback);
 	}
-	public function valuesToStackPrepend($values, $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToStack('prepend', $values, $skipKeys, $fieldCallback);
+	/**
+	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * selected nodes.
+	 *
+	 * Method doesn't change selected nodes stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $values = array('<foo/>', '<bar/>');
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	valuesToStackAfter($values)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><node2></node2></node1><node1><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::valuesToSelector()
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 */
+	public function valuesToStackAfter($values, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToStack('after', $values, $skipFields, $fieldCallback);
 	}
-	public function valuesToStackAppend($values, $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToStack('append', $values, $skipKeys, $fieldCallback);
+	/**
+	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * selected nodes.
+	 *
+	 * Method doesn't change selected nodes stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $values = array('<foo/>', '<bar/>');
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	valuesToStackPrepend($values)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <foo></foo>
+	 * <node1><node2></node2></node1><node1><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * foo
+	 * node1
+	 *  - node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::valuesToSelector()
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 */
+	public function valuesToStackPrepend($values, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToStack('prepend', $values, $skipFields, $fieldCallback);
 	}
-	public function valuesToStackAttr($attr, $values, $skipKeys = null, $fieldCallback = null) {
-		return $this->_valuesToStack(array('attr', $attr), $values, $skipKeys, $fieldCallback);
+	/**
+	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * selected nodes.
+	 *
+	 * Method doesn't change selected nodes stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $values = array('<foo/>', '<bar/>');
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	valuesToStackAppend($values)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><node2></node2></node1><node1><node2></node2></node1><foo></foo>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node1
+	 *  - node2
+	 * foo
+	 * </code>
+	 * 
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::valuesToSelector()
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 */
+	public function valuesToStackAppend($values, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToStack('append', $values, $skipFields, $fieldCallback);
 	}
-	protected function _valuesToStack($target, $data, $skipKeys, $fieldCallback) {
+	/**
+	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * selected nodes.
+	 *
+	 * Method doesn't change selected nodes stack.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * <node1>
+	 * 	<node2></node2>
+	 * </node1>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $values = array('<foo/>', '<bar/>');
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template->
+	 * 	valuesToStackAttr('rel', $values)
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <node1><node2></node2></node1><node1><node2></node2></node1>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * node1
+	 *  - node2
+	 * node1
+	 *  - node2
+	 * </code>
+	 * 
+	 * @param String $attr
+	 * Target attribute name.
+	 *
+	 * @param Array|Object $values
+	 * Associative array or Object containing markup, text or instance of Callback.
+	 * 
+	 * @param Callback|string $fieldCallback
+	 * Callback triggered after every insertion. Three parameters are passed to 
+	 * this callback:
+	 * - $node phpQueryObject
+	 * - $field String
+	 * - $target String|array
+	 * 
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::valuesToSelector()
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 */
+	public function valuesToStackAttr($attr, $values, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToStack(array('attr', $attr), $values, $skipFields, $fieldCallback);
+	}
+	protected function _valuesToStack($target, $data, $skipFields, $fieldCallback) {
 		$_target = $target;
 		$targetData = null;
 		if (is_array($target)) {
@@ -1535,7 +5223,7 @@ EOF;
 		}
 		$i = 0;
 		foreach($data as $k => $v) {
-			if ($skipKeys && in_array($f, $skipKeys))
+			if ($skipFields && in_array($f, $skipFields))
 				continue;
 			if ($v instanceof Callback)
 				$v = phpQuery::callbackRun($v);
@@ -1584,7 +5272,7 @@ EOF;
 	/**
 	 * Replaces selected tag with PHP "if" statement containing $code as condition.
 	 *
-	 * Method doesn't change selected elements stack. Returned is source element,
+	 * Method doesn't change selected nodes stack.
 	 * detached from it's parent.
 	 *
 	 * Example
@@ -1626,34 +5314,69 @@ EOF;
 	}
 	/**
 	 * Replaces selected tag with PHP "if" statement checking if $var evaluates
-	 * to true. $var must be an object available inside template's scope.
+	 * to TRUE. $var must be available inside template's scope.
 	 * 
-	 * $var is passed in JS object convention (dot separated).
+	 * $var is passed in JavaScript object notation (dot separated).
 	 *
-	 * Method doesn't change selected elements stack. Returned is source element,
+	 * Method doesn't change selected nodes stack.
 	 * detached from it's parent.
 	 *
 	 * Notice-safe.
-	 *
-	 * Example
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
 	 * <code>
-	 * $template['.if-var']->tagToIfVar('foo.bar');
+	 * <div>1</div>
+	 * <div>2</div>
+	 * <div>3</div>
 	 * </code>
 	 *
-	 * Source
+	 * === Data ===
 	 * <code>
-	 * <div class='if-var'><node1/></div>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array(true)
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['div:eq(1)']->
+	 * 	tagToIfVar('data.foo.bar.0')
+	 * ;
 	 * </code>
 	 *
-	 * Result
+	 * === Template ===
 	 * <code>
-	 * <?php
-	 * if ($foo->bar) {
-	 * ?><node1/><?php
-	 * }
-	 * ?>
+	 * 
+	 * <div>1</div>
+	 * <?php  if ((isset($data['foo']['bar']['0']) && $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && $data->{'foo'}->{'bar'}->{'0'})) {  ?>2<?php  }  ?>
+	 * <div>3</div>
 	 * </code>
-	 *
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * div
+	 *  - Text:2
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * PHP
+	 * Text:2
+	 * PHP
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
 	 * @param string $var
 	 * Dot-separated object path, eg Object.property.inneProperty
 	 * 
@@ -1671,9 +5394,90 @@ EOF;
 		return $this;
 	}
 	/**
+	 * Replaces selected tag with PHP "if" statement checking if $var evaluates
+	 * to FALSE. $var must be available inside template's scope.
+	 * 
+	 * $var is passed in JavaScript object notation (dot separated).
+	 *
+	 * Method doesn't change selected nodes stack.
+	 * detached from it's parent.
+	 *
+	 * Notice-safe.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <div>1</div>
+	 * <div>2</div>
+	 * <div>3</div>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array(true)
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['div:eq(1)']->
+	 * 	tagToIfNotVar('data.foo.bar.0')
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <div>1</div>
+	 * <?php  if ((isset($data['foo']['bar']['0']) && ! $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && ! $data->{'foo'}->{'bar'}->{'0'})) {  ?>2<?php  }  ?>
+	 * <div>3</div>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * div
+	 *  - Text:2
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * PHP
+	 * Text:2
+	 * PHP
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
+	 * @param string $var
+	 * Dot-separated object path, eg Object.property.inneProperty
+	 * 
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::ifVar()
+	 */
+	public function tagToIfNotVar($var) {
+		foreach($this as $node) {
+			$node = pq($node, $this->getDocumentID())
+				->ifNotVar($var)
+				->contents()
+					->insertAfter($node)->end()
+				->remove();
+		}
+		return $this;
+	}
+	/**
 	 * Replaces selected tag with PHP "else if" statement containing $code as condition.
 	 *
-	 * Method doesn't change selected elements stack. Returned is source element,
+	 * Method doesn't change selected nodes stack.
 	 * detached from it's parent.
 	 *
 	 * Example
@@ -1716,34 +5520,69 @@ EOF;
 	}
 	/**
 	 * Replaces selected tag with PHP "else if" statement checking if $var evaluates
-	 * to true. $var must be an object available inside template's scope.
+	 * to TRUE. $var must be available inside template's scope.
 	 * 
-	 * $var is passed in JS object convention (dot separated).
+	 * $var is passed in JavaScript object notation (dot separated).
 	 *
-	 * Method doesn't change selected elements stack. Returned is source element,
+	 * Method doesn't change selected nodes stack.
 	 * detached from it's parent.
 	 *
 	 * Notice-safe.
-	 *
-	 * Example
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
 	 * <code>
-	 * $template['.else-if-var']->tagToElseIfVar('foo.bar');
+	 * <div>1</div>
+	 * <div>2</div>
+	 * <div>3</div>
 	 * </code>
 	 *
-	 * Source
+	 * === Data ===
 	 * <code>
-	 * <div class='else-if-var'><node1/></div>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array(true)
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['div:eq(1)']->
+	 * 	tagToElseIfVar('data.foo.bar.0')
+	 * ;
 	 * </code>
 	 *
-	 * Result
+	 * === Template ===
 	 * <code>
-	 * <?php
-	 * else if ($foo->bar) {
-	 * ?><node1/><?php
-	 * }
-	 * ?>
+	 * 
+	 * <div>1</div>
+	 * <?php  else if ((isset($data['foo']['bar']['0']) && $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && $data->{'foo'}->{'bar'}->{'0'})) {  ?>2<?php  }  ?>
+	 * <div>3</div>
 	 * </code>
-	 *
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * div
+	 *  - Text:2
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * PHP
+	 * Text:2
+	 * PHP
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
 	 * @param string $var
 	 * Dot-separated object path, eg Object.property.inneProperty
 	 * 
@@ -1761,32 +5600,89 @@ EOF;
 		return $this;
 	}
 	/**
-	 * Replaces selected tag with PHP "else" statement.
+	 * Replaces selected tag with PHP "else if" statement checking if $var evaluates
+	 * to FALSE. $var must be available inside template's scope.
+	 * 
+	 * $var is passed in JavaScript object notation (dot separated).
 	 *
-	 * Method doesn't change selected elements stack. Returned is source element,
+	 * Method doesn't change selected nodes stack.
 	 * detached from it's parent.
 	 *
-	 * Example
+	 * Notice-safe.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
 	 * <code>
-	 * $template['.else']->tagToElsePHP();
+	 * <div>1</div>
+	 * <div>2</div>
+	 * <div>3</div>
 	 * </code>
 	 *
-	 * Source
+	 * === Data ===
 	 * <code>
-	 * <div class='else'><node1/></div>
-	 * </code>
-	 *
-	 * Result
-	 * <code>
-	 * <?php
-	 * else {
-	 * ?><node1/><?php
-	 * }
-	 * ?>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array(true)
+	 *   )
+	 * );
 	 * </code>
 	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['div:eq(1)']->
+	 * 	tagToElseIfNotVar('data.foo.bar.0')
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <div>1</div>
+	 * <?php  else if ((isset($data['foo']['bar']['0']) && ! $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && ! $data->{'foo'}->{'bar'}->{'0'})) {  ?>2<?php  }  ?>
+	 * <div>3</div>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * div
+	 *  - Text:2
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * PHP
+	 * Text:2
+	 * PHP
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
+	 * @param string $var
+	 * Dot-separated object path, eg Object.property.inneProperty
+	 * 
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::ifVar()
 	 */
+	public function tagToElseIfNotVar($var) {
+		foreach($this as $node) {
+			$node = pq($node, $this->getDocumentID())
+				->elseIfNotVar($var)
+				->contents()
+					->insertAfter($node)->end()
+				->remove();
+		}
+		return $this;
+	}
+		public function tagToElseStatement() {
+		return $this->_tagToElse($this->qt_lang());
+	}
 	public function tagToElsePHP() {
 		return $this->_tagToElse('php');
 	}
@@ -1796,7 +5692,7 @@ EOF;
 			$node = pq($node, $this->getDocumentID())
 			->{"else$lang"}()
 			->contents()
-				->appendTo($node)->end()
+				->insertAfter($node)->end()
 			->remove();
 		}
 		return $this;
@@ -1808,7 +5704,7 @@ EOF;
 	 * wrapped together or one-by-one. This is usefull when stack contains non-sibling
 	 * nodes.
 	 *
-	 * Method doesn't change selected elements stack. Returned is source element.
+	 * Method doesn't change selected nodes stack.
 	 *
 	 * Example
 	 * <code>
@@ -1853,44 +5749,81 @@ EOF;
 	}
 	/**
 	 * Wraps selected tag with PHP "if" statement checking if $var evaluates
-	 * to true. $var must be an object available inside template's scope.
+	 * to TRUE. $var must be available inside template's scope.
 	 * 
-	 * $var is passed in JS object convention (dot separated).
+	 * $var is passed in JavaScript object notation (dot separated).
 	 * 
 	 * Optional $separate parameter determines if selected elements should be
 	 * wrapped together or one-by-one. This is usefull when stack contains non-sibling
 	 * nodes.
 	 *
-	 * Method doesn't change selected elements stack. Returned is source element.
+	 * Method doesn't change selected nodes stack.
 	 *
 	 * Notice-safe.
-	 *
-	 * Example
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
 	 * <code>
-	 * $template['node1']->ifVar('foo.bar.1');
+	 * <div>1</div>
+	 * <div>2</div>
+	 * <div>3</div>
 	 * </code>
 	 *
-	 * Source
+	 * === Data ===
 	 * <code>
-	 * <node1/>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array(true)
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['div:eq(1)']->
+	 * 	ifVar('data.foo.bar.0')
+	 * ;
 	 * </code>
 	 *
-	 * Result
+	 * === Template ===
 	 * <code>
-	 * <?php
-	 * if ($foo->bar->{1}) {
-	 * ?><node/><?php
-	 * }
-	 * ?>
+	 * 
+	 * <div>1</div>
+	 * <?php  if ((isset($data['foo']['bar']['0']) && $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && $data->{'foo'}->{'bar'}->{'0'})) {  ?><div>2</div>
+	 * <?php  }  ?>
+	 * <div>3</div>
 	 * </code>
-	 *
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * div
+	 *  - Text:2
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * PHP
+	 * div
+	 *  - Text:2
+	 * PHP
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
 	 * @param string $var
 	 * Dot-separated object path, eg Object.property.inneProperty
 	 * @param bool $separate
 	 * Determines if selected elements should be wrapped together or one-by-one
 	 * 
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
-	 * @see QueryTemplatesPhpQuery::tagToIfVar()
+	 * @see QueryTemplatesPhpQuery::elseStatement()
 	 */
 	public function ifVar($var, $separate = false) {
 		$method = $separate
@@ -1900,10 +5833,82 @@ EOF;
 		return $this;
 	}
 	/**
-	 * TODO
-	 * @param $var
-	 * @param $separate
-	 * @return unknown_type
+	 * Wraps selected tag with PHP "if" statement checking if $var evaluates
+	 * to FALSE. $var must be available inside template's scope.
+	 * 
+	 * $var is passed in JavaScript object notation (dot separated).
+	 * 
+	 * Optional $separate parameter determines if selected elements should be
+	 * wrapped together or one-by-one. This is usefull when stack contains non-sibling
+	 * nodes.
+	 *
+	 * Method doesn't change selected nodes stack.
+	 *
+	 * Notice-safe.
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <div>1</div>
+	 * <div>2</div>
+	 * <div>3</div>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array(true)
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['div:eq(1)']->
+	 * 	ifNotVar('data.foo.bar.0')
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <div>1</div>
+	 * <?php  if ((isset($data['foo']['bar']['0']) && ! $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && ! $data->{'foo'}->{'bar'}->{'0'})) {  ?><div>2</div>
+	 * <?php  }  ?>
+	 * <div>3</div>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * div
+	 *  - Text:2
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * PHP
+	 * div
+	 *  - Text:2
+	 * PHP
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
+	 * @param string $var
+	 * Dot-separated object path, eg Object.property.inneProperty
+	 * @param bool $separate
+	 * Determines if selected elements should be wrapped together or one-by-one
+	 * 
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::elseStatement()
 	 */
 	public function ifNotVar($var, $separate = false) {
 		$method = $separate
@@ -1919,7 +5924,7 @@ EOF;
 	 * wrapped together or one-by-one. This is usefull when stack contains non-sibling
 	 * nodes.
 	 *
-	 * Method doesn't change selected elements stack. Returned is source element.
+	 * Method doesn't change selected nodes stack.
 	 *
 	 * Example
 	 * <code>
@@ -1962,35 +5967,70 @@ EOF;
 	}
 	/**
 	 * Wraps selected tag with PHP "else if" statement checking if $var evaluates
-	 * to true. $var must be an object available inside template's scope.
+	 * to true. $var must be available inside template's scope.
 	 * 
-	 * $var is passed in JS object convention (dot separated).
+	 * $var is passed in JavaScript object notation (dot separated).
 	 * 
 	 * Optional $separate parameter determines if selected elements should be
 	 * wrapped together or one-by-one. This is usefull when stack contains non-sibling
 	 * nodes.
 	 *
-	 * Method doesn't change selected elements stack. Returned is source element.
+	 * Method doesn't change selected nodes stack.
 	 *
 	 * Notice-safe.
 	 *
-	 * Example
+	 * == Example ==
+	 *
+	 * === Markup ===
 	 * <code>
-	 * $template['node1']->elseIfVar('foo.bar.1');
+	 * <div>1</div>
+	 * <div>2</div>
+	 * <div>3</div>
 	 * </code>
 	 *
-	 * Source
+	 * === Data ===
 	 * <code>
-	 * <node1/>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array(true)
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['div:eq(1)']->elseIfVar('data.foo.bar.0');
 	 * </code>
 	 *
-	 * Result
+	 * === Template ===
 	 * <code>
-	 * <?php
-	 * else if ($foo->bar->{1}) {
-	 * ?>
-	 * <node/>
-	 * <?php } ?>
+	 * 
+	 * <div>1</div>
+	 * <?php  else if ((isset($data['foo']['bar']['0']) && $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && $data->{'foo'}->{'bar'}->{'0'})) {  ?><div>2</div>
+	 * <?php  }  ?>
+	 * <div>3</div>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * div
+	 *  - Text:2
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * PHP
+	 * div
+	 *  - Text:2
+	 * PHP
+	 * div
+	 *  - Text:3
 	 * </code>
 	 *
 	 * @param string $var
@@ -2004,20 +6044,89 @@ EOF;
 		$method = $separate
 			? 'wrap' : 'wrapAll';
 		$code = $this->qt_langCode('elseIfVar', $var);
-		$this->qt_langMethod($code[0], $code[1]);
+		$this->qt_langMethod($method, $code[0], $code[1]);
 		return $this;
 	}
 	/**
-	 * TODO description
-	 * @param $var
-	 * @param $separate
-	 * @return unknown_type
+	 * Wraps selected tag with PHP "else if" statement checking if $var evaluates
+	 * to FALSE. $var must be available inside template's scope.
+	 * 
+	 * $var is passed in JavaScript object notation (dot separated).
+	 * 
+	 * Optional $separate parameter determines if selected elements should be
+	 * wrapped together or one-by-one. This is usefull when stack contains non-sibling
+	 * nodes.
+	 *
+	 * Method doesn't change selected nodes stack.
+	 *
+	 * Notice-safe.
+	 * 
+	 * == Example ==
+	 *
+	 * === Markup ===
+	 * <code>
+	 * <div>1</div>
+	 * <div>2</div>
+	 * <div>3</div>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 * $data = array(
+	 *   'foo' => array(
+	 *   	'bar' => array(true)
+	 *   )
+	 * );
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['div:eq(1)']->elseIfNotVar('data.foo.bar.0');
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <div>1</div>
+	 * <?php  else if ((isset($data['foo']['bar']['0']) && ! $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && ! $data->{'foo'}->{'bar'}->{'0'})) {  ?><div>2</div>
+	 * <?php  }  ?>
+	 * <div>3</div>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * div
+	 *  - Text:2
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * PHP
+	 * div
+	 *  - Text:2
+	 * PHP
+	 * div
+	 *  - Text:3
+	 * </code>
+	 *
+	 * @param string $var
+	 * Dot-separated object path, eg Object.property.inneProperty
+	 * @param bool $separate
+	 * Determines if selected elements should be wrapped together or one-by-one
+	 * 
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
 	public function elseIfNotVar($var, $separate = false) {
 		$method = $separate
 			? 'wrap' : 'wrapAll';
 		$code = $this->qt_langCode('elseIfNotVar', $var);
-		$this->qt_langMethod($code[0], $code[1]);
+		$this->qt_langMethod($method, $code[0], $code[1]);
 		return $this;
 	}
 	/**
@@ -2027,7 +6136,7 @@ EOF;
 	 * wrapped together or one-by-one. This is usefull when stack contains non-sibling
 	 * nodes.
 	 *
-	 * Method doesn't change selected elements stack. Returned is source element.
+	 * Method doesn't change selected nodes stack.
 	 * 
 	 * @param bool $separate
 	 * Determines if selected elements should be wrapped together or one-by-one
@@ -2039,10 +6148,61 @@ EOF;
 	}
 	/**
 	 * TODO description
-	 * $lang = strtoupper($this->parent->language);
-		$languageClass = 'QueryTemplatesLanguage'.$lang;
-	 * @param $lang
+	 * 
+	 * == Example ==
+	 * 
+	 * === Markup ===
+	 * <code>
+	 * <div>1</div>
+	 * <div>2</div>
+	 * <div>3</div>
+	 * </code>
+	 *
+	 * === Data ===
+	 * <code>
+	 *
+	 * </code>
+	 * 
+	 * === `QueryTemplates` formula ===
+	 * <code>
+	 * $template['div:eq(1)']->
+	 * 	elseStatement()
+	 * ;
+	 * </code>
+	 *
+	 * === Template ===
+	 * <code>
+	 * 
+	 * <div>1</div>
+	 * <?php  else {  ?><div>2</div>
+	 * <?php  }  ?>
+	 * <div>3</div>
+	 * </code>
+	 * 
+	 * === Template tree before ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * div
+	 *  - Text:2
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
+	 * === Template tree after ===
+	 * <code>
+	 * div
+	 *  - Text:1
+	 * PHP
+	 * div
+	 *  - Text:2
+	 * PHP
+	 * div
+	 *  - Text:3
+	 * </code>
+	 * 
 	 * @param $separate
+	 * @param $lang
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
 	public function elseStatement($separate = false, $lang = null) {
@@ -2064,7 +6224,7 @@ EOF;
 	/**
 	 * Honors code between onlyPHP and endOnly, only for PHP templates.
 	 * 
-	 * TODO: Is theres something wrong with this name ? 
+	 * TODO: Is theres something wrong with this name ?
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 */
 	public function onlyPHP() {
@@ -2085,23 +6245,34 @@ EOF;
 	/**
 	 * Saves markupOuter() as value of variable $var avaible in template scope.
 	 *
-	 * @param unknown_type $name
-	 * TODO user self::parent for storing vars
+	 * @param String $name
+	 * New variable name.
+	 * 
+	 * @TODO user self::parent for storing vars
+	 * @TODO support second $method param
 	 */
-	public function saveAsVar($name) {
+	public function varsFromStack($name) {
 		$object = $this;
 		while($object->previous)
 			$object = $object->previous;
 		$object->vars[$name] = $this->markupOuter();
 		return $this;
 	}
+	public function saveAsVar($name) {
+		return $this->varsFromStack($name);
+	}
+	public function saveTextAsVar($name) {
+		return $this->varsFromStackText($name);
+	}
 	/**
 	 * Saves text() as value of variable $var avaible in template scope.
 	 *
-	 * @param unknown_type $name
-	 * TODO user self::parent for storing vars
+	 * @param String $name
+	 * New variable name.
+	 * 
+	 * @TODO user self::parent for storing vars
 	 */
-	public function saveTextAsVar($name) {
+	public function varsFromStackText($name) {
 		$object = $this;
 		while($object->previous)
 			$object = $object->previous;
