@@ -12,9 +12,9 @@ abstract class QueryTemplatesPhpQuery
 	extends phpQueryObject {
 	/**
 	 * Prints variable $varName as matched elements' content.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>
@@ -30,7 +30,7 @@ abstract class QueryTemplatesPhpQuery
 	 *   )
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['p']->
@@ -45,21 +45,21 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?></p>
 	 * </div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
 	 *  - p
 	 *  -  - Text:FOO
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
 	 *  - p
 	 *  -  - PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -71,9 +71,9 @@ abstract class QueryTemplatesPhpQuery
 	}
 	/**
 	 * Prints variable $varName replacing matched elements.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>
@@ -89,7 +89,7 @@ abstract class QueryTemplatesPhpQuery
 	 *   )
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['p']->
@@ -104,20 +104,20 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?>
 	 * </div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
 	 *  - p
 	 *  -  - Text:FOO
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
 	 *  - PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -129,9 +129,9 @@ abstract class QueryTemplatesPhpQuery
 	}
 	/**
 	 * Prints variable $varName before matched elements.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>
@@ -147,7 +147,7 @@ abstract class QueryTemplatesPhpQuery
 	 *   )
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['p']->
@@ -162,14 +162,14 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?><p>FOO</p>
 	 * </div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
 	 *  - p
 	 *  -  - Text:FOO
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
@@ -177,7 +177,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  - p
 	 *  -  - Text:FOO
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -189,9 +189,9 @@ abstract class QueryTemplatesPhpQuery
 	}
 	/**
 	 * Prints variable $varName after matched elements.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>
@@ -207,7 +207,7 @@ abstract class QueryTemplatesPhpQuery
 	 *   )
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['p']->
@@ -223,14 +223,14 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?>
 	 * </div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
 	 *  - p
 	 *  -  - Text:FOO
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
@@ -238,7 +238,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  -  - Text:FOO
 	 *  - PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -250,9 +250,9 @@ abstract class QueryTemplatesPhpQuery
 	}
 	/**
 	 * Prints variable $varName on beggining of matched elements.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>
@@ -268,7 +268,7 @@ abstract class QueryTemplatesPhpQuery
 	 *   )
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['p']->
@@ -283,14 +283,14 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?>FOO</p>
 	 * </div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
 	 *  - p
 	 *  -  - Text:FOO
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
@@ -298,7 +298,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  -  - PHP
 	 *  -  - Text:FOO
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -310,9 +310,9 @@ abstract class QueryTemplatesPhpQuery
 	}
 	/**
 	 * Prints variable $varName on the end of matched elements.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>
@@ -328,7 +328,7 @@ abstract class QueryTemplatesPhpQuery
 	 *   )
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['p']->
@@ -343,14 +343,14 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?></p>
 	 * </div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
 	 *  - p
 	 *  -  - Text:FOO
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
@@ -358,7 +358,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  -  - Text:FOO
 	 *  -  - PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -390,9 +390,9 @@ abstract class QueryTemplatesPhpQuery
 	}
 	/**
 	 * Prints variable $varName as attribute $attr of matched elements.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>
@@ -408,7 +408,7 @@ abstract class QueryTemplatesPhpQuery
 	 *   )
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['p']->
@@ -423,21 +423,21 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($data->{'foo'}->{'bar'}->{'0'})) print $data->{'foo'}->{'bar'}->{'0'};  ?>">FOO</p>
 	 * </div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
 	 *  - p
 	 *  -  - Text:FOO
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
 	 *  - p
 	 *  -  - Text:FOO
 	 * </code>
-	 * 
+	 *
 	 * @param String $attr
 	 * Target attribute name.
 	 * 
@@ -455,9 +455,9 @@ abstract class QueryTemplatesPhpQuery
 	 * selector. Method uses actually matched nodes as root for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -468,9 +468,9 @@ abstract class QueryTemplatesPhpQuery
 	 * <code>
 	 * $foo = new stdClass();
 	 * $foo->field1 = 'foo';
-	 * $foo->field1 = 'bar';
+	 * $foo->field2 = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -483,9 +483,10 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * <p class="field1"><?php  if (isset($foo['field1'])) print $foo['field1'];
 	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?></p>
-	 * <p class="field2">lorem ipsum</p>
+	 * <p class="field2"><?php  if (isset($foo['field2'])) print $foo['field2'];
+	 * else if (isset($foo->{'field2'})) print $foo->{'field2'};  ?></p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -493,15 +494,15 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
 	 *  - PHP
 	 * p.field2
-	 *  - Text:lorem ipsum
+	 *  - PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -538,9 +539,9 @@ abstract class QueryTemplatesPhpQuery
 	 * selector. Method uses actually matched nodes as root for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -551,9 +552,9 @@ abstract class QueryTemplatesPhpQuery
 	 * <code>
 	 * $foo = new stdClass();
 	 * $foo->field1 = 'foo';
-	 * $foo->field1 = 'bar';
+	 * $foo->field2 = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -566,9 +567,10 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * <?php  if (isset($foo['field1'])) print $foo['field1'];
 	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?>
-	 * <p class="field2">lorem ipsum</p>
+	 * <?php  if (isset($foo['field2'])) print $foo['field2'];
+	 * else if (isset($foo->{'field2'})) print $foo->{'field2'};  ?>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -576,14 +578,13 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * PHP
-	 * p.field2
-	 *  - Text:lorem ipsum
+	 * PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -621,9 +622,9 @@ abstract class QueryTemplatesPhpQuery
 	 * query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -634,9 +635,9 @@ abstract class QueryTemplatesPhpQuery
 	 * <code>
 	 * $foo = new stdClass();
 	 * $foo->field1 = 'foo';
-	 * $foo->field1 = 'bar';
+	 * $foo->field2 = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -649,9 +650,10 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * <p class="field1">lorem ipsum<?php  if (isset($foo['field1'])) print $foo['field1'];
 	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?></p>
-	 * <p class="field2">lorem ipsum</p>
+	 * <p class="field2">lorem ipsum<?php  if (isset($foo['field2'])) print $foo['field2'];
+	 * else if (isset($foo->{'field2'})) print $foo->{'field2'};  ?></p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -659,7 +661,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
@@ -667,8 +669,9 @@ abstract class QueryTemplatesPhpQuery
 	 *  - PHP
 	 * p.field2
 	 *  - Text:lorem ipsum
+	 *  - PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -706,9 +709,9 @@ abstract class QueryTemplatesPhpQuery
 	 * query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -719,9 +722,9 @@ abstract class QueryTemplatesPhpQuery
 	 * <code>
 	 * $foo = new stdClass();
 	 * $foo->field1 = 'foo';
-	 * $foo->field1 = 'bar';
+	 * $foo->field2 = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -734,9 +737,10 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * <p class="field1"><?php  if (isset($foo['field1'])) print $foo['field1'];
 	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?>lorem ipsum</p>
-	 * <p class="field2">lorem ipsum</p>
+	 * <p class="field2"><?php  if (isset($foo['field2'])) print $foo['field2'];
+	 * else if (isset($foo->{'field2'})) print $foo->{'field2'};  ?>lorem ipsum</p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -744,16 +748,17 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
 	 *  - PHP
 	 *  - Text:lorem ipsum
 	 * p.field2
+	 *  - PHP
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -790,9 +795,9 @@ abstract class QueryTemplatesPhpQuery
 	 * selector. Method uses actually matched nodes as root for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -803,9 +808,9 @@ abstract class QueryTemplatesPhpQuery
 	 * <code>
 	 * $foo = new stdClass();
 	 * $foo->field1 = 'foo';
-	 * $foo->field1 = 'bar';
+	 * $foo->field2 = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -820,8 +825,10 @@ abstract class QueryTemplatesPhpQuery
 	 * <?php  if (isset($foo['field1'])) print $foo['field1'];
 	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?>
 	 * <p class="field2">lorem ipsum</p>
+	 * <?php  if (isset($foo['field2'])) print $foo['field2'];
+	 * else if (isset($foo->{'field2'})) print $foo->{'field2'};  ?>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -829,7 +836,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
@@ -837,8 +844,9 @@ abstract class QueryTemplatesPhpQuery
 	 * PHP
 	 * p.field2
 	 *  - Text:lorem ipsum
+	 * PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -875,9 +883,9 @@ abstract class QueryTemplatesPhpQuery
 	 * selector. Method uses actually matched nodes as root for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -888,9 +896,9 @@ abstract class QueryTemplatesPhpQuery
 	 * <code>
 	 * $foo = new stdClass();
 	 * $foo->field1 = 'foo';
-	 * $foo->field1 = 'bar';
+	 * $foo->field2 = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -903,9 +911,10 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * <?php  if (isset($foo['field1'])) print $foo['field1'];
 	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?><p class="field1">lorem ipsum</p>
-	 * <p class="field2">lorem ipsum</p>
+	 * <?php  if (isset($foo['field2'])) print $foo['field2'];
+	 * else if (isset($foo->{'field2'})) print $foo->{'field2'};  ?><p class="field2">lorem ipsum</p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -913,16 +922,17 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * PHP
 	 * p.field1
 	 *  - Text:lorem ipsum
+	 * PHP
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -960,9 +970,9 @@ abstract class QueryTemplatesPhpQuery
 	 * query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -973,9 +983,9 @@ abstract class QueryTemplatesPhpQuery
 	 * <code>
 	 * $foo = new stdClass();
 	 * $foo->field1 = 'foo';
-	 * $foo->field1 = 'bar';
+	 * $foo->field2 = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -988,9 +998,10 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * <p class="field1" rel="<?php  if (isset($foo['field1'])) print $foo['field1'];
 	 * else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?>">lorem ipsum</p>
-	 * <p class="field2">lorem ipsum</p>
+	 * <p class="field2" rel="<?php  if (isset($foo['field2'])) print $foo['field2'];
+	 * else if (isset($foo->{'field2'})) print $foo->{'field2'};  ?>">lorem ipsum</p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -998,7 +1009,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
@@ -1006,7 +1017,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * @param String $attr
 	 * Target attribute name.
 	 *
@@ -1090,9 +1101,9 @@ abstract class QueryTemplatesPhpQuery
 	 * arrays.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -1110,7 +1121,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $foo->first = 'foo';
 	 * $foo->second = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['node1']->
@@ -1125,7 +1136,7 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?></node1><node2></node2><node1><?php  if (isset($foo['second'])) print $foo['second'];
 	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -1134,7 +1145,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * node1
@@ -1143,7 +1154,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -1175,9 +1186,9 @@ abstract class QueryTemplatesPhpQuery
 	 * arrays.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -1195,7 +1206,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $foo->first = 'foo';
 	 * $foo->second = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['node1']->
@@ -1210,7 +1221,7 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?><node2></node2><?php  if (isset($foo['second'])) print $foo['second'];
 	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -1219,14 +1230,14 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * PHP
 	 * node2
 	 * PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -1258,9 +1269,9 @@ abstract class QueryTemplatesPhpQuery
 	 * non-assosiative arrays.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -1278,7 +1289,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $foo->first = 'foo';
 	 * $foo->second = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['node1']->
@@ -1293,7 +1304,7 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?></node1><node2></node2><node1><node2></node2><?php  if (isset($foo['second'])) print $foo['second'];
 	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -1302,7 +1313,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * node1
@@ -1313,7 +1324,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  - node2
 	 *  - PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -1345,9 +1356,9 @@ abstract class QueryTemplatesPhpQuery
 	 * non-assosiative arrays.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -1365,7 +1376,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $foo->first = 'foo';
 	 * $foo->second = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['node1']->
@@ -1380,7 +1391,7 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?><node2></node2></node1><node2></node2><node1><?php  if (isset($foo['second'])) print $foo['second'];
 	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?><node2></node2></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -1389,7 +1400,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * node1
@@ -1400,7 +1411,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  - PHP
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -1432,9 +1443,9 @@ abstract class QueryTemplatesPhpQuery
 	 * non-assosiative arrays.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -1452,7 +1463,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $foo->first = 'foo';
 	 * $foo->second = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['node1']->
@@ -1467,7 +1478,7 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?><node2></node2><node1><node2></node2></node1><?php  if (isset($foo['second'])) print $foo['second'];
 	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -1476,7 +1487,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * node1
@@ -1487,7 +1498,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  - node2
 	 * PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -1519,9 +1530,9 @@ abstract class QueryTemplatesPhpQuery
 	 * non-assosiative arrays.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -1539,7 +1550,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $foo->first = 'foo';
 	 * $foo->second = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['node1']->
@@ -1554,7 +1565,7 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?><node1><node2></node2></node1><node2></node2><?php  if (isset($foo['second'])) print $foo['second'];
 	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?><node1><node2></node2></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -1563,7 +1574,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * PHP
@@ -1574,7 +1585,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -1606,9 +1617,9 @@ abstract class QueryTemplatesPhpQuery
 	 * non-assosiative arrays.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -1626,7 +1637,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $foo->first = 'foo';
 	 * $foo->second = 'bar';
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['node1']->
@@ -1641,7 +1652,7 @@ abstract class QueryTemplatesPhpQuery
 	 * else if (isset($foo->{'first'})) print $foo->{'first'};  ?>"><node2></node2></node1><node2></node2><node1 rel="<?php  if (isset($foo['second'])) print $foo['second'];
 	 * else if (isset($foo->{'second'})) print $foo->{'second'};  ?>"><node2></node2></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -1650,7 +1661,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * node1
@@ -1659,7 +1670,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * @param String $attr
 	 * Target attribute name.
 	 *
@@ -1736,9 +1747,9 @@ abstract class QueryTemplatesPhpQuery
 	 * actually matched nodes as root for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -1752,7 +1763,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -1766,7 +1777,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <p class="field1"><?php  print "abba";  ?></p>
 	 * <p class="field2"><?php  foreach(array(1, 2, 3) as $i) print $i  ?></p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -1774,7 +1785,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
@@ -1782,7 +1793,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $codeArray
 	 * Array of raw code, where key is the field.
 	 * 
@@ -1814,9 +1825,9 @@ abstract class QueryTemplatesPhpQuery
 	 * actually matched nodes as root for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -1830,7 +1841,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -1844,7 +1855,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <?php  print "abba";  ?>
 	 * <?php  foreach(array(1, 2, 3) as $i) print $i  ?>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -1852,13 +1863,13 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * PHP
 	 * PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $codeArray
 	 * Array of raw code, where key is the field.
 	 * 
@@ -1890,9 +1901,9 @@ abstract class QueryTemplatesPhpQuery
 	 * uses actually matched nodes as root for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -1906,7 +1917,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -1920,7 +1931,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <p class="field1">lorem ipsum<?php  print "abba";  ?></p>
 	 * <p class="field2">lorem ipsum<?php  foreach(array(1, 2, 3) as $i) print $i  ?></p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -1928,7 +1939,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
@@ -1938,7 +1949,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  - Text:lorem ipsum
 	 *  - PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $attr
 	 * Target attribute name.
 	 *
@@ -1973,9 +1984,9 @@ abstract class QueryTemplatesPhpQuery
 	 * Method uses actually matched nodes as root for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -1989,7 +2000,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -2003,7 +2014,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <p class="field1"><?php  print "abba";  ?>lorem ipsum</p>
 	 * <p class="field2"><?php  foreach(array(1, 2, 3) as $i) print $i  ?>lorem ipsum</p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -2011,7 +2022,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
@@ -2021,7 +2032,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  - PHP
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * @param String $codeArray
 	 * Array of raw code, where key is the field.
 	 * 
@@ -2053,9 +2064,9 @@ abstract class QueryTemplatesPhpQuery
 	 * actually matched nodes as root for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -2069,7 +2080,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -2085,7 +2096,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <p class="field2">lorem ipsum</p>
 	 * <?php  foreach(array(1, 2, 3) as $i) print $i  ?>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -2093,7 +2104,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
@@ -2103,7 +2114,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  - Text:lorem ipsum
 	 * PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $codeArray
 	 * Array of raw code, where key is the field.
 	 * 
@@ -2135,9 +2146,9 @@ abstract class QueryTemplatesPhpQuery
 	 * actually matched nodes as root for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -2151,7 +2162,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -2165,7 +2176,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <?php  print "abba";  ?><p class="field1">lorem ipsum</p>
 	 * <?php  foreach(array(1, 2, 3) as $i) print $i  ?><p class="field2">lorem ipsum</p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -2173,7 +2184,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * PHP
@@ -2183,7 +2194,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * @param String $codeArray
 	 * Array of raw code, where key is the field.
 	 * 
@@ -2215,9 +2226,9 @@ abstract class QueryTemplatesPhpQuery
 	 * Method uses actually matched nodes as root for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -2231,7 +2242,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => 'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -2245,7 +2256,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <p class="field1" rel='<?php  print "abba";  ?>'>lorem ipsum</p>
 	 * <p class="field2" rel="<?php  foreach(array(1, 2, 3) as $i) print $i  ?>">lorem ipsum</p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -2253,7 +2264,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
@@ -2261,7 +2272,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * @param String $attr
 	 * Target attribute name.
 	 *
@@ -2319,9 +2330,9 @@ abstract class QueryTemplatesPhpQuery
 	 * Injects raw executable code inside actually matched nodes.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -2340,7 +2351,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -2352,7 +2363,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <code>
 	 * <?php  print "abba";  ?>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -2361,12 +2372,12 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $codeArray
 	 * Array of raw code, where key is the field.
 	 * 
@@ -2390,9 +2401,9 @@ abstract class QueryTemplatesPhpQuery
 	 * Injects raw executable code replacing actually matched nodes.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -2411,7 +2422,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -2424,7 +2435,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * <node1><node2></node2></node1><node2></node2><node1><node2></node2></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -2433,7 +2444,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * node1
@@ -2442,7 +2453,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * @param String $codeArray
 	 * Array of raw code, where key is the field.
 	 * 
@@ -2466,9 +2477,9 @@ abstract class QueryTemplatesPhpQuery
 	 * Injects raw executable code at the beggining of actually matched nodes.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -2487,7 +2498,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -2500,7 +2511,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * <node1><node2></node2></node1><node2></node2><node1><node2></node2></node1><?php  print "abba";  ?>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -2509,7 +2520,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * node1
@@ -2519,7 +2530,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  - node2
 	 * PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $codeArray
 	 * Array of raw code, where key is the field.
 	 * 
@@ -2543,9 +2554,9 @@ abstract class QueryTemplatesPhpQuery
 	 * Injects raw executable code at the end of actually matched nodes.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -2564,7 +2575,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -2578,7 +2589,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <?php  print "abba";  ?>
 	 * <node1><node2></node2></node1><node2></node2><node1><node2></node2></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -2587,7 +2598,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * PHP
@@ -2597,7 +2608,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * @param String $codeArray
 	 * Array of raw code, where key is the field.
 	 * 
@@ -2621,9 +2632,9 @@ abstract class QueryTemplatesPhpQuery
 	 * Injects raw executable code after actually matched nodes.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -2642,7 +2653,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -2655,7 +2666,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * <node1><node2></node2></node1><node2></node2><node1><node2></node2></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -2664,7 +2675,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * node1
@@ -2673,7 +2684,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * @param String $codeArray
 	 * Array of raw code, where key is the field.
 	 * 
@@ -2697,9 +2708,9 @@ abstract class QueryTemplatesPhpQuery
 	 * Injects raw executable code before actually matched nodes.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -2718,7 +2729,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -2731,7 +2742,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * <node1><node2></node2></node1><node2></node2><node1><node2></node2></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -2740,7 +2751,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * node1
@@ -2749,7 +2760,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * @param String $codeArray
 	 * Array of raw code, where key is the field.
 	 * 
@@ -2773,9 +2784,9 @@ abstract class QueryTemplatesPhpQuery
 	 * Injects raw executable code inside attribute of actually matched nodes.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -2794,7 +2805,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'foreach(array(1, 2, 3) as $i) print $i'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -2807,7 +2818,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * <node1><node2></node2></node1><node2></node2><node1><node2></node2></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -2816,7 +2827,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * node1
@@ -2825,7 +2836,7 @@ abstract class QueryTemplatesPhpQuery
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * @param String $attr
 	 * Target attribute name.
 	 *
@@ -2874,14 +2885,14 @@ abstract class QueryTemplatesPhpQuery
 		return $this;
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) into nodes
+	 * Injects markup from $values' content (rows or attributes) into nodes
 	 * matched by selector. Method uses actually matched nodes as root for the 
 	 * query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -2895,7 +2906,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => '<bar/>'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -2909,7 +2920,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <p class="field1"><foo></foo></p>
 	 * <p class="field2"><bar></bar></p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -2917,7 +2928,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
@@ -2925,7 +2936,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - bar
 	 * </code>
-	 * 
+	 *
 	 * @param Array|Object $values
 	 * Associative array or Object containing markup, text or instance of Callback.
 	 * 
@@ -2937,7 +2948,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $selectorPattern to ".foo.%k"
 	 * 
 	 * @param Array $skipFields
-	 * Array of fields from $data which should be skipped.
+	 * Array of fields from $values which should be skipped.
 	 * 
 	 * @param Callback|string $fieldCallback
 	 * Callback triggered after every insertion. Three parameters are passed to 
@@ -2950,18 +2961,18 @@ abstract class QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelector($data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('markup', $data, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelector($values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('markup', $values, $selectorPattern, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) replacing nodes
+	 * Injects markup from $values' content (rows or attributes) replacing nodes
 	 * matched by selector. Method uses actually matched nodes as root for the 
 	 * query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -2975,7 +2986,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => '<bar/>'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -2989,7 +3000,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <foo></foo>
 	 * <bar></bar>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -2997,13 +3008,13 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * foo
 	 * bar
 	 * </code>
-	 * 
+	 *
 	 * @param Array|Object $values
 	 * Associative array or Object containing markup, text or instance of Callback.
 	 * 
@@ -3015,7 +3026,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $selectorPattern to ".foo.%k"
 	 * 
 	 * @param Array $skipFields
-	 * Array of fields from $data which should be skipped.
+	 * Array of fields from $values which should be skipped.
 	 * 
 	 * @param Callback|string $fieldCallback
 	 * Callback triggered after every insertion. Three parameters are passed to 
@@ -3028,18 +3039,18 @@ abstract class QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorReplace($data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('replaceWith', $data, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelectorReplace($values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('replaceWith', $values, $selectorPattern, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) before nodes
+	 * Injects markup from $values' content (rows or attributes) before nodes
 	 * matched by selector. Method uses actually matched nodes as root for the 
 	 * query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -3053,7 +3064,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => '<bar/>'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -3067,7 +3078,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <foo></foo><p class="field1">lorem ipsum</p>
 	 * <bar></bar><p class="field2">lorem ipsum</p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -3075,7 +3086,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * foo
@@ -3085,7 +3096,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * @param Array|Object $values
 	 * Associative array or Object containing markup, text or instance of Callback.
 	 * 
@@ -3097,7 +3108,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $selectorPattern to ".foo.%k"
 	 * 
 	 * @param Array $skipFields
-	 * Array of fields from $data which should be skipped.
+	 * Array of fields from $values which should be skipped.
 	 * 
 	 * @param Callback|string $fieldCallback
 	 * Callback triggered after every insertion. Three parameters are passed to 
@@ -3110,18 +3121,18 @@ abstract class QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorBefore($data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('before', $data, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelectorBefore($values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('before', $values, $selectorPattern, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) after nodes
+	 * Injects markup from $values' content (rows or attributes) after nodes
 	 * matched by selector. Method uses actually matched nodes as root for the 
 	 * query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -3135,7 +3146,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => '<bar/>'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -3151,7 +3162,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <p class="field2">lorem ipsum</p>
 	 * <bar></bar>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -3159,7 +3170,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
@@ -3169,7 +3180,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  - Text:lorem ipsum
 	 * bar
 	 * </code>
-	 * 
+	 *
 	 * @param Array|Object $values
 	 * Associative array or Object containing markup, text or instance of Callback.
 	 * 
@@ -3181,7 +3192,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $selectorPattern to ".foo.%k"
 	 * 
 	 * @param Array $skipFields
-	 * Array of fields from $data which should be skipped.
+	 * Array of fields from $values which should be skipped.
 	 * 
 	 * @param Callback|string $fieldCallback
 	 * Callback triggered after every insertion. Three parameters are passed to 
@@ -3194,18 +3205,18 @@ abstract class QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorAfter($data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('after', $data, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelectorAfter($values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('after', $values, $selectorPattern, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) at the beggining of 
+	 * Injects markup from $values' content (rows or attributes) at the beggining of 
 	 * nodes matched by selector. Method uses actually matched nodes as root 
 	 * for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -3219,7 +3230,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => '<bar/>'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -3233,7 +3244,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <p class="field1"><foo></foo>lorem ipsum</p>
 	 * <p class="field2"><bar></bar>lorem ipsum</p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -3241,7 +3252,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
@@ -3251,7 +3262,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  - bar
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * @param Array|Object $values
 	 * Associative array or Object containing markup, text or instance of Callback.
 	 * 
@@ -3263,7 +3274,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $selectorPattern to ".foo.%k"
 	 * 
 	 * @param Array $skipFields
-	 * Array of fields from $data which should be skipped.
+	 * Array of fields from $values which should be skipped.
 	 * 
 	 * @param Callback|string $fieldCallback
 	 * Callback triggered after every insertion. Three parameters are passed to 
@@ -3276,18 +3287,18 @@ abstract class QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorPrepend($data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('prepend', $data, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelectorPrepend($values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('prepend', $values, $selectorPattern, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) at the end of 
+	 * Injects markup from $values' content (rows or attributes) at the end of 
 	 * nodes matched by selector. Method uses actually matched nodes as root 
 	 * for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -3301,7 +3312,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => '<bar/>'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -3315,7 +3326,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <p class="field1">lorem ipsum<foo></foo></p>
 	 * <p class="field2">lorem ipsum<bar></bar></p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -3323,7 +3334,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
@@ -3333,7 +3344,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  - Text:lorem ipsum
 	 *  - bar
 	 * </code>
-	 * 
+	 *
 	 * @param Array|Object $values
 	 * Associative array or Object containing markup, text or instance of Callback.
 	 * 
@@ -3345,7 +3356,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $selectorPattern to ".foo.%k"
 	 * 
 	 * @param Array $skipFields
-	 * Array of fields from $data which should be skipped.
+	 * Array of fields from $values which should be skipped.
 	 * 
 	 * @param Callback|string $fieldCallback
 	 * Callback triggered after every insertion. Three parameters are passed to 
@@ -3358,18 +3369,18 @@ abstract class QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorAppend($data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('append', $data, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelectorAppend($values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('append', $values, $selectorPattern, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) as attribute of 
+	 * Injects markup from $values' content (rows or attributes) as attribute of 
 	 * nodes matched by selector. Method uses actually matched nodes as root 
 	 * for the query.
 	 *
 	 * Method doesn't change selected elements stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <p class='field1'>lorem ipsum</p>
@@ -3383,7 +3394,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	'field2' => '<bar/>'
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -3397,7 +3408,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <p class="field1" rel="&lt;foo/&gt;">lorem ipsum</p>
 	 * <p class="field2" rel="&lt;bar/&gt;">lorem ipsum</p>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * p.field1
@@ -3405,7 +3416,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * p.field1
@@ -3413,7 +3424,7 @@ abstract class QueryTemplatesPhpQuery
 	 * p.field2
 	 *  - Text:lorem ipsum
 	 * </code>
-	 * 
+	 *
 	 * @param String $attr
 	 * Target attribute name.
 	 *
@@ -3428,7 +3439,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $selectorPattern to ".foo.%k"
 	 * 
 	 * @param Array $skipFields
-	 * Array of fields from $data which should be skipped.
+	 * Array of fields from $values which should be skipped.
 	 * 
 	 * @param Callback|string $fieldCallback
 	 * Callback triggered after every insertion. Three parameters are passed to 
@@ -3441,8 +3452,8 @@ abstract class QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorAttr($attr, $data, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector(array('attr', $attr), $data, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelectorAttr($attr, $values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector(array('attr', $attr), $values, $selectorPattern, $skipFields, $fieldCallback);
 	}
 	protected function _valuesToSelector($target, $data, $selectorPattern, $skipFields, $fieldCallback) {
 		$_target = $target;
@@ -3468,7 +3479,7 @@ abstract class QueryTemplatesPhpQuery
 			}
 			if ($fieldCallback)
 				// TODO doc
-				phpQuery::callbackRun($fieldCallback, array($node, $f, $_target));
+				phpQuery::callbackRun($fieldCallback, array($node, $k, $_target));
 		}
 		return $this;
 	}
@@ -3476,9 +3487,9 @@ abstract class QueryTemplatesPhpQuery
 	 * Wraps selected elements with executable code iterating $varName as $rowName.
 	 *
 	 * Method doesn't change selected nodes stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <ul>
@@ -3521,7 +3532,7 @@ abstract class QueryTemplatesPhpQuery
 	 * $userFields = array('name');
 	 * $tagFields = array('name');
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -3551,7 +3562,7 @@ abstract class QueryTemplatesPhpQuery
 	 * <?php  endforeach; }  ?>
 	 * </ul>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * ul
@@ -3561,7 +3572,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  -  -  - li.tag
 	 *  -  -  -  - span.name
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * ul
@@ -3577,7 +3588,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  -  -  - PHP
 	 *  - PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable which will be looped. Must contain $ at the beggining.
 	 *
@@ -3688,7 +3699,7 @@ abstract class QueryTemplatesPhpQuery
 	 * @param Array|Object $values
 	 * Associative array or Object.
 	 * 
-	 * @param $rowCallback
+	 * @param Callback|String $rowCallback
 	 * Callback triggered for every inserted row. Should support following 
 	 * parameters: 
 	 * - $dataRow mixed
@@ -3714,7 +3725,7 @@ abstract class QueryTemplatesPhpQuery
 	 * @param Array|Object $values
 	 * Associative array or Object.
 	 * 
-	 * @param $rowCallback
+	 * @param Callback|String $rowCallback
 	 * Callback triggered for every inserted row. Should support following 
 	 * parameters: 
 	 * - $dataRow mixed
@@ -3882,7 +3893,7 @@ abstract class QueryTemplatesPhpQuery
 	 * @param Array|Object $values
 	 * Associative array or Object.
 	 * 
-	 * @param $rowCallback
+	 * @param Callback|String $rowCallback
 	 * Callback triggered for every inserted row. Should support following 
 	 * parameters: 
 	 * - $dataRow mixed
@@ -3896,7 +3907,6 @@ abstract class QueryTemplatesPhpQuery
 		return $this->_valuesToLoop($this, $values, $rowCallback);
 	}
 	protected function _valuesToLoop($pq, $values, $rowCallback) {
-		$i = 0;
 		$lastNode = $pq;
 		foreach($values as $k => $v) {
 			$stack = array();
@@ -3974,9 +3984,9 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * Inputs are selected according to $selectorPattern, where %k represents
 	 * variable's key.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <form>
@@ -4002,7 +4012,7 @@ abstract class QueryTemplatesPhpQuery
 	 *   'checkbox-example' => 'foo',
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template->
@@ -4024,7 +4034,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 	|| (isset($data->{'checkbox-example'}) && $data->{'checkbox-example'} == 'foo')) {  ?><input type="checkbox" name="checkbox-example" value="foo" checked><?php  }    else {  ?><input type="checkbox" name="checkbox-example" value="foo"><?php  }  ?>
 	 * </form>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * form
@@ -4036,7 +4046,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  - input[name="radio-example"][value="foo"]
 	 *  - input[name="checkbox-example"][value="foo"]
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * form
@@ -4064,7 +4074,7 @@ abstract class QueryTemplatesPhpQuery
 	 *  - input[name="checkbox-example"][value="foo"]
 	 *  - PHP
 	 * </code>
-	 * 
+	 *
 	 * @param String $varName
 	 * Variable avaible in scope of type Array or Object.
 	 * $varName should NOT start with $.
@@ -4190,7 +4200,7 @@ abstract class QueryTemplatesPhpQuery
 	 * @param String $selectorPattern
 	 * Defines pattern matching form fields.
 	 * Defaults to "[name*='%k']", which matches fields containing 
-	 * $data's key in their names. For example, to match only names starting with 
+	 * $values' key in their names. For example, to match only names starting with 
 	 * "foo[bar]" change $selectorPattern to "[name^='foo[bar]'][name*='%k']"
 	 * 
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
@@ -4730,13 +4740,13 @@ EOF;
 		return varsFromValues($varsArray);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * Injects markup from $values' content (rows or attributes) inside actually 
 	 * selected nodes.
 	 *
 	 * Method doesn't change selected nodes stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -4751,19 +4761,20 @@ EOF;
 	 * <code>
 	 * $values = array('<foo/>', '<bar/>');
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
-	 * $template->
+	 * $template['node1']->
 	 * 	valuesToStack($values)
 	 * ;
 	 * </code>
 	 *
 	 * === Template ===
 	 * <code>
-	 * <foo></foo>
-	 * </code>
 	 * 
+	 * <node1><foo></foo></node1><node1><bar></bar></node1>
+	 * </code>
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -4771,12 +4782,15 @@ EOF;
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
-	 * foo
+	 * node1
+	 *  - foo
+	 * node1
+	 *  - bar
 	 * </code>
-	 * 
+	 *
 	 * @param Array|Object $values
 	 * Associative array or Object containing markup, text or instance of Callback.
 	 * 
@@ -4795,13 +4809,13 @@ EOF;
 		return $this->_valuesToStack('markup', $values, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * Injects markup from $values' content (rows or attributes) inside actually 
 	 * selected nodes.
 	 *
 	 * Method doesn't change selected nodes stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -4816,10 +4830,10 @@ EOF;
 	 * <code>
 	 * $values = array('<foo/>', '<bar/>');
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
-	 * $template->
+	 * $template['node1']->
 	 * 	valuesToStackReplace($values)
 	 * ;
 	 * </code>
@@ -4827,9 +4841,9 @@ EOF;
 	 * === Template ===
 	 * <code>
 	 * 
-	 * <node1><node2></node2></node1><node1><node2></node2></node1>
+	 * <foo></foo><bar></bar>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -4837,15 +4851,13 @@ EOF;
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
-	 * node1
-	 *  - node2
-	 * node1
-	 *  - node2
+	 * foo
+	 * bar
 	 * </code>
-	 * 
+	 *
 	 * @param Array|Object $values
 	 * Associative array or Object containing markup, text or instance of Callback.
 	 * 
@@ -4864,13 +4876,13 @@ EOF;
 		return $this->_valuesToStack('replaceWith', $values, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * Injects markup from $values' content (rows or attributes) inside actually 
 	 * selected nodes.
 	 *
 	 * Method doesn't change selected nodes stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -4885,10 +4897,10 @@ EOF;
 	 * <code>
 	 * $values = array('<foo/>', '<bar/>');
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
-	 * $template->
+	 * $template['node1']->
 	 * 	valuesToStackBefore($values)
 	 * ;
 	 * </code>
@@ -4896,9 +4908,9 @@ EOF;
 	 * === Template ===
 	 * <code>
 	 * 
-	 * <node1><node2></node2></node1><node1><node2></node2></node1>
+	 * <foo></foo><node1><node2></node2></node1><bar></bar><node1><node2></node2></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -4906,15 +4918,17 @@ EOF;
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
+	 * foo
 	 * node1
 	 *  - node2
+	 * bar
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * @param Array|Object $values
 	 * Associative array or Object containing markup, text or instance of Callback.
 	 * 
@@ -4933,13 +4947,13 @@ EOF;
 		return $this->_valuesToStack('before', $values, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * Injects markup from $values' content (rows or attributes) inside actually 
 	 * selected nodes.
 	 *
 	 * Method doesn't change selected nodes stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -4954,10 +4968,10 @@ EOF;
 	 * <code>
 	 * $values = array('<foo/>', '<bar/>');
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
-	 * $template->
+	 * $template['node1']->
 	 * 	valuesToStackAfter($values)
 	 * ;
 	 * </code>
@@ -4965,9 +4979,9 @@ EOF;
 	 * === Template ===
 	 * <code>
 	 * 
-	 * <node1><node2></node2></node1><node1><node2></node2></node1>
+	 * <node1><node2></node2></node1><foo></foo><node1><node2></node2></node1><bar></bar>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -4975,15 +4989,17 @@ EOF;
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * node1
 	 *  - node2
+	 * foo
 	 * node1
 	 *  - node2
+	 * bar
 	 * </code>
-	 * 
+	 *
 	 * @param Array|Object $values
 	 * Associative array or Object containing markup, text or instance of Callback.
 	 * 
@@ -5002,13 +5018,13 @@ EOF;
 		return $this->_valuesToStack('after', $values, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * Injects markup from $values' content (rows or attributes) inside actually 
 	 * selected nodes.
 	 *
 	 * Method doesn't change selected nodes stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -5023,10 +5039,10 @@ EOF;
 	 * <code>
 	 * $values = array('<foo/>', '<bar/>');
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
-	 * $template->
+	 * $template['node1']->
 	 * 	valuesToStackPrepend($values)
 	 * ;
 	 * </code>
@@ -5034,10 +5050,9 @@ EOF;
 	 * === Template ===
 	 * <code>
 	 * 
-	 * <foo></foo>
-	 * <node1><node2></node2></node1><node1><node2></node2></node1>
+	 * <node1><foo></foo><node2></node2></node1><node1><bar></bar><node2></node2></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -5045,16 +5060,17 @@ EOF;
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
-	 * foo
 	 * node1
+	 *  - foo
 	 *  - node2
 	 * node1
+	 *  - bar
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * @param Array|Object $values
 	 * Associative array or Object containing markup, text or instance of Callback.
 	 * 
@@ -5073,13 +5089,13 @@ EOF;
 		return $this->_valuesToStack('prepend', $values, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * Injects markup from $values' content (rows or attributes) inside actually 
 	 * selected nodes.
 	 *
 	 * Method doesn't change selected nodes stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -5094,10 +5110,10 @@ EOF;
 	 * <code>
 	 * $values = array('<foo/>', '<bar/>');
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
-	 * $template->
+	 * $template['node1']->
 	 * 	valuesToStackAppend($values)
 	 * ;
 	 * </code>
@@ -5105,9 +5121,9 @@ EOF;
 	 * === Template ===
 	 * <code>
 	 * 
-	 * <node1><node2></node2></node1><node1><node2></node2></node1><foo></foo>
+	 * <node1><node2></node2><foo></foo></node1><node1><node2></node2><bar></bar></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -5115,16 +5131,17 @@ EOF;
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * node1
 	 *  - node2
+	 *  - foo
 	 * node1
 	 *  - node2
-	 * foo
+	 *  - bar
 	 * </code>
-	 * 
+	 *
 	 * @param Array|Object $values
 	 * Associative array or Object containing markup, text or instance of Callback.
 	 * 
@@ -5143,13 +5160,13 @@ EOF;
 		return $this->_valuesToStack('append', $values, $skipFields, $fieldCallback);
 	}
 	/**
-	 * Injects markup from $data's content (rows or attributes) inside actually 
+	 * Injects markup from $values' content (rows or attributes) inside actually 
 	 * selected nodes.
 	 *
 	 * Method doesn't change selected nodes stack.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <node1>
@@ -5164,10 +5181,10 @@ EOF;
 	 * <code>
 	 * $values = array('<foo/>', '<bar/>');
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
-	 * $template->
+	 * $template['node1']->
 	 * 	valuesToStackAttr('rel', $values)
 	 * ;
 	 * </code>
@@ -5175,9 +5192,9 @@ EOF;
 	 * === Template ===
 	 * <code>
 	 * 
-	 * <node1><node2></node2></node1><node1><node2></node2></node1>
+	 * <node1 rel="&lt;foo/&gt;"><node2></node2></node1><node1 rel="&lt;bar/&gt;"><node2></node2></node1>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * node1
@@ -5185,7 +5202,7 @@ EOF;
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * node1
@@ -5193,7 +5210,7 @@ EOF;
 	 * node1
 	 *  - node2
 	 * </code>
-	 * 
+	 *
 	 * @param String $attr
 	 * Target attribute name.
 	 *
@@ -5227,7 +5244,6 @@ EOF;
 				continue;
 			if ($v instanceof Callback)
 				$v = phpQuery::callbackRun($v);
-			$selector = str_replace(array('%k'), array($k), $selectorPattern);
 			$node = $this->eq($i++);
 			switch($target) {
 				case 'attr':
@@ -5238,7 +5254,7 @@ EOF;
 			}
 			if ($fieldCallback)
 				// TODO doc
-				phpQuery::callbackRun($fieldCallback, array($node, $f, $_target));
+				phpQuery::callbackRun($fieldCallback, array($node, $v, $_target));
 		}
 		return $this;
 	}
@@ -5322,9 +5338,9 @@ EOF;
 	 * detached from it's parent.
 	 *
 	 * Notice-safe.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>1</div>
@@ -5340,7 +5356,7 @@ EOF;
 	 *   )
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['div:eq(1)']->
@@ -5355,7 +5371,7 @@ EOF;
 	 * <?php  if ((isset($data['foo']['bar']['0']) && $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && $data->{'foo'}->{'bar'}->{'0'})) {  ?>2<?php  }  ?>
 	 * <div>3</div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
@@ -5365,7 +5381,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
@@ -5376,7 +5392,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * @param string $var
 	 * Dot-separated object path, eg Object.property.inneProperty
 	 * 
@@ -5403,9 +5419,9 @@ EOF;
 	 * detached from it's parent.
 	 *
 	 * Notice-safe.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>1</div>
@@ -5421,7 +5437,7 @@ EOF;
 	 *   )
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['div:eq(1)']->
@@ -5436,7 +5452,7 @@ EOF;
 	 * <?php  if ((isset($data['foo']['bar']['0']) && ! $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && ! $data->{'foo'}->{'bar'}->{'0'})) {  ?>2<?php  }  ?>
 	 * <div>3</div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
@@ -5446,7 +5462,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
@@ -5457,7 +5473,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * @param string $var
 	 * Dot-separated object path, eg Object.property.inneProperty
 	 * 
@@ -5528,9 +5544,9 @@ EOF;
 	 * detached from it's parent.
 	 *
 	 * Notice-safe.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>1</div>
@@ -5546,7 +5562,7 @@ EOF;
 	 *   )
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['div:eq(1)']->
@@ -5561,7 +5577,7 @@ EOF;
 	 * <?php  else if ((isset($data['foo']['bar']['0']) && $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && $data->{'foo'}->{'bar'}->{'0'})) {  ?>2<?php  }  ?>
 	 * <div>3</div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
@@ -5571,7 +5587,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
@@ -5582,7 +5598,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * @param string $var
 	 * Dot-separated object path, eg Object.property.inneProperty
 	 * 
@@ -5609,9 +5625,9 @@ EOF;
 	 * detached from it's parent.
 	 *
 	 * Notice-safe.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>1</div>
@@ -5627,7 +5643,7 @@ EOF;
 	 *   )
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['div:eq(1)']->
@@ -5642,7 +5658,7 @@ EOF;
 	 * <?php  else if ((isset($data['foo']['bar']['0']) && ! $data['foo']['bar']['0']) || (isset($data->{'foo'}->{'bar'}->{'0'}) && ! $data->{'foo'}->{'bar'}->{'0'})) {  ?>2<?php  }  ?>
 	 * <div>3</div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
@@ -5652,7 +5668,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
@@ -5663,7 +5679,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * @param string $var
 	 * Dot-separated object path, eg Object.property.inneProperty
 	 * 
@@ -5760,9 +5776,9 @@ EOF;
 	 * Method doesn't change selected nodes stack.
 	 *
 	 * Notice-safe.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>1</div>
@@ -5778,7 +5794,7 @@ EOF;
 	 *   )
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['div:eq(1)']->
@@ -5794,7 +5810,7 @@ EOF;
 	 * <?php  }  ?>
 	 * <div>3</div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
@@ -5804,7 +5820,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
@@ -5816,7 +5832,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * @param string $var
 	 * Dot-separated object path, eg Object.property.inneProperty
 	 * @param bool $separate
@@ -5845,9 +5861,9 @@ EOF;
 	 * Method doesn't change selected nodes stack.
 	 *
 	 * Notice-safe.
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>1</div>
@@ -5863,7 +5879,7 @@ EOF;
 	 *   )
 	 * );
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['div:eq(1)']->
@@ -5879,7 +5895,7 @@ EOF;
 	 * <?php  }  ?>
 	 * <div>3</div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
@@ -5889,7 +5905,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
@@ -5901,7 +5917,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * @param string $var
 	 * Dot-separated object path, eg Object.property.inneProperty
 	 * @param bool $separate
@@ -6148,9 +6164,9 @@ EOF;
 	}
 	/**
 	 * TODO description
-	 * 
+	 *
 	 * == Example ==
-	 * 
+	 *
 	 * === Markup ===
 	 * <code>
 	 * <div>1</div>
@@ -6162,7 +6178,7 @@ EOF;
 	 * <code>
 	 *
 	 * </code>
-	 * 
+	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
 	 * $template['div:eq(1)']->
@@ -6178,7 +6194,7 @@ EOF;
 	 * <?php  }  ?>
 	 * <div>3</div>
 	 * </code>
-	 * 
+	 *
 	 * === Template tree before ===
 	 * <code>
 	 * div
@@ -6188,7 +6204,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * === Template tree after ===
 	 * <code>
 	 * div
@@ -6200,7 +6216,7 @@ EOF;
 	 * div
 	 *  - Text:3
 	 * </code>
-	 * 
+	 *
 	 * @param $separate
 	 * @param $lang
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
