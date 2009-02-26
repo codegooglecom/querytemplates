@@ -3,6 +3,7 @@
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo]
 
 == Methods ==
+=== PHP ===
  * [valuesToFormMethodPHP valuesToForm]
  * [valuesToLoopMethodPHP valuesToLoop]
  * [valuesToLoopFirstMethodPHP valuesToLoopFirst]
@@ -22,3 +23,21 @@
  * [valuesToStackPrependMethodPHP valuesToStackPrepend]
  * [valuesToStackReplaceMethodPHP valuesToStackReplace]
  * [valuesToVarsMethodPHP valuesToVars]
+=== JS ===
+ * [valuesToLoopMethodJS valuesToLoop]
+ * [valuesToLoopFirstMethodJS valuesToLoopFirst]
+ * [valuesToLoopSeparateMethodJS valuesToLoopSeparate]
+ * [valuesToSelectorMethodJS valuesToSelector]
+ * [valuesToSelectorAfterMethodJS valuesToSelectorAfter]
+ * [valuesToSelectorAppendMethodJS valuesToSelectorAppend]
+ * [valuesToSelectorAttrMethodJS valuesToSelectorAttr]
+ * [valuesToSelectorBeforeMethodJS valuesToSelectorBefore]
+ * [valuesToSelectorPrependMethodJS valuesToSelectorPrepend]
+ * [valuesToSelectorReplaceMethodJS valuesToSelectorReplace]
+ * [valuesToStackMethodJS valuesToStack]
+ * [valuesToStackAfterMethodJS valuesToStackAfter]
+ * [valuesToStackAppendMethodJS valuesToStackAppend]
+ * [valuesToStackAttrMethodJS valuesToStackAttr]
+ * [valuesToStackBeforeMethodJS valuesToStackBefore]
+ * [valuesToStackPrependMethodJS valuesToStackPrepend]
+ * [valuesToStackReplaceMethodJS valuesToStackReplace]
