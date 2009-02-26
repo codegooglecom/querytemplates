@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>QueryTemplates javaScript demo</title>
+<script type="text/javascript" src="jquery-1.3.2.js"></script>
+<script type="text/javascript" src="QueryTemplatesLight.js"></script>
+<!--<script type="text/javascript" src="QueryTemplatesLight.min.js"></script>-->
+<script type="text/javascript">
+var data = [
+     {
+         'User': {'name': 'foo'},
+         'Tags': [
+             {'tag': 'php'},
+             {'tag': 'js'}
+         ]
+     },
+     {
+         'User': {'name': 'bar'},
+         'Tags': [
+             {'tag': 'perl'}
+         ]
+     },
+     {
+         'User': {'name': 'fooBar'},
+         'Tags': [
+             {'tag': 'php'},
+             {'tag': 'js'},
+             {'tag': 'perl'}
+         ]
+     }
+];
+function demoLoop() {
+	$('body > ul > li')
+		.valuesToLoop(data, function(row) {
+				this.valuesToSelector(row.User, 'span.%k')
+						.find('> ul > li')
+								.valuesToLoop(row.Tags, function(tag) {
+										this.valuesToSelector(tag);
+								})
+				;
+		});
+}
+$(function(){
+	$('button').click(function(){
+		demoLoop();
+	});
+});
+</script>
+</head>
+<body>
+<pre>
+$('body &gt; ul &gt; li')
+  .valuesToLoop(data, function(row) {
+      this.valuesToSelector(row.User, 'span.%k')
+          .find('&gt; ul &gt; li')
+              .valuesToLoop(row.Tags, function(tag) {
+                  this.valuesToSelector(tag);
+              })
+      ;
+  });
+</pre>
+<button>Test code above</button>
+<ul>
+     <li class='row'>
+         <span class='name'>fake name</span>
+         <ul class='tags'>
+             <li class='tag'>
+                 <span class='tag'>fake tag</span>
+             </li>
+         </ul>
+     </li>
+</ul>
+</body>
+</html>
