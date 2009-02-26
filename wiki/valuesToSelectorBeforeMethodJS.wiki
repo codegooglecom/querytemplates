@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `valuesToSelectorBefore` =
-[w/list Wiki] > [Syntax Syntax] > [valuesToSelectorSyntax valuesToSelector] > [valuesToSelectorBeforeMethodJS ]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSelectorSyntax valuesToSelector] > [valuesToSelectorBeforeMethodJS ]
 === Parameters ===
  * *values* _Array|Object_
   Associative array or Object containing markup, text or instance of Callback.
@@ -36,7 +36,7 @@ var values = {
 === `QueryTemplates` formula in JavaScript ===
 {{{
 $template
-	.valuesToSelector(values)
+	.valuesToSelectorBefore(values)
 }}}
 
 === Template ===

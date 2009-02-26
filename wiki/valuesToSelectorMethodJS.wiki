@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `valuesToSelector` =
-[w/list Wiki] > [Syntax Syntax] > [valuesToSelectorSyntax valuesToSelector] > [valuesToSelectorMethodJS ]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSelectorSyntax valuesToSelector] > [valuesToSelectorMethodJS ]
 === Parameters ===
  * *values* _Array|Object_
   Associative array or Object containing markup, text or instance of Callback.

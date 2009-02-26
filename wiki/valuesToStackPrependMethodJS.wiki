@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
 = `valuesToSelectorPrepend` =
-[w/list Wiki] > [Syntax Syntax] > [valuesToStackSyntax valuesToStack] > [MethodJS ]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToStackSyntax valuesToStack] > [MethodJS ]
 === Parameters ===
  * *values* _Array|Object_
   Associative array or Object containing markup, text or instance of Callback.
@@ -35,7 +35,7 @@ var values = ['<foo/>', '<bar/>'];
 === `QueryTemplates` formula in JavaScript ===
 {{{
 $template.find('node1')
-	.valuesToStack(values)
+	.valuesToStackPrepend(values)
 }}}
 
 === Template ===
