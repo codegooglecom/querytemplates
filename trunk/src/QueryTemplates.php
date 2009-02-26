@@ -1,6 +1,6 @@
 <?php
 /**
- * QueryTemplates - rapid multilanguage template generator
+ * QueryTemplates -  DOM and CSS oriented template engine
  * 
  * PHP based templating engine creating reusable native templates in various
  * languages.
@@ -11,7 +11,7 @@
  * Library uses popular web 2.0 pattern load-traverse-modify thou jQuery like
  * chainable API and provides developer several rapid template filling methods.
  *
- * @version 1.0 beta3
+ * @version 1.0 dev4
  * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  * @link http://code.google.com/p/querytemplates/
