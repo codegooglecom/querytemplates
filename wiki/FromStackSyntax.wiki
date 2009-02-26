@@ -1,7 +1,0 @@
-#sidebar SyntaxSidebar
-= `FromStack` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [FromStackSyntax FromStack]
-
-== Methods ==
- * [varsFromStackMethodPHP varsFromStack]
- * [varsFromStackTextMethodPHP varsFromStackText]

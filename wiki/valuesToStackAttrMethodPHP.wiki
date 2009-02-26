@@ -16,7 +16,7 @@
 
 
 === Description ===
-Injects markup from $data's content (rows or attributes) inside actually  selected nodes.
+Injects markup from $values' content (rows or attributes) inside actually  selected nodes.
 
 
 Method doesn't change selected nodes stack.
@@ -42,14 +42,14 @@ Method doesn't change selected nodes stack.
 }}}
 === `QueryTemplates` formula ===
 {{{
- $template->
+ $template['node1']->
      valuesToStackAttr('rel', $values)
  ;
 
 }}}
 === Template ===
 {{{
- <node1><node2></node2></node1><node1><node2></node2></node1>
+ <node1 rel="&lt;foo/&gt;"><node2></node2></node1><node1 rel="&lt;bar/&gt;"><node2></node2></node1>
 
 }}}
 === Template tree before ===

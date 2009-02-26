@@ -1,6 +1,8 @@
 #labels Featured
 = Syntax =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax]
+
+= PHP =
  * === [varPrintSyntax varPrint] ===
  * === [varsToSyntax varsTo] ===
  * === [valuesToSyntax valuesTo] ===
@@ -13,3 +15,9 @@
  * === [ToFormSyntax ToForm] ===
  * === [formFromSyntax formFrom] ===
  * === [varsFromSyntax varsFrom] ===
+
+= JS =
+ * === [valuesToSyntax valuesTo] ===
+ * === [ToLoopSyntax ToLoop] ===
+ * === `ToForm` ===
+ * === formFrom ==========

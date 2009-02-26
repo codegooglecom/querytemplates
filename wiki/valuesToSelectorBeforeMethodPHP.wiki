@@ -7,18 +7,16 @@
  * *$selectorPattern* _String_ = `'.%k'`
   Defines pattern matching target nodes. %k represents key.  Defaults to ".%k", which matches nodes with class name equivalent to  data source key.  For example, to restrict match to nodes with additional class "foo" change  $selectorPattern to ".foo.%k"
  * *$skipFields* _Array_ = `null`
-  Array of fields from $data which should be skipped.
+  Array of fields from $values which should be skipped.
  * *$fieldCallback* _Callback|string_ = `null`
   Callback triggered after every insertion. Three parameters are passed to  this callback: 
    * $node phpQueryObject
    * $field String
    * $target String|array
- * *$data* 
-
 
 
 === Description ===
-Injects markup from $data's content (rows or attributes) before nodes  matched by selector. Method uses actually matched nodes as root for the  query.
+Injects markup from $values' content (rows or attributes) before nodes  matched by selector. Method uses actually matched nodes as root for the  query.
 
 
 Method doesn't change selected elements stack.

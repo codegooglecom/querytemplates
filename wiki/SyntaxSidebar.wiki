@@ -1,5 +1,6 @@
 #labels Deprecated
 === [Syntax] ===
+=== PHP ===
  * [varPrintSyntax varPrint]
  * [varsToSyntax varsTo]
  * [valuesToSyntax valuesTo]
@@ -12,3 +13,9 @@
  * [ToFormSyntax ToForm]
  * [formFromSyntax formFrom]
  * [varsFromSyntax varsFrom]
+
+=== JS ===
+ * [valuesToSyntax valuesTo]
+ * [ToLoopSyntax ToLoop]
+ * `ToForm`
+ * formFrom

@@ -37,7 +37,7 @@ Method doesn't change selected elements stack.
 {{{
  $foo = new stdClass();
  $foo->field1 = 'foo';
- $foo->field1 = 'bar';
+ $foo->field2 = 'bar';
 
 }}}
 === `QueryTemplates` formula ===
@@ -51,7 +51,8 @@ Method doesn't change selected elements stack.
 {{{
  <?php  if (isset($foo['field1'])) print $foo['field1'];
  else if (isset($foo->{'field1'})) print $foo->{'field1'};  ?>
- <p class="field2">lorem ipsum</p>
+ <?php  if (isset($foo['field2'])) print $foo['field2'];
+ else if (isset($foo->{'field2'})) print $foo->{'field2'};  ?>
 
 }}}
 === Template tree before ===
@@ -65,8 +66,7 @@ Method doesn't change selected elements stack.
 === Template tree after ===
 {{{
  PHP
- p.field2
-  - Text:lorem ipsum
+ PHP
 
 }}}
 ----
