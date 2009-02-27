@@ -1,4 +1,6 @@
 #labels Featured
+Manual is work in progress. More information can be found in [Syntax Syntax reference] and [http://meta20.net/querytemplates-api/ API Rerefence].
+
 = Table of Contents =
    * Preparing environment
    * [TemplateStructure Template Structure]
@@ -14,7 +16,5 @@
    * Template side includes
    * [ExtendingQueryTemplates Extending QueryTemplates]
    * [Debugging Debugging]
- 
-*[http://meta20.net/querytemplates-api/ API Rerefence]* is also available.
 
 For informations about phpQuery please refer to [http://code.google.com/p/phpquery/wiki/Manual phpQuery Manual].
