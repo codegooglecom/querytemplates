@@ -33,7 +33,7 @@
    * multiple (only select)
    * optgroups (only select)
    * values (only radio)
- Ex:  
+  Ex:  
 {{{
  $structure = array(
   // special field representing form element
