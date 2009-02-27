@@ -11,7 +11,7 @@
 
 
 === Description ===
-Method loops provided values on actually selected nodes. Each time new row is inserted, provided callback is triggered with dataRow dataIndex, in context (this) of matched node.
+Method loops provided values on actually selected nodes. Each time new row is inserted, provided callback is triggered with dataRow and dataIndex in context (this) of matched node.
 
 Method doesn't change selected nodes stack.
 

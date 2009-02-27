@@ -5,6 +5,7 @@
 [ToStackSyntax ToStack] methods injects data (dynamic / static / executable) into actually matched nodes.
 
 == Methods ==
+=== PHP ===
  * [codeToStackMethodPHP codeToStack]
  * [codeToStackAfterMethodPHP codeToStackAfter]
  * [codeToStackAppendMethodPHP codeToStackAppend]
@@ -27,8 +28,30 @@
  * [varsToStackPrependMethodPHP varsToStackPrepend]
  * [varsToStackReplaceMethodPHP varsToStackReplace]
 
+=== JS ===
+ * [codeToStackMethodJS codeToStack]
+ * [codeToStackAfterMethodJS codeToStackAfter]
+ * [codeToStackAppendMethodJS codeToStackAppend]
+ * [codeToStackAttrMethodJS codeToStackAttr]
+ * [codeToStackBeforeMethodJS codeToStackBefore]
+ * [codeToStackPrependMethodJS codeToStackPrepend]
+ * [codeToStackReplaceMethodJS codeToStackReplace]
+ * [valuesToStackMethodJS valuesToStack]
+ * [valuesToStackAfterMethodJS valuesToStackAfter]
+ * [valuesToStackAppendMethodJS valuesToStackAppend]
+ * [valuesToStackAttrMethodJS valuesToStackAttr]
+ * [valuesToStackBeforeMethodJS valuesToStackBefore]
+ * [valuesToStackPrependMethodJS valuesToStackPrepend]
+ * [valuesToStackReplaceMethodJS valuesToStackReplace]
+ * [varsToStackMethodJS varsToStack]
+ * [varsToStackAfterMethodJS varsToStackAfter]
+ * [varsToStackAppendMethodJS varsToStackAppend]
+ * [varsToStackAttrMethodJS varsToStackAttr]
+ * [varsToStackBeforeMethodJS varsToStackBefore]
+ * [varsToStackPrependMethodJS varsToStackPrepend]
+ * [varsToStackReplaceMethodJS varsToStackReplace]
 
-== Example ==
+== Example PHP ==
 === Markup ===
 {{{
  <node1>

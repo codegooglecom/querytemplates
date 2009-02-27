@@ -5,6 +5,7 @@
 [ToSelectorSyntax ToSelector] methods injects data (dynamic / static / executable) into nodes matched by *dynamic selector pattern*, based on provided *fields list*.
 
 == Methods ==
+=== PHP ===
  * [codeToSelectorMethodPHP codeToSelector]
  * [codeToSelectorAfterMethodPHP codeToSelectorAfter]
  * [codeToSelectorAppendMethodPHP codeToSelectorAppend]
@@ -27,8 +28,31 @@
  * [varsToSelectorPrependMethodPHP varsToSelectorPrepend]
  * [varsToSelectorReplaceMethodPHP varsToSelectorReplace]
 
+=== JS ===
+ * [codeToSelectorMethodJS codeToSelector]
+ * [codeToSelectorAfterMethodJS codeToSelectorAfter]
+ * [codeToSelectorAppendMethodJS codeToSelectorAppend]
+ * [codeToSelectorAttrMethodJS codeToSelectorAttr]
+ * [codeToSelectorBeforeMethodJS codeToSelectorBefore]
+ * [codeToSelectorPrependMethodJS codeToSelectorPrepend]
+ * [codeToSelectorReplaceMethodJS codeToSelectorReplace]
+ * [valuesToSelectorMethodJS valuesToSelector]
+ * [valuesToSelectorAfterMethodJS valuesToSelectorAfter]
+ * [valuesToSelectorAppendMethodJS valuesToSelectorAppend]
+ * [valuesToSelectorAttrMethodJS valuesToSelectorAttr]
+ * [valuesToSelectorBeforeMethodJS valuesToSelectorBefore]
+ * [valuesToSelectorPrependMethodJS valuesToSelectorPrepend]
+ * [valuesToSelectorReplaceMethodJS valuesToSelectorReplace]
+ * [varsToSelectorMethodJS varsToSelector]
+ * [varsToSelectorAfterMethodJS varsToSelectorAfter]
+ * [varsToSelectorAppendMethodJS varsToSelectorAppend]
+ * [varsToSelectorAttrMethodJS varsToSelectorAttr]
+ * [varsToSelectorBeforeMethodJS varsToSelectorBefore]
+ * [varsToSelectorPrependMethodJS varsToSelectorPrepend]
+ * [varsToSelectorReplaceMethodJS varsToSelectorReplace]
 
-== Example ==
+
+== Example PHP ==
 === Markup ===
 {{{
  <p class='field1'>lorem ipsum</p>

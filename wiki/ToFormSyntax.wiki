@@ -3,5 +3,9 @@
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [ToFormSyntax ToForm]
 
 == Methods ==
+=== PHP ===
  * [valuesToFormMethodPHP valuesToForm]
  * [varsToFormMethodPHP varsToForm]
+=== JS ===
+ * valuesToForm
+ * varsToForm

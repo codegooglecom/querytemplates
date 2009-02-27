@@ -16,6 +16,8 @@
 
 === JS ===
  * [valuesToSyntax valuesTo]
+ * [ToStackSyntax ToStack]
+ * [ToSelectorSyntax ToSelector]
  * [ToLoopSyntax ToLoop]
  * `ToForm`
  * formFrom
