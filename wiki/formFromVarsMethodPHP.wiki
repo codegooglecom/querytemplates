@@ -10,7 +10,7 @@
    Represents actual errors as array of fields. Field can also be an array.
    * additional data `[2]`
    Same purpose as $additionalData, but during template's execution.
- Names should be without dollar signs.  Ex:  
+  Names should be without dollar signs.  Ex:  
 {{{
  array('row', 'errors.row', 'data');
  $errors = array(
@@ -27,7 +27,7 @@
    * checkbox
    * radio
    * textarea
- Convention:  fieldName => array(    fieldType, {options}  )  Where {options} can be: 
+  Convention:  fieldName => array(    fieldType, {options}  )  Where {options} can be: 
    * label
    * id
    * multiple (only select)
@@ -107,20 +107,11 @@
 
 
 === Description ===
-Method formFromVars acts as form helper. It creates the form without the
-
-
-need of suppling a line of markup. Created form have following features:
-
-
+Method formFromVars acts as form helper. It creates the form without the need of suppling a line of markup. Created form have following features:
    * shows data from record (array or object)
-
    * shows errors
-
    * supports default values
-
    * supports radios and checkboxes
-
    * supports select elements with optgroups
 ----
 
