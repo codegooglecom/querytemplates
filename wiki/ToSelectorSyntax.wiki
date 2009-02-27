@@ -29,13 +29,6 @@
  * [varsToSelectorReplaceMethodPHP varsToSelectorReplace]
 
 === JS ===
- * [codeToSelectorMethodJS codeToSelector]
- * [codeToSelectorAfterMethodJS codeToSelectorAfter]
- * [codeToSelectorAppendMethodJS codeToSelectorAppend]
- * [codeToSelectorAttrMethodJS codeToSelectorAttr]
- * [codeToSelectorBeforeMethodJS codeToSelectorBefore]
- * [codeToSelectorPrependMethodJS codeToSelectorPrepend]
- * [codeToSelectorReplaceMethodJS codeToSelectorReplace]
  * [valuesToSelectorMethodJS valuesToSelector]
  * [valuesToSelectorAfterMethodJS valuesToSelectorAfter]
  * [valuesToSelectorAppendMethodJS valuesToSelectorAppend]
@@ -43,13 +36,6 @@
  * [valuesToSelectorBeforeMethodJS valuesToSelectorBefore]
  * [valuesToSelectorPrependMethodJS valuesToSelectorPrepend]
  * [valuesToSelectorReplaceMethodJS valuesToSelectorReplace]
- * [varsToSelectorMethodJS varsToSelector]
- * [varsToSelectorAfterMethodJS varsToSelectorAfter]
- * [varsToSelectorAppendMethodJS varsToSelectorAppend]
- * [varsToSelectorAttrMethodJS varsToSelectorAttr]
- * [varsToSelectorBeforeMethodJS varsToSelectorBefore]
- * [varsToSelectorPrependMethodJS varsToSelectorPrepend]
- * [varsToSelectorReplaceMethodJS varsToSelectorReplace]
 
 
 == Example PHP ==

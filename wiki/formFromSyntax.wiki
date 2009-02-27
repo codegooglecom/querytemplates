@@ -3,5 +3,10 @@
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [formFromSyntax formFrom]
 
 == Methods ==
+=== PHP ===
  * [formFromVarsMethodPHP formFromVars]
+ * formFromValues
  * [inputsFromValuesMethodPHP inputsFromValues]
+=== JS ===
+ * formFromValues
+ * inputsFromValues

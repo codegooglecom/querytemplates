@@ -14,6 +14,7 @@
  * [codeToStackPrependMethodPHP codeToStackPrepend]
  * [codeToStackReplaceMethodPHP codeToStackReplace]
  * [valuesToStackMethodPHP valuesToStack]
+ * [valuesToFormMethodPHP valuesToForm]
  * [valuesToStackAfterMethodPHP valuesToStackAfter]
  * [valuesToStackAppendMethodPHP valuesToStackAppend]
  * [valuesToStackAttrMethodPHP valuesToStackAttr]
@@ -29,13 +30,6 @@
  * [varsToStackReplaceMethodPHP varsToStackReplace]
 
 === JS ===
- * [codeToStackMethodJS codeToStack]
- * [codeToStackAfterMethodJS codeToStackAfter]
- * [codeToStackAppendMethodJS codeToStackAppend]
- * [codeToStackAttrMethodJS codeToStackAttr]
- * [codeToStackBeforeMethodJS codeToStackBefore]
- * [codeToStackPrependMethodJS codeToStackPrepend]
- * [codeToStackReplaceMethodJS codeToStackReplace]
  * [valuesToStackMethodJS valuesToStack]
  * [valuesToStackAfterMethodJS valuesToStackAfter]
  * [valuesToStackAppendMethodJS valuesToStackAppend]
@@ -43,13 +37,6 @@
  * [valuesToStackBeforeMethodJS valuesToStackBefore]
  * [valuesToStackPrependMethodJS valuesToStackPrepend]
  * [valuesToStackReplaceMethodJS valuesToStackReplace]
- * [varsToStackMethodJS varsToStack]
- * [varsToStackAfterMethodJS varsToStackAfter]
- * [varsToStackAppendMethodJS varsToStackAppend]
- * [varsToStackAttrMethodJS varsToStackAttr]
- * [varsToStackBeforeMethodJS varsToStackBefore]
- * [varsToStackPrependMethodJS varsToStackPrepend]
- * [varsToStackReplaceMethodJS varsToStackReplace]
 
 == Example PHP ==
 === Markup ===
