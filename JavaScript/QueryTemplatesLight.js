@@ -1,7 +1,7 @@
 /**
  * QueryTemplates -  DOM and CSS oriented template engine
  *
- * Light version JavaScript.
+ * Light version for JavaScript.
  *
  * @version 1.0 beta1
  * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
