@@ -19,24 +19,3 @@ $template = template($name)
 	->save()
 ;
 require($template);
-/*
-// PREPARE DATA
-foreach( $posts as $k => $r ) {
-	// link post title
-	$posts[$k]['Post']['title'] = $html->link(
-		$r['Post']['title'],
-		'/'.$r['Post']['slug']
-	);
-}
-// build & include template
-include(
-	plainTemplates::createTemplate(
-		'index.htm',
-		array(
-			'posts',
-			$posts,
-			'sidebar posts ul'
-		)
-	)
-);
-*/
