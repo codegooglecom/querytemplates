@@ -42,6 +42,8 @@ abstract class QueryTemplatesLanguage {
 		if (! class_exists($langClass))
 			require_once(dirname(__FILE__)."/$langClass.php");
 		$params = func_get_args();
-		return call_user_func_array(array($langClass, $method), $params);
+		return call_user_func_array(
+			array($langClass, $method), array_slice($params, 2)
+		);
 	}
 }

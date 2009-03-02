@@ -4259,52 +4259,15 @@ abstract class QueryTemplatesPhpQuery
 		return $this;
 	}
 	/**
-	 * Method formFromVars acts as form helper. It creates the form without the 
+	 * Method formFromVars acts as form helper. It creates a form without the 
 	 * need of suppling a line of markup. Created form have following features:
 	 * - shows data from record (array or object)
 	 * - shows errors
 	 * - supports default values
 	 * - supports radios and checkboxes
-	 * - supports select elements with optgroups 
-	 * 
-	 * @param $varNames
-	 * Array of names of following vars:
-	 * - record [0]
-	 *   Represents actual record as array of fields.
-	 * - errors [1]
-	 *   Represents actual errors as array of fields. Field can also be an array.
-	 * - additional data [2]
-	 *   Same purpose as $additionalData, but during template's execution.
-	 * Names should be without dollar signs. 
-	 * Ex:
-	 * <code>
-	 * array('row', 'errors.row', 'data');
-	 * $errors = array(
-	 *   'field1' => 'one error',
-	 *   'field2' => array('first error', 'second error')
-	 * );
-	 * </code>
-	 * 
-	 * @param $structure
-	 * Form structure information. This should be easily fetchable from ORM layer.
-	 * Possible types:
-	 * - text (default)
-	 * - password
-	 * - hidden
-	 * - checkbox
-	 * - radio
-	 * - textarea
-	 * Convention:
-	 * fieldName => array(
-	 *   fieldType, {options}
-	 * )
-	 * Where {options} can be:
-	 * - label
-	 * - id
-	 * - multiple (only select)
-	 * - optgroups (only select)
-	 * - values (only radio)
-	 * Ex:
+	 * - supports select elements with optgroups
+	 *  
+	 * Example:
 	 * <code>
 	 * $structure = array(
 	 *  // special field representing form element
@@ -4339,6 +4302,50 @@ abstract class QueryTemplatesPhpQuery
 	 * );
 	 * </code>
 	 * 
+	 * @param $varNames
+	 * Array of names of following vars:
+	 * - record [0]
+	 *   Represents actual record as array of fields.
+	 * - errors [1]
+	 *   Represents actual errors as array of fields. Field can also be an array.
+	 * - additional data [2]
+	 *   Same purpose as $additionalData, but during template's execution.
+	 * Names should be without dollar signs. 
+	 * Ex:
+	 * <code>
+	 * array('row', 'errors.row', 'data');
+	 * $errors = array(
+	 *   'field1' => 'one error',
+	 *   'field2' => array('first error', 'second error')
+	 * );
+	 * </code>
+	 * 
+	 * @param $structure
+	 * Form structure information. This should be easily fetchable from ORM layer.
+	 * Possible types:
+	 * - text (default)
+	 * - password
+	 * - hidden
+	 * - checkbox
+	 * - radio
+	 * - textarea
+	 * Convention:
+	 * <code>
+	 * 'fieldName' => array(
+	 *   'fieldType', $fieldOptions
+	 * )
+	 * </code>
+	 * Where $fieldOptions can be (`key => value` pairs):
+	 * - label
+	 * - id
+	 * - multiple (only select)
+	 * - optgroups (only select)
+	 * - values (only radio)
+	 * *__form* is special field name, which represents form element, as an array. 
+	 * All values from it will be pushed as form attributes.
+	 * If you wrap fields' array within another array, it will represent *fieldsets*, 
+	 * which first value (with index 0) will be used as *legend* (optional).
+	 * 
 	 * @param $defaults
 	 * Default field's value. Used when field isn't present within supplied record.
 	 * Ex:
@@ -4353,7 +4360,7 @@ abstract class QueryTemplatesPhpQuery
 	 * 
 	 * @param $additionalData
 	 * Additional data for fields. For now it's only used for populating select boxes.
-	 * Ex: 
+	 * Example: 
 	 * <code>
 	 * $additionalData = array(
 	 * 	'field2' => array(
@@ -4371,24 +4378,43 @@ abstract class QueryTemplatesPhpQuery
 	 * </code>
 	 * 
 	 * @param $template
-	 * Input wrapper template.
-	 * TODO support per field templates.
+	 * Input wrapper template. This template will be used for each field. Use array 
+	 * to per field template, '__default' means default.
+	 * Default value:
+	 * <code>
+	 * <div class="input">
+	 *   <label/>
+	 *   <input/>
+	 *   <ul class="errors">
+	 *     <li/>
+	 *   </ul>
+	 * </div>
+	 * </code>
 	 * 
 	 * @param $selectors
 	 * Array of selectors indexed by it's type. Allows to customize lookups inside 
 	 * inputs wrapper. Possible values are: 
-	 * - error (default: .errors)
-	 * - label // TODO
-	 * - input (per field) // TODO
+	 * - error - selects field's error wrapper
+	 *   - dafault value is '.errors'
+	 * - label - selects field's label node (can be div, span, etc)
+	 *   - default value is 'label:first'
+	 *   - use array to per field name selector, '__default' means default
+	 * - input - selects field's input node: input, textarea or select
+	 *   - default value is 'input:first' 
+	 *   - use array to per field name selector, '__default' means default
+	 *   - %t is replaced by field node type (use it with customized per field $template)
+	 *   
+	 * @param $fieldCallback
+	 * TODO
 	 * 
 	 * @return QueryTemplatesParse
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 * 
-	 * @TODO support callbacks (per input type, before/after, maybe for errors too ?)
-	 * @TODO universalize language-specific injects
+	 * @TODO maybe support callbacks (per input type, before/after, maybe for errors too ?)
 	 */
-	function formFromVars($varNames, $structure, $defaults = null, $additionalData = null, $template = null, $selectors = null) {
+	function formFromVars($varNames, $structure, $defaults = null, $additionalData = null, 
+		$template = null, $selectors = null, $fieldCallback = null) {
 		// setup $varNames
 		if (! $varNames)
 			throw new Exception("Record's var name (\$varNames or \$varNames[0]) is mandatory.");
@@ -4403,18 +4429,18 @@ abstract class QueryTemplatesPhpQuery
 		if (! $template && $varErrors)
 			$template = <<<EOF
 <div class="input">
-  <label for=""></label>
-  <input type=""/>
+  <label/>
+  <input/>
   <ul class="errors">
-    <li>error message</li>
+    <li/>
   </ul>
 </div>
 EOF;
 		else if (! $template && ! $varErrors)
 			$template = <<<EOF
 <div class="input">
-  <label for=""></label>
-  <input type=""/>
+  <label/>
+  <input/>
 </div>
 EOF;
 		// setup $selectors
@@ -4422,12 +4448,14 @@ EOF;
 			$selectors = array();
 		$selectors = array_merge(array(
 			'errors' => '.errors',
+			'input' => 'input:first',
+			'label' => 'label:first',
 		), $selectors);
 		// setup lang stuff
 		$lang = strtoupper($this->parent->language);
 		$languageClass = 'QueryTemplatesLanguage'.$lang;
 		// setup markup
-		$template = $this->newInstance($template);
+//		$template = $this->newInstance($template);
 		$form = $this->is('form')
 			? $this->filter('form')->empty()
 			: $this->newInstance('<form/>');
@@ -4435,219 +4463,270 @@ EOF;
 			foreach($structure['__form'] as $attr => $value)
 				$form->attr($attr, $value);
 			$attr = $value = null;
+			unset($structure['__form']);
 		}
 		$formID = $form->attr('id');
 		if (! $formID) {
 			$formID = 'f_'.substr(md5(microtime()), 0, 5);
 			$form->attr('id', $formID);
 		}
-		foreach($structure as $field => $info) {
-			if ($field == '__form')
-				continue;
-			if (is_int($field)) {
-				// TODO fieldset
-				continue;
+		// no fieldsets
+		if (! isset($structure[0])) {
+			$structure = array($structure);
+		}
+		foreach($structure as $fieldsetFields) {
+			$fieldset = $this->newInstance('<fieldset/>');
+			if (is_string($fieldsetFields[0])) {
+				$fieldset->append("<legend>{$fieldsetFields[0]}</legend>");
+				unset($fieldsetFields[0]);
 			}
-			if (! is_array($info))
-				$info = array($info);
-			$id = isset($info['id'])
-				? $info['id']
-				: "{$formID}_{$field}";
-			$markup = $template->clone();
-			switch($info[0]) {
-				// TEXTAREA
-				case 'textarea':
-					// TODO
-					$input = $this->newInstance("<textarea></textarea>")
-						->attr('id', $id);
-					$markup['input:first']->replaceWith($input);
-					if (isset($defaults[$field])) {
-						$input->{"$lang"}(
-							self::formFromVars_CodeValue(compact(
-								'input', 'languageClass', 'field', 'defaults', 'varRecord'
-							))
-						);
+			foreach($fieldsetFields as $field => $info) {
+	//			if ($field == '__form')
+	//				continue;
+//				if (is_int($field)) {
+//					// TODO fieldset
+//					continue;
+//				}
+				if (! is_array($info))
+					$info = array($info);
+				$id = isset($info['id'])
+					? $info['id']
+					: "{$formID}_{$field}";
+				// setup markup
+//				$markup = $template->clone();
+				if (is_array($template)) {
+					if (isset($template[$field])) {
+						$markup = $template[$field];
+					} else if (isset($template['__default'])) {
+						$markup = $template['__default'];
 					} else {
-						$input->{"$lang"}(
-							$input->qt_langCode('printVar', "$varRecord.$field")
-						);
+						throw new Exception("No $selectorType selector for field $field. Provide "
+							."default one or one selector for all fields");
 					}
-					$markup['label:fist']->attr('for', $id);
-					break;
-				// SELECT
-				case 'select':
-					$input = $this->newInstance("<select name='$field'/>");
-					// TODO multiple
-					$markup['input:first']->replaceWith($input);
-					if (isset($info['optgroups'])) {
-						foreach($info['optgroups'] as $optgroup)
-							$input->append("<optgroup label='$optgroup'/>");
+				} else {
+					$markup = $template;
+				}
+				$markup = $this->newInstance($markup);
+				// setup selectors
+				$inputSelector = $labelSelector = null;
+				foreach(array('input', 'label') as $selectorType) {
+					if (is_array($selectors[$selectorType])) {
+						if (isset($selectors[$selectorType][$field])) {
+							${$selectorType.'Selector'} = $selectors[$selectorType][$field];
+						} else if (isset($selectors[$selectorType]['__default'])) {
+							${$selectorType.'Selector'} = $selectors[$selectorType]['__default'];
+						} else {
+							throw new Exception("No $selectorType selector for field $field. Provide "
+								."default one or one selector for all fields");
+						}
+					} else {
+						${$selectorType.'Selector'} = $selectors[$selectorType];
 					}
-					// inputFromValues
-					if (isset($additionalData[$field])) {
-						$target = null;
-						$selected = '';
-						foreach($additionalData[$field] as $value => $label) {
-							// optgroup
-							if (is_array($label)) {
-								$target = $input["optgroup:eq($value)"];
-								foreach($label as $_value => $_label) {
-									$selected = '';
+				}
+				switch($info[0]) {
+					case 'textarea':
+					case 'select':
+						$inputSelector = str_replace('%t', $info[0], $inputSelector);
+						break;
+					default:
+						$inputSelector = str_replace('%t', 'input', $inputSelector);
+				}
+				switch($info[0]) {
+					// TEXTAREA
+					case 'textarea':
+						// TODO
+						$input = $this->newInstance("<textarea></textarea>")
+							->attr('id', $id);
+						$markup[$inputSelector]->replaceWith($input);
+						if (isset($defaults[$field])) {
+							$input->{"$lang"}(
+								self::formFromVars_CodeValue(compact(
+									'input', 'languageClass', 'field', 'defaults', 'varRecord'
+								))
+							);
+						} else {
+							$input->{"$lang"}(
+								$input->qt_langCode('printVar', "$varRecord.$field")
+							);
+						}
+						$markup[$labelSelector]->attr('for', $id);
+						break;
+					// SELECT
+					case 'select':
+						$input = $this->newInstance("<select name='$field'/>");
+						// TODO multiple
+						$markup[$inputSelector]->replaceWith($input);
+						if (isset($info['optgroups'])) {
+							foreach($info['optgroups'] as $optgroup)
+								$input->append("<optgroup label='$optgroup'/>");
+						}
+						// inputFromValues
+						if (isset($additionalData[$field])) {
+							$target = null;
+							$selected = '';
+							foreach($additionalData[$field] as $value => $label) {
+								// optgroup
+								if (is_array($label)) {
+									$target = $input["optgroup:eq($value)"];
+									foreach($label as $_value => $_label) {
+										$selected = '';
+										// TODO multiple
+										if ($defaults && isset($defaults[$field]) 
+											&& $defaults[$field] == $_value)
+											$selected = "selected='selected'";
+										$target->append("<option value='$_value' $selected>$_label</option>");
+									}
+								// no optgroup
+								} else {
 									// TODO multiple
 									if ($defaults && isset($defaults[$field]) 
-										&& $defaults[$field] == $_value)
+										&& $defaults[$field] == $value)
 										$selected = "selected='selected'";
-									$target->append("<option value='$_value' $selected>$_label</option>");
+									$input->append("<option value='$value' $selected>$label</option>");
 								}
-							// no optgroup
-							} else {
-								// TODO multiple
-								if ($defaults && isset($defaults[$field]) 
-									&& $defaults[$field] == $value)
-									$selected = "selected='selected'";
-								$input->append("<option value='$value' $selected>$label</option>");
 							}
+							$target = null;
+							$selected = null;
+							$input['> *']->ifNotVar($varRecord);
 						}
-						$target = null;
-						$selected = null;
-						$input['> *']->ifNotVar($varRecord);
-					}
-					if ($varData) {
-						if (isset($info['optgroups'])) {
-							$optgroupsDefault = $input['> optgroup'];
-							foreach($info['optgroups'] as $optgroup)
-								$input->append("<optgroup label='$optgroup'><option/></optgroup>");
-							$optgroups = $input['> optgroup']->not($optgroupsDefault);
-							if (isset($defaults[$field]))
-								$optgroups->elseStatement();
-							foreach($optgroups as $k => $group) {
-								$option = $group['option']->loop("$varData.$field.$k", 'value', 'label');
+						if ($varData) {
+							if (isset($info['optgroups'])) {
+								$optgroupsDefault = $input['> optgroup'];
+								foreach($info['optgroups'] as $optgroup)
+									$input->append("<optgroup label='$optgroup'><option/></optgroup>");
+								$optgroups = $input['> optgroup']->not($optgroupsDefault);
+								if (isset($defaults[$field]))
+									$optgroups->elseStatement();
+								foreach($optgroups as $k => $group) {
+									$option = $group['option']->loop("$varData.$field.$k", 'value', 'label');
+									$option->varPrintAttr('value', 'value')->
+										varPrint('label');
+								}
+								// TODO field without optgroup (when optgroups present)
+							} else {
+								$option = $input->append("<option/>");
+								if (isset($defaults[$field]))
+									$option->elseStatement();
+								$option = $input['> option:last']->loop("$varData.$field", 'value', 'label');
 								$option->varPrintAttr('value', 'value')->
 									varPrint('label');
 							}
-							// TODO field without optgroup (when optgroups present)
-						} else {
-							$option = $input->append("<option/>");
-							if (isset($defaults[$field]))
-								$option->elseStatement();
-							$option = $input['> option:last']->loop("$varData.$field", 'value', 'label');
-							$option->varPrintAttr('value', 'value')->
-								varPrint('label');
 						}
-					}
-	//				if (! $varData && ! isset($additionalData[$field])) {
-	//					throw new Exception("\$additionalData['$field'] should be present to "
-	//						."populate select element. Otherwise remove \$structure['$field'].");
-	//				}
-					$optgroups = $optgroupsDefault = $option = null;
-					$markup['label:fist']->attr('for', $id);
-					break;
-				// RADIO
-				case 'radio':
-					if (! $info['values'])
-						throw new Exception("'values' property needed for radio inputs");
-					$inputs = array();
-					$input = $markup['input:first']->
-						attr('type', 'radio')->
-						attr('name', $field)->
-						attr('value', $info['values'][0])->
-						removeAttr('checked');
-					$inputs[] = $input;
-					$lastInput = $input;
-					// inputFromValues
-					// XXX not safe ?
-					foreach(array_slice($info['values'], 1) as $value) {
-						$lastInput = $input->clone()->
-							insertAfter($input)->
-							attr('value', $value);
-						$inputs[] = $lastInput;
-					}
-					if (isset($defaults[$field])) {
-						phpQuery::pq($inputs)->clone()->
-							insertBefore($inputs->eq(0))->
-							filter("[value='{$defaults[$field]}']")->
-								attr('checked', 'checked')->
-							end()->
-							ifNotVar("varRecord.$field");
-						$inputs->elseStatement();
-					}
-					foreach($inputs as $input) {
-		//				$input = pq($input, $this->getDocumentID());
-						$clone = $input->clone()->insertAfter($input);
-		//				$input->attr('checked', 'checked')->ifPHP($code, true);
-						$code = $this->qt_langCode('compareVarValue', 
-							"$varRecord.$field", $input->attr('value')
-						);
-						$input->attr('checked', 'checked')->{"if$lang"}($code);
-						$clone->removeAttr('checked')->{"else$lang"}();
-					}
-					$inputs = null;
-					$markup['label:fist']->removeAttr('for');
-					break;
-				case 'hidden':
-					$markup = null;
-					$input = $this->newInstance('<input/>')->
-						attr('type', 'hidden')->
-						attr('name', $field)->
-						attr('id', $id);
-					$target = $form['fieldset']->length
-						? $form['fieldset:first']
-						: $form;
-					$code = isset($defaults[$field])
-						? self::formFromVars_CodeValue(compact(
-								'input', 'languageClass', 'field', 'defaults', 'varRecord'
-							))
-						: $input->qt_langCode('printVar', "$varRecord.$field");
-					$input->qt_langMethod('attr', 'value', $code);
-					$target->prepend($input);
-					$target = $code = null;
-					break;
-				// TEXT, HIDDEN, PASSWORD, others
-				default:
-					$markup = $template->clone();
-					if (! isset($info[0]))
-						$info[0] = 'text';
-					$input = $markup['input:first']->
-						attr('type', $info[0])->
-						attr('name', $field)->
-						attr('id', $id)->
-						removeAttr('checked');
-					$code = isset($defaults[$field])
-						? self::formFromVars_CodeValue(compact(
-								'input', 'languageClass', 'field', 'defaults', 'varRecord'
-							))
-						: $input->qt_langCode('printVar', "$varRecord.$field");
-					$input->qt_langMethod('attr', 'value', $code);
-					$markup['label:fist']->attr('for', $id);
-					$code = null;
-					break;
-			}
-			if ($markup) {
-				$markup->addClass($info[0]);
-				// label
-				$label = isset($info['label'])
-					? $info['label'] : ucfirst($field);
-				$markup['label:fist'] = $label;
-				if ($varErrors) {
-					$varNamePHP = QueryTemplatesLanguage::get('php', 'varNameArray', "$varErrors.$field");
-					$varNameJS = QueryTemplatesLanguage::get('js', 'varName', "$varErrors.$field");
-					$markup[ $selectors['errors'] ]->
-						ifVar("$varErrors.$field")->
-						onlyPHP()->
-							beforePHP("if (! is_array($varNamePHP)) 
-								$varNamePHP = array($varNamePHP);")->
-						endOnly()->
-						onlyJS()->
-							beforeJS("if (typeof $varNameJS != 'object') 
-								var $varNameJS = array($varNameJS);")->
-						endOnly()->
-						find('>*')->
-							loopOne("$varErrors.$field", 'error')->
-								varPrint('error');
-					$_varName = null;
+		//				if (! $varData && ! isset($additionalData[$field])) {
+		//					throw new Exception("\$additionalData['$field'] should be present to "
+		//						."populate select element. Otherwise remove \$structure['$field'].");
+		//				}
+						$optgroups = $optgroupsDefault = $option = null;
+						$markup[$labelSelector]->attr('for', $id);
+						break;
+					// RADIO
+					case 'radio':
+						if (! $info['values'])
+							throw new Exception("'values' property needed for radio inputs");
+						$inputs = array();
+						$input = $markup[$inputSelector]->
+							attr('type', 'radio')->
+							attr('name', $field)->
+							attr('value', $info['values'][0])->
+							removeAttr('checked');
+						$inputs[] = $input;
+						$lastInput = $input;
+						// inputFromValues
+						// XXX not safe ?
+						foreach(array_slice($info['values'], 1) as $value) {
+							$lastInput = $input->clone()->
+								insertAfter($input)->
+								attr('value', $value);
+							$inputs[] = $lastInput;
+						}
+						if (isset($defaults[$field])) {
+							phpQuery::pq($inputs)->clone()->
+								insertBefore($inputs->eq(0))->
+								filter("[value='{$defaults[$field]}']")->
+									attr('checked', 'checked')->
+								end()->
+								ifNotVar("varRecord.$field");
+							$inputs->elseStatement();
+						}
+						foreach($inputs as $input) {
+			//				$input = pq($input, $this->getDocumentID());
+							$clone = $input->clone()->insertAfter($input);
+			//				$input->attr('checked', 'checked')->ifPHP($code, true);
+							$code = $this->qt_langCode('compareVarValue', 
+								"$varRecord.$field", $input->attr('value')
+							);
+							$input->attr('checked', 'checked')->{"if$lang"}($code);
+							$clone->removeAttr('checked')->{"else$lang"}();
+						}
+						$inputs = null;
+						$markup[$labelSelector]->removeAttr('for');
+						break;
+					case 'hidden':
+						$markup = null;
+						$input = $this->newInstance('<input/>')->
+							attr('type', 'hidden')->
+							attr('name', $field)->
+							attr('id', $id);
+						$target = $form['fieldset']->length
+							? $form['fieldset:first']
+							: $form;
+						$code = isset($defaults[$field])
+							? self::formFromVars_CodeValue(compact(
+									'input', 'languageClass', 'field', 'defaults', 'varRecord'
+								))
+							: $input->qt_langCode('printVar', "$varRecord.$field");
+						$input->qt_langMethod('attr', 'value', $code);
+						$target->prepend($input);
+						$target = $code = null;
+						break;
+					// TEXT, HIDDEN, PASSWORD, others
+					default:
+//						$markup = $template->clone();
+						if (! isset($info[0]))
+							$info[0] = 'text';
+						$input = $markup[$inputSelector]->
+							attr('type', $info[0])->
+							attr('name', $field)->
+							attr('id', $id)->
+							removeAttr('checked');
+						$code = isset($defaults[$field])
+							? self::formFromVars_CodeValue(compact(
+									'input', 'languageClass', 'field', 'defaults', 'varRecord'
+								))
+							: $input->qt_langCode('printVar', "$varRecord.$field");
+						$input->qt_langMethod('attr', 'value', $code);
+						$markup[$labelSelector]->attr('for', $id);
+						$code = null;
+						break;
 				}
-				$form->append($markup);
+				if ($markup) {
+					$markup->addClass($info[0]);
+					// label
+					$label = isset($info['label'])
+						? $info['label'] : ucfirst($field);
+					$markup[$labelSelector] = $label;
+					if ($varErrors) {
+						$varNamePHP = QueryTemplatesLanguage::get('php', 'varNameArray', "$varErrors.$field");
+						$varNameJS = QueryTemplatesLanguage::get('js', 'varName', "$varErrors.$field");
+						$markup[ $selectors['errors'] ]->
+							ifVar("$varErrors.$field")->
+							onlyPHP()->
+								beforePHP("if (! is_array($varNamePHP)) 
+									$varNamePHP = array($varNamePHP);")->
+							endOnly()->
+							onlyJS()->
+								beforeJS("if (typeof $varNameJS != 'object') 
+									var $varNameJS = array($varNameJS);")->
+							endOnly()->
+							find('>*')->
+								varsToLoopFirst("$varErrors.$field", 'error')->
+									varPrint('error');
+						$_varName = null;
+					}
+					$fieldset->append($markup);
+				}
 			}
+			$form->append($fieldset);
 		}
 		$input = $code = null;
 		$this->append($form);
