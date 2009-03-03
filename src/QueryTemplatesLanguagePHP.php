@@ -22,7 +22,7 @@ EOF;
 	}
 	public static function loopVar($varName, $asVarName, $keyName) {
 		$as = $keyName
-			? "{$asVarName} => \${$keyName}"
+			? "{$keyName} => \${$asVarName}"
 			: $asVarName;
 		$preCode = '';
 		if (strpos($varName, '.')) {
@@ -45,6 +45,9 @@ EOF;
 		if (is_bool($value)) {
 			$value = $value
 				 ? 'true' : 'false';
+		} else if (is_array($value)) {
+			// TODO test me
+			$value = var_export($value, true);
 		} else {
 			$value = "'".self::addslashes($value)."'";
 		}
@@ -60,6 +63,29 @@ EOF;
 		return <<<EOF
 (isset($varNameArray) && $varNameArray ==$strict $value) 
 	|| (isset($varNameObject) && $varNameObject ==$strict $value)
+EOF;
+//(is_object(\$$varName) && \${$varName}->{'$f'} ==$strict $value) || (! is_object(\$$varName) && \${$varName}['$f'] ==$strict $value)
+	}
+	public static function compareVarVar($varName1, $varName2, $strict = false) {
+		$strict = $strict
+			? '=' : '';
+		if (strpos($varName1, '.')) {
+			$varName1Object = self::varNameObject($varName1);
+			$varName1Array = self::varNameArray($varName1);
+		} else {
+			$varName1Object = $varName1Array = "\$$varName1";
+		}
+		if (strpos($varName2, '.')) {
+			$varName2Object = self::varNameObject($varName2);
+			$varName2Array = self::varNameArray($varName2);
+		} else {
+			$varName2Object = $varName2Array = "\$$varName2";
+		}
+		return <<<EOF
+(isset($varName1Array) && isset($varName2Array) && $varName1Array ==$strict $varName2Array)
+	|| (isset($varName1Array) && isset($varName2Object) && $varName1Array ==$strict $varName2Object)
+	|| (isset($varName1Object) && isset($varName2Array) && $varName1Object ==$strict $varName2Array)
+	|| (isset($varName1Object) && isset($varName2Object) && $varName1Object ==$strict $varName2Object)
 EOF;
 //(is_object(\$$varName) && \${$varName}->{'$f'} ==$strict $value) || (! is_object(\$$varName) && \${$varName}['$f'] ==$strict $value)
 	}

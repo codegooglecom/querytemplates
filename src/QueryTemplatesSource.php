@@ -20,7 +20,7 @@ class QueryTemplatesSource
 	 */
 	public $parent;
 	public function __construct($parent, $src = null) {
-		if ( $parent instanceof self ) {
+		if ($parent instanceof self) {
 			// new instance call from phpQuery
 			// link all important vars to new object
 			$this->parent =& $parent->parent;
@@ -29,7 +29,7 @@ class QueryTemplatesSource
 		} else {
 			$this->parent = $parent;
 //			$docId = parent::createDom($src);
-			$docId = phpQuery::newDocument($src)->getDocumentId();
+			$docId = phpQuery::newDocument($src)->getDocumentID();
 			parent::__construct($docId);
 			// parse template includes and merge dependencies
 			$this->parent->dependencies = array_merge(
