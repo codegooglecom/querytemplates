@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Docs For Class QueryTemplatesParse</title>
+<title>Docs For Class QueryTemplatesSyntaxGenerators</title>
 <link rel="stylesheet" type="text/css" href="../media/style.css">
 </head>
 <body>
@@ -84,8 +84,8 @@
     <td>
       <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
 
-<h1>Class: QueryTemplatesParse</h1>
-Source Location: /QueryTemplates/src/QueryTemplatesParse.php<br /><br />
+<h1>Class: QueryTemplatesSyntaxGenerators</h1>
+Source Location: /QueryTemplates/src/QueryTemplatesSyntaxGenerators.php<br /><br />
 
 
 <table width="100%" border="0">
@@ -98,56 +98,36 @@ Source Location: /QueryTemplates/src/QueryTemplatesParse.php<br /><br />
       |
       --<a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html">QueryTemplatesSyntaxConditions</a>
          |
-         --<a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html">QueryTemplatesSyntaxGenerators</a>
-            |
-            --<a href="../QueryTemplates/QueryTemplatesSyntax.html">QueryTemplatesSyntax</a>
-               |
-               --QueryTemplatesParse</pre><br />
-<div class="description">Template parsing class.</div><br /><br />
+         --QueryTemplatesSyntaxGenerators</pre><br />
+<div class="description">Class extending phpQueryObject with templating methods.</div><br /><br />
 <h4>Author(s):</h4>
 <ul>
           <li>Tobiasz Cudnik &lt;<a href="mailto:tobiasz.cudnik/gmail.com">tobiasz.cudnik/gmail.com</a>&gt;</li>
-                  </ul>
+                        </ul>
 
 
 
 
-            
+                
 
-                <p class="implements">
-            Implements interfaces:
-            <ul>
-                <li><a href="../QueryTemplates/IQueryTemplatesParse.html">IQueryTemplatesParse</a></li>            </ul>
-        </p>
         
 </td>
 
-<td valign="top">
-<h3><a href="#class_vars">Variables</a></h3>
-<ul>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#var$collected">$collected</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#var$dependencies">$dependencies</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#var$parent">$parent</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#var$vars">$vars</a></li>
-  </ul>
-</td>
 
 
 <td valign="top">
 <h3><a href="#class_methods">Methods</a></h3>
 <ul>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#method__construct">__construct</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#methodcurrent">current</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#methoddocumentCreate">documentCreate</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#methodqt_lang">qt_lang</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#methodqt_langCode">qt_langCode</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#methodqt_langCodeRaw">qt_langCodeRaw</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#methodqt_langMethod">qt_langMethod</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#methodsave">save</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#methodsource">source</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#methodtemplateCache">templateCache</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#methodtemplateName">templateName</a></li>
-    <li><a href="../QueryTemplates/QueryTemplatesParse.html#method__toString">__toString</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodformFromValues">formFromValues</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodformFromVars">formFromVars</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodformFromVars_CodeValue">formFromVars_CodeValue</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodinputsFromValues">inputsFromValues</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodsaveAsVar">saveAsVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodsaveTextAsVar">saveTextAsVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodvaluesToVars">valuesToVars</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodvarsFromStack">varsFromStack</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodvarsFromStackText">varsFromStackText</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodvarsFromValues">varsFromValues</a></li>
   </ul>
 </td>
 
@@ -157,75 +137,21 @@ Source Location: /QueryTemplates/src/QueryTemplatesParse.php<br /><br />
 <table width="100%" border="0"><tr>
 
 
+<td valign="top">
+<h3>Child classes:</h3>
+<div class="tags">
+<dl>
+<dt><a href="../QueryTemplates/QueryTemplatesSyntax.html">QueryTemplatesSyntax</a></dt>
+	<dd>Class extending phpQueryObject with templating methods.</dd>
+</dl>
+</div>
+</td>
 
 
 
 <td valign="top">
 <h3>Inherited Methods</h3>
 <div class="tags">
-<h4>Class: <a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html">QueryTemplatesSyntaxGenerators</a></h4>
-<dl>
-    <dt>
-    <a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodformFromValues">QueryTemplatesSyntaxGenerators::formFromValues()</a>
-  </dt>
-  <dd>
-    
-  </dd>
-    <dt>
-    <a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodformFromVars">QueryTemplatesSyntaxGenerators::formFromVars()</a>
-  </dt>
-  <dd>
-    Method formFromVars acts as form helper. It creates a form without the
-  </dd>
-    <dt>
-    <a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodformFromVars_CodeValue">QueryTemplatesSyntaxGenerators::formFromVars_CodeValue()</a>
-  </dt>
-  <dd>
-    
-  </dd>
-    <dt>
-    <a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodinputsFromValues">QueryTemplatesSyntaxGenerators::inputsFromValues()</a>
-  </dt>
-  <dd>
-    Creates markup with INPUT tags and prepends it to form.
-  </dd>
-    <dt>
-    <a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodsaveAsVar">QueryTemplatesSyntaxGenerators::saveAsVar()</a>
-  </dt>
-  <dd>
-    
-  </dd>
-    <dt>
-    <a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodsaveTextAsVar">QueryTemplatesSyntaxGenerators::saveTextAsVar()</a>
-  </dt>
-  <dd>
-    
-  </dd>
-    <dt>
-    <a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodvaluesToVars">QueryTemplatesSyntaxGenerators::valuesToVars()</a>
-  </dt>
-  <dd>
-    
-  </dd>
-    <dt>
-    <a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodvarsFromStack">QueryTemplatesSyntaxGenerators::varsFromStack()</a>
-  </dt>
-  <dd>
-    Saves markupOuter() as value of variable $var avaible in template scope.
-  </dd>
-    <dt>
-    <a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodvarsFromStackText">QueryTemplatesSyntaxGenerators::varsFromStackText()</a>
-  </dt>
-  <dd>
-    Saves text() as value of variable $var avaible in template scope.
-  </dd>
-    <dt>
-    <a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodvarsFromValues">QueryTemplatesSyntaxGenerators::varsFromValues()</a>
-  </dt>
-  <dd>
-    Behaves as var_export, dumps variables from $varsArray as $key = value for  later use during template execution. Variables are prepended into selected  elemets.
-  </dd>
-  </dl>
 <h4>Class: <a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html">QueryTemplatesSyntaxConditions</a></h4>
 <dl>
     <dt>
@@ -817,8 +743,8 @@ Source Location: /QueryTemplates/src/QueryTemplatesParse.php<br /><br />
 <a name="class_details"></a>
 <h3>Class Details</h3>
 <div class="tags">
-[line 10]<br />
-Template parsing class.<br /><br /><br /><br />
+[line 11]<br />
+Class extending phpQueryObject with templating methods.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -829,6 +755,9 @@ Template parsing class.<br /><br /><br /><br />
     <td><b>link:</b>&nbsp;&nbsp;</td><td><a href="http://code.google.com/p/querytemplates/">http://code.google.com/p/querytemplates/</a></td>
   </tr>
   <tr>
+    <td><b>abstract:</b>&nbsp;&nbsp;</td><td></td>
+  </tr>
+  <tr>
     <td><b>license:</b>&nbsp;&nbsp;</td><td><a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a></td>
   </tr>
 </table>
@@ -836,224 +765,21 @@ Template parsing class.<br /><br /><br /><br />
 </div><br /><br />
 <div class="top">[ <a href="#top">Top</a> ]</div><br />
 
-<hr />
-<a name="class_vars"></a>
-<h3>Class Variables</h3>
-<div class="tags">
-	<a name="var$collected"></a>
-	<p></p>
-	<h4>$collected = <span class="value">array()</span></h4>
-	<p>[line 14]</p>
-  <br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>mixed</td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-	<a name="var$dependencies"></a>
-	<p></p>
-	<h4>$dependencies = <span class="value">array()</span></h4>
-	<p>[line 13]</p>
-  <br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>mixed</td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-	<a name="var$parent"></a>
-	<p></p>
-	<h4>$parent = <span class="value"></span></h4>
-	<p>[line 26]</p>
-  Enter description here...<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td><a href="../QueryTemplates/QueryTemplatesTemplate.html">QueryTemplatesTemplate</a></td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-	<a name="var$vars"></a>
-	<p></p>
-	<h4>$vars = <span class="value">array()</span></h4>
-	<p>[line 20]</p>
-  Vars avaible in template scope AFTER template parsing process.<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>unknown_type</td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-</div><br />
 
 <hr />
 <a name="class_methods"></a>
 <h3>Class Methods</h3>
 <div class="tags">
-
   <hr />
-	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 27]</span></h3>
+	<a name="methodformFromVars_CodeValue"></a>
+	<h3>static method formFromVars_CodeValue <span class="smalllinenumber">[line 798]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>QueryTemplatesParse __construct(
+		<code>static void formFromVars_CodeValue(
 
-$parent, [
-$docId = null])</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		<br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$parent</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-          <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$docId</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methodcurrent"></a>
-	<h3>method current <span class="smalllinenumber">[line 163]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>unknown current(
-)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Iterator override to return extended phpQuery object insted of DOMNode.<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methoddocumentCreate"></a>
-	<h3>method documentCreate <span class="smalllinenumber">[line 146]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void documentCreate(
-
-$source)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		<br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$source</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methodqt_lang"></a>
-	<h3>method qt_lang <span class="smalllinenumber">[line 60]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void qt_lang(
-)</code>
+$self, 
+$scope)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
@@ -1069,24 +795,271 @@ $source)</code>
 <br /><br />
 
 	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$self</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$scope</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
+
   <hr />
-	<a name="methodqt_langCode"></a>
-	<h3>method qt_langCode <span class="smalllinenumber">[line 41]</span></h3>
+	<a name="methodformFromValues"></a>
+	<h3>method formFromValues <span class="smalllinenumber">[line 75]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void qt_langCode(
-
-$type)</code>
+		<code>unknown_type formFromValues(
+$record
+$record, $structure
+$structure, [$errors
+$errors = null], [$defaults
+$defaults = null], [$defaultData
+$defaultData = null], [$template
+$template = null], [$selectors
+$selectors = null], [$fieldCallback
+$fieldCallback = null])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
 		<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$record&nbsp;&nbsp;</td>
+        <td><b>$record</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">$structure&nbsp;&nbsp;</td>
+        <td><b>$structure</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">$errors&nbsp;&nbsp;</td>
+        <td><b>$errors</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">$defaults&nbsp;&nbsp;</td>
+        <td><b>$defaults</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">$defaultData&nbsp;&nbsp;</td>
+        <td><b>$defaultData</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">$template&nbsp;&nbsp;</td>
+        <td><b>$template</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">$selectors&nbsp;&nbsp;</td>
+        <td><b>$selectors</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">$fieldCallback&nbsp;&nbsp;</td>
+        <td><b>$fieldCallback</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodformFromVars"></a>
+	<h3>method formFromVars <span class="smalllinenumber">[line 285]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a> formFromVars(
+$varNames
+$varNames, $structure
+$structure, [$defaults
+$defaultRecord = null], [$defaultData
+$defaultData = null], [$template
+$template = null], [$selectors
+$selectors = null], [$fieldCallback
+$fieldCallback = null])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Method formFromVars acts as form helper. It creates a form without the<br /><br /><p>need of suppling a line of markup. Created form have following features: <ul><li>shows data from record (array or object)</li><li>shows errors</li><li>supports default values</li><li>supports radios and checkboxes</li><li>supports select elements with optgroups</li></ul>  Example:  <ol><li><div class="src-line">&nbsp;<span class="src-var">$structure&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;<span class="src-comm">//&nbsp;special&nbsp;field&nbsp;representing&nbsp;form&nbsp;element</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'__form'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'id'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'dasdas'</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;TODO&nbsp;fieldsets</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;&nbsp;&nbsp;&nbsp;array('Legend&nbsp;Label',&nbsp;array(</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'field1'&nbsp;=&gt;&nbsp;array('select',&nbsp;...),</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-comm">//&nbsp;&nbsp;&nbsp;&nbsp;),</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'field2'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'select'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'optgroups'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'optgroup1'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'optgroup2'</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'multiple'&nbsp;</span>=&gt;&nbsp;<span class="src-id">true</span><span class="src-sym">,&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-comm">//&nbsp;TODO</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'label'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'Field&nbsp;Name'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'field12'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'select'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'label'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'no&nbsp;optgroups'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'field3'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'text'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'label'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'Field3&nbsp;Label'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'id'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'someID'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'field4'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-comm">//&nbsp;'text'&nbsp;is&nbsp;default</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'label'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'Field4&nbsp;Label'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'id'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'someID2'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'field5'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'hidden'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'field6'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'radio'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'values'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'possibleValue1'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'possibleValue2'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'field7'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'checkbox'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'field234'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'textarea'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>QueryTemplatesPhpQuery::valuesToForm()</td>
+  </tr>
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>QueryTemplatesPhpQuery::varsToForm()</td>
+  </tr>
+  <tr>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>maybe support callbacks (per input type, before/after, maybe for errors too ?)</td>
+  </tr>
+  <tr>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>record, data, structure, defaultRecord, defaultData</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$varNames&nbsp;&nbsp;</td>
+        <td><b>$varNames</b>&nbsp;&nbsp;</td>
+        <td>Array of names of following vars: <ul><li>record [0]
+   Represents actual record as array of fields.</li><li>errors [1]
+   Represents actual errors as array of fields. Field can also be an array.</li><li>additional data [2]
+   Overloads $defaultData during template's execution.</li></ul> Names should be without dollar signs.  Ex:  <ol><li><div class="src-line">&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'row'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'errors.row'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'data'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$errors&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'field1'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'one&nbsp;error'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'field2'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'first&nbsp;error'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'second&nbsp;error'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></td>
+      </tr>
+          <tr>
+        <td class="type">$structure&nbsp;&nbsp;</td>
+        <td><b>$structure</b>&nbsp;&nbsp;</td>
+        <td>Form structure information. This should be easily fetchable from ORM layer.  Possible types: <ul><li>text (default)</li><li>password</li><li>hidden</li><li>checkbox</li><li>radio</li><li>textarea</li></ul> Convention:  <ol><li><div class="src-line">&nbsp;<span class="src-str">'fieldName'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'fieldType'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$fieldOptions</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span></div></li>
+</ol>  Where $fieldOptions can be (`key =&gt; value` pairs): <ul><li>label</li><li>id</li><li>multiple (only select)</li><li>optgroups (only select)</li><li>values (only radio)</li></ul> *__form* is special field name, which represents form element, as an array.  All values from it will be pushed as form attributes.  If you wrap fields' array within another array, it will represent *fieldsets*,  which first value (with index 0) will be used as *legend* (optional).</td>
+      </tr>
+          <tr>
+        <td class="type">$defaults&nbsp;&nbsp;</td>
+        <td><b>$defaultRecord</b>&nbsp;&nbsp;</td>
+        <td>Default field's value. Used when field isn't present within supplied record.  Ex:  <ol><li><div class="src-line">&nbsp;<span class="src-var">$defaults&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'field2'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'group2_1'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'field234'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;sit&nbsp;sit...'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'field2'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'value2'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'dadas'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'fsdsf'</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></td>
+      </tr>
+          <tr>
+        <td class="type">$defaultData&nbsp;&nbsp;</td>
+        <td><b>$defaultData</b>&nbsp;&nbsp;</td>
+        <td>Additional data for fields. For now it's only used for populating select boxes.  Example:  <ol><li><div class="src-line">&nbsp;<span class="src-var">$defaultData&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'field2'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-comm">//&nbsp;optgroup</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'foo'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'Foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'bar2'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'Bar'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-comm">//&nbsp;optgroup</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'group2_1'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'group2_1'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'group2_2'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'group2_2'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'bar'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'Bar'</span><span class="src-sym">,&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-comm">//&nbsp;no&nbsp;optgroup</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></td>
+      </tr>
+          <tr>
+        <td class="type">$template&nbsp;&nbsp;</td>
+        <td><b>$template</b>&nbsp;&nbsp;</td>
+        <td>Input wrapper template. This template will be used for each field. Use array  to per field template, '__default' means default.  Default value:  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div&nbsp;</span><span class="src-key">class</span>=<span class="src-str">&quot;input&quot;</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">label</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">ul&nbsp;</span><span class="src-key">class</span>=<span class="src-str">&quot;errors&quot;</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">li</span>/&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;/<span class="src-id">ul</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></td>
+      </tr>
+          <tr>
+        <td class="type">$selectors&nbsp;&nbsp;</td>
+        <td><b>$selectors</b>&nbsp;&nbsp;</td>
+        <td>Array of selectors indexed by it's type. Allows to customize lookups inside  inputs wrapper. Possible values are: <ul></ul><ul></ul><ul></ul><ul><li>default value is 'label:first'</li></ul><ul></ul><ul><li>default value is 'input:first'</li><li>use array to per field name selector, '__default' means default</li><li>%t is replaced by field node type (use it with customized per field $template)</li></ul></td>
+      </tr>
+          <tr>
+        <td class="type">$fieldCallback&nbsp;&nbsp;</td>
+        <td><b>$fieldCallback</b>&nbsp;&nbsp;</td>
+        <td>Callback triggered after preparation of each field.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodinputsFromValues"></a>
+	<h3>method inputsFromValues <span class="smalllinenumber">[line 51]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery inputsFromValues(
+$data
+$data, [$type
+$type = 'hidden'])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Creates markup with INPUT tags and prepends it to form.<br /><br /><p>If selected element isn't a FORM then find('form') is executed.</p><p>Method doesn't change selected elements stack.</p><p>== Example ==</p><p>=== Markup ===  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">form</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;name</span>=<span class="src-str">'was-here-before'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">form</span>&gt;</div></li>
+</ol></p><p>=== Data ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'field1'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'field2'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'bar'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== `QueryTemplates` formula ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodinputsFromValues">inputsFromValues</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== Template ===  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">form</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;name</span>=<span class="src-str">'field1'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'foo'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;name</span>=<span class="src-str">'field2'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'bar'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;name</span>=<span class="src-str">'was-here-before'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">form</span>&gt;</div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>QueryTemplatesPhpQuery::formFromValues()</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -1099,7 +1072,12 @@ $type)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">$data&nbsp;&nbsp;</td>
+        <td><b>$data</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">$type&nbsp;&nbsp;</td>
         <td><b>$type</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
@@ -1108,142 +1086,23 @@ $type)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
-	<a name="methodqt_langCodeRaw"></a>
-	<h3>method qt_langCodeRaw <span class="smalllinenumber">[line 49]</span></h3>
+	<a name="methodsaveAsVar"></a>
+	<h3>method saveAsVar <span class="smalllinenumber">[line 891]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void qt_langCodeRaw(
+		<code>void saveAsVar(
 
-$code)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		<br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$code</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methodqt_langMethod"></a>
-	<h3>method qt_langMethod <span class="smalllinenumber">[line 53]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void qt_langMethod(
-
-$method)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		<br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$method</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methodsave"></a>
-	<h3>method save <span class="smalllinenumber">[line 123]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>string save(
-[$callback
-$callback = null], [$activeCallback
-$activeCallback = true])</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		Save template and return file path ready to include.<br /><br /><br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-			<hr class="separator" />
-		<div class="notes">Implementation of:</div>
-			<dl>
-			<dt><a href="../QueryTemplates/IQueryTemplatesParseChain.html#methodsave">IQueryTemplatesParseChain::save()</a></dt>
-					</dl>
-		
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">$callback&nbsp;&nbsp;</td>
-        <td><b>$callback</b>&nbsp;&nbsp;</td>
-        <td>Function to call at the end of template source, with one argument, which  is template function or it's output (depending on $activeCallback).  Supported by following languages: JS</td>
-      </tr>
-          <tr>
-        <td class="type">$activeCallback&nbsp;&nbsp;</td>
-        <td><b>$activeCallback</b>&nbsp;&nbsp;</td>
-        <td>Determines if argument passed to a $callback is template's function name  or it's result.  Supported by following languages: JS</td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
-	<a name="methodsource"></a>
-	<h3>method source <span class="smalllinenumber">[line 181]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a> source(
-String
 $name)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		Return collected source as phpQuery object. Returned object is a separate document.<br /><br /><p>Method must be ended with one of followings: <ul><li>QueryTemplatesSource::returnReplace()</li><li>QueryTemplatesSource::returnAppend()</li><li>QueryTemplatesSource::returnPrepend()</li><li>QueryTemplatesSource::returnAfter()</li><li>QueryTemplatesSource::returnBefore()</li></ul></p><br /><br /><br />
+		<br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a></td>
+    <td><b>deprecated:</b>&nbsp;&nbsp;</td><td></td>
   </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
@@ -1252,17 +1111,12 @@ $name)</code>
 </div>
 <br /><br />
 
-			<hr class="separator" />
-		<div class="notes">Implementation of:</div>
-			<dl>
-			<dt><a href="../QueryTemplates/IQueryTemplatesParse.html#methodsource">IQueryTemplatesParse::source()</a></dt>
-					</dl>
-		
+	
         <h4>Parameters:</h4>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">String&nbsp;&nbsp;</td>
+        <td class="type">&nbsp;&nbsp;</td>
         <td><b>$name</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
@@ -1271,14 +1125,14 @@ $name)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
-	<a name="methodtemplateCache"></a>
-	<h3>method templateCache <span class="smalllinenumber">[line 192]</span></h3>
+	<a name="methodsaveTextAsVar"></a>
+	<h3>method saveTextAsVar <span class="smalllinenumber">[line 897]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a> templateCache(
-[
-$state = null])</code>
+		<code>void saveTextAsVar(
+
+$name)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
@@ -1287,7 +1141,7 @@ $state = null])</code>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesTemplate.html#methodtemplateCache">QueryTemplatesTemplate::templateCache()</a></td>
+    <td><b>deprecated:</b>&nbsp;&nbsp;</td><td></td>
   </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
@@ -1296,18 +1150,13 @@ $state = null])</code>
 </div>
 <br /><br />
 
-			<hr class="separator" />
-		<div class="notes">Implementation of:</div>
-			<dl>
-			<dt><a href="../QueryTemplates/IQueryTemplatesTemplateChain.html#methodtemplateCache">IQueryTemplatesTemplateChain::templateCache()</a></dt>
-					</dl>
-		
+	
         <h4>Parameters:</h4>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
         <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$state</b>&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
         </table>
@@ -1315,14 +1164,14 @@ $state = null])</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
-	<a name="methodtemplateName"></a>
-	<h3>method templateName <span class="smalllinenumber">[line 199]</span></h3>
+	<a name="methodvaluesToVars"></a>
+	<h3>method valuesToVars <span class="smalllinenumber">[line 869]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a> templateName(
-[
-$newName = null])</code>
+		<code>void valuesToVars(
+
+$varsArray)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
@@ -1331,7 +1180,7 @@ $newName = null])</code>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../QueryTemplates/QueryTemplatesTemplate.html#methodtemplateName">QueryTemplatesTemplate::templateName()</a></td>
+    <td><b>deprecated:</b>&nbsp;&nbsp;</td><td></td>
   </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
@@ -1340,18 +1189,13 @@ $newName = null])</code>
 </div>
 <br /><br />
 
-			<hr class="separator" />
-		<div class="notes">Implementation of:</div>
-			<dl>
-			<dt><a href="../QueryTemplates/IQueryTemplatesTemplateChain.html#methodtemplateName">IQueryTemplatesTemplateChain::templateName()</a></dt>
-					</dl>
-		
+	
         <h4>Parameters:</h4>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
         <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$newName</b>&nbsp;&nbsp;</td>
+        <td><b>$varsArray</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
         </table>
@@ -1359,17 +1203,111 @@ $newName = null])</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
-	<a name="method__toString"></a>
-	<h3>method __toString <span class="smalllinenumber">[line 150]</span></h3>
+	<a name="methodvarsFromStack"></a>
+	<h3>method varsFromStack <span class="smalllinenumber">[line 881]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void __toString(
-)</code>
+		<code>void varsFromStack(
+String
+$name)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Saves markupOuter() as value of variable $var avaible in template scope.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>support second $method param</td>
+  </tr>
+  <tr>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>user self::parent for storing vars</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>New variable name.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvarsFromStackText"></a>
+	<h3>method varsFromStackText <span class="smalllinenumber">[line 908]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void varsFromStackText(
+String
+$name)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Saves text() as value of variable $var avaible in template scope.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>user self::parent for storing vars</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td>New variable name.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodvarsFromValues"></a>
+	<h3>method varsFromValues <span class="smalllinenumber">[line 861]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery varsFromValues(
+array
+$varsArray)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Behaves as var_export, dumps variables from $varsArray as $key = value for  later use during template execution. Variables are prepended into selected  elemets.<br /><br /><p>Method doesn't change selected elements stack.</p><p>== Example ==</p><p>=== Markup ===  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">node2</span>&gt;&lt;/<span class="src-id">node2</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">node1</span>&gt;</div></li>
+</ol></p><p>=== Data ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$values&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'&lt;foo/&gt;'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'&lt;bar/&gt;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== `QueryTemplates` formula ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'node1'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodvaluesToVars">valuesToVars</a><span class="src-sym">(</span><span class="src-var">$values</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== Template ===  <ol><li><div class="src-line">&nbsp;&lt;node1&gt;<span class="src-php">&lt;?php&nbsp;&nbsp;</span>$<span class="src-num">0&nbsp;</span>=&nbsp;<span class="src-str">'&lt;foo/&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;$<span class="src-num">1&nbsp;</span>=&nbsp;<span class="src-str">'&lt;bar/&gt;'</span><span class="src-sym">;&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;node2&gt;&lt;/node2&gt;&lt;/node1&gt;</div></li>
+</ol></p><p>=== Template tree before ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">node1</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">node2</span></div></li>
+</ol></p><p>=== Template tree after ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">node1</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">node2</span></div></li>
+</ol></p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -1381,6 +1319,16 @@ $newName = null])</code>
 <br /><br />
 
 	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">array&nbsp;&nbsp;</td>
+        <td><b>$varsArray</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
 </div><br />
@@ -1388,7 +1336,7 @@ $newName = null])</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Tue, 03 Mar 2009 23:29:30 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
+		    Documentation generated on Tue, 03 Mar 2009 23:29:40 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
 	      </div>
       </td></tr></table>
     </td>

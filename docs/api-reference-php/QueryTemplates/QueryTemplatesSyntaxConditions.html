@@ -1,0 +1,1854 @@
+<html>
+<head>
+<title>Docs For Class QueryTemplatesSyntaxConditions</title>
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">QueryTemplates</td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                    
+                                                  		  [ <a href="../classtrees_QueryTemplates.html" class="menu">class tree: QueryTemplates</a> ]
+		  [ <a href="../elementindex_QueryTemplates.html" class="menu">index: QueryTemplates</a> ]
+		  	    [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
+      <b>Packages:</b><br />
+              <a href="../li_QueryTemplates.html">QueryTemplates</a><br />
+              <a href="../li_phpQuery.html">phpQuery</a><br />
+            <br /><br />
+                        <b>Files:</b><br />
+      	  <div class="package">
+			<a href="../QueryTemplates/_QueryTemplates---src---IQueryTemplatesParse.php.html">		IQueryTemplatesParse.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplates---src---IQueryTemplatesTemplate.php.html">		IQueryTemplatesTemplate.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplates---src---QueryTemplates.php.html">		QueryTemplates.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplates---src---QueryTemplatesParse.php.html">		QueryTemplatesParse.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplates---src---QueryTemplatesSource.php.html">		QueryTemplatesSource.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplates---src---QueryTemplatesSourceQuery.php.html">		QueryTemplatesSourceQuery.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplates---src---QueryTemplatesSyntax.php.html">		QueryTemplatesSyntax.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplates---src---QueryTemplatesSyntaxConditions.php.html">		QueryTemplatesSyntaxConditions.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplates---src---QueryTemplatesSyntaxGenerators.php.html">		QueryTemplatesSyntaxGenerators.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplates---src---QueryTemplatesSyntaxInjections.php.html">		QueryTemplatesSyntaxInjections.php
+		</a><br>
+			<a href="../QueryTemplates/_QueryTemplates---src---QueryTemplatesTemplate.php.html">		QueryTemplatesTemplate.php
+		</a><br>
+	  </div><br />
+      
+            <b>Interfaces:</b><br />
+        <div class="package">
+		    		<a href="../QueryTemplates/IQueryTemplatesParse.html">IQueryTemplatesParse</a><br />
+	    		<a href="../QueryTemplates/IQueryTemplatesParseChain.html">IQueryTemplatesParseChain</a><br />
+	    		<a href="../QueryTemplates/IQueryTemplatesTemplate.html">IQueryTemplatesTemplate</a><br />
+	    		<a href="../QueryTemplates/IQueryTemplatesTemplateChain.html">IQueryTemplatesTemplateChain</a><br />
+	    		<a href="../QueryTemplates/IQueryTemplatesTemplateParse.html">IQueryTemplatesTemplateParse</a><br />
+	    		<a href="../QueryTemplates/IQueryTemplatesTemplateSources.html">IQueryTemplatesTemplateSources</a><br />
+	  </div>
+      
+            <b>Classes:</b><br />
+        <div class="package">
+		    		<a href="../QueryTemplates/QueryTemplates.html">QueryTemplates</a><br />
+	    		<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a><br />
+	    		<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a><br />
+	    		<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a><br />
+	    		<a href="../QueryTemplates/QueryTemplatesSyntax.html">QueryTemplatesSyntax</a><br />
+	    		<a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html">QueryTemplatesSyntaxConditions</a><br />
+	    		<a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html">QueryTemplatesSyntaxGenerators</a><br />
+	    		<a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html">QueryTemplatesSyntaxInjections</a><br />
+	    		<a href="../QueryTemplates/QueryTemplatesTemplate.html">QueryTemplatesTemplate</a><br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: QueryTemplatesSyntaxConditions</h1>
+Source Location: /QueryTemplates/src/QueryTemplatesSyntaxConditions.php<br /><br />
+
+
+<table width="100%" border="0">
+<tr><td valign="top">
+
+<h3><a href="#class_details">Class Overview</a></h3>
+<pre>QueryTemplatesDOM
+   |
+   --<a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html">QueryTemplatesSyntaxInjections</a>
+      |
+      --QueryTemplatesSyntaxConditions</pre><br />
+<div class="description">Class extending phpQueryObject with templating methods.</div><br /><br />
+<h4>Author(s):</h4>
+<ul>
+          <li>Tobiasz Cudnik &lt;<a href="mailto:tobiasz.cudnik/gmail.com">tobiasz.cudnik/gmail.com</a>&gt;</li>
+                        </ul>
+
+
+
+
+                
+
+        
+</td>
+
+
+
+<td valign="top">
+<h3><a href="#class_methods">Methods</a></h3>
+<ul>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodelseIfCode">elseIfCode</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodelseIfNotVar">elseIfNotVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodelseIfPHP">elseIfPHP</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodelseIfVar">elseIfVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodelsePHP">elsePHP</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodelseStatement">elseStatement</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodendOnly">endOnly</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodifCode">ifCode</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodifNotVar">ifNotVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodifPHP">ifPHP</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodifVar">ifVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodonlyIf">onlyIf</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodonlyIfNot">onlyIfNot</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodonlyJS">onlyJS</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodonlyPHP">onlyPHP</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToElseIfNotVar">tagToElseIfNotVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToElseIfPHP">tagToElseIfPHP</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToElseIfVar">tagToElseIfVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToElsePHP">tagToElsePHP</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToElseStatement">tagToElseStatement</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToIfNotVar">tagToIfNotVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToIfPHP">tagToIfPHP</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToIfVar">tagToIfVar</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#method_if">_if</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#method_tagToElse">_tagToElse</a></li>
+  </ul>
+</td>
+
+</tr></table>
+<hr />
+
+<table width="100%" border="0"><tr>
+
+
+<td valign="top">
+<h3>Child classes:</h3>
+<div class="tags">
+<dl>
+<dt><a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html">QueryTemplatesSyntaxGenerators</a></dt>
+	<dd>Class extending phpQueryObject with templating methods.</dd>
+</dl>
+</div>
+</td>
+
+
+
+<td valign="top">
+<h3>Inherited Methods</h3>
+<div class="tags">
+<h4>Class: <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html">QueryTemplatesSyntaxInjections</a></h4>
+<dl>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToSelector">QueryTemplatesSyntaxInjections::codeToSelector()</a>
+  </dt>
+  <dd>
+    Injects raw executable code inside nodes matched by selector. Method uses  actually matched nodes as root for the query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToSelectorAfter">QueryTemplatesSyntaxInjections::codeToSelectorAfter()</a>
+  </dt>
+  <dd>
+    Injects raw executable code after nodes matched by selector. Method uses  actually matched nodes as root for the query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToSelectorAppend">QueryTemplatesSyntaxInjections::codeToSelectorAppend()</a>
+  </dt>
+  <dd>
+    Injects raw executable code at the end of nodes matched by selector. Method  uses actually matched nodes as root for the query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToSelectorAttr">QueryTemplatesSyntaxInjections::codeToSelectorAttr()</a>
+  </dt>
+  <dd>
+    Injects raw executable code inside attribute of nodes matched by selector.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToSelectorBefore">QueryTemplatesSyntaxInjections::codeToSelectorBefore()</a>
+  </dt>
+  <dd>
+    Injects raw executable code before nodes matched by selector. Method uses  actually matched nodes as root for the query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToSelectorPrepend">QueryTemplatesSyntaxInjections::codeToSelectorPrepend()</a>
+  </dt>
+  <dd>
+    Injects raw executable code at the beggining of nodes matched by selector.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToSelectorReplace">QueryTemplatesSyntaxInjections::codeToSelectorReplace()</a>
+  </dt>
+  <dd>
+    Injects raw executable code replacing nodes matched by selector. Method uses  actually matched nodes as root for the query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToStack">QueryTemplatesSyntaxInjections::codeToStack()</a>
+  </dt>
+  <dd>
+    Injects raw executable code inside actually matched nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToStackAfter">QueryTemplatesSyntaxInjections::codeToStackAfter()</a>
+  </dt>
+  <dd>
+    Injects raw executable code after actually matched nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToStackAppend">QueryTemplatesSyntaxInjections::codeToStackAppend()</a>
+  </dt>
+  <dd>
+    Injects raw executable code at the beggining of actually matched nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToStackAttr">QueryTemplatesSyntaxInjections::codeToStackAttr()</a>
+  </dt>
+  <dd>
+    Injects raw executable code inside attribute of actually matched nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToStackBefore">QueryTemplatesSyntaxInjections::codeToStackBefore()</a>
+  </dt>
+  <dd>
+    Injects raw executable code before actually matched nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToStackPrepend">QueryTemplatesSyntaxInjections::codeToStackPrepend()</a>
+  </dt>
+  <dd>
+    Injects raw executable code at the end of actually matched nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodcodeToStackReplace">QueryTemplatesSyntaxInjections::codeToStackReplace()</a>
+  </dt>
+  <dd>
+    Injects raw executable code replacing actually matched nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodloop">QueryTemplatesSyntaxInjections::loop()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodloopOne">QueryTemplatesSyntaxInjections::loopOne()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodloopSeparate">QueryTemplatesSyntaxInjections::loopSeparate()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToForm">QueryTemplatesSyntaxInjections::valuesToForm()</a>
+  </dt>
+  <dd>
+    Toggles form fields values and selection states according to static values  from $data.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToLoop">QueryTemplatesSyntaxInjections::valuesToLoop()</a>
+  </dt>
+  <dd>
+    Method loops provided $values on actually selected nodes. Each time new row  is inserted, provided callback is triggered with $dataRow, $node and $dataIndex.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToLoopBefore">QueryTemplatesSyntaxInjections::valuesToLoopBefore()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToLoopFirst">QueryTemplatesSyntaxInjections::valuesToLoopFirst()</a>
+  </dt>
+  <dd>
+    Method loops provided $values on actually selected nodes. Each time new row  is inserted, provided callback is triggered with $dataRow, $node and $dataIndex.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToLoopSeparate">QueryTemplatesSyntaxInjections::valuesToLoopSeparate()</a>
+  </dt>
+  <dd>
+    Method loops provided $values on actually selected nodes. Each time new row  is inserted, provided callback is triggered with $dataRow, $node and $dataIndex.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToSelector">QueryTemplatesSyntaxInjections::valuesToSelector()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) into nodes  matched by selector. Method uses actually matched nodes as root for the  query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToSelectorAfter">QueryTemplatesSyntaxInjections::valuesToSelectorAfter()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) after nodes  matched by selector. Method uses actually matched nodes as root for the  query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToSelectorAppend">QueryTemplatesSyntaxInjections::valuesToSelectorAppend()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) at the end of  nodes matched by selector. Method uses actually matched nodes as root  for the query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToSelectorAttr">QueryTemplatesSyntaxInjections::valuesToSelectorAttr()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) as attribute of  nodes matched by selector. Method uses actually matched nodes as root  for the query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToSelectorBefore">QueryTemplatesSyntaxInjections::valuesToSelectorBefore()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) before nodes  matched by selector. Method uses actually matched nodes as root for the  query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToSelectorPrepend">QueryTemplatesSyntaxInjections::valuesToSelectorPrepend()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) at the beggining of  nodes matched by selector. Method uses actually matched nodes as root  for the query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToSelectorReplace">QueryTemplatesSyntaxInjections::valuesToSelectorReplace()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) replacing nodes  matched by selector. Method uses actually matched nodes as root for the  query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToStack">QueryTemplatesSyntaxInjections::valuesToStack()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) inside actually  selected nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToStackAfter">QueryTemplatesSyntaxInjections::valuesToStackAfter()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) inside actually  selected nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToStackAppend">QueryTemplatesSyntaxInjections::valuesToStackAppend()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) inside actually  selected nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToStackAttr">QueryTemplatesSyntaxInjections::valuesToStackAttr()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) inside actually  selected nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToStackBefore">QueryTemplatesSyntaxInjections::valuesToStackBefore()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) inside actually  selected nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToStackPrepend">QueryTemplatesSyntaxInjections::valuesToStackPrepend()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) inside actually  selected nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvaluesToStackReplace">QueryTemplatesSyntaxInjections::valuesToStackReplace()</a>
+  </dt>
+  <dd>
+    Injects markup from $values' content (rows or attributes) inside actually  selected nodes.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarPrint">QueryTemplatesSyntaxInjections::varPrint()</a>
+  </dt>
+  <dd>
+    Prints variable $varName as matched elements' content.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarPrintAfter">QueryTemplatesSyntaxInjections::varPrintAfter()</a>
+  </dt>
+  <dd>
+    Prints variable $varName after matched elements.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarPrintAppend">QueryTemplatesSyntaxInjections::varPrintAppend()</a>
+  </dt>
+  <dd>
+    Prints variable $varName on the end of matched elements.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarPrintAttr">QueryTemplatesSyntaxInjections::varPrintAttr()</a>
+  </dt>
+  <dd>
+    Prints variable $varName as attribute $attr of matched elements.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarPrintBefore">QueryTemplatesSyntaxInjections::varPrintBefore()</a>
+  </dt>
+  <dd>
+    Prints variable $varName before matched elements.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarPrintPrepend">QueryTemplatesSyntaxInjections::varPrintPrepend()</a>
+  </dt>
+  <dd>
+    Prints variable $varName on beggining of matched elements.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarPrintReplace">QueryTemplatesSyntaxInjections::varPrintReplace()</a>
+  </dt>
+  <dd>
+    Prints variable $varName replacing matched elements.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToForm">QueryTemplatesSyntaxInjections::varsToForm()</a>
+  </dt>
+  <dd>
+    Injects executable code which toggles form fields values and selection  states according to value of variable $varName.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToLoop">QueryTemplatesSyntaxInjections::varsToLoop()</a>
+  </dt>
+  <dd>
+    Wraps selected elements with executable code iterating $varName as $rowName.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToLoopFirst">QueryTemplatesSyntaxInjections::varsToLoopFirst()</a>
+  </dt>
+  <dd>
+    Wraps selected elements with executable code iterating $varName as $rowName.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToLoopSeparate">QueryTemplatesSyntaxInjections::varsToLoopSeparate()</a>
+  </dt>
+  <dd>
+    Wraps selected elements with executable code iterating $varName as $rowName.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToSelector">QueryTemplatesSyntaxInjections::varsToSelector()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields inside nodes matched by  selector. Method uses actually matched nodes as root for the query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToSelectorAfter">QueryTemplatesSyntaxInjections::varsToSelectorAfter()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields after nodes matched by  selector. Method uses actually matched nodes as root for the query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToSelectorAppend">QueryTemplatesSyntaxInjections::varsToSelectorAppend()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields at the end of nodes  matched by selector. Method uses actually matched nodes as root for the  query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToSelectorAttr">QueryTemplatesSyntaxInjections::varsToSelectorAttr()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields as attribute of nodes  matched by selector. Method uses actually matched nodes as root for the  query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToSelectorBefore">QueryTemplatesSyntaxInjections::varsToSelectorBefore()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields before nodes matched by  selector. Method uses actually matched nodes as root for the query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToSelectorPrepend">QueryTemplatesSyntaxInjections::varsToSelectorPrepend()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields at the beggining of nodes  matched by selector. Method uses actually matched nodes as root for the  query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToSelectorReplace">QueryTemplatesSyntaxInjections::varsToSelectorReplace()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields replacing nodes matched by  selector. Method uses actually matched nodes as root for the query.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToStack">QueryTemplatesSyntaxInjections::varsToStack()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields inside actually matched  nodes. Second param needs to be wrapped with array_keys for non-assosiative  arrays.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToStackAfter">QueryTemplatesSyntaxInjections::varsToStackAfter()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields after actually matched  nodes. Second param needs to be wrapped with array_keys for  non-assosiative arrays.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToStackAppend">QueryTemplatesSyntaxInjections::varsToStackAppend()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields at the end of actually  matched nodes. Second param needs to be wrapped with array_keys for  non-assosiative arrays.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToStackAttr">QueryTemplatesSyntaxInjections::varsToStackAttr()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields as attribute of actually  matched nodes. Second param needs to be wrapped with array_keys for  non-assosiative arrays.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToStackBefore">QueryTemplatesSyntaxInjections::varsToStackBefore()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields before actually matched  nodes. Second param needs to be wrapped with array_keys for  non-assosiative arrays.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToStackPrepend">QueryTemplatesSyntaxInjections::varsToStackPrepend()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields at the beggining of actually  matched nodes. Second param needs to be wrapped with array_keys for  non-assosiative arrays.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#methodvarsToStackReplace">QueryTemplatesSyntaxInjections::varsToStackReplace()</a>
+  </dt>
+  <dd>
+    Injects executable code printing variable's fields replacing actually matched  nodes. Second param needs to be wrapped with array_keys for non-assosiative  arrays.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#method_codeToSelector">QueryTemplatesSyntaxInjections::_codeToSelector()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#method_codeToStack">QueryTemplatesSyntaxInjections::_codeToStack()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#method_valuesToLoop">QueryTemplatesSyntaxInjections::_valuesToLoop()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#method_valuesToSelector">QueryTemplatesSyntaxInjections::_valuesToSelector()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#method_valuesToStack">QueryTemplatesSyntaxInjections::_valuesToStack()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#method_varPrint">QueryTemplatesSyntaxInjections::_varPrint()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#method_varsParseFields">QueryTemplatesSyntaxInjections::_varsParseFields()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#method_varsToLoop">QueryTemplatesSyntaxInjections::_varsToLoop()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#method_varsToSelector">QueryTemplatesSyntaxInjections::_varsToSelector()</a>
+  </dt>
+  <dd>
+    Internal method.
+  </dd>
+    <dt>
+    <a href="../QueryTemplates/QueryTemplatesSyntaxInjections.html#method_varsToStack">QueryTemplatesSyntaxInjections::_varsToStack()</a>
+  </dt>
+  <dd>
+    
+  </dd>
+  </dl>
+</div>
+</td>
+
+</tr></table>
+<hr />
+
+<a name="class_details"></a>
+<h3>Class Details</h3>
+<div class="tags">
+[line 11]<br />
+Class extending phpQueryObject with templating methods.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>author:</b>&nbsp;&nbsp;</td><td>Tobiasz Cudnik &lt;<a href="mailto:tobiasz.cudnik/gmail.com">tobiasz.cudnik/gmail.com</a>&gt;</td>
+  </tr>
+  <tr>
+    <td><b>link:</b>&nbsp;&nbsp;</td><td><a href="http://code.google.com/p/querytemplates/">http://code.google.com/p/querytemplates/</a></td>
+  </tr>
+  <tr>
+    <td><b>abstract:</b>&nbsp;&nbsp;</td><td></td>
+  </tr>
+  <tr>
+    <td><b>license:</b>&nbsp;&nbsp;</td><td><a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a></td>
+  </tr>
+</table>
+</div>
+</div><br /><br />
+<div class="top">[ <a href="#top">Top</a> ]</div><br />
+
+
+<hr />
+<a name="class_methods"></a>
+<h3>Class Methods</h3>
+<div class="tags">
+
+  <hr />
+	<a name="methodelseIfCode"></a>
+	<h3>method elseIfCode <span class="smalllinenumber">[line 719]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void elseIfCode(
+
+$code, [
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		<br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$code</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodelseIfNotVar"></a>
+	<h3>method elseIfNotVar <span class="smalllinenumber">[line 879]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery elseIfNotVar(
+string
+$var, [bool
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Wraps selected tag with PHP &quot;else if&quot; statement checking if $var evaluates  to FALSE. $var must be available inside template's scope.<br /><br /><p>$var is passed in JavaScript object notation (dot separated).</p><p>Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.</p><p>Method doesn't change selected nodes stack.</p><p>Notice-safe.</p><p>== Example ==</p><p>=== Markup ===  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">1</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">2</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">3</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>=== Data ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'foo'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'bar'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== `QueryTemplates` formula ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'div:eq(1)'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodelseIfNotVar">elseIfNotVar</a><span class="src-sym">(</span><span class="src-str">'data.foo.bar.0'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== Template ===  <ol><li><div class="src-line">&nbsp;&lt;div&gt;1&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">((</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-sym">!&nbsp;</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>||&nbsp;<span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-sym">!&nbsp;</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;div&gt;2&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;div&gt;3&lt;/div&gt;</div></li>
+</ol></p><p>=== Template tree before ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><p>=== Template tree after ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$var</b>&nbsp;&nbsp;</td>
+        <td>Dot-separated object path, eg Object.property.inneProperty</td>
+      </tr>
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td>Determines if selected elements should be wrapped together or one-by-one</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodelseIfPHP"></a>
+	<h3>method elseIfPHP <span class="smalllinenumber">[line 706]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery elseIfPHP(
+string
+$code, [bool
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Wraps selected tag with PHP &quot;else if&quot; statement containing $code as condition.<br /><br /><p>Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.</p><p>Method doesn't change selected nodes stack.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'node1'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodelseIfPHP">elseIfPHP</a><span class="src-sym">(</span><span class="src-str">'$foo&nbsp;==&nbsp;1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>/&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$foo&nbsp;</span>==&nbsp;<span class="src-num">1</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node1/&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>hardcode php code</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$code</b>&nbsp;&nbsp;</td>
+        <td>Valid PHP condition code</td>
+      </tr>
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td>Determines if selected elements should be wrapped together or one-by-one</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodelseIfVar"></a>
+	<h3>method elseIfVar <span class="smalllinenumber">[line 797]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery elseIfVar(
+string
+$var, [bool
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Wraps selected tag with PHP &quot;else if&quot; statement checking if $var evaluates  to true. $var must be available inside template's scope.<br /><br /><p>$var is passed in JavaScript object notation (dot separated).</p><p>Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.</p><p>Method doesn't change selected nodes stack.</p><p>Notice-safe.</p><p>== Example ==</p><p>=== Markup ===  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">1</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">2</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">3</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>=== Data ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'foo'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'bar'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== `QueryTemplates` formula ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'div:eq(1)'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodelseIfVar">elseIfVar</a><span class="src-sym">(</span><span class="src-str">'data.foo.bar.0'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== Template ===  <ol><li><div class="src-line">&nbsp;&lt;div&gt;1&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">((</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>||&nbsp;<span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;div&gt;2&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;div&gt;3&lt;/div&gt;</div></li>
+</ol></p><p>=== Template tree before ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><p>=== Template tree after ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$var</b>&nbsp;&nbsp;</td>
+        <td>Dot-separated object path, eg Object.property.inneProperty</td>
+      </tr>
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td>Determines if selected elements should be wrapped together or one-by-one</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodelsePHP"></a>
+	<h3>method elsePHP <span class="smalllinenumber">[line 900]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery elsePHP(
+[bool
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Wraps selected tag with PHP &quot;else&quot; statement.<br /><br /><p>Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.</p><p>Method doesn't change selected nodes stack.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td>Determines if selected elements should be wrapped together or one-by-one</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodelseStatement"></a>
+	<h3>method elseStatement <span class="smalllinenumber">[line 962]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery elseStatement(
+[$separate
+$separate = false], [$lang
+$lang = null])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		TODO description<br /><br /><p>== Example ==</p><p>=== Markup ===  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">1</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">2</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">3</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>=== Data ===  <ol></ol></p><p>=== `QueryTemplates` formula ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'div:eq(1)'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodelseStatement">elseStatement</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">;</span></div></li>
+</ol></p><p>=== Template ===  <ol><li><div class="src-line">&nbsp;&lt;div&gt;1&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;div&gt;2&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;div&gt;3&lt;/div&gt;</div></li>
+</ol></p><p>=== Template tree before ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><p>=== Template tree after ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$separate&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">$lang&nbsp;&nbsp;</td>
+        <td><b>$lang</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodendOnly"></a>
+	<h3>method endOnly <span class="smalllinenumber">[line 1020]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery endOnly(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		TODO docs<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodifCode"></a>
+	<h3>method ifCode <span class="smalllinenumber">[line 582]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>unknown_type ifCode(
+$code
+$code, [$separate
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		TODO doc<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">$code&nbsp;&nbsp;</td>
+        <td><b>$code</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">$separate&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodifNotVar"></a>
+	<h3>method ifNotVar <span class="smalllinenumber">[line 663]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery ifNotVar(
+string
+$var, [bool
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Wraps selected tag with PHP &quot;if&quot; statement checking if $var evaluates  to FALSE. $var must be available inside template's scope.<br /><br /><p>$var is passed in JavaScript object notation (dot separated).</p><p>Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.</p><p>Method doesn't change selected nodes stack.</p><p>Notice-safe.</p><p>== Example ==</p><p>=== Markup ===  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">1</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">2</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">3</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>=== Data ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'foo'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'bar'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== `QueryTemplates` formula ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'div:eq(1)'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodifNotVar">ifNotVar</a><span class="src-sym">(</span><span class="src-str">'data.foo.bar.0'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">;</span></div></li>
+</ol></p><p>=== Template ===  <ol><li><div class="src-line">&nbsp;&lt;div&gt;1&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">((</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-sym">!&nbsp;</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>||&nbsp;<span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-sym">!&nbsp;</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;div&gt;2&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;div&gt;3&lt;/div&gt;</div></li>
+</ol></p><p>=== Template tree before ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><p>=== Template tree after ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>QueryTemplatesPhpQuery::elseStatement()</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$var</b>&nbsp;&nbsp;</td>
+        <td>Dot-separated object path, eg Object.property.inneProperty</td>
+      </tr>
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td>Determines if selected elements should be wrapped together or one-by-one</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodifPHP"></a>
+	<h3>method ifPHP <span class="smalllinenumber">[line 476]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery ifPHP(
+string
+$code, [bool
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Wraps selected tag with PHP &quot;if&quot; statement containing $code as condition.<br /><br /><p>Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.</p><p>Method doesn't change selected nodes stack.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'node1'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><span class="src-id">tagToElseIf</span><span class="src-sym">(</span><span class="src-str">'$foo&nbsp;==&nbsp;1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">node1</span>/&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$foo&nbsp;</span>==&nbsp;<span class="src-num">1</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node1/&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>hardcode php code</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$code</b>&nbsp;&nbsp;</td>
+        <td>Valid PHP condition code</td>
+      </tr>
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td>Determines if selected elements should be wrapped together or one-by-one</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodifVar"></a>
+	<h3>method ifVar <span class="smalllinenumber">[line 569]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery ifVar(
+string
+$var, [bool
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Wraps selected tag with PHP &quot;if&quot; statement checking if $var evaluates  to TRUE. $var must be available inside template's scope.<br /><br /><p>$var is passed in JavaScript object notation (dot separated).</p><p>Optional $separate parameter determines if selected elements should be  wrapped together or one-by-one. This is usefull when stack contains non-sibling  nodes.</p><p>Method doesn't change selected nodes stack.</p><p>Notice-safe.</p><p>== Example ==</p><p>=== Markup ===  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">1</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">2</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">3</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>=== Data ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'foo'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'bar'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== `QueryTemplates` formula ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'div:eq(1)'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodifVar">ifVar</a><span class="src-sym">(</span><span class="src-str">'data.foo.bar.0'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">;</span></div></li>
+</ol></p><p>=== Template ===  <ol><li><div class="src-line">&nbsp;&lt;div&gt;1&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">((</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>||&nbsp;<span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;div&gt;2&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;div&gt;3&lt;/div&gt;</div></li>
+</ol></p><p>=== Template tree before ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><p>=== Template tree after ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>QueryTemplatesPhpQuery::elseStatement()</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$var</b>&nbsp;&nbsp;</td>
+        <td>Dot-separated object path, eg Object.property.inneProperty</td>
+      </tr>
+          <tr>
+        <td class="type">bool&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td>Determines if selected elements should be wrapped together or one-by-one</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodonlyIf"></a>
+	<h3>method onlyIf <span class="smalllinenumber">[line 1000]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery onlyIf(
+
+$condition)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		TODO docs<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$condition</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodonlyIfNot"></a>
+	<h3>method onlyIfNot <span class="smalllinenumber">[line 1012]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery onlyIfNot(
+
+$condition)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		TODO docs<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$condition</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodonlyJS"></a>
+	<h3>method onlyJS <span class="smalllinenumber">[line 992]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery onlyJS(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		TODO Move to jsCode plugin.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodonlyPHP"></a>
+	<h3>method onlyPHP <span class="smalllinenumber">[line 984]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery onlyPHP(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Honors code between onlyPHP and endOnly, only for PHP templates.<br /><br /><p>TODO: Is theres something wrong with this name ?</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtagToElseIfNotVar"></a>
+	<h3>method tagToElseIfNotVar <span class="smalllinenumber">[line 413]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery tagToElseIfNotVar(
+string
+$var)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces selected tag with PHP &quot;else if&quot; statement checking if $var evaluates  to FALSE. $var must be available inside template's scope.<br /><br /><p>$var is passed in JavaScript object notation (dot separated).</p><p>Method doesn't change selected nodes stack.  detached from it's parent.</p><p>Notice-safe.</p><p>== Example ==</p><p>=== Markup ===  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">1</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">2</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">3</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>=== Data ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'foo'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'bar'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== `QueryTemplates` formula ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'div:eq(1)'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToElseIfNotVar">tagToElseIfNotVar</a><span class="src-sym">(</span><span class="src-str">'data.foo.bar.0'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">;</span></div></li>
+</ol></p><p>=== Template ===  <ol><li><div class="src-line">&nbsp;&lt;div&gt;1&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">((</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-sym">!&nbsp;</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>||&nbsp;<span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-sym">!&nbsp;</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>2<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;div&gt;3&lt;/div&gt;</div></li>
+</ol></p><p>=== Template tree before ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><p>=== Template tree after ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>QueryTemplatesPhpQuery::ifVar()</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$var</b>&nbsp;&nbsp;</td>
+        <td>Dot-separated object path, eg Object.property.inneProperty</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtagToElseIfPHP"></a>
+	<h3>method tagToElseIfPHP <span class="smalllinenumber">[line 247]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery tagToElseIfPHP(
+string
+$code)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces selected tag with PHP &quot;else if&quot; statement containing $code as condition.<br /><br /><p>Method doesn't change selected nodes stack.  detached from it's parent.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'.else-if'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToElseIfPHP">tagToElseIfPHP</a><span class="src-sym">(</span><span class="src-str">'$foo&nbsp;==&nbsp;1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'else-if'</span>&gt;&lt;<span class="src-id">node1</span>/&gt;&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$foo&nbsp;</span>==&nbsp;<span class="src-num">1</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node1/&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$code</b>&nbsp;&nbsp;</td>
+        <td>Valid PHP condition code</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtagToElseIfVar"></a>
+	<h3>method tagToElseIfVar <span class="smalllinenumber">[line 332]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery tagToElseIfVar(
+string
+$var)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces selected tag with PHP &quot;else if&quot; statement checking if $var evaluates  to TRUE. $var must be available inside template's scope.<br /><br /><p>$var is passed in JavaScript object notation (dot separated).</p><p>Method doesn't change selected nodes stack.  detached from it's parent.</p><p>Notice-safe.</p><p>== Example ==</p><p>=== Markup ===  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">1</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">2</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">3</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>=== Data ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'foo'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'bar'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== `QueryTemplates` formula ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'div:eq(1)'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToElseIfVar">tagToElseIfVar</a><span class="src-sym">(</span><span class="src-str">'data.foo.bar.0'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">;</span></div></li>
+</ol></p><p>=== Template ===  <ol><li><div class="src-line">&nbsp;&lt;div&gt;1&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">((</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>||&nbsp;<span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>2<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;div&gt;3&lt;/div&gt;</div></li>
+</ol></p><p>=== Template tree before ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><p>=== Template tree after ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>QueryTemplatesPhpQuery::ifVar()</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$var</b>&nbsp;&nbsp;</td>
+        <td>Dot-separated object path, eg Object.property.inneProperty</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtagToElsePHP"></a>
+	<h3>method tagToElsePHP <span class="smalllinenumber">[line 426]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void tagToElsePHP(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		<br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtagToElseStatement"></a>
+	<h3>method tagToElseStatement <span class="smalllinenumber">[line 423]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void tagToElseStatement(
+)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		<br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtagToIfNotVar"></a>
+	<h3>method tagToIfNotVar <span class="smalllinenumber">[line 207]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery tagToIfNotVar(
+string
+$var)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces selected tag with PHP &quot;if&quot; statement checking if $var evaluates  to FALSE. $var must be available inside template's scope.<br /><br /><p>$var is passed in JavaScript object notation (dot separated).</p><p>Method doesn't change selected nodes stack.  detached from it's parent.</p><p>Notice-safe.</p><p>== Example ==</p><p>=== Markup ===  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">1</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">2</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">3</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>=== Data ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'foo'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'bar'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== `QueryTemplates` formula ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'div:eq(1)'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToIfNotVar">tagToIfNotVar</a><span class="src-sym">(</span><span class="src-str">'data.foo.bar.0'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">;</span></div></li>
+</ol></p><p>=== Template ===  <ol><li><div class="src-line">&nbsp;&lt;div&gt;1&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">((</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-sym">!&nbsp;</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>||&nbsp;<span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-sym">!&nbsp;</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>2<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;div&gt;3&lt;/div&gt;</div></li>
+</ol></p><p>=== Template tree before ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><p>=== Template tree after ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>QueryTemplatesPhpQuery::ifVar()</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$var</b>&nbsp;&nbsp;</td>
+        <td>Dot-separated object path, eg Object.property.inneProperty</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtagToIfPHP"></a>
+	<h3>method tagToIfPHP <span class="smalllinenumber">[line 41]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery tagToIfPHP(
+string
+$code)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces selected tag with PHP &quot;if&quot; statement containing $code as condition.<br /><br /><p>Method doesn't change selected nodes stack.  detached from it's parent.</p><p>Example  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'.if'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span><a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToIfPHP">tagToIfPHP</a><span class="src-sym">(</span><span class="src-str">'$foo&nbsp;==&nbsp;1'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>Source  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div&nbsp;</span><span class="src-key">class</span>=<span class="src-str">'if'</span>&gt;&lt;<span class="src-id">node1</span>/&gt;&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>Result  <ol><li><div class="src-line">&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$foo&nbsp;</span>==&nbsp;<span class="src-num">1</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span>&lt;node1/&gt;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">?&gt;</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$code</b>&nbsp;&nbsp;</td>
+        <td>Valid PHP condition code</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtagToIfVar"></a>
+	<h3>method tagToIfVar <span class="smalllinenumber">[line 126]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery tagToIfVar(
+string
+$var)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Replaces selected tag with PHP &quot;if&quot; statement checking if $var evaluates  to TRUE. $var must be available inside template's scope.<br /><br /><p>$var is passed in JavaScript object notation (dot separated).</p><p>Method doesn't change selected nodes stack.  detached from it's parent.</p><p>Notice-safe.</p><p>== Example ==</p><p>=== Markup ===  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">1</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">2</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;<span class="src-id">div</span>&gt;<span class="src-num">3</span>&lt;/<span class="src-id">div</span>&gt;</div></li>
+</ol></p><p>=== Data ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'foo'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'bar'&nbsp;</span>=&gt;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-id">true</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== `QueryTemplates` formula ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">[</span><span class="src-str">'div:eq(1)'</span><span class="src-sym">]</span><span class="src-sym">-&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../QueryTemplates/QueryTemplatesSyntaxConditions.html#methodtagToIfVar">tagToIfVar</a><span class="src-sym">(</span><span class="src-str">'data.foo.bar.0'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">;</span></div></li>
+</ol></p><p>=== Template ===  <ol><li><div class="src-line">&nbsp;&lt;div&gt;1&lt;/div&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">((</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'foo'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'bar'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'0'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>||&nbsp;<span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'foo'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'bar'</span><span class="src-sym">}</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'0'</span><span class="src-sym">}</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>2<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;div&gt;3&lt;/div&gt;</div></li>
+</ol></p><p>=== Template tree before ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><p>=== Template tree after ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">1</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">Text</span>:<span class="src-num">2</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-id">div</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">Text</span>:<span class="src-num">3</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>QueryTemplatesPhpQuery::ifVar()</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$var</b>&nbsp;&nbsp;</td>
+        <td>Dot-separated object path, eg Object.property.inneProperty</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_if"></a>
+	<h3>method _if <span class="smalllinenumber">[line 479]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _if(
+
+$lang, 
+$code, [
+$separate = false])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		<br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$lang</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$code</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$separate</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="method_tagToElse"></a>
+	<h3>method _tagToElse <span class="smalllinenumber">[line 429]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>void _tagToElse(
+
+$lang)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		<br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$lang</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+</div><br />
+
+
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Tue, 03 Mar 2009 23:29:36 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -19,9 +19,6 @@ EOF;
 		return "print '$value';";
 	}
 	public static function loopVar($varName, $asVarName, $keyName) {
-		$as = $keyName
-			? "{$asVarName} => {$keyName}"
-			: $asVarName;
 		if (! $keyName)
 			$keyName = '__key'.substr(md5(microtime()), 0, 5);
 		$varName = self::varName($varName);

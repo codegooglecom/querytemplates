@@ -1,14 +1,14 @@
 <?php
 /**
  * Template parsing class.
- * 
+ *
  * @package QueryTemplates
  * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  * @link http://code.google.com/p/querytemplates/
  */
 class QueryTemplatesParse
-	extends QueryTemplatesPhpQuery
+	extends QueryTemplatesSyntax
 	implements IQueryTemplatesParse {
 	public $dependencies = array();
 	public $collected = array();
@@ -112,12 +112,12 @@ class QueryTemplatesParse
 	 * Function to call at the end of template source, with one argument, which
 	 * is template function or it's output (depending on $activeCallback).
 	 * Supported by following languages: JS
-	 * 
+	 *
 	 * @param $activeCallback
 	 * Determines if argument passed to a $callback is template's function name
 	 * or it's result.
 	 * Supported by following languages: JS
-	 * 
+	 *
 	 * @return string
 	 */
 	public function save($callback = null, $activeCallback = true) {

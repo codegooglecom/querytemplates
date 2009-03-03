@@ -34,9 +34,9 @@
             <br /><br />
                         <b>Files:</b><br />
       	  <div class="package">
-			<a href="../phpQuery/_home---bob---workspace---phpQuery---phpQuery---phpQuery.php.html">		phpQuery.php
+			<a href="../phpQuery/_phpQuery---phpQuery---phpQuery.php.html">		phpQuery.php
 		</a><br>
-			<a href="../phpQuery/_home---bob---workspace---phpQuery---phpQuery---phpQueryObject.php.html">		phpQueryObject.php
+			<a href="../phpQuery/_phpQuery---phpQuery---phpQueryObject.php.html">		phpQueryObject.php
 		</a><br>
 	  </div><br />
       
@@ -52,7 +52,7 @@
       <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
 
 <h1>Class: phpQueryObject</h1>
-Source Location: /home/bob/workspace/phpQuery/phpQuery/phpQueryObject.php<br /><br />
+Source Location: /phpQuery/phpQuery/phpQueryObject.php<br /><br />
 
 
 <table width="100%" border="0">
@@ -119,6 +119,7 @@ Source Location: /home/bob/workspace/phpQuery/phpQuery/phpQueryObject.php<br /><
     <li><a href="../phpQuery/phpQueryObject.html#methodbefore">before</a></li>
     <li><a href="../phpQuery/phpQueryObject.html#methodbeforePHP">beforePHP</a></li>
     <li><a href="../phpQuery/phpQueryObject.html#methodbind">bind</a></li>
+    <li><a href="../phpQuery/phpQueryObject.html#methodcallback">callback</a></li>
     <li><a href="../phpQuery/phpQueryObject.html#methodchange">change</a></li>
     <li><a href="../phpQuery/phpQueryObject.html#methodchildren">children</a></li>
     <li><a href="../phpQuery/phpQueryObject.html#methodclick">click</a></li>
@@ -259,10 +260,6 @@ Source Location: /home/bob/workspace/phpQuery/phpQuery/phpQueryObject.php<br /><
 <td valign="top">
 <h3>Child classes:</h3>
 <div class="tags">
-<dl>
-<dt><a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a></dt>
-	<dd>Class extending phpQueryObject with templating methods.</dd>
-</dl>
 <dl>
 <dt><a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a></dt>
 	<dd>Class handling template source use.</dd>
@@ -638,7 +635,7 @@ Class representing phpQuery objects.<br /><br /><br /><br />
 <div class="tags">
   <hr />
 	<a name="methodextend"></a>
-	<h3>static method extend <span class="smalllinenumber">[line 2303]</span></h3>
+	<h3>static method extend <span class="smalllinenumber">[line 2306]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -683,7 +680,7 @@ $file = null])</code>
   </div>
   <hr />
 	<a name="methodunQuote"></a>
-	<h3>static method unQuote <span class="smalllinenumber">[line 1307]</span></h3>
+	<h3>static method unQuote <span class="smalllinenumber">[line 1310]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -727,7 +724,7 @@ $value)</code>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> __construct(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> __construct(
 
 $documentID)</code>
     </td></tr></table>
@@ -745,10 +742,6 @@ $documentID)</code>
 <br /><br />
 
 	<p>Overridden in child classes as:<br />
-		<dl>
-	<dt><a href="../QueryTemplates/QueryTemplatesParse.html#method__construct">QueryTemplatesParse::__construct()</a></dt>
-		<dd></dd>
-	</dl>
 		<dl>
 	<dt><a href="../QueryTemplates/QueryTemplatesSource.html#method__construct">QueryTemplatesSource::__construct()</a></dt>
 		<dd></dd>
@@ -773,11 +766,11 @@ $documentID)</code>
   </div>
   <hr />
 	<a name="methodadd"></a>
-	<h3>method add <span class="smalllinenumber">[line 2488]</span></h3>
+	<h3>method add <span class="smalllinenumber">[line 2491]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> add(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> add(
 [string|<a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>
 $selector = null])</code>
     </td></tr></table>
@@ -809,11 +802,11 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="methodaddClass"></a>
-	<h3>method addClass <span class="smalllinenumber">[line 2802]</span></h3>
+	<h3>method addClass <span class="smalllinenumber">[line 2805]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> addClass(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> addClass(
 
 $className)</code>
     </td></tr></table>
@@ -845,11 +838,11 @@ $className)</code>
   </div>
   <hr />
 	<a name="methodaddClassPHP"></a>
-	<h3>method addClassPHP <span class="smalllinenumber">[line 2820]</span></h3>
+	<h3>method addClassPHP <span class="smalllinenumber">[line 2823]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> addClassPHP(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> addClassPHP(
 
 $className)</code>
     </td></tr></table>
@@ -881,11 +874,11 @@ $className)</code>
   </div>
   <hr />
 	<a name="methodafter"></a>
-	<h3>method after <span class="smalllinenumber">[line 2024]</span></h3>
+	<h3>method after <span class="smalllinenumber">[line 2027]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> after(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> after(
 
 $content)</code>
     </td></tr></table>
@@ -917,11 +910,11 @@ $content)</code>
   </div>
   <hr />
 	<a name="methodafterPHP"></a>
-	<h3>method afterPHP <span class="smalllinenumber">[line 2032]</span></h3>
+	<h3>method afterPHP <span class="smalllinenumber">[line 2035]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> afterPHP(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> afterPHP(
 
 $content)</code>
     </td></tr></table>
@@ -953,11 +946,11 @@ $content)</code>
   </div>
   <hr />
 	<a name="methodancestors"></a>
-	<h3>method ancestors <span class="smalllinenumber">[line 1938]</span></h3>
+	<h3>method ancestors <span class="smalllinenumber">[line 1941]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> ancestors(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> ancestors(
 [
 $selector = null])</code>
     </td></tr></table>
@@ -989,11 +982,11 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="methodandSelf"></a>
-	<h3>method andSelf <span class="smalllinenumber">[line 2791]</span></h3>
+	<h3>method andSelf <span class="smalllinenumber">[line 2794]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> andSelf(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> andSelf(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -1014,11 +1007,11 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="methodappend"></a>
-	<h3>method append <span class="smalllinenumber">[line 1947]</span></h3>
+	<h3>method append <span class="smalllinenumber">[line 1950]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> append(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> append(
 
 $content)</code>
     </td></tr></table>
@@ -1050,11 +1043,11 @@ $content)</code>
   </div>
   <hr />
 	<a name="methodappendPHP"></a>
-	<h3>method appendPHP <span class="smalllinenumber">[line 1955]</span></h3>
+	<h3>method appendPHP <span class="smalllinenumber">[line 1958]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> appendPHP(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> appendPHP(
 
 $content)</code>
     </td></tr></table>
@@ -1086,11 +1079,11 @@ $content)</code>
   </div>
   <hr />
 	<a name="methodappendTo"></a>
-	<h3>method appendTo <span class="smalllinenumber">[line 1963]</span></h3>
+	<h3>method appendTo <span class="smalllinenumber">[line 1966]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> appendTo(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> appendTo(
 
 $seletor)</code>
     </td></tr></table>
@@ -1122,7 +1115,7 @@ $seletor)</code>
   </div>
   <hr />
 	<a name="methodattr"></a>
-	<h3>method attr <span class="smalllinenumber">[line 2632]</span></h3>
+	<h3>method attr <span class="smalllinenumber">[line 2635]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1164,7 +1157,7 @@ $value = null])</code>
   </div>
   <hr />
 	<a name="methodattrEvents"></a>
-	<h3>method attrEvents <span class="smalllinenumber">[line 2583]</span></h3>
+	<h3>method attrEvents <span class="smalllinenumber">[line 2586]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1218,11 +1211,11 @@ $node)</code>
   </div>
   <hr />
 	<a name="methodattrPHP"></a>
-	<h3>method attrPHP <span class="smalllinenumber">[line 2674]</span></h3>
+	<h3>method attrPHP <span class="smalllinenumber">[line 2677]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> attrPHP(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> attrPHP(
 
 $attr, 
 $code)</code>
@@ -1263,11 +1256,11 @@ $code)</code>
   </div>
   <hr />
 	<a name="methodbefore"></a>
-	<h3>method before <span class="smalllinenumber">[line 1998]</span></h3>
+	<h3>method before <span class="smalllinenumber">[line 2001]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> before(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> before(
 
 $content)</code>
     </td></tr></table>
@@ -1299,11 +1292,11 @@ $content)</code>
   </div>
   <hr />
 	<a name="methodbeforePHP"></a>
-	<h3>method beforePHP <span class="smalllinenumber">[line 2006]</span></h3>
+	<h3>method beforePHP <span class="smalllinenumber">[line 2009]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> beforePHP(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> beforePHP(
 
 $content)</code>
     </td></tr></table>
@@ -1335,11 +1328,11 @@ $content)</code>
   </div>
   <hr />
 	<a name="methodbind"></a>
-	<h3>method bind <span class="smalllinenumber">[line 1421]</span></h3>
+	<h3>method bind <span class="smalllinenumber">[line 1424]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> bind(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> bind(
 unknown_type
 $type, unknown_type
 $data, [unknown_type
@@ -1388,12 +1381,66 @@ $callback = null])</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
-	<a name="methodchange"></a>
-	<h3>method change <span class="smalllinenumber">[line 1450]</span></h3>
+	<a name="methodcallback"></a>
+	<h3>method callback <span class="smalllinenumber">[line 2931]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> change(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> callback(
+
+$callback, [
+$param1 = null], [
+$param2 = null], [
+$param3 = null])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Run callback on actual object.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$callback</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$param1</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$param2</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$param3</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodchange"></a>
+	<h3>method change <span class="smalllinenumber">[line 1453]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> change(
 [
 $callback = null])</code>
     </td></tr></table>
@@ -1425,11 +1472,11 @@ $callback = null])</code>
   </div>
   <hr />
 	<a name="methodchildren"></a>
-	<h3>method children <span class="smalllinenumber">[line 1914]</span></h3>
+	<h3>method children <span class="smalllinenumber">[line 1917]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> children(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> children(
 [
 $selector = null])</code>
     </td></tr></table>
@@ -1461,11 +1508,11 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="methodclick"></a>
-	<h3>method click <span class="smalllinenumber">[line 1470]</span></h3>
+	<h3>method click <span class="smalllinenumber">[line 1473]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> click(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> click(
 [
 $callback = null])</code>
     </td></tr></table>
@@ -1497,11 +1544,11 @@ $callback = null])</code>
   </div>
   <hr />
 	<a name="methodcontents"></a>
-	<h3>method contents <span class="smalllinenumber">[line 1594]</span></h3>
+	<h3>method contents <span class="smalllinenumber">[line 1597]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> contents(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> contents(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -1522,11 +1569,11 @@ $callback = null])</code>
   </div>
   <hr />
 	<a name="methodcontentsUnwrap"></a>
-	<h3>method contentsUnwrap <span class="smalllinenumber">[line 1613]</span></h3>
+	<h3>method contentsUnwrap <span class="smalllinenumber">[line 1616]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> contentsUnwrap(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> contentsUnwrap(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -1547,7 +1594,7 @@ $callback = null])</code>
   </div>
   <hr />
 	<a name="methodcount"></a>
-	<h3>method count <span class="smalllinenumber">[line 1676]</span></h3>
+	<h3>method count <span class="smalllinenumber">[line 1679]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1577,11 +1624,11 @@ $callback = null])</code>
   </div>
   <hr />
 	<a name="methodcss"></a>
-	<h3>method css <span class="smalllinenumber">[line 1366]</span></h3>
+	<h3>method css <span class="smalllinenumber">[line 1369]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQuery.html">phpQuery</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> css(
+		<code><a href="../phpQuery/phpQuery.html">phpQuery</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> css(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -1605,7 +1652,7 @@ $callback = null])</code>
   </div>
   <hr />
 	<a name="methodcurrent"></a>
-	<h3>method current <span class="smalllinenumber">[line 2968]</span></h3>
+	<h3>method current <span class="smalllinenumber">[line 2982]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1625,12 +1672,6 @@ $callback = null])</code>
 </div>
 <br /><br />
 
-	<p>Overridden in child classes as:<br />
-		<dl>
-	<dt><a href="../QueryTemplates/QueryTemplatesParse.html#methodcurrent">QueryTemplatesParse::current()</a></dt>
-		<dd>Iterator override to return extended phpQuery object insted of DOMNode.</dd>
-	</dl>
-	</p>
 			<hr class="separator" />
 		<div class="notes">Implementation of:</div>
 			<dl>
@@ -1641,7 +1682,7 @@ $callback = null])</code>
   </div>
   <hr />
 	<a name="methoddebug"></a>
-	<h3>method debug <span class="smalllinenumber">[line 272]</span></h3>
+	<h3>method debug <span class="smalllinenumber">[line 275]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1677,7 +1718,7 @@ $in)</code>
   </div>
   <hr />
 	<a name="methoddocumentFragment"></a>
-	<h3>method documentFragment <span class="smalllinenumber">[line 128]</span></h3>
+	<h3>method documentFragment <span class="smalllinenumber">[line 131]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1713,11 +1754,11 @@ $state = null])</code>
   </div>
   <hr />
 	<a name="methoddump"></a>
-	<h3>method dump <span class="smalllinenumber">[line 3123]</span></h3>
+	<h3>method dump <span class="smalllinenumber">[line 3137]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> dump(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> dump(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -1738,7 +1779,7 @@ $state = null])</code>
   </div>
   <hr />
 	<a name="methoddumpDie"></a>
-	<h3>method dumpDie <span class="smalllinenumber">[line 3175]</span></h3>
+	<h3>method dumpDie <span class="smalllinenumber">[line 3190]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1763,7 +1804,7 @@ $state = null])</code>
   </div>
   <hr />
 	<a name="methoddumpLength"></a>
-	<h3>method dumpLength <span class="smalllinenumber">[line 3140]</span></h3>
+	<h3>method dumpLength <span class="smalllinenumber">[line 3154]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1788,7 +1829,7 @@ $state = null])</code>
   </div>
   <hr />
 	<a name="methoddumpTree"></a>
-	<h3>method dumpTree <span class="smalllinenumber">[line 3149]</span></h3>
+	<h3>method dumpTree <span class="smalllinenumber">[line 3163]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1830,7 +1871,7 @@ $title = true])</code>
   </div>
   <hr />
 	<a name="methoddumpWhois"></a>
-	<h3>method dumpWhois <span class="smalllinenumber">[line 3131]</span></h3>
+	<h3>method dumpWhois <span class="smalllinenumber">[line 3145]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1855,11 +1896,11 @@ $title = true])</code>
   </div>
   <hr />
 	<a name="methodeach"></a>
-	<h3>method each <span class="smalllinenumber">[line 2913]</span></h3>
+	<h3>method each <span class="smalllinenumber">[line 2916]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> each(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> each(
 array|string
 $callback, [
 $param1 = null], [
@@ -1927,7 +1968,7 @@ $arg2)</code>
   </div>
   <hr />
 	<a name="methodelementsContainsNode"></a>
-	<h3>method elementsContainsNode <span class="smalllinenumber">[line 2510]</span></h3>
+	<h3>method elementsContainsNode <span class="smalllinenumber">[line 2513]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1969,11 +2010,11 @@ $elementsStack = null])</code>
   </div>
   <hr />
 	<a name="methodend"></a>
-	<h3>method end <span class="smalllinenumber">[line 1686]</span></h3>
+	<h3>method end <span class="smalllinenumber">[line 1689]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> end(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> end(
 [
 $level = 1])</code>
     </td></tr></table>
@@ -2008,11 +2049,11 @@ $level = 1])</code>
   </div>
   <hr />
 	<a name="methodeq"></a>
-	<h3>method eq <span class="smalllinenumber">[line 1649]</span></h3>
+	<h3>method eq <span class="smalllinenumber">[line 1652]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> eq(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> eq(
 
 $num)</code>
     </td></tr></table>
@@ -2044,11 +2085,11 @@ $num)</code>
   </div>
   <hr />
 	<a name="methodfilter"></a>
-	<h3>method filter <span class="smalllinenumber">[line 1172]</span></h3>
+	<h3>method filter <span class="smalllinenumber">[line 1175]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> filter(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> filter(
 
 $selectors, [
 $_skipHistory = false])</code>
@@ -2089,11 +2130,11 @@ $_skipHistory = false])</code>
   </div>
   <hr />
 	<a name="methodfilterCallback"></a>
-	<h3>method filterCallback <span class="smalllinenumber">[line 1151]</span></h3>
+	<h3>method filterCallback <span class="smalllinenumber">[line 1154]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> filterCallback(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> filterCallback(
 
 $callback, [
 $_skipHistory = false])</code>
@@ -2134,11 +2175,11 @@ $_skipHistory = false])</code>
   </div>
   <hr />
 	<a name="methodfind"></a>
-	<h3>method find <span class="smalllinenumber">[line 687]</span></h3>
+	<h3>method find <span class="smalllinenumber">[line 690]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> find(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> find(
 
 $selectors, [
 $context = null], [
@@ -2182,7 +2223,7 @@ $noHistory = false])</code>
   </div>
   <hr />
 	<a name="methodget"></a>
-	<h3>method get <span class="smalllinenumber">[line 477]</span></h3>
+	<h3>method get <span class="smalllinenumber">[line 480]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2239,11 +2280,11 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="methodgetDocument"></a>
-	<h3>method getDocument <span class="smalllinenumber">[line 187]</span></h3>
+	<h3>method getDocument <span class="smalllinenumber">[line 190]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> getDocument(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> getDocument(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -2264,11 +2305,11 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="methodgetDocumentID"></a>
-	<h3>method getDocumentID <span class="smalllinenumber">[line 202]</span></h3>
+	<h3>method getDocumentID <span class="smalllinenumber">[line 205]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> getDocumentID(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> getDocumentID(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -2289,11 +2330,11 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="methodgetDocumentIDRef"></a>
-	<h3>method getDocumentIDRef <span class="smalllinenumber">[line 178]</span></h3>
+	<h3>method getDocumentIDRef <span class="smalllinenumber">[line 181]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> getDocumentIDRef(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> getDocumentIDRef(
 
 &$documentID, unknown_type
 $domId)</code>
@@ -2341,7 +2382,7 @@ $domId)</code>
   </div>
   <hr />
 	<a name="methodgetDOMDocument"></a>
-	<h3>method getDOMDocument <span class="smalllinenumber">[line 194]</span></h3>
+	<h3>method getDOMDocument <span class="smalllinenumber">[line 197]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2366,7 +2407,7 @@ $domId)</code>
   </div>
   <hr />
 	<a name="methodgetElementSiblings"></a>
-	<h3>method getElementSiblings <span class="smalllinenumber">[line 2395]</span></h3>
+	<h3>method getElementSiblings <span class="smalllinenumber">[line 2398]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2414,7 +2455,7 @@ $limitToOne = false])</code>
   </div>
   <hr />
 	<a name="methodgetNodeAttrs"></a>
-	<h3>method getNodeAttrs <span class="smalllinenumber">[line 2662]</span></h3>
+	<h3>method getNodeAttrs <span class="smalllinenumber">[line 2665]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2450,7 +2491,7 @@ $node)</code>
   </div>
   <hr />
 	<a name="methodgetNodeXpath"></a>
-	<h3>method getNodeXpath <span class="smalllinenumber">[line 3045]</span></h3>
+	<h3>method getNodeXpath <span class="smalllinenumber">[line 3059]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2495,7 +2536,7 @@ $namespace = null])</code>
   </div>
   <hr />
 	<a name="methodgetString"></a>
-	<h3>method getString <span class="smalllinenumber">[line 503]</span></h3>
+	<h3>method getString <span class="smalllinenumber">[line 506]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2561,7 +2602,7 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="methodgetStrings"></a>
-	<h3>method getStrings <span class="smalllinenumber">[line 530]</span></h3>
+	<h3>method getStrings <span class="smalllinenumber">[line 533]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2627,7 +2668,7 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="methodhasClass"></a>
-	<h3>method hasClass <span class="smalllinenumber">[line 2837]</span></h3>
+	<h3>method hasClass <span class="smalllinenumber">[line 2840]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2663,7 +2704,7 @@ $className)</code>
   </div>
   <hr />
 	<a name="methodhide"></a>
-	<h3>method hide <span class="smalllinenumber">[line 1382]</span></h3>
+	<h3>method hide <span class="smalllinenumber">[line 1385]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2691,11 +2732,11 @@ $className)</code>
   </div>
   <hr />
 	<a name="methodhtml"></a>
-	<h3>method html <span class="smalllinenumber">[line 1820]</span></h3>
+	<h3>method html <span class="smalllinenumber">[line 1823]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>string|<a href="../phpQuery/phpQuery.html">phpQuery</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> html(
+		<code>string|<a href="../phpQuery/phpQuery.html">phpQuery</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> html(
 [unknown_type
 $html = null], [
 $callback1 = null], [
@@ -2748,7 +2789,7 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="methodhtmlOuter"></a>
-	<h3>method htmlOuter <span class="smalllinenumber">[line 1863]</span></h3>
+	<h3>method htmlOuter <span class="smalllinenumber">[line 1866]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2799,7 +2840,7 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="methodindex"></a>
-	<h3>method index <span class="smalllinenumber">[line 2217]</span></h3>
+	<h3>method index <span class="smalllinenumber">[line 2220]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2835,11 +2876,11 @@ $subject)</code>
   </div>
   <hr />
 	<a name="methodinsert"></a>
-	<h3>method insert <span class="smalllinenumber">[line 2052]</span></h3>
+	<h3>method insert <span class="smalllinenumber">[line 2055]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> insert(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> insert(
 unknown_type
 $target, unknown_type
 $type)</code>
@@ -2877,11 +2918,11 @@ $type)</code>
   </div>
   <hr />
 	<a name="methodinsertAfter"></a>
-	<h3>method insertAfter <span class="smalllinenumber">[line 2040]</span></h3>
+	<h3>method insertAfter <span class="smalllinenumber">[line 2043]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> insertAfter(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> insertAfter(
 
 $seletor)</code>
     </td></tr></table>
@@ -2913,11 +2954,11 @@ $seletor)</code>
   </div>
   <hr />
 	<a name="methodinsertBefore"></a>
-	<h3>method insertBefore <span class="smalllinenumber">[line 2015]</span></h3>
+	<h3>method insertBefore <span class="smalllinenumber">[line 2018]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> insertBefore(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> insertBefore(
 String|<a href="../phpQuery/phpQuery.html">phpQuery</a>
 $seletor)</code>
     </td></tr></table>
@@ -2949,11 +2990,11 @@ $seletor)</code>
   </div>
   <hr />
 	<a name="methodis"></a>
-	<h3>method is <span class="smalllinenumber">[line 1122]</span></h3>
+	<h3>method is <span class="smalllinenumber">[line 1125]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> is(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> is(
 
 $selector, [
 $nodes = null])</code>
@@ -2991,7 +3032,7 @@ $nodes = null])</code>
   </div>
   <hr />
 	<a name="methodisChar"></a>
-	<h3>method isChar <span class="smalllinenumber">[line 301]</span></h3>
+	<h3>method isChar <span class="smalllinenumber">[line 304]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3030,7 +3071,7 @@ $char)</code>
   </div>
   <hr />
 	<a name="methodisHTML"></a>
-	<h3>method isHTML <span class="smalllinenumber">[line 215]</span></h3>
+	<h3>method isHTML <span class="smalllinenumber">[line 218]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3055,7 +3096,7 @@ $char)</code>
   </div>
   <hr />
 	<a name="methodisRegexp"></a>
-	<h3>method isRegexp <span class="smalllinenumber">[line 287]</span></h3>
+	<h3>method isRegexp <span class="smalllinenumber">[line 290]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3091,7 +3132,7 @@ $pattern)</code>
   </div>
   <hr />
 	<a name="methodisRoot"></a>
-	<h3>method isRoot <span class="smalllinenumber">[line 139]</span></h3>
+	<h3>method isRoot <span class="smalllinenumber">[line 142]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3130,7 +3171,7 @@ $node)</code>
   </div>
   <hr />
 	<a name="methodisXHTML"></a>
-	<h3>method isXHTML <span class="smalllinenumber">[line 218]</span></h3>
+	<h3>method isXHTML <span class="smalllinenumber">[line 221]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3155,7 +3196,7 @@ $node)</code>
   </div>
   <hr />
 	<a name="methodisXML"></a>
-	<h3>method isXML <span class="smalllinenumber">[line 221]</span></h3>
+	<h3>method isXML <span class="smalllinenumber">[line 224]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3180,7 +3221,7 @@ $node)</code>
   </div>
   <hr />
 	<a name="methodkey"></a>
-	<h3>method key <span class="smalllinenumber">[line 2974]</span></h3>
+	<h3>method key <span class="smalllinenumber">[line 2988]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3210,11 +3251,11 @@ $node)</code>
   </div>
   <hr />
 	<a name="methodlength"></a>
-	<h3>method length <span class="smalllinenumber">[line 1673]</span></h3>
+	<h3>method length <span class="smalllinenumber">[line 1676]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> length(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> length(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -3238,11 +3279,11 @@ $node)</code>
   </div>
   <hr />
 	<a name="methodload"></a>
-	<h3>method load <span class="smalllinenumber">[line 1319]</span></h3>
+	<h3>method load <span class="smalllinenumber">[line 1322]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQuery.html">phpQuery</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> load(
+		<code><a href="../phpQuery/phpQuery.html">phpQuery</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> load(
 
 $url, [
 $data = null], [
@@ -3292,11 +3333,11 @@ $callback = null])</code>
   </div>
   <hr />
 	<a name="methodmap"></a>
-	<h3>method map <span class="smalllinenumber">[line 2930]</span></h3>
+	<h3>method map <span class="smalllinenumber">[line 2944]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> map(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> map(
 
 $callback, [
 $param1 = null], [
@@ -3349,7 +3390,7 @@ $param3 = null])</code>
   </div>
   <hr />
 	<a name="methodmarkup"></a>
-	<h3>method markup <span class="smalllinenumber">[line 1793]</span></h3>
+	<h3>method markup <span class="smalllinenumber">[line 1796]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3406,7 +3447,7 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="methodmarkupEvents"></a>
-	<h3>method markupEvents <span class="smalllinenumber">[line 1775]</span></h3>
+	<h3>method markupEvents <span class="smalllinenumber">[line 1778]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3454,7 +3495,7 @@ $node)</code>
   </div>
   <hr />
 	<a name="methodmarkupOuter"></a>
-	<h3>method markupOuter <span class="smalllinenumber">[line 1806]</span></h3>
+	<h3>method markupOuter <span class="smalllinenumber">[line 1809]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3502,7 +3543,7 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="methodmarkupOuterPHP"></a>
-	<h3>method markupOuterPHP <span class="smalllinenumber">[line 1906]</span></h3>
+	<h3>method markupOuterPHP <span class="smalllinenumber">[line 1909]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3538,7 +3579,7 @@ $code
   </div>
   <hr />
 	<a name="methodmarkupPHP"></a>
-	<h3>method markupPHP <span class="smalllinenumber">[line 1896]</span></h3>
+	<h3>method markupPHP <span class="smalllinenumber">[line 1899]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3574,7 +3615,7 @@ $code = null])</code>
   </div>
   <hr />
 	<a name="methodmatchClasses"></a>
-	<h3>method matchClasses <span class="smalllinenumber">[line 585]</span></h3>
+	<h3>method matchClasses <span class="smalllinenumber">[line 588]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3616,7 +3657,7 @@ $node)</code>
   </div>
   <hr />
 	<a name="methodmerge"></a>
-	<h3>method merge <span class="smalllinenumber">[line 2500]</span></h3>
+	<h3>method merge <span class="smalllinenumber">[line 2503]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3641,7 +3682,7 @@ $node)</code>
   </div>
   <hr />
 	<a name="methodnewInstance"></a>
-	<h3>method newInstance <span class="smalllinenumber">[line 556]</span></h3>
+	<h3>method newInstance <span class="smalllinenumber">[line 559]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3677,11 +3718,11 @@ $newStack = null])</code>
   </div>
   <hr />
 	<a name="methodnext"></a>
-	<h3>method next <span class="smalllinenumber">[line 2988]</span></h3>
+	<h3>method next <span class="smalllinenumber">[line 3002]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> next(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> next(
 [
 $cssSelector = null])</code>
     </td></tr></table>
@@ -3721,11 +3762,11 @@ $cssSelector = null])</code>
   </div>
   <hr />
 	<a name="methodnextAll"></a>
-	<h3>method nextAll <span class="smalllinenumber">[line 2387]</span></h3>
+	<h3>method nextAll <span class="smalllinenumber">[line 2390]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> nextAll(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> nextAll(
 [
 $selector = null])</code>
     </td></tr></table>
@@ -3760,11 +3801,11 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="methodnot"></a>
-	<h3>method not <span class="smalllinenumber">[line 2441]</span></h3>
+	<h3>method not <span class="smalllinenumber">[line 2444]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> not(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> not(
 [
 $selector = null])</code>
     </td></tr></table>
@@ -3796,7 +3837,7 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="methodoffsetExists"></a>
-	<h3>method offsetExists <span class="smalllinenumber">[line 3013]</span></h3>
+	<h3>method offsetExists <span class="smalllinenumber">[line 3027]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3837,7 +3878,7 @@ $offset)</code>
   </div>
   <hr />
 	<a name="methodoffsetGet"></a>
-	<h3>method offsetGet <span class="smalllinenumber">[line 3019]</span></h3>
+	<h3>method offsetGet <span class="smalllinenumber">[line 3033]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3878,7 +3919,7 @@ $offset)</code>
   </div>
   <hr />
 	<a name="methodoffsetSet"></a>
-	<h3>method offsetSet <span class="smalllinenumber">[line 3025]</span></h3>
+	<h3>method offsetSet <span class="smalllinenumber">[line 3039]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3925,7 +3966,7 @@ $value)</code>
   </div>
   <hr />
 	<a name="methodoffsetUnset"></a>
-	<h3>method offsetUnset <span class="smalllinenumber">[line 3032]</span></h3>
+	<h3>method offsetUnset <span class="smalllinenumber">[line 3046]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -3966,11 +4007,11 @@ $offset)</code>
   </div>
   <hr />
 	<a name="methodparent"></a>
-	<h3>method parent <span class="smalllinenumber">[line 2526]</span></h3>
+	<h3>method parent <span class="smalllinenumber">[line 2529]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> parent(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> parent(
 [
 $selector = null])</code>
     </td></tr></table>
@@ -4002,11 +4043,11 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="methodparents"></a>
-	<h3>method parents <span class="smalllinenumber">[line 2543]</span></h3>
+	<h3>method parents <span class="smalllinenumber">[line 2546]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> parents(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> parents(
 [
 $selector = null])</code>
     </td></tr></table>
@@ -4038,7 +4079,7 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="methodparseSelector"></a>
-	<h3>method parseSelector <span class="smalllinenumber">[line 309]</span></h3>
+	<h3>method parseSelector <span class="smalllinenumber">[line 312]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -4074,11 +4115,11 @@ $query)</code>
   </div>
   <hr />
 	<a name="methodphp"></a>
-	<h3>method php <span class="smalllinenumber">[line 1888]</span></h3>
+	<h3>method php <span class="smalllinenumber">[line 1891]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> php(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> php(
 [
 $code = null])</code>
     </td></tr></table>
@@ -4113,11 +4154,11 @@ $code = null])</code>
   </div>
   <hr />
 	<a name="methodplugin"></a>
-	<h3>method plugin <span class="smalllinenumber">[line 2291]</span></h3>
+	<h3>method plugin <span class="smalllinenumber">[line 2294]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> plugin(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> plugin(
 
 $class, [
 $file = null])</code>
@@ -4155,11 +4196,11 @@ $file = null])</code>
   </div>
   <hr />
 	<a name="methodprepend"></a>
-	<h3>method prepend <span class="smalllinenumber">[line 1972]</span></h3>
+	<h3>method prepend <span class="smalllinenumber">[line 1975]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> prepend(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> prepend(
 
 $content)</code>
     </td></tr></table>
@@ -4191,11 +4232,11 @@ $content)</code>
   </div>
   <hr />
 	<a name="methodprependPHP"></a>
-	<h3>method prependPHP <span class="smalllinenumber">[line 1981]</span></h3>
+	<h3>method prependPHP <span class="smalllinenumber">[line 1984]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> prependPHP(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> prependPHP(
 
 $content)</code>
     </td></tr></table>
@@ -4230,11 +4271,11 @@ $content)</code>
   </div>
   <hr />
 	<a name="methodprependTo"></a>
-	<h3>method prependTo <span class="smalllinenumber">[line 1989]</span></h3>
+	<h3>method prependTo <span class="smalllinenumber">[line 1992]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> prependTo(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> prependTo(
 
 $seletor)</code>
     </td></tr></table>
@@ -4266,11 +4307,11 @@ $seletor)</code>
   </div>
   <hr />
 	<a name="methodprev"></a>
-	<h3>method prev <span class="smalllinenumber">[line 2367]</span></h3>
+	<h3>method prev <span class="smalllinenumber">[line 2370]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> prev(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> prev(
 [
 $selector = null])</code>
     </td></tr></table>
@@ -4302,11 +4343,11 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="methodprevAll"></a>
-	<h3>method prevAll <span class="smalllinenumber">[line 2377]</span></h3>
+	<h3>method prevAll <span class="smalllinenumber">[line 2380]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> prevAll(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> prevAll(
 [
 $selector = null])</code>
     </td></tr></table>
@@ -4341,7 +4382,7 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="methodpseudoClasses"></a>
-	<h3>method pseudoClasses <span class="smalllinenumber">[line 848]</span></h3>
+	<h3>method pseudoClasses <span class="smalllinenumber">[line 851]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -4380,11 +4421,11 @@ $class)</code>
   </div>
   <hr />
 	<a name="methodremove"></a>
-	<h3>method remove <span class="smalllinenumber">[line 1754]</span></h3>
+	<h3>method remove <span class="smalllinenumber">[line 1757]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> remove(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> remove(
 [
 $selector = null])</code>
     </td></tr></table>
@@ -4416,11 +4457,11 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="methodremoveAttr"></a>
-	<h3>method removeAttr <span class="smalllinenumber">[line 2705]</span></h3>
+	<h3>method removeAttr <span class="smalllinenumber">[line 2708]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> removeAttr(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> removeAttr(
 
 $attr)</code>
     </td></tr></table>
@@ -4452,11 +4493,11 @@ $attr)</code>
   </div>
   <hr />
 	<a name="methodremoveClass"></a>
-	<h3>method removeClass <span class="smalllinenumber">[line 2850]</span></h3>
+	<h3>method removeClass <span class="smalllinenumber">[line 2853]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> removeClass(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> removeClass(
 
 $className)</code>
     </td></tr></table>
@@ -4488,11 +4529,11 @@ $className)</code>
   </div>
   <hr />
 	<a name="methodreplaceAll"></a>
-	<h3>method replaceAll <span class="smalllinenumber">[line 1741]</span></h3>
+	<h3>method replaceAll <span class="smalllinenumber">[line 1744]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> replaceAll(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> replaceAll(
 String
 $selector)</code>
     </td></tr></table>
@@ -4527,11 +4568,11 @@ $selector)</code>
   </div>
   <hr />
 	<a name="methodreplaceWith"></a>
-	<h3>method replaceWith <span class="smalllinenumber">[line 1730]</span></h3>
+	<h3>method replaceWith <span class="smalllinenumber">[line 1733]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> replaceWith(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> replaceWith(
 String|<a href="../phpQuery/phpQuery.html">phpQuery</a>
 $content)</code>
     </td></tr></table>
@@ -4566,11 +4607,11 @@ $content)</code>
   </div>
   <hr />
 	<a name="methodreplaceWithPHP"></a>
-	<h3>method replaceWithPHP <span class="smalllinenumber">[line 1719]</span></h3>
+	<h3>method replaceWithPHP <span class="smalllinenumber">[line 1722]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> replaceWithPHP(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> replaceWithPHP(
 
 $code)</code>
     </td></tr></table>
@@ -4602,11 +4643,11 @@ $code)</code>
   </div>
   <hr />
 	<a name="methodreverse"></a>
-	<h3>method reverse <span class="smalllinenumber">[line 2259]</span></h3>
+	<h3>method reverse <span class="smalllinenumber">[line 2262]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> reverse(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> reverse(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -4627,7 +4668,7 @@ $code)</code>
   </div>
   <hr />
 	<a name="methodrewind"></a>
-	<h3>method rewind <span class="smalllinenumber">[line 2953]</span></h3>
+	<h3>method rewind <span class="smalllinenumber">[line 2967]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -4657,7 +4698,7 @@ $code)</code>
   </div>
   <hr />
 	<a name="methodrunQuery"></a>
-	<h3>method runQuery <span class="smalllinenumber">[line 615]</span></h3>
+	<h3>method runQuery <span class="smalllinenumber">[line 618]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -4705,7 +4746,7 @@ $compare = null])</code>
   </div>
   <hr />
 	<a name="methodserialize"></a>
-	<h3>method serialize <span class="smalllinenumber">[line 230]</span></h3>
+	<h3>method serialize <span class="smalllinenumber">[line 233]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -4733,7 +4774,7 @@ $compare = null])</code>
   </div>
   <hr />
 	<a name="methodserializeArray"></a>
-	<h3>method serializeArray <span class="smalllinenumber">[line 240]</span></h3>
+	<h3>method serializeArray <span class="smalllinenumber">[line 243]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -4772,7 +4813,7 @@ $submit = null])</code>
   </div>
   <hr />
 	<a name="methodshow"></a>
-	<h3>method show <span class="smalllinenumber">[line 1374]</span></h3>
+	<h3>method show <span class="smalllinenumber">[line 1377]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -4800,11 +4841,11 @@ $submit = null])</code>
   </div>
   <hr />
 	<a name="methodsiblings"></a>
-	<h3>method siblings <span class="smalllinenumber">[line 2423]</span></h3>
+	<h3>method siblings <span class="smalllinenumber">[line 2426]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> siblings(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> siblings(
 [
 $selector = null])</code>
     </td></tr></table>
@@ -4836,11 +4877,11 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="methodsize"></a>
-	<h3>method size <span class="smalllinenumber">[line 1663]</span></h3>
+	<h3>method size <span class="smalllinenumber">[line 1666]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> size(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> size(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -4861,11 +4902,11 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="methodslice"></a>
-	<h3>method slice <span class="smalllinenumber">[line 2238]</span></h3>
+	<h3>method slice <span class="smalllinenumber">[line 2241]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> slice(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> slice(
 unknown_type
 $start, [unknown_type
 $end = null])</code>
@@ -4903,7 +4944,7 @@ $end = null])</code>
   </div>
   <hr />
 	<a name="methodstack"></a>
-	<h3>method stack <span class="smalllinenumber">[line 2571]</span></h3>
+	<h3>method stack <span class="smalllinenumber">[line 2574]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -4939,7 +4980,7 @@ $nodeTypes = null])</code>
   </div>
   <hr />
 	<a name="methodstackIsRoot"></a>
-	<h3>method stackIsRoot <span class="smalllinenumber">[line 148]</span></h3>
+	<h3>method stackIsRoot <span class="smalllinenumber">[line 151]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -4964,11 +5005,11 @@ $nodeTypes = null])</code>
   </div>
   <hr />
 	<a name="methodsubmit"></a>
-	<h3>method submit <span class="smalllinenumber">[line 1460]</span></h3>
+	<h3>method submit <span class="smalllinenumber">[line 1463]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> submit(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> submit(
 [
 $callback = null])</code>
     </td></tr></table>
@@ -5000,7 +5041,7 @@ $callback = null])</code>
   </div>
   <hr />
 	<a name="methodswitchWith"></a>
-	<h3>method switchWith <span class="smalllinenumber">[line 1633]</span></h3>
+	<h3>method switchWith <span class="smalllinenumber">[line 1636]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -5036,7 +5077,7 @@ $markup)</code>
   </div>
   <hr />
 	<a name="methodtext"></a>
-	<h3>method text <span class="smalllinenumber">[line 2269]</span></h3>
+	<h3>method text <span class="smalllinenumber">[line 2272]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -5090,11 +5131,11 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="methodtoggleClass"></a>
-	<h3>method toggleClass <span class="smalllinenumber">[line 2869]</span></h3>
+	<h3>method toggleClass <span class="smalllinenumber">[line 2872]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> toggleClass(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> toggleClass(
 
 $className)</code>
     </td></tr></table>
@@ -5126,11 +5167,11 @@ $className)</code>
   </div>
   <hr />
 	<a name="methodtoReference"></a>
-	<h3>method toReference <span class="smalllinenumber">[line 125]</span></h3>
+	<h3>method toReference <span class="smalllinenumber">[line 128]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> toReference(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> toReference(
 
 &$var, <a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>
 $var)</code>
@@ -5168,11 +5209,11 @@ $var)</code>
   </div>
   <hr />
 	<a name="methodtoRoot"></a>
-	<h3>method toRoot <span class="smalllinenumber">[line 159]</span></h3>
+	<h3>method toRoot <span class="smalllinenumber">[line 162]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> toRoot(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> toRoot(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -5193,11 +5234,11 @@ $var)</code>
   </div>
   <hr />
 	<a name="methodtrigger"></a>
-	<h3>method trigger <span class="smalllinenumber">[line 1394]</span></h3>
+	<h3>method trigger <span class="smalllinenumber">[line 1397]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> trigger(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> trigger(
 unknown_type
 $type, [unknown_type
 $data = array()])</code>
@@ -5238,11 +5279,11 @@ $data = array()])</code>
   </div>
   <hr />
 	<a name="methodtriggerHandler"></a>
-	<h3>method triggerHandler <span class="smalllinenumber">[line 1407]</span></h3>
+	<h3>method triggerHandler <span class="smalllinenumber">[line 1410]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> triggerHandler(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> triggerHandler(
 unknown_type
 $type, [unknown_type
 $data = array()])</code>
@@ -5283,7 +5324,7 @@ $data = array()])</code>
   </div>
   <hr />
 	<a name="methodunbind"></a>
-	<h3>method unbind <span class="smalllinenumber">[line 1440]</span></h3>
+	<h3>method unbind <span class="smalllinenumber">[line 1443]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -5331,11 +5372,11 @@ $callback = null])</code>
   </div>
   <hr />
 	<a name="methodunloadDocument"></a>
-	<h3>method unloadDocument <span class="smalllinenumber">[line 212]</span></h3>
+	<h3>method unloadDocument <span class="smalllinenumber">[line 215]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> unloadDocument(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> unloadDocument(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -5356,7 +5397,7 @@ $callback = null])</code>
   </div>
   <hr />
 	<a name="methodval"></a>
-	<h3>method val <span class="smalllinenumber">[line 2724]</span></h3>
+	<h3>method val <span class="smalllinenumber">[line 2727]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -5395,7 +5436,7 @@ $val = null])</code>
   </div>
   <hr />
 	<a name="methodvalid"></a>
-	<h3>method valid <span class="smalllinenumber">[line 3005]</span></h3>
+	<h3>method valid <span class="smalllinenumber">[line 3019]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -5425,7 +5466,7 @@ $val = null])</code>
   </div>
   <hr />
 	<a name="methodwhois"></a>
-	<h3>method whois <span class="smalllinenumber">[line 3080]</span></h3>
+	<h3>method whois <span class="smalllinenumber">[line 3094]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -5461,11 +5502,11 @@ $oneNode = null])</code>
   </div>
   <hr />
 	<a name="methodwrap"></a>
-	<h3>method wrap <span class="smalllinenumber">[line 1545]</span></h3>
+	<h3>method wrap <span class="smalllinenumber">[line 1548]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> wrap(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> wrap(
 String|<a href="../phpQuery/phpQuery.html">phpQuery</a>
 $wrapper)</code>
     </td></tr></table>
@@ -5497,11 +5538,11 @@ $wrapper)</code>
   </div>
   <hr />
 	<a name="methodwrapAll"></a>
-	<h3>method wrapAll <span class="smalllinenumber">[line 1500]</span></h3>
+	<h3>method wrapAll <span class="smalllinenumber">[line 1503]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> wrapAll(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> wrapAll(
 String|<a href="../phpQuery/phpQuery.html">phpQuery</a>
 $wrapper)</code>
     </td></tr></table>
@@ -5533,11 +5574,11 @@ $wrapper)</code>
   </div>
   <hr />
 	<a name="methodwrapAllOld"></a>
-	<h3>method wrapAllOld <span class="smalllinenumber">[line 1481]</span></h3>
+	<h3>method wrapAllOld <span class="smalllinenumber">[line 1484]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> wrapAllOld(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> wrapAllOld(
 String|<a href="../phpQuery/phpQuery.html">phpQuery</a>
 $wrapper)</code>
     </td></tr></table>
@@ -5569,11 +5610,11 @@ $wrapper)</code>
   </div>
   <hr />
 	<a name="methodwrapAllPHP"></a>
-	<h3>method wrapAllPHP <span class="smalllinenumber">[line 1529]</span></h3>
+	<h3>method wrapAllPHP <span class="smalllinenumber">[line 1532]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> wrapAllPHP(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> wrapAllPHP(
 String|<a href="../phpQuery/phpQuery.html">phpQuery</a>
 $codeBefore, 
 $codeAfter)</code>
@@ -5611,11 +5652,11 @@ $codeAfter)</code>
   </div>
   <hr />
 	<a name="methodwrapInner"></a>
-	<h3>method wrapInner <span class="smalllinenumber">[line 1569]</span></h3>
+	<h3>method wrapInner <span class="smalllinenumber">[line 1572]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> wrapInner(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> wrapInner(
 String|<a href="../phpQuery/phpQuery.html">phpQuery</a>
 $wrapper)</code>
     </td></tr></table>
@@ -5647,11 +5688,11 @@ $wrapper)</code>
   </div>
   <hr />
 	<a name="methodwrapInnerPHP"></a>
-	<h3>method wrapInnerPHP <span class="smalllinenumber">[line 1581]</span></h3>
+	<h3>method wrapInnerPHP <span class="smalllinenumber">[line 1584]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> wrapInnerPHP(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> wrapInnerPHP(
 String|<a href="../phpQuery/phpQuery.html">phpQuery</a>
 $codeBefore, 
 $codeAfter)</code>
@@ -5689,11 +5730,11 @@ $codeAfter)</code>
   </div>
   <hr />
 	<a name="methodwrapPHP"></a>
-	<h3>method wrapPHP <span class="smalllinenumber">[line 1557]</span></h3>
+	<h3>method wrapPHP <span class="smalllinenumber">[line 1560]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> wrapPHP(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> wrapPHP(
 String|<a href="../phpQuery/phpQuery.html">phpQuery</a>
 $codeBefore, 
 $codeAfter)</code>
@@ -5731,7 +5772,7 @@ $codeAfter)</code>
   </div>
   <hr />
 	<a name="methodxml"></a>
-	<h3>method xml <span class="smalllinenumber">[line 1853]</span></h3>
+	<h3>method xml <span class="smalllinenumber">[line 1856]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -5788,7 +5829,7 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="methodxmlOuter"></a>
-	<h3>method xmlOuter <span class="smalllinenumber">[line 1875]</span></h3>
+	<h3>method xmlOuter <span class="smalllinenumber">[line 1878]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -5839,11 +5880,11 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="method_clone"></a>
-	<h3>method _clone <span class="smalllinenumber">[line 1702]</span></h3>
+	<h3>method _clone <span class="smalllinenumber">[line 1705]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> _clone(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> _clone(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -5864,11 +5905,11 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="method_empty"></a>
-	<h3>method _empty <span class="smalllinenumber">[line 2896]</span></h3>
+	<h3>method _empty <span class="smalllinenumber">[line 2899]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> _empty(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> _empty(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -5889,11 +5930,11 @@ $callback3 = null])</code>
   </div>
   <hr />
 	<a name="method_next"></a>
-	<h3>method _next <span class="smalllinenumber">[line 2347]</span></h3>
+	<h3>method _next <span class="smalllinenumber">[line 2350]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> _next(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> _next(
 [
 $selector = null])</code>
     </td></tr></table>
@@ -5925,11 +5966,11 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="method_prev"></a>
-	<h3>method _prev <span class="smalllinenumber">[line 2359]</span></h3>
+	<h3>method _prev <span class="smalllinenumber">[line 2362]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a>|<a href="../QueryTemplates/QueryTemplatesPhpQuery.html">QueryTemplatesPhpQuery</a> _prev(
+		<code><a href="../phpQuery/phpQueryObject.html">phpQueryObject</a>|<a href="../QueryTemplates/QueryTemplatesSource.html">QueryTemplatesSource</a>|<a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|<a href="../QueryTemplates/QueryTemplatesSourceQuery.html">QueryTemplatesSourceQuery</a> _prev(
 [
 $selector = null])</code>
     </td></tr></table>
@@ -5964,7 +6005,7 @@ $selector = null])</code>
   </div>
   <hr />
 	<a name="method__call"></a>
-	<h3>method __call <span class="smalllinenumber">[line 2313]</span></h3>
+	<h3>method __call <span class="smalllinenumber">[line 2316]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -6006,7 +6047,7 @@ $args)</code>
   </div>
   <hr />
 	<a name="method__get"></a>
-	<h3>method __get <span class="smalllinenumber">[line 109]</span></h3>
+	<h3>method __get <span class="smalllinenumber">[line 112]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -6042,7 +6083,7 @@ $attr)</code>
   </div>
   <hr />
 	<a name="method__loadSuccess"></a>
-	<h3>method __loadSuccess <span class="smalllinenumber">[line 1350]</span></h3>
+	<h3>method __loadSuccess <span class="smalllinenumber">[line 1353]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -6078,7 +6119,7 @@ $html)</code>
   </div>
   <hr />
 	<a name="method__pseudoClassParam"></a>
-	<h3>method __pseudoClassParam <span class="smalllinenumber">[line 1114]</span></h3>
+	<h3>method __pseudoClassParam <span class="smalllinenumber">[line 1117]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -6114,7 +6155,7 @@ $paramsString)</code>
   </div>
   <hr />
 	<a name="method__toString"></a>
-	<h3>method __toString <span class="smalllinenumber">[line 1879]</span></h3>
+	<h3>method __toString <span class="smalllinenumber">[line 1882]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -6136,10 +6177,6 @@ $paramsString)</code>
 
 	<p>Overridden in child classes as:<br />
 		<dl>
-	<dt><a href="../QueryTemplates/QueryTemplatesParse.html#method__toString">QueryTemplatesParse::__toString()</a></dt>
-		<dd></dd>
-	</dl>
-		<dl>
 	<dt><a href="../QueryTemplates/QueryTemplatesSource.html#method__toString">QueryTemplatesSource::__toString()</a></dt>
 		<dd></dd>
 	</dl>
@@ -6149,7 +6186,7 @@ $paramsString)</code>
   </div>
   <hr />
 	<a name="method___wrapAllCallback"></a>
-	<h3>method ___wrapAllCallback <span class="smalllinenumber">[line 1515]</span></h3>
+	<h3>method ___wrapAllCallback <span class="smalllinenumber">[line 1518]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -6188,7 +6225,7 @@ $node)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Thu, 26 Feb 2009 14:23:22 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
+		    Documentation generated on Tue, 03 Mar 2009 23:29:28 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
 	      </div>
       </td></tr></table>
     </td>
