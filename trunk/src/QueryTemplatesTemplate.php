@@ -193,6 +193,9 @@ class QueryTemplatesTemplate
 			if (! $included)
 				require_once("$dir/phpQuery/phpQuery.php");
 		}
+		set_include_path(get_include_path().PATH_SEPARATOR
+			.$dir.'/phpQueryPlugins'
+		);
 		phpQuery::$debug = QueryTemplates::$debug;
 		require_once("$dir/QueryTemplatesLanguage".strtoupper($this->language).".php");
 		$languageClass = 'QueryTemplatesLanguage'.strtoupper($this->language);

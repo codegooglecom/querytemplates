@@ -191,24 +191,6 @@ class QueryTemplatesSyntaxGenerators extends QueryTemplatesSyntaxVars {
 	 *  -  -  - textarea#myFormId_textarea-field
 	 * </code>
 	 *
-	 * @param String|Array $varNames
-	 * Array of names of following vars:
-	 * - record [0]
-	 *   Represents actual record as array of fields.
-	 * - errors [1]
-	 *   Represents actual errors as array of fields. Field can also be an array.
-	 * - data [2]
-	 *   Overloads $defaultData during template's execution.
-	 * Names should be without dollar signs.
-	 * Example:
-	 * <code>
-	 * array('row', 'errors.row', 'data');
-	 * $errors['row'] = array(
-	 *   'field1' => 'one error',
-	 *   'field2' => array('first error', 'second error')
-	 * );
-	 * </code>
-	 *
 	 * @param Array $record
 	 * TODO doc
 	 * 
@@ -233,10 +215,10 @@ class QueryTemplatesSyntaxGenerators extends QueryTemplatesSyntaxVars {
 	 * - multiple (only select)
 	 * - values (only radio, MANDATORY)
 	 * - value (only checkbox, optional)
-	 * *__form* is special field name, which represents form element, as an array.
+	 * There can be special field *`__form`*, which represents form element, as an array.
 	 * All values from it will be pushed as form attributes.
 	 * If you wrap fields' array within another array, it will represent *fieldsets*,
-	 * which first value (with index 0) will be used as *legend* (optional).
+	 * which value with index *`__label`* will be used as legend (optional).
 	 *
 	 * @param Array $errors
 	 * TODO doc
@@ -291,15 +273,20 @@ class QueryTemplatesSyntaxGenerators extends QueryTemplatesSyntaxVars {
 	 * @param Array $selectors
 	 * Array of selectors indexed by it's type. Allows to customize lookups inside
 	 * inputs wrapper. Possible values are:
-	 * - error - selects field's error wrapper
-	 *   - dafault value is '.errors'
-	 * - label - selects field's label node (can be div, span, etc)
-	 *   - default value is 'label:first'
-	 *   - use array to per field name selector, '__default' means default
-	 * - input - selects field's input node: input, textarea or select
-	 *   - default value is 'input:first'
-	 *   - use array to per field name selector, '__default' means default
-	 *   - %t is replaced by field node type (use it with customized per field $template)
+	 * <ul>
+	 * <li>error - selects field's error wrapper<ul>
+	 *   <li>dafault value is '.errors'</li>
+	 * </ul></li>
+	 * <li>label - selects field's label node (can be div, span, etc)<ul>
+	 *   <li>default value is 'label:first'</li>
+	 *   <li>use array to per field name selector, '__default' means default</li>
+	 * </ul></li>
+	 * <li>input - selects field's input node: input, textarea or select<ul>
+	 *   <li>default value is 'input:first'</li>
+	 *   <li>use array to per field name selector, '__default' means default</li>
+	 *   <li>%t is replaced by field node type (use it with customized per field $template)</li>
+	 * </ul></li>
+	 * </ul>
 	 *
 	 * @param Array|String|Callback $fieldCallback
 	 * Callback triggered after preparation of each field.
@@ -672,10 +659,10 @@ EOF;
 	 * - multiple (only select)  // TODO
 	 * - values (only radio, MANDATORY)
 	 * - value (only checkbox, optional)
-	 * *__form* is special field name, which represents form element, as an array.
+	 * There can be special field *`__form`*, which represents form element, as an array.
 	 * All values from it will be pushed as form attributes.
 	 * If you wrap fields' array within another array, it will represent *fieldsets*,
-	 * which first value (with index 0) will be used as *legend* (optional).
+	 * which value with index *`__label`* will be used as legend (optional).
 	 *
 	 * @param Array $defaultRecord
 	 * Default field's value. Used when field isn't present within supplied record.
@@ -739,15 +726,20 @@ EOF;
 	 * @param Array $selectors
 	 * Array of selectors indexed by it's type. Allows to customize lookups inside
 	 * inputs wrapper. Possible values are:
-	 * - error - selects field's error wrapper
-	 *   - dafault value is '.errors'
-	 * - label - selects field's label node (can be div, span, etc)
-	 *   - default value is 'label:first'
-	 *   - use array to per field name selector, '__default' means default
-	 * - input - selects field's input node: input, textarea or select
-	 *   - default value is 'input:first'
-	 *   - use array to per field name selector, '__default' means default
-	 *   - %t is replaced by field node type (use it with customized per field $template)
+	 * <ul>
+	 * <li>error - selects field's error wrapper<ul>
+	 *   <li>dafault value is '.errors'</li>
+	 * </ul></li>
+	 * <li>label - selects field's label node (can be div, span, etc)<ul>
+	 *   <li>default value is 'label:first'</li>
+	 *   <li>use array to per field name selector, '__default' means default</li>
+	 * </ul></li>
+	 * <li>input - selects field's input node: input, textarea or select<ul>
+	 *   <li>default value is 'input:first'</li>
+	 *   <li>use array to per field name selector, '__default' means default</li>
+	 *   <li>%t is replaced by field node type (use it with customized per field $template)</li>
+	 * </ul></li>
+	 * </ul>
 	 *
 	 * @param Array|String|Callback $fieldCallback
 	 * Callback triggered after preparation of each field.

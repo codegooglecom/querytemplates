@@ -157,6 +157,7 @@ Source Location: /home/bob/workspace/QueryTemplates/src/QueryTemplatesSyntaxVars
     <li><a href="../QueryTemplates/QueryTemplatesSyntaxVars.html#methodvarPrintBefore">varPrintBefore</a></li>
     <li><a href="../QueryTemplates/QueryTemplatesSyntaxVars.html#methodvarPrintPrepend">varPrintPrepend</a></li>
     <li><a href="../QueryTemplates/QueryTemplatesSyntaxVars.html#methodvarPrintReplace">varPrintReplace</a></li>
+    <li><a href="../QueryTemplates/QueryTemplatesSyntaxVars.html#methodvarsToForm">varsToForm</a></li>
     <li><a href="../QueryTemplates/QueryTemplatesSyntaxVars.html#methodvarsToLoop">varsToLoop</a></li>
     <li><a href="../QueryTemplates/QueryTemplatesSyntaxVars.html#methodvarsToLoopFirst">varsToLoopFirst</a></li>
     <li><a href="../QueryTemplates/QueryTemplatesSyntaxVars.html#methodvarsToLoopSeparate">varsToLoopSeparate</a></li>
@@ -615,12 +616,6 @@ Source Location: /home/bob/workspace/QueryTemplates/src/QueryTemplatesSyntaxVars
   </dt>
   <dd>
     Injects markup from $values' content (rows or attributes) inside actually  selected nodes.
-  </dd>
-    <dt>
-    <a href="../QueryTemplates/QueryTemplatesSyntaxValues.html#methodvarsToForm">QueryTemplatesSyntaxValues::varsToForm()</a>
-  </dt>
-  <dd>
-    Injects executable code which toggles form fields values and selection  states according to value of variable $varName.
   </dd>
     <dt>
     <a href="../QueryTemplates/QueryTemplatesSyntaxValues.html#method_valuesToLoop">QueryTemplatesSyntaxValues::_valuesToLoop()</a>
@@ -2708,6 +2703,127 @@ $varName)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="methodvarsToForm"></a>
+	<h3>method varsToForm <span class="smalllinenumber">[line 2670]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code><a href="../QueryTemplates/QueryTemplatesParse.html">QueryTemplatesParse</a>|QueryTemplatesPhpQuery varsToForm(
+String
+$varName, Array|Object
+$varFields, [String
+$selectorPattern = &quot;[name*='%k']&quot;])</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Injects executable code which toggles form fields values and selection  states according to value of variable $varName.<br /><br /><p>This includes: <ul><li>`input[type=radio][checked]`</li><li>`input[type=checkbox][checked]`</li><li>`select &gt; option[selected]`</li><li>`input[value]`</li><li>`textarea`</li></ul>  Inputs are selected according to $selectorPattern, where %k represents  variable's key.</p><p>== Example ==</p><p>=== Markup ===  <ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">form</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;name</span>=<span class="src-str">'input-example'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;name</span>=<span class="src-str">'array[array-example]'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">textarea&nbsp;name</span>=<span class="src-str">'textarea-example'</span>&gt;&lt;/<span class="src-id">textarea</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">select&nbsp;name</span>=<span class="src-str">'select-example'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">option&nbsp;value</span>=<span class="src-str">'first'&nbsp;</span><span class="src-id">selected</span>=<span class="src-str">'selected'</span>&gt;&lt;/<span class="src-id">option</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;/<span class="src-id">select</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;type</span>=<span class="src-str">'radio'&nbsp;</span><span class="src-id">name</span>=<span class="src-str">'radio-example'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'foo'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">input&nbsp;type</span>=<span class="src-str">'checkbox'&nbsp;</span><span class="src-id">name</span>=<span class="src-str">'checkbox-example'&nbsp;</span><span class="src-id">value</span>=<span class="src-str">'foo'</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">form</span>&gt;</div></li>
+</ol></p><p>=== Data ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'input-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'array-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'textarea-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'select-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'radio-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'checkbox-example'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+</ol></p><p>=== `QueryTemplates` formula ===  <ol><li><div class="src-line">&nbsp;<span class="src-var">$template</span><span class="src-sym">-&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../QueryTemplates/QueryTemplatesSyntaxVars.html#methodvarsToForm">varsToForm</a><span class="src-sym">(</span><span class="src-str">'data'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$data</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-sym">;</span></div></li>
+</ol></p><p>=== Template ===  <ol><li><div class="src-line">&nbsp;&lt;form&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&lt;input&nbsp;name=&quot;input-example&quot;&nbsp;value=&quot;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'input-example'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span>print&nbsp;<span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'input-example'</span><span class="src-sym">]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'input-example'</span><span class="src-sym">}</span><span class="src-sym">))&nbsp;</span>print&nbsp;<span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'input-example'</span><span class="src-sym">}</span><span class="src-sym">;&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&quot;&gt;&lt;input&nbsp;name=&quot;array[array-example]&quot;&nbsp;value=&quot;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'array-example'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span>print&nbsp;<span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'array-example'</span><span class="src-sym">]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'array-example'</span><span class="src-sym">}</span><span class="src-sym">))&nbsp;</span>print&nbsp;<span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'array-example'</span><span class="src-sym">}</span><span class="src-sym">;&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&quot;&gt;&lt;textarea&nbsp;name=&quot;textarea-example&quot;&gt;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'textarea-example'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span>print&nbsp;<span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'textarea-example'</span><span class="src-sym">]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">else&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'textarea-example'</span><span class="src-sym">}</span><span class="src-sym">))&nbsp;</span>print&nbsp;<span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'textarea-example'</span><span class="src-sym">}</span><span class="src-sym">;&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;/textarea&gt;&lt;select&nbsp;name=&quot;select-example&quot;&gt;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">((</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'select-example'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'select-example'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-str">'first'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;<span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'select-example'</span><span class="src-sym">}</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'select-example'</span><span class="src-sym">}&nbsp;</span>==&nbsp;<span class="src-str">'first'</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;option&nbsp;value=&quot;first&quot;&nbsp;selected&gt;&lt;/option&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;option&nbsp;value=&quot;first&quot;&gt;&lt;/option&gt;</div></li>
+<li><div class="src-line">&nbsp;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;/select&gt;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">((</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'radio-example'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'radio-example'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-str">'foo'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;<span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'radio-example'</span><span class="src-sym">}</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'radio-example'</span><span class="src-sym">}&nbsp;</span>==&nbsp;<span class="src-str">'foo'</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;input&nbsp;type=&quot;radio&quot;&nbsp;name=&quot;radio-example&quot;&nbsp;value=&quot;foo&quot;&nbsp;checked&gt;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;input&nbsp;type=&quot;radio&quot;&nbsp;name=&quot;radio-example&quot;&nbsp;value=&quot;foo&quot;&gt;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">((</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'checkbox-example'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">[</span><span class="src-str">'checkbox-example'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-str">'foo'</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;<span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'checkbox-example'</span><span class="src-sym">}</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$data</span><span class="src-sym">-&gt;</span><span class="src-sym">{</span><span class="src-str">'checkbox-example'</span><span class="src-sym">}&nbsp;</span>==&nbsp;<span class="src-str">'foo'</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;input&nbsp;type=&quot;checkbox&quot;&nbsp;name=&quot;checkbox-example&quot;&nbsp;value=&quot;foo&quot;&nbsp;checked&gt;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{&nbsp;&nbsp;</span><span class="src-php">?&gt;</span>&lt;input&nbsp;type=&quot;checkbox&quot;&nbsp;name=&quot;checkbox-example&quot;&nbsp;value=&quot;foo&quot;&gt;<span class="src-php">&lt;?php&nbsp;&nbsp;</span><span class="src-sym">}&nbsp;&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line">&nbsp;&lt;/form&gt;</div></li>
+</ol></p><p>=== Template tree before ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">form</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">input</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;input-example&quot;</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">input</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;array[array-example]&quot;</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">textarea</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;textarea-example&quot;</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">select</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;select-example&quot;</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;&nbsp;-&nbsp;<span class="src-id">option</span><span class="src-sym">[</span><span class="src-id">value</span>=<span class="src-str">&quot;first&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-id">selected</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">input</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;radio-example&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-id">value</span>=<span class="src-str">&quot;foo&quot;</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">input</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;checkbox-example&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-id">value</span>=<span class="src-str">&quot;foo&quot;</span><span class="src-sym">]</span></div></li>
+</ol></p><p>=== Template tree after ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">form</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">input</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;input-example&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-id">value</span>=<span class="src-id">PHP</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">input</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;array[array-example]&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-id">value</span>=<span class="src-id">PHP</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">textarea</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;textarea-example&quot;</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">select</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;select-example&quot;</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;&nbsp;-&nbsp;<span class="src-id">option</span><span class="src-sym">[</span><span class="src-id">value</span>=<span class="src-str">&quot;first&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-id">selected</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;&nbsp;-&nbsp;<span class="src-id">option</span><span class="src-sym">[</span><span class="src-id">value</span>=<span class="src-str">&quot;first&quot;</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">input</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;radio-example&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-id">value</span>=<span class="src-str">&quot;foo&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-id">checked</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">input</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;radio-example&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-id">value</span>=<span class="src-str">&quot;foo&quot;</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">input</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;checkbox-example&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-id">value</span>=<span class="src-str">&quot;foo&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-id">checked</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">input</span><span class="src-sym">[</span><span class="src-id">name</span>=<span class="src-str">&quot;checkbox-example&quot;</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-id">value</span>=<span class="src-str">&quot;foo&quot;</span><span class="src-sym">]</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">PHP</span></div></li>
+</ol></p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>QueryTemplatesPhpQuery::valuesToForm()</td>
+  </tr>
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>QueryTemplatesPhpQuery::formFromVars()</td>
+  </tr>
+  <tr>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>support select[multiple] (thou array)</td>
+  </tr>
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$varName</b>&nbsp;&nbsp;</td>
+        <td>Variable avaible in scope of type Array or Object.  $varName should NOT start with $.</td>
+      </tr>
+          <tr>
+        <td class="type">Array|Object&nbsp;&nbsp;</td>
+        <td><b>$varFields</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$selectorPattern</b>&nbsp;&nbsp;</td>
+        <td>Defines pattern matching form fields.  Defaults to &quot;[name*='%k']&quot;, which matches fields containing variable's key in  their names. For example, to match only names starting with &quot;foo[bar]&quot; change  $selectorPattern to &quot;[name^='foo[bar]'][name*='%k']&quot;</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="methodvarsToLoop"></a>
 	<h3>method varsToLoop <span class="smalllinenumber">[line 2461]</span></h3>
 	<div class="function">
@@ -4491,7 +4607,7 @@ $fieldCallback)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Wed, 04 Mar 2009 15:59:57 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
+		    Documentation generated on Wed, 04 Mar 2009 19:39:39 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
 	      </div>
       </td></tr></table>
     </td>

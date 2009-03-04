@@ -103,7 +103,6 @@ EOF;
 		return $return;
 	}
 	public static function initialize() {
-		require_once(dirname(__FILE__).'/phpQueryPlugins/jsCode.php');
 		phpQuery::plugin('jsCode');
 	}
 	public static function valuesToVars($varsArray) {

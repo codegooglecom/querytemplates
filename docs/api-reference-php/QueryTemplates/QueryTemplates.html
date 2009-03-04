@@ -157,6 +157,7 @@ Source Location: /home/bob/workspace/QueryTemplates/src/QueryTemplates.php<br />
     <li><a href="../QueryTemplates/QueryTemplates.html#methodmapDepends">mapDepends</a></li>
     <li><a href="../QueryTemplates/QueryTemplates.html#methodnormalizeVarName">normalizeVarName</a></li>
     <li><a href="../QueryTemplates/QueryTemplates.html#methodparseIncludes">parseIncludes</a></li>
+    <li><a href="../QueryTemplates/QueryTemplates.html#methodparseJSON">parseJSON</a></li>
     <li><a href="../QueryTemplates/QueryTemplates.html#methodpostFilters">postFilters</a></li>
     <li><a href="../QueryTemplates/QueryTemplates.html#methodremoveIncludes">removeIncludes</a></li>
     <li><a href="../QueryTemplates/QueryTemplates.html#methodsaveTemplate">saveTemplate</a></li>
@@ -183,7 +184,7 @@ Source Location: /home/bob/workspace/QueryTemplates/src/QueryTemplates.php<br />
 <a name="class_details"></a>
 <h3>Class Details</h3>
 <div class="tags">
-[line 30]<br />
+[line 29]<br />
 Static methods namespace class.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -212,7 +213,7 @@ Static methods namespace class.<br /><br /><br /><br />
 	<a name="var$cacheTimeout"></a>
 	<p></p>
 	<h4>static $cacheTimeout = <span class="value">&nbsp;null</span></h4>
-	<p>[line 72]</p>
+	<p>[line 71]</p>
   Timeout for cached templates in minutes.<br /><br /><p>Generally uneeded because of checking templates modification time.</p><p>False (default) means no timeout.  -1 turns off cache.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -242,7 +243,7 @@ Static methods namespace class.<br /><br /><br /><br />
 	<a name="var$debug"></a>
 	<p></p>
 	<h4>static $debug = <span class="value">&nbsp;false</span></h4>
-	<p>[line 36]</p>
+	<p>[line 35]</p>
   Turns on/off debug. Includes phpQuery's one.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -269,7 +270,7 @@ Static methods namespace class.<br /><br /><br /><br />
 	<a name="var$fixWebroot"></a>
 	<p></p>
 	<h4>static $fixWebroot = <span class="value">&nbsp;''</span></h4>
-	<p>[line 126]</p>
+	<p>[line 125]</p>
   Fixes paths to CSS, JS and image files.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -293,7 +294,7 @@ Static methods namespace class.<br /><br /><br /><br />
 	<a name="var$htmlTidy"></a>
 	<p></p>
 	<h4>static $htmlTidy = <span class="value">&nbsp;false</span></h4>
-	<p>[line 85]</p>
+	<p>[line 84]</p>
   Use HTML Tidy for pretty output (if avaible).<br /><br /><p>Tidy is included with every PHP5 installation, but it has be manually activated in php.ini.  Value == 1 means tidy only partial templates (with no &lt;html&gt; or &lt;body&gt; tags)  	This is supposed to work quite well.  Value == 2 means tidy all, including files with &lt;head&gt;, and this can fail,  	if You have &lt;?php tags inside &lt;head&gt; with nested &lt;script&gt; tags.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -339,7 +340,7 @@ Static methods namespace class.<br /><br /><br /><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'output-encoding'&nbsp;=&gt;&nbsp;'utf8',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'char-encoding'&nbsp;=&gt;&nbsp;'utf8',<br>
 &nbsp;&nbsp;&nbsp;)</span></h4>
-	<p>[line 98]</p>
+	<p>[line 97]</p>
   Config fo Tidy.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -369,7 +370,7 @@ Static methods namespace class.<br /><br /><br /><br />
 	<a name="var$htmlTidyIntendWithTabs"></a>
 	<p></p>
 	<h4>static $htmlTidyIntendWithTabs = <span class="value">&nbsp;true</span></h4>
-	<p>[line 91]</p>
+	<p>[line 90]</p>
   Use tabs insted of spaces for tidy intendation.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -396,7 +397,7 @@ Static methods namespace class.<br /><br /><br /><br />
 	<a name="var$monitorCodeModification"></a>
 	<p></p>
 	<h4>static $monitorCodeModification = <span class="value">&nbsp;false</span></h4>
-	<p>[line 55]</p>
+	<p>[line 54]</p>
   Checks if source code file has been modified.<br /><br /><p>Use it only on developement enviroment as it runs debug_backtrace() every time.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -423,7 +424,7 @@ Static methods namespace class.<br /><br /><br /><br />
 	<a name="var$monitorTemplateModification"></a>
 	<p></p>
 	<h4>static $monitorTemplateModification = <span class="value">&nbsp;true</span></h4>
-	<p>[line 48]</p>
+	<p>[line 47]</p>
   Checks if source template file exists and if it has been modified.<br /><br /><p>Can be turned off for performance reasons on production enviroment.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -447,7 +448,7 @@ Static methods namespace class.<br /><br /><br /><br />
 	<a name="var$sourcesPath"></a>
 	<p></p>
 	<h4>static $sourcesPath = <span class="value">&nbsp;''</span></h4>
-	<p>[line 60]</p>
+	<p>[line 59]</p>
   Path prepended to templates names.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -471,7 +472,7 @@ Static methods namespace class.<br /><br /><br /><br />
 	<a name="var$targetsPath"></a>
 	<p></p>
 	<h4>static $targetsPath = <span class="value">&nbsp;null</span></h4>
-	<p>[line 42]</p>
+	<p>[line 41]</p>
   Path to direcotry where cached templates will be stored.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -498,7 +499,7 @@ Static methods namespace class.<br /><br /><br /><br />
 	<a name="var$xmlBeautifier"></a>
 	<p></p>
 	<h4>static $xmlBeautifier = <span class="value">&nbsp;false</span></h4>
-	<p>[line 119]</p>
+	<p>[line 118]</p>
   PEAR XML_Beutifuler<br /><br /><p>XML only. No full PHP code support.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -522,7 +523,7 @@ Static methods namespace class.<br /><br /><br /><br />
 	<a name="var$xmlBeautifierInstance"></a>
 	<p></p>
 	<h4>static $xmlBeautifierInstance = <span class="value">&nbsp;null</span></h4>
-	<p>[line 120]</p>
+	<p>[line 119]</p>
   <br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -551,7 +552,7 @@ Static methods namespace class.<br /><br /><br /><br />
 <div class="tags">
   <hr />
 	<a name="methodaddslashes"></a>
-	<h3>static method addslashes <span class="smalllinenumber">[line 454]</span></h3>
+	<h3>static method addslashes <span class="smalllinenumber">[line 474]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -593,7 +594,7 @@ $char = &quot;'&quot;])</code>
   </div>
   <hr />
 	<a name="methodcleanCacheName"></a>
-	<h3>static method cleanCacheName <span class="smalllinenumber">[line 360]</span></h3>
+	<h3>static method cleanCacheName <span class="smalllinenumber">[line 380]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -629,7 +630,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodgetCachePaths"></a>
-	<h3>static method getCachePaths <span class="smalllinenumber">[line 345]</span></h3>
+	<h3>static method getCachePaths <span class="smalllinenumber">[line 365]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -680,7 +681,7 @@ $language = 'php'])</code>
   </div>
   <hr />
 	<a name="methodhtmlTidy"></a>
-	<h3>static method htmlTidy <span class="smalllinenumber">[line 373]</span></h3>
+	<h3>static method htmlTidy <span class="smalllinenumber">[line 393]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -728,7 +729,7 @@ $isDocumentFragment)</code>
   </div>
   <hr />
 	<a name="methodhtmlTidySpacesToTabs"></a>
-	<h3>static method htmlTidySpacesToTabs <span class="smalllinenumber">[line 406]</span></h3>
+	<h3>static method htmlTidySpacesToTabs <span class="smalllinenumber">[line 426]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -764,7 +765,7 @@ $matches)</code>
   </div>
   <hr />
 	<a name="methodloadTemplate"></a>
-	<h3>static method loadTemplate <span class="smalllinenumber">[line 133]</span></h3>
+	<h3>static method loadTemplate <span class="smalllinenumber">[line 132]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -812,7 +813,7 @@ $language = 'php'])</code>
   </div>
   <hr />
 	<a name="methodmapDepends"></a>
-	<h3>static method mapDepends <span class="smalllinenumber">[line 297]</span></h3>
+	<h3>static method mapDepends <span class="smalllinenumber">[line 317]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -851,7 +852,7 @@ $file)</code>
   </div>
   <hr />
 	<a name="methodnormalizeVarName"></a>
-	<h3>static method normalizeVarName <span class="smalllinenumber">[line 308]</span></h3>
+	<h3>static method normalizeVarName <span class="smalllinenumber">[line 328]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -887,7 +888,7 @@ $string)</code>
   </div>
   <hr />
 	<a name="methodparseIncludes"></a>
-	<h3>static method parseIncludes <span class="smalllinenumber">[line 233]</span></h3>
+	<h3>static method parseIncludes <span class="smalllinenumber">[line 253]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -928,8 +929,50 @@ $_)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="methodparseJSON"></a>
+	<h3>static method parseJSON <span class="smalllinenumber">[line 186]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>static Array|Object parseJSON(
+
+$json, String
+$data)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Converts JSON string to array or object.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">String&nbsp;&nbsp;</td>
+        <td><b>$data</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$json</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="methodpostFilters"></a>
-	<h3>static method postFilters <span class="smalllinenumber">[line 440]</span></h3>
+	<h3>static method postFilters <span class="smalllinenumber">[line 460]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -977,7 +1020,7 @@ $_)</code>
   </div>
   <hr />
 	<a name="methodremoveIncludes"></a>
-	<h3>static method removeIncludes <span class="smalllinenumber">[line 271]</span></h3>
+	<h3>static method removeIncludes <span class="smalllinenumber">[line 291]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1016,7 +1059,7 @@ $_)</code>
   </div>
   <hr />
 	<a name="methodsaveTemplate"></a>
-	<h3>static method saveTemplate <span class="smalllinenumber">[line 189]</span></h3>
+	<h3>static method saveTemplate <span class="smalllinenumber">[line 209]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1106,7 +1149,7 @@ $templatePath)</code>
   </div>
   <hr />
 	<a name="methodsrcFilePath"></a>
-	<h3>static method srcFilePath <span class="smalllinenumber">[line 300]</span></h3>
+	<h3>static method srcFilePath <span class="smalllinenumber">[line 320]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1130,8 +1173,44 @@ $templatePath)</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
+	<a name="methodtoJSON"></a>
+	<h3>static method toJSON <span class="smalllinenumber">[line 171]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>static String toJSON(
+Array|Object
+$data)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Converts $data to JSON format.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">Array|Object&nbsp;&nbsp;</td>
+        <td><b>$data</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
 	<a name="methodvalidateCacheSettings"></a>
-	<h3>static method validateCacheSettings <span class="smalllinenumber">[line 311]</span></h3>
+	<h3>static method validateCacheSettings <span class="smalllinenumber">[line 331]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1156,7 +1235,7 @@ $templatePath)</code>
   </div>
   <hr />
 	<a name="methodxmlBeautifier"></a>
-	<h3>static method xmlBeautifier <span class="smalllinenumber">[line 421]</span></h3>
+	<h3>static method xmlBeautifier <span class="smalllinenumber">[line 441]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1196,7 +1275,7 @@ $markup)</code>
 
   <hr />
 	<a name="methodclearCache"></a>
-	<h3>method clearCache <span class="smalllinenumber">[line 282]</span></h3>
+	<h3>method clearCache <span class="smalllinenumber">[line 302]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1230,48 +1309,12 @@ $search = '*'])</code>
     </div><br />
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
-  <hr />
-	<a name="methodtoJSON"></a>
-	<h3>method toJSON <span class="smalllinenumber">[line 166]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void toJSON(
-
-$data)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		<br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <h4>Parameters:</h4>
-    <div class="tags">
-    <table border="0" cellspacing="0" cellpadding="0">
-          <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$data</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-        </table>
-    </div><br />
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
 </div><br />
 
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Wed, 04 Mar 2009 15:59:22 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
+		    Documentation generated on Wed, 04 Mar 2009 19:39:03 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
 	      </div>
       </td></tr></table>
     </td>

@@ -484,21 +484,23 @@
 							<dt><b>$parse</b></dt>
 				<dd>in file QueryTemplatesTemplate.php, variable <a href="QueryTemplates/QueryTemplatesTemplate.html#var$parse">QueryTemplatesTemplate::$parse</a><br>&nbsp;&nbsp;&nbsp;&nbsp;QueryTemplatesParse object</dd>
 							<dt><b>parse</b></dt>
-				<dd>in file IQueryTemplatesTemplate.php, method <a href="QueryTemplates/IQueryTemplatesTemplateParse.html#methodparse">IQueryTemplatesTemplateParse::parse()</a></dd>
-							<dt><b>parse</b></dt>
 				<dd>in file QueryTemplatesTemplate.php, method <a href="QueryTemplates/QueryTemplatesTemplate.html#methodparse">QueryTemplatesTemplate::parse()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Start template parsing stage and changes namespace to @see QueryTemplatesParse.</dd>
 							<dt><b>parse</b></dt>
 				<dd>in file QueryTemplatesSourceQuery.php, method <a href="QueryTemplates/QueryTemplatesSourceQuery.html#methodparse">QueryTemplatesSourceQuery::parse()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Start template parsing stage.</dd>
+							<dt><b>parse</b></dt>
+				<dd>in file IQueryTemplatesTemplate.php, method <a href="QueryTemplates/IQueryTemplatesTemplateParse.html#methodparse">IQueryTemplatesTemplateParse::parse()</a></dd>
 							<dt><b>parseIncludes</b></dt>
 				<dd>in file QueryTemplates.php, method <a href="QueryTemplates/QueryTemplates.html#methodparseIncludes">QueryTemplates::parseIncludes()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Fetches included templates content into parsed one.</dd>
+							<dt><b>parseJSON</b></dt>
+				<dd>in file QueryTemplates.php, method <a href="QueryTemplates/QueryTemplates.html#methodparseJSON">QueryTemplates::parseJSON()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Converts JSON string to array or object.</dd>
 							<dt><b>postFilterDom</b></dt>
 				<dd>in file QueryTemplatesLanguagePHP.php, method <a href="QueryTemplates/QueryTemplatesLanguagePHP.html#methodpostFilterDom">QueryTemplatesLanguagePHP::postFilterDom()</a></dd>
 							<dt><b>postFilterDom</b></dt>
 				<dd>in file QueryTemplatesLanguage.php, method <a href="QueryTemplates/QueryTemplatesLanguage.html#methodpostFilterDom">QueryTemplatesLanguage::postFilterDom()</a></dd>
 							<dt><b>postFilterMarkup</b></dt>
-				<dd>in file QueryTemplatesLanguagePHP.php, method <a href="QueryTemplates/QueryTemplatesLanguagePHP.html#methodpostFilterMarkup">QueryTemplatesLanguagePHP::postFilterMarkup()</a></dd>
-							<dt><b>postFilterMarkup</b></dt>
 				<dd>in file QueryTemplatesLanguageJS.php, method <a href="QueryTemplates/QueryTemplatesLanguageJS.html#methodpostFilterMarkup">QueryTemplatesLanguageJS::postFilterMarkup()</a></dd>
+							<dt><b>postFilterMarkup</b></dt>
+				<dd>in file QueryTemplatesLanguagePHP.php, method <a href="QueryTemplates/QueryTemplatesLanguagePHP.html#methodpostFilterMarkup">QueryTemplatesLanguagePHP::postFilterMarkup()</a></dd>
 							<dt><b>postFilters</b></dt>
 				<dd>in file QueryTemplates.php, method <a href="QueryTemplates/QueryTemplates.html#methodpostFilters">QueryTemplates::postFilters()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Enter description here...</dd>
 							<dt><b>printValue</b></dt>
@@ -722,7 +724,7 @@
 							<dt><b>templateWrapper</b></dt>
 				<dd>in file QueryTemplatesLanguageJS.php, method <a href="QueryTemplates/QueryTemplatesLanguageJS.html#methodtemplateWrapper">QueryTemplatesLanguageJS::templateWrapper()</a></dd>
 							<dt><b>toJSON</b></dt>
-				<dd>in file QueryTemplates.php, method <a href="QueryTemplates/QueryTemplates.html#methodtoJSON">QueryTemplates::toJSON()</a></dd>
+				<dd>in file QueryTemplates.php, method <a href="QueryTemplates/QueryTemplates.html#methodtoJSON">QueryTemplates::toJSON()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Converts $data to JSON format.</dd>
 					</dl>
 	</div>
 	<a href="elementindex_QueryTemplates.html#top">top</a><br>
@@ -786,13 +788,13 @@
 							<dt><b>valuesToVars</b></dt>
 				<dd>in file QueryTemplatesLanguageJS.php, method <a href="QueryTemplates/QueryTemplatesLanguageJS.html#methodvaluesToVars">QueryTemplatesLanguageJS::valuesToVars()</a></dd>
 							<dt><b>valuesToVars</b></dt>
-				<dd>in file QueryTemplatesLanguagePHP.php, method <a href="QueryTemplates/QueryTemplatesLanguagePHP.html#methodvaluesToVars">QueryTemplatesLanguagePHP::valuesToVars()</a></dd>
-							<dt><b>valuesToVars</b></dt>
 				<dd>in file QueryTemplatesSyntaxGenerators.php, method <a href="QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodvaluesToVars">QueryTemplatesSyntaxGenerators::valuesToVars()</a></dd>
-							<dt><b>varName</b></dt>
-				<dd>in file QueryTemplatesLanguageJS.php, method <a href="QueryTemplates/QueryTemplatesLanguageJS.html#methodvarName">QueryTemplatesLanguageJS::varName()</a></dd>
+							<dt><b>valuesToVars</b></dt>
+				<dd>in file QueryTemplatesLanguagePHP.php, method <a href="QueryTemplates/QueryTemplatesLanguagePHP.html#methodvaluesToVars">QueryTemplatesLanguagePHP::valuesToVars()</a></dd>
 							<dt><b>varName</b></dt>
 				<dd>in file QueryTemplatesLanguagePHP.php, method <a href="QueryTemplates/QueryTemplatesLanguagePHP.html#methodvarName">QueryTemplatesLanguagePHP::varName()</a></dd>
+							<dt><b>varName</b></dt>
+				<dd>in file QueryTemplatesLanguageJS.php, method <a href="QueryTemplates/QueryTemplatesLanguageJS.html#methodvarName">QueryTemplatesLanguageJS::varName()</a></dd>
 							<dt><b>varNameArray</b></dt>
 				<dd>in file QueryTemplatesLanguagePHP.php, method <a href="QueryTemplates/QueryTemplatesLanguagePHP.html#methodvarNameArray">QueryTemplatesLanguagePHP::varNameArray()</a></dd>
 							<dt><b>varNameObject</b></dt>
@@ -818,7 +820,7 @@
 							<dt><b>varsFromValues</b></dt>
 				<dd>in file QueryTemplatesSyntaxGenerators.php, method <a href="QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodvarsFromValues">QueryTemplatesSyntaxGenerators::varsFromValues()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Behaves as var_export, dumps variables from $varsArray as $key = value for  later use during template execution. Variables are prepended into selected  elemets.</dd>
 							<dt><b>varsToForm</b></dt>
-				<dd>in file QueryTemplatesSyntaxValues.php, method <a href="QueryTemplates/QueryTemplatesSyntaxValues.html#methodvarsToForm">QueryTemplatesSyntaxValues::varsToForm()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Injects executable code which toggles form fields values and selection  states according to value of variable $varName.</dd>
+				<dd>in file QueryTemplatesSyntaxVars.php, method <a href="QueryTemplates/QueryTemplatesSyntaxVars.html#methodvarsToForm">QueryTemplatesSyntaxVars::varsToForm()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Injects executable code which toggles form fields values and selection  states according to value of variable $varName.</dd>
 							<dt><b>varsToLoop</b></dt>
 				<dd>in file QueryTemplatesSyntaxVars.php, method <a href="QueryTemplates/QueryTemplatesSyntaxVars.html#methodvarsToLoop">QueryTemplatesSyntaxVars::varsToLoop()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Wraps selected elements with executable code iterating $varName as $rowName.</dd>
 							<dt><b>varsToLoopFirst</b></dt>
@@ -872,7 +874,7 @@
 	<a href="elementindex_QueryTemplates.html#top">top</a><br>
         <div class="credit">
 		    <hr />
-		    Documentation generated on Wed, 04 Mar 2009 15:59:18 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
+		    Documentation generated on Wed, 04 Mar 2009 19:38:59 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
 	      </div>
       </td></tr></table>
     </td>
