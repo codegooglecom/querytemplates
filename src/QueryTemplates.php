@@ -11,12 +11,11 @@
  * Library uses popular web 2.0 pattern load-traverse-modify thou jQuery like
  * chainable API and provides developer several rapid template filling methods.
  *
- * @version 1.0 dev4
+ * @version 1.0 beta4
  * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  * @link http://code.google.com/p/querytemplates/
  */
-
 require_once(dirname(__FILE__)."/QueryTemplatesTemplate.php");
 /**
  * Static methods namespace class.
