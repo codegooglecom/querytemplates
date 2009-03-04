@@ -4,11 +4,13 @@
 === Parameters ===
  * *$values* _Array|Object_
   Associative array or Object.
- * *$rowCallback* _rowCallback_
+ * *$rowCallback* _Callback|String_
   Callback triggered for every inserted row. Should support following  parameters: 
    * $dataRow mixed
    * $node phpQueryObject
    * $dataIndex mixed
+ * *$targetNodeSelector* _String|phpQueryObject_ = `null`
+
 
 
 === Description ===

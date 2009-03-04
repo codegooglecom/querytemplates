@@ -30,7 +30,9 @@ Method doesn't change selected elements stack.
 }}}
 === `QueryTemplates` formula ===
 {{{
- $template['node1']->valuesToVars($values);
+ $template['node1']->
+   varsFromValues($values)
+ ;
 
 }}}
 === Template ===

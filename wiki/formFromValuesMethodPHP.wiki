@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
-= `formFromVars` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [formFromSyntax formFrom] > [formFromVarsMethodPHP formFromVars]
+= `formFromValues` =
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [formFromSyntax formFrom] > [formFromValuesMethodPHP formFromValues]
 === Parameters ===
  * *$varNames* _String|Array_
   Array of names of following vars: 
@@ -10,7 +10,7 @@
    Represents actual errors as array of fields. Field can also be an array.
    * data `[2]`
    Overloads $defaultData during template's execution.
- Names should be without dollar signs.  Ex:  
+ Names should be without dollar signs.  Example:  
 {{{
  array('row', 'errors.row', 'data');
  $errors`['row']` = array(
@@ -19,6 +19,8 @@
  );
 
 }}}
+ * *$record* _Array_
+  TODO doc
  * *$structure* _Array_
   Form structure information. This should be easily fetchable from ORM layer.  Possible types: 
    * text (default)
@@ -37,22 +39,13 @@
   Where $fieldOptions can be (`key => value` pairs): 
    * label
    * id
-   * multiple (only select)  // TODO
+   * multiple (only select)
    * values (only radio, MANDATORY)
    * value (only checkbox, optional)
  *__form* is special field name, which represents form element, as an array.  All values from it will be pushed as form attributes.  If you wrap fields' array within another array, it will represent *fieldsets*,  which first value (with index 0) will be used as *legend* (optional).
- * *$defaultRecord* _Array_ = `null`
-  Default field's value. Used when field isn't present within supplied record.  Ex:  
-{{{
- $defaultRecord = array(
-     'text-field' => 'text-field default value',
-     'select-field' => 'bar2',
-     'select-field-optgroups-multiple' => array('group2_1', 'group2_2'),
-     'checkbox-field' => false,
- );
-
-}}}
- * *$defaultData* _Array_ = `null`
+ * *$errors* _Array_ = `null`
+  TODO doc
+ * *$data* _Array_ = `null`
   Additional data for fields. For now it's only used for populating select boxes.  Example:  
 {{{
  $defaultData = array(
@@ -106,19 +99,16 @@
 
 
 === Description ===
-EXPERIMENTAL - works, but not for production code
+Method formFromVars acts as flexible form helper. It creates customized  pure-markup form without the need of suppling a line of markup.
 
 
-Method formFromVars acts as flexible form helper. It creates customized  exacutable form without the need of suppling a line of markup.
-
-
-Form code is executed during template-execution and creates final form  using record from variable.
+Final form is available right after using this method.
 
 
 Created form have following features:
 
 
-   * shows data from record (array or object)
+   * shows data from record
 
    * shows errors
 
@@ -128,9 +118,7 @@ Created form have following features:
 
    * supports select elements with optgroups
 
-   * overloadable $defaultData
-
-   * overloadable $defaultRecord
+   * supports select multiple
 
 Created form can be customized using:
 
@@ -163,23 +151,103 @@ Created form can be customized using:
          'select-field' => array('select',
              'label' => 'select-field label',
          ),
-         'select-field-optgroups-multiple' => array('select',
-             'label' => 'select-field-optgroups label',
-         ),
          'radio-field' => array('radio',
              'values' => array('possibleValue1', 'possibleValue2')
          ),
          'textarea-field' => 'textarea',
      ),
  );
+ $data = array(
+     'select-field' => array(
+         // no optgroup
+         'bar1' => 'bar1 label',
+         'bar2' => 'bar2 label',
+         'bar3' => 'bar3 label',
+     ),
+ );
+ $record = array(
+   'text-field' => 'value from record',
+ );
+ $tempalte->
+   formFromValues($record, $structure, $data)
+ ;
+
+}}}
+=== Result DOM tree ===
+{{{
+ form#myFormId
+  - fieldset
+  -  - input#myFormId_hidden-field[name="hidden-field"][value="new hidden-fiel"]
+  -  - legend
+  -  -  - Text:Fieldset 1 lege
+  -  - div.input.text
+  -  -  - label
+  -  -  -  - Text:default-field l
+  -  -  - input#default-field-id[name="default-field"]
+  -  - div.input.text
+  -  -  - label
+  -  -  -  - Text:text-field labe
+  -  -  - input#text-field-id[name="text-field"][value="new text-field "]
+  -  -  - ul.errors
+  -  -  -  - li
+  -  -  -  -  - Text:text-field erro
+  -  - div.input.checkbox
+  -  -  - div
+  -  -  -  - Text:Checkbox field
+  -  -  - label
+  -  -  -  - Text:Checkbox-field
+  -  -  - input#myFormId_checkbox-field[name="checkbox-field"][value="1"][checked]
+  - fieldset
+  -  - legend
+  -  -  - Text:Fieldset 2 lege
+  -  - div.input.select
+  -  -  - label
+  -  -  -  - Text:select-field la
+  -  -  - select[name="select-field"]
+  -  -  -  - option[value="bar1"]
+  -  -  -  -  - Text:bar1 label
+  -  -  -  - option[value="bar2"]
+  -  -  -  -  - Text:bar2 label
+  -  -  -  - option[value="bar3"][selected]
+  -  -  -  -  - Text:bar3 label
+  -  - div.input.select
+  -  -  - label
+  -  -  -  - Text:select-field-op
+  -  -  - select[name="select-field-optgroups-multiple"]
+  -  -  -  - optgroup
+  -  -  -  -  - option[value="group1_1"]
+  -  -  -  -  -  - Text:group1_1 label
+  -  -  -  -  - option[value="group1_2"]
+  -  -  -  -  -  - Text:group1_2 label
+  -  -  -  - optgroup
+  -  -  -  -  - option[value="group2_1"][selected]
+  -  -  -  -  -  - Text:group2_1 label
+  -  -  -  -  - option[value="group2_2"]
+  -  -  -  -  -  - Text:group2_2 label
+  -  -  -  - option[value="bar"][selected]
+  -  -  -  -  - Text:Bar
+  -  -  - ul.errors
+  -  -  -  - li
+  -  -  -  -  - Text:error1
+  -  -  -  - li
+  -  -  -  -  - Text:error2
+  -  - div.input.radio
+  -  -  - label
+  -  -  -  - Text:Radio-field
+  -  -  - input[name="radio-field"][value="possibleValue1"]
+  -  -  - input[name="radio-field"][value="possibleValue2"][checked]
+  -  - div.input.textarea
+  -  -  - label
+  -  -  -  - Text:Textarea-field
+  -  -  - textarea#myFormId_textarea-field
 
 }}}
 ----
 
 == See also ==
+ * [formFromVarsMethodPHP formFromVars]
  * [varsToFormMethodPHP varsToForm]
  * [valuesToFormMethodPHP valuesToForm]
- * [formFromValuesMethodPHP formFromValues]
 
 
 === Comments allowed ===

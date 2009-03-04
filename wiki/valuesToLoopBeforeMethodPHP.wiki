@@ -1,0 +1,18 @@
+#sidebar SyntaxSidebar
+= `valuesToLoopBefore` =
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToLoopBeforeMethodPHP valuesToLoopBefore]
+=== Parameters ===
+ * *$values* 
+
+ * *$rowCallback* 
+
+ * *$targetNodeSelector*  = `null`
+
+
+
+=== Description ===
+
+----
+
+
+=== Comments allowed ===
