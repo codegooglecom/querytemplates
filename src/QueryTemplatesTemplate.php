@@ -197,9 +197,11 @@ class QueryTemplatesTemplate
 		require_once("$dir/QueryTemplatesLanguage".strtoupper($this->language).".php");
 		$languageClass = 'QueryTemplatesLanguage'.strtoupper($this->language);
 		call_user_func_array(array($languageClass, 'initialize'), array());
-		require_once("$dir/QueryTemplatesDOM.php");
-		require_once("$dir/QueryTemplatesSyntaxInjections.php");
+		require_once("$dir/QueryTemplatesSyntaxDOM.php");
+		require_once("$dir/QueryTemplatesSyntaxValues.php");
+		require_once("$dir/QueryTemplatesSyntaxCode.php");
 		require_once("$dir/QueryTemplatesSyntaxConditions.php");
+		require_once("$dir/QueryTemplatesSyntaxVars.php");
 		require_once("$dir/QueryTemplatesSyntaxGenerators.php");
 		// TODO customizable
 		require_once("$dir/QueryTemplatesSyntax.php");
