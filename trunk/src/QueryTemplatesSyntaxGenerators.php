@@ -122,6 +122,74 @@ class QueryTemplatesSyntaxGenerators extends QueryTemplatesSyntaxVars {
 	 *   formFromValues($record, $structure, $data)
 	 * ;
 	 * </code>
+	 * === Result DOM tree ===
+	 * <code>
+	 * form#myFormId
+	 *  - fieldset
+	 *  -  - input#myFormId_hidden-field[name="hidden-field"][value="new hidden-fiel"]
+	 *  -  - legend
+	 *  -  -  - Text:Fieldset 1 lege
+	 *  -  - div.input.text
+	 *  -  -  - label
+	 *  -  -  -  - Text:default-field l
+	 *  -  -  - input#default-field-id[name="default-field"]
+	 *  -  - div.input.text
+	 *  -  -  - label
+	 *  -  -  -  - Text:text-field labe
+	 *  -  -  - input#text-field-id[name="text-field"][value="new text-field "]
+	 *  -  -  - ul.errors
+	 *  -  -  -  - li
+	 *  -  -  -  -  - Text:text-field erro
+	 *  -  - div.input.checkbox
+	 *  -  -  - div
+	 *  -  -  -  - Text:Checkbox field 
+	 *  -  -  - label
+	 *  -  -  -  - Text:Checkbox-field
+	 *  -  -  - input#myFormId_checkbox-field[name="checkbox-field"][value="1"][checked]
+	 *  - fieldset
+	 *  -  - legend
+	 *  -  -  - Text:Fieldset 2 lege
+	 *  -  - div.input.select
+	 *  -  -  - label
+	 *  -  -  -  - Text:select-field la
+	 *  -  -  - select[name="select-field"]
+	 *  -  -  -  - option[value="bar1"]
+	 *  -  -  -  -  - Text:bar1 label
+	 *  -  -  -  - option[value="bar2"]
+	 *  -  -  -  -  - Text:bar2 label
+	 *  -  -  -  - option[value="bar3"][selected]
+	 *  -  -  -  -  - Text:bar3 label
+	 *  -  - div.input.select
+	 *  -  -  - label
+	 *  -  -  -  - Text:select-field-op
+	 *  -  -  - select[name="select-field-optgroups-multiple"]
+	 *  -  -  -  - optgroup
+	 *  -  -  -  -  - option[value="group1_1"]
+	 *  -  -  -  -  -  - Text:group1_1 label
+	 *  -  -  -  -  - option[value="group1_2"]
+	 *  -  -  -  -  -  - Text:group1_2 label
+	 *  -  -  -  - optgroup
+	 *  -  -  -  -  - option[value="group2_1"][selected]
+	 *  -  -  -  -  -  - Text:group2_1 label
+	 *  -  -  -  -  - option[value="group2_2"]
+	 *  -  -  -  -  -  - Text:group2_2 label
+	 *  -  -  -  - option[value="bar"][selected]
+	 *  -  -  -  -  - Text:Bar
+	 *  -  -  - ul.errors
+	 *  -  -  -  - li
+	 *  -  -  -  -  - Text:error1
+	 *  -  -  -  - li
+	 *  -  -  -  -  - Text:error2
+	 *  -  - div.input.radio
+	 *  -  -  - label
+	 *  -  -  -  - Text:Radio-field
+	 *  -  -  - input[name="radio-field"][value="possibleValue1"]
+	 *  -  -  - input[name="radio-field"][value="possibleValue2"][checked]
+	 *  -  - div.input.textarea
+	 *  -  -  - label
+	 *  -  -  -  - Text:Textarea-field
+	 *  -  -  - textarea#myFormId_textarea-field
+	 * </code>
 	 *
 	 * @param String|Array $varNames
 	 * Array of names of following vars:
@@ -132,7 +200,7 @@ class QueryTemplatesSyntaxGenerators extends QueryTemplatesSyntaxVars {
 	 * - data [2]
 	 *   Overloads $defaultData during template's execution.
 	 * Names should be without dollar signs.
-	 * Ex:
+	 * Example:
 	 * <code>
 	 * array('row', 'errors.row', 'data');
 	 * $errors['row'] = array(
@@ -267,7 +335,8 @@ EOF;
 EOF;
 		if (! isset($template))
 			$template = $defaultTemplate;
-		else if (is_array($template) && ! $template['__default'])
+		else if (is_array($template) && ! isset($template['__default']) 
+			|| (isset($template['__default']) && ! $template['__default']))
 			$template['__default'] = $defaultTemplate;
 		// setup $selectors
 		if (! isset($selectors))
@@ -729,7 +798,8 @@ EOF;
 EOF;
 		if (! isset($template))
 			$template = $defaultTemplate;
-		else if (is_array($template) && ! $template['__default'])
+		else if (is_array($template) && ! isset($template['__default']) 
+			|| (isset($template['__default']) && ! $template['__default']))
 			$template['__default'] = $defaultTemplate;
 		// setup $selectors
 		if (! isset($selectors))
