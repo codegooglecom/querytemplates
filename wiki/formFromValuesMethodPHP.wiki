@@ -74,10 +74,13 @@
 
  * *$selectors* _Array_ = `null`
   Array of selectors indexed by it's type. Allows to customize lookups inside  inputs wrapper. Possible values are:
-   * error - selects field's error wrapper    * dafault value is '.errors'
-   * label - selects field's label node (can be div, span, etc)    * default value is 'label:first'
+   * error - selects field's error wrapper
+     * dafault value is '.errors'
+   * label - selects field's label node (can be div, span, etc)
+     * default value is 'label:first'
      * use array to per field name selector, '__default' means default
-   * input - selects field's input node: input, textarea or select    * default value is 'input:first'
+   * input - selects field's input node: input, textarea or select
+     * default value is 'input:first'
      * use array to per field name selector, '__default' means default
      * %t is replaced by field node type (use it with customized per field $template)
  * *$fieldCallback* _Array|String|Callback_ = `null`
