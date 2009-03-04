@@ -163,7 +163,13 @@ abstract class QueryTemplates {
 		}
 		return false;
 	}
-	public function toJSON($data) {
+	/**
+	 * Converts $data to JSON format.
+	 * 
+	 * @param Array|Object $data
+	 * @return String
+	 */
+	public static function toJSON($data) {
 		$dir = dirname(__FILE__);
 		if (! class_exists('phpQuery')) {
 			$included = @include_once('phpQuery.php');
@@ -171,6 +177,21 @@ abstract class QueryTemplates {
 				require_once("$dir/phpQuery/phpQuery.php");
 		}
 		return phpQuery::toJSON($data);
+	}
+	/**
+	 * Converts JSON string to array or object.
+	 * 
+	 * @param String $data
+	 * @return Array|Object
+	 */
+	public static function parseJSON($json) {
+		$dir = dirname(__FILE__);
+		if (! class_exists('phpQuery')) {
+			$included = @include_once('phpQuery.php');
+			if (! $included)
+				require_once("$dir/phpQuery/phpQuery.php");
+		}
+		return phpQuery::parseJSON($json);
 	}
 	/**
 	 * Creates new template and returns it's path.
