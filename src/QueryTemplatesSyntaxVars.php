@@ -2534,7 +2534,7 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @return unknown_type
 	 */
 	public function loopOne($varName, $asVarName, $keyName = null) {
-		return $this->varsToLoopOne($varName, $asVarName, $keyName);
+		return $this->varsToLoopFirst($varName, $asVarName, $keyName);
 	}
 	/**
 	 * @deprecated use varsToLoop
