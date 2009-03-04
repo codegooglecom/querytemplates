@@ -7,7 +7,7 @@
  * *$values* _Array|Object_
   Associative array or Object containing markup, text or instance of Callback.
  * *$fieldCallback* _Callback|string_ = `null`
-  Callback triggered after every insertion. Three parameters are passed to  this callback: 
+  Callback triggered after every insertion. Three parameters are passed to  this callback:
    * $node phpQueryObject
    * $field String
    * $target String|array

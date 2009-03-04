@@ -2,51 +2,34 @@
 = `formFromValues` =
 [http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [formFromSyntax formFrom] > [formFromValuesMethodPHP formFromValues]
 === Parameters ===
- * *$varNames* _String|Array_
-  Array of names of following vars: 
-   * record `[0]`
-   Represents actual record as array of fields.
-   * errors `[1]`
-   Represents actual errors as array of fields. Field can also be an array.
-   * data `[2]`
-   Overloads $defaultData during template's execution.
- Names should be without dollar signs.  Example:  
-{{{
- array('row', 'errors.row', 'data');
- $errors`['row']` = array(
-   'field1' => 'one error',
-   'field2' => array('first error', 'second error')
- );
-
-}}}
  * *$record* _Array_
   TODO doc
  * *$structure* _Array_
-  Form structure information. This should be easily fetchable from ORM layer.  Possible types: 
+  Form structure information. This should be easily fetchable from ORM layer.  Possible types:
    * text (default)
    * password
    * hidden
    * checkbox
    * radio
-   * textarea
- Convention:  
+   * textarea  
+  Convention:
 {{{
  'fieldName' => array(
    'fieldType', $fieldOptions
  )
 
 }}}
-  Where $fieldOptions can be (`key => value` pairs): 
+  Where $fieldOptions can be (`key => value` pairs):
    * label
    * id
    * multiple (only select)
    * values (only radio, MANDATORY)
-   * value (only checkbox, optional)
- *__form* is special field name, which represents form element, as an array.  All values from it will be pushed as form attributes.  If you wrap fields' array within another array, it will represent *fieldsets*,  which first value (with index 0) will be used as *legend* (optional).
+   * value (only checkbox, optional)  
+  There can be special field *`__form`*, which represents form element, as an array.  All values from it will be pushed as form attributes.  If you wrap fields' array within another array, it will represent *fieldsets*,  which value with index *`__label`* will be used as legend (optional).
  * *$errors* _Array_ = `null`
   TODO doc
  * *$data* _Array_ = `null`
-  Additional data for fields. For now it's only used for populating select boxes.  Example:  
+  Additional data for fields. For now it's only used for populating select boxes.  Example:
 {{{
  $defaultData = array(
      'select-field-optgroups' => array(
@@ -65,8 +48,9 @@
  );
 
 }}}
+
  * *$template* _Array|String_ = `null`
-  Input wrapper template. This template will be used for each field. Use array  to per field template, '__default' means default.  All types allowed in $structure can be used as per-type default template  when indexed like '__$type' ex '__checkbox'.  To each input wrapper will be added a class which is field's type.  Example:  
+  Input wrapper template. This template will be used for each field. Use array  to per field template, '__default' means default.  All types allowed in $structure can be used as per-type default template  when indexed like '__$type' ex '__checkbox'.  To each input wrapper will be added a class which is field's type.  Example:
 {{{
  $templates`['__checkbox']` = '
  <div class="input">
@@ -76,7 +60,7 @@
  </div>';
 
 }}}
-  Default template is:  
+  Default template is:
 {{{
  <div class="input">
    <label/>
@@ -87,13 +71,15 @@
  </div>
 
 }}}
- * *$selectors* _Array_ = `null`
-  Array of selectors indexed by it's type. Allows to customize lookups inside  inputs wrapper. Possible values are: 
-   * default value is 'label:first'
 
-   * default value is 'input:first'
-   * use array to per field name selector, '__default' means default
-   * %t is replaced by field node type (use it with customized per field $template)
+ * *$selectors* _Array_ = `null`
+  Array of selectors indexed by it's type. Allows to customize lookups inside  inputs wrapper. Possible values are:
+   * error - selects field's error wrapper    * dafault value is '.errors'
+   * label - selects field's label node (can be div, span, etc)    * default value is 'label:first'
+     * use array to per field name selector, '__default' means default
+   * input - selects field's input node: input, textarea or select    * default value is 'input:first'
+     * use array to per field name selector, '__default' means default
+     * %t is replaced by field node type (use it with customized per field $template)
  * *$fieldCallback* _Array|String|Callback_ = `null`
   Callback triggered after preparation of each field.
 
@@ -107,28 +93,17 @@ Final form is available right after using this method.
 
 Created form have following features:
 
-
    * shows data from record
-
    * shows errors
-
    * supports default values
-
    * supports radios and checkboxes
-
    * supports select elements with optgroups
-
    * supports select multiple
-
 Created form can be customized using:
 
-
    * input wrapper template (per field name, per field type and default)
-
    * selectors (for input, label and errors)
-
    * callbacks (per field)
-
 == Example ==
 {{{
  $structure = array(

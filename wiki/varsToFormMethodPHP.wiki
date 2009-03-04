@@ -16,17 +16,11 @@ Injects executable code which toggles form fields values and selection  states a
 
 This includes:
 
-
-   * input`[type=radio]``[checked]`
-
-   * input`[type=checkbox]``[checked]`
-
-   * select > option`[selected]`
-
-   * input`[value]`
-
+   * input[type=radio][checked]
+   * input[type=checkbox][checked]
+   * select > option[selected]
+   * input[value]
    * textarea
-
 Inputs are selected according to $selectorPattern, where %k represents  variable's key.
 
 
