@@ -5,7 +5,7 @@
 == Methods ==
 === PHP ===
  * [formFromVarsMethodPHP formFromVars]
- * [formFromValuesPHP formFromValues]
+ * [formFromValuesMethodPHP formFromValues]
  * [inputsFromValuesMethodPHP inputsFromValues]
 === JS ===
  * formFromValues
