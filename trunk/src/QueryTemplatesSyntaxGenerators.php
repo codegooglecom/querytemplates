@@ -8,7 +8,7 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  * @link http://code.google.com/p/querytemplates/
  */
-class QueryTemplatesSyntaxGenerators extends QueryTemplatesSyntaxConditions {
+class QueryTemplatesSyntaxGenerators extends QueryTemplatesSyntaxVars {
 	/**
 	 * Creates markup with INPUT tags and prepends it to form.
 	 * If selected element isn't a FORM then find('form') is executed.
@@ -61,22 +61,195 @@ class QueryTemplatesSyntaxGenerators extends QueryTemplatesSyntaxConditions {
 		return $this;
 	}
 	/**
+	 * Method formFromVars acts as flexible form helper. It creates customized 
+	 * pure-markup form without the need of suppling a line of markup.
+	 * 
+	 * Final form is available right after using this method.
+	 * 
+	 * Created form have following features:
+	 * - shows data from record
+	 * - shows errors
+	 * - supports default values
+	 * - supports radios and checkboxes
+	 * - supports select elements with optgroups
+	 * - supports select multiple
+	 * 
+	 * Created form can be customized using:
+	 * - input wrapper template (per field name, per field type and default)
+	 * - selectors (for input, label and errors)
+	 * - callbacks (per field)
 	 *
-	 * @param $record
-	 * @param $structure
-	 * @param $errors
-	 * @param $defaults
-	 * @param $defaultData
-	 * @param $template
-	 * @param $selectors
-	 * @param $fieldCallback
-	 * @return unknown_type
+	 * == Example ==
+	 * <code>
+	 * $structure = array(
+	 * 	'__form' => array('id' => 'myFormId'),
+	 * 	array( 
+	 * 		'__label' => 'Fieldset 1 legend',
+	 * 		'default-field' => array(	// 'text' is default
+	 * 			'label' => 'default-field label',
+	 * 			'id' => 'default-field-id',
+	 * 		),
+	 * 		'text-field' => array('text',
+	 * 			'label' => 'text-field label',
+	 * 			'id' => 'text-field-id',
+	 * 		),
+	 * 		'hidden-field' => 'hidden',
+	 * 		'checkbox-field' => 'checkbox',
+	 * 	),
+	 * 	array(
+	 * 		'__label' => 'Fieldset 2 legend',
+	 * 		'select-field' => array('select', 
+	 * 			'label' => 'select-field label',
+	 * 		),
+	 * 		'radio-field' => array('radio', 
+	 * 			'values' => array('possibleValue1', 'possibleValue2')
+	 * 		),
+	 * 		'textarea-field' => 'textarea',
+	 * 	),
+	 * );
+	 * $data = array(
+	 * 	'select-field' => array(
+	 * 		// no optgroup
+	 * 		'bar1' => 'bar1 label',
+	 * 		'bar2' => 'bar2 label',
+	 * 		'bar3' => 'bar3 label',
+	 * 	),
+	 * );
+	 * $record = array(
+	 *   'text-field' => 'value from record',
+	 * );
+	 * $tempalte->
+	 *   formFromValues($record, $structure, $data)
+	 * ;
+	 * </code>
+	 *
+	 * @param String|Array $varNames
+	 * Array of names of following vars:
+	 * - record [0]
+	 *   Represents actual record as array of fields.
+	 * - errors [1]
+	 *   Represents actual errors as array of fields. Field can also be an array.
+	 * - data [2]
+	 *   Overloads $defaultData during template's execution.
+	 * Names should be without dollar signs.
+	 * Ex:
+	 * <code>
+	 * array('row', 'errors.row', 'data');
+	 * $errors['row'] = array(
+	 *   'field1' => 'one error',
+	 *   'field2' => array('first error', 'second error')
+	 * );
+	 * </code>
+	 *
+	 * @param Array $record
+	 * TODO doc
+	 * 
+	 * @param Array $structure
+	 * Form structure information. This should be easily fetchable from ORM layer.
+	 * Possible types:
+	 * - text (default)
+	 * - password
+	 * - hidden
+	 * - checkbox
+	 * - radio
+	 * - textarea
+	 * Convention:
+	 * <code>
+	 * 'fieldName' => array(
+	 *   'fieldType', $fieldOptions
+	 * )
+	 * </code>
+	 * Where $fieldOptions can be (`key => value` pairs):
+	 * - label
+	 * - id
+	 * - multiple (only select)
+	 * - values (only radio, MANDATORY)
+	 * - value (only checkbox, optional)
+	 * *__form* is special field name, which represents form element, as an array.
+	 * All values from it will be pushed as form attributes.
+	 * If you wrap fields' array within another array, it will represent *fieldsets*,
+	 * which first value (with index 0) will be used as *legend* (optional).
+	 *
+	 * @param Array $errors
+	 * TODO doc
+	 *
+	 * @param Array $data
+	 * Additional data for fields. For now it's only used for populating select boxes.
+	 * Example:
+	 * <code>
+	 * $defaultData = array(
+	 * 	'select-field-optgroups' => array(
+	 * 		array(	// 1st optgroup
+	 * 			'__label' => 'optgroup 1 label',
+	 * 			'group1_1' => 'group1_1 label',
+	 * 			'group1_2' => 'group1_2 label',
+	 * 		),
+	 * 		array(	// 2nd optgroup
+	 * 			'__label' => 'optgroup 2 label',
+	 * 			'group2_1' => 'group2_1 label',
+	 * 			'group2_2' => 'group2_2 label',
+	 * 		),
+	 * 		'bar' => 'Bar',	// no optgroup
+	 * 	),
+	 * );
+	 * </code>
+	 *
+	 * @param Array|String $template
+	 * Input wrapper template. This template will be used for each field. Use array
+	 * to per field template, '__default' means default.
+	 * All types allowed in $structure can be used as per-type default template 
+	 * when indexed like '__$type' ex '__checkbox'.
+	 * To each input wrapper will be added a class which is field's type.
+	 * Example:
+	 * <code>
+	 * $templates['__checkbox'] = '
+	 * <div class="input">
+	 * 	<div>Checkbox field below</div>
+	 *   <label/>
+	 *   <input/>
+	 * </div>';
+	 * </code>
+	 * Default template is:
+	 * <code>
+	 * <div class="input">
+	 *   <label/>
+	 *   <input/>
+	 *   <ul class="errors">
+	 *     <li/>
+	 *   </ul>
+	 * </div>
+	 * </code>
+	 *
+	 * @param Array $selectors
+	 * Array of selectors indexed by it's type. Allows to customize lookups inside
+	 * inputs wrapper. Possible values are:
+	 * - error - selects field's error wrapper
+	 *   - dafault value is '.errors'
+	 * - label - selects field's label node (can be div, span, etc)
+	 *   - default value is 'label:first'
+	 *   - use array to per field name selector, '__default' means default
+	 * - input - selects field's input node: input, textarea or select
+	 *   - default value is 'input:first'
+	 *   - use array to per field name selector, '__default' means default
+	 *   - %t is replaced by field node type (use it with customized per field $template)
+	 *
+	 * @param Array|String|Callback $fieldCallback
+	 * Callback triggered after preparation of each field.
+	 *
+	 * @return QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::formFromVars()
+	 * @see QueryTemplatesPhpQuery::valuesToForm()
+	 * @see QueryTemplatesPhpQuery::varsToForm()
+	 *
+	 * @TODO support objects for record and data
+	 * @TODO maybe support callbacks per input type, before/after, maybe for errors too ?
+	 * @TODO hidden fields and fieldCallback
 	 */
-	function formFromValues($record, $structure, $errors = null, $defaults = null, $defaultData = null,
+	function formFromValues($record, $structure, $errors = null, $data = null, 
 		$template = null, $selectors = null, $fieldCallback = null) {
 		// setup $template
-		if (! $template && ! is_null($errors))
-			$template = <<<EOF
+		if (! is_null($errors))
+			$defaultTemplate = <<<EOF
 <div class="input">
   <label/>
   <input/>
@@ -85,13 +258,17 @@ class QueryTemplatesSyntaxGenerators extends QueryTemplatesSyntaxConditions {
   </ul>
 </div>
 EOF;
-		else if (! $template && is_null($errors))
-			$template = <<<EOF
+		else
+			$defaultTemplate = <<<EOF
 <div class="input">
   <label/>
   <input/>
 </div>
 EOF;
+		if (! isset($template))
+			$template = $defaultTemplate;
+		else if (is_array($template) && ! $template['__default'])
+			$template['__default'] = $defaultTemplate;
 		// setup $selectors
 		if (! isset($selectors))
 			$selectors = array();
@@ -120,78 +297,292 @@ EOF;
 		}
 		foreach($structure as $fieldsetFields) {
 			$fieldset = $this->newInstance('<fieldset/>');
-			if (is_string($fieldsetFields[0])) {
-				$fieldset->append("<legend>{$fieldsetFields[0]}</legend>");
-				unset($fieldsetFields[0]);
+			if (is_string($fieldsetFields['__label'])) {
+				$fieldset->append("<legend>{$fieldsetFields['__label']}</legend>");
+				unset($fieldsetFields['__label']);
 			}
 			foreach($fieldsetFields as $field => $info) {
-
+				// prepare $info
+				if (! is_array($info))
+					$info = array($info);
+				if (! isset($info[0]))
+					$info[0] = 'text';
+				// prepare id
+				$id = isset($info['id'])
+					? $info['id']
+					: "{$formID}_{$field}";
+				// prepare template
+				if (is_array($template)) {
+					if (isset($template[$field])) {
+						$markup = $template[$field];
+					} else if (isset($template["__{$info[0]}"])) {
+						$markup = $template["__{$info[0]}"];
+					} else if (isset($template['__default'])) {
+						$markup = $template['__default'];
+					}
+				} else {
+					$markup = $template;
+				}
+				$markup = $this->newInstance($markup);
+				// setup selectors
+				$inputSelector = $labelSelector = null;
+				foreach(array('input', 'label') as $selectorType) {
+					if (is_array($selectors[$selectorType])) {
+						if (isset($selectors[$selectorType][$field])) {
+							${$selectorType.'Selector'} = $selectors[$selectorType][$field];
+						} else if (isset($selectors[$selectorType]['__default'])) {
+							${$selectorType.'Selector'} = $selectors[$selectorType]['__default'];
+						} else {
+							throw new Exception("No $selectorType selector for field $field. Provide "
+								."default one or one selector for all fields");
+						}
+					} else {
+						${$selectorType.'Selector'} = $selectors[$selectorType];
+					}
+				}
+				switch($info[0]) {
+					case 'textarea':
+					case 'select':
+						$inputSelector = str_replace('%t', $info[0], $inputSelector);
+						break;
+					default:
+						$inputSelector = str_replace('%t', 'input', $inputSelector);
+				}
+				switch($info[0]) {
+					// TEXTAREA
+					case 'textarea':
+						$input = $this->newInstance("<textarea></textarea>")
+							->attr('id', $id);
+						if (isset($record[$field]))
+							$input->markup($record[$field]);
+						$markup[$inputSelector]->replaceWith($input);
+						$markup[$labelSelector]->attr('for', $id);
+						break;
+					// SELECT
+					case 'select':
+						if (! isset($data[$field]))
+							throw new Exception("\$data['$field'] should be present to "
+								."populate select element. Otherwise remove \$structure['$field'].");
+						$input = $this->newInstance("<select name='$field'/>");
+						$markup[$inputSelector]->replaceWith($input);
+						if (isset($info['multiple'])) {
+							$input->attr('multiple', true);
+						} else {
+							$info['multiple'] = false;
+						}
+						if (! function_exists('option_as8231kdqwhasd')) {
+							function option_as8231kdqwhasd($option, $scope) {
+								extract($scope);
+								if (! isset($record[$field]))
+									return;
+								if ($info['multiple'] && in_array($option->attr('value'), $record[$field]))
+									$option->attr('selected', 'selected');
+								else if (! $info['multiple'] && $option->attr('value') == $record[$field])
+									$option->attr('selected', 'selected');
+							}
+						}
+						$scope = compact('info', 'record', 'field');
+						$optionCallback = new Callback('option_as8231kdqwhasd');
+						$option = $this->newInstance("<option/>");
+						$optgroup = $this->newInstance("<optgroup/>");
+						foreach($data[$field] as $value => $label) {
+							if (is_array($label)) {
+								$target = $optgroup->clone();
+								if (isset($label['__label'])) {
+									$target->attr('label', $label['__label']);
+									unset($label['__label']);
+								}
+								$input->append($target);
+								foreach($label as $_value => $_label) {
+									$target->append(
+										$option->clone()->
+											attr('value', $_value)->
+											markup($_label)->
+											callback($optionCallback, $scope)
+									);
+								}
+							} else {
+								$input->append(
+									$option->clone()->
+										attr('value', $value)->
+										markup($label)->
+										callback($optionCallback, $scope)
+								);
+							}
+						}
+						$markup[$labelSelector]->attr('for', $id);
+						$option = $target = $optgroup = null; 
+						break;
+					// RADIO
+					case 'radio':
+						if (! $info['values'])
+							throw new Exception("'values' property needed for radio inputs");
+						$inputs = array();
+						$input = $markup[$inputSelector]->
+							attr('type', 'radio')->
+							attr('name', $field)->
+							attr('value', $info['values'][0])->
+							removeAttr('checked');
+						$inputs[] = $input->get(0);
+						$lastInput = $input;
+						foreach(array_slice($info['values'], 1) as $value) {
+							$lastInput = $input->clone()->
+								insertAfter($lastInput)->
+								attr('value', $value);
+							$inputs[] = $lastInput->get(0);
+						}
+						if (isset($record[$field])) {
+							phpQuery::pq($inputs)->
+								filter("[value='{$record[$field]}']")->
+									attr('checked', 'checked');
+						}
+						$inputs = $lastInput = null;
+						$markup[$labelSelector]->removeAttr('for');
+						break;
+					// HIDDEN
+					case 'hidden':
+						$markup = null;
+						$input = $this->newInstance('<input/>')->
+							attr('type', 'hidden')->
+							attr('name', $field)->
+							attr('id', $id);
+						if (isset($record[$field]))
+							$input->attr('value', $record[$field]);
+						$fieldset->prepend($input);
+						break;
+					// CHECKBOX
+					case 'checkbox':
+						$value = isset($info['value'])
+							? $info['value'] : '1';
+						$input = $markup[$inputSelector]->
+							attr('type', $info[0])->
+							attr('name', $field)->
+							attr('id', $id)->
+							attr('value', $value)
+						;
+						if (isset($record[$field]) && $record[$field])
+							$input->attr('checked', 'checked');
+						$markup[$labelSelector]->attr('for', $id);
+						break;
+					// TEXT, PASSWORD, others
+					default:
+						$input = $markup[$inputSelector]->
+							attr('type', $info[0])->
+							attr('name', $field)->
+							removeAttr('value')->
+							attr('id', $id);
+						if (isset($record[$field]))
+							$input->attr('value', $record[$field]);
+						$markup[$labelSelector]->attr('for', $id);
+						$code = null;
+						break;
+				}
+				if ($markup) {
+					$markup->addClass($info[0]);
+					// label
+					$label = isset($info['label'])
+						? $info['label'] : ucfirst($field);
+					$markup[$labelSelector] = $label;
+					// errors
+					if (isset($errors)) {
+						if (isset($errors[$field]) && $errors[$field]) {
+							if (! is_array($errors[$field]))
+								$errors[$field] = array($errors[$field]);
+							$markup[ $selectors['errors'] ]->
+								find('>*')->
+									valuesToLoopFirst($errors[$field], new CallbackBody(
+										'$data, $node', '$node->markup($data);'
+									));
+						} else {
+							$markup[ $selectors['errors'] ]->remove();
+						}
+					}
+					if ($fieldCallback)
+						phpQuery::callbackRun($fieldCallback, array($markup));
+					$fieldset->append($markup);
+				}
 			}
+			$form->append($fieldset);
 		}
+		$input = $code = null;
+		$this->append($form);
+		return $this;
 	}
 	/**
-	 * Method formFromVars acts as form helper. It creates a form without the
-	 * need of suppling a line of markup. Created form have following features:
+	 * EXPERIMENTAL - works, but not for production code
+	 * 
+	 * Method formFromVars acts as flexible form helper. It creates customized 
+	 * exacutable form without the need of suppling a line of markup.
+	 * 
+	 * Form code is executed during template-execution and creates final form 
+	 * using record from variable. 
+	 * 
+	 * Created form have following features:
 	 * - shows data from record (array or object)
 	 * - shows errors
 	 * - supports default values
 	 * - supports radios and checkboxes
 	 * - supports select elements with optgroups
+	 * - overloadable $defaultData
+	 * - overloadable $defaultRecord
+	 * 
+	 * Created form can be customized using:
+	 * - input wrapper template (per field name, per field type and default)
+	 * - selectors (for input, label and errors)
+	 * - callbacks (per field)
 	 *
-	 * Example:
+	 * == Example ==
 	 * <code>
 	 * $structure = array(
-	 *  // special field representing form element
-	 * 	'__form' => array('id' => 'dasdas'),
-	 * 	// TODO fieldsets
-	 * //	array('Legend Label', array(
-	 * //			'field1' => array('select', ...),
-	 * //		),
-	 * //	),
-	 * 	'field2' => array('select',
-	 * 		'optgroups' => array('optgroup1', 'optgroup2'),
-	 * 		'multiple' => true,	// TODO
-	 * 		'label' => 'Field Name',
+	 * 	'__form' => array('id' => 'myFormId'),
+	 * 	array( 
+	 * 		'__label' => 'Fieldset 1 legend',
+	 * 		'default-field' => array(	// 'text' is default
+	 * 			'label' => 'default-field label',
+	 * 			'id' => 'default-field-id',
+	 * 		),
+	 * 		'text-field' => array('text',
+	 * 			'label' => 'text-field label',
+	 * 			'id' => 'text-field-id',
+	 * 		),
+	 * 		'hidden-field' => 'hidden',
+	 * 		'checkbox-field' => 'checkbox',
 	 * 	),
-	 * 	'field12' => array('select',
-	 * 		'label' => 'no optgroups',
+	 * 	array(
+	 * 		'__label' => 'Fieldset 2 legend',
+	 * 		'select-field' => array('select', 
+	 * 			'label' => 'select-field label',
+	 * 		),
+	 * 		'select-field-optgroups-multiple' => array('select',
+	 * 			'label' => 'select-field-optgroups label',
+	 * 		),
+	 * 		'radio-field' => array('radio', 
+	 * 			'values' => array('possibleValue1', 'possibleValue2')
+	 * 		),
+	 * 		'textarea-field' => 'textarea',
 	 * 	),
-	 * 	'field3' => array('text',
-	 * 		'label' => 'Field3 Label',
-	 * 		'id' => 'someID',
-	 * 	),
-	 * 	'field4' => array(	// 'text' is default
-	 * 		'label' => 'Field4 Label',
-	 * 		'id' => 'someID2',
-	 * 	),
-	 * 	'field5' => 'hidden',
-	 * 	'field6' => array('radio',
-	 * 		'values' => array('possibleValue1', 'possibleValue2')
-	 * 	),
-	 * 	'field7' => 'checkbox',
-	 * 	'field234' => 'textarea',
 	 * );
 	 * </code>
 	 *
-	 * @param $varNames
+	 * @param String|Array $varNames
 	 * Array of names of following vars:
 	 * - record [0]
 	 *   Represents actual record as array of fields.
 	 * - errors [1]
 	 *   Represents actual errors as array of fields. Field can also be an array.
-	 * - additional data [2]
+	 * - data [2]
 	 *   Overloads $defaultData during template's execution.
 	 * Names should be without dollar signs.
 	 * Ex:
 	 * <code>
 	 * array('row', 'errors.row', 'data');
-	 * $errors = array(
+	 * $errors['row'] = array(
 	 *   'field1' => 'one error',
 	 *   'field2' => array('first error', 'second error')
 	 * );
 	 * </code>
 	 *
-	 * @param $structure
+	 * @param Array $structure
 	 * Form structure information. This should be easily fetchable from ORM layer.
 	 * Possible types:
 	 * - text (default)
@@ -209,48 +600,63 @@ EOF;
 	 * Where $fieldOptions can be (`key => value` pairs):
 	 * - label
 	 * - id
-	 * - multiple (only select)
-	 * - optgroups (only select)
-	 * - values (only radio)
+	 * - multiple (only select)  // TODO
+	 * - values (only radio, MANDATORY)
+	 * - value (only checkbox, optional)
 	 * *__form* is special field name, which represents form element, as an array.
 	 * All values from it will be pushed as form attributes.
 	 * If you wrap fields' array within another array, it will represent *fieldsets*,
 	 * which first value (with index 0) will be used as *legend* (optional).
 	 *
-	 * @param $defaults
+	 * @param Array $defaultRecord
 	 * Default field's value. Used when field isn't present within supplied record.
 	 * Ex:
 	 * <code>
-	 * $defaults = array(
-	 * 	'field2' => 'group2_1',
-	 * 	'field234' => 'lorem ipsum dolor sit sit sit...',
-	 * 	'field2' => array('value2', 'dadas', 'fsdsf'),
+	 * $defaultRecord = array(
+	 * 	'text-field' => 'text-field default value',
+	 * 	'select-field' => 'bar2',
+	 * 	'select-field-optgroups-multiple' => array('group2_1', 'group2_2'),
+	 * 	'checkbox-field' => false,
 	 * );
 	 * </code>
 	 *
-	 * @param $defaultData
+	 * @param Array $defaultData
 	 * Additional data for fields. For now it's only used for populating select boxes.
 	 * Example:
 	 * <code>
 	 * $defaultData = array(
-	 * 	'field2' => array(
-	 * 		array(	// optgroup
-	 * 			'foo' => 'Foo',
-	 * 			'bar2' => 'Bar',
+	 * 	'select-field-optgroups' => array(
+	 * 		array(	// 1st optgroup
+	 * 			'__label' => 'optgroup 1 label',
+	 * 			'group1_1' => 'group1_1 label',
+	 * 			'group1_2' => 'group1_2 label',
 	 * 		),
-	 * 		array(	// optgroup
-	 * 			'group2_1' => 'group2_1',
-	 * 			'group2_2' => 'group2_2',
+	 * 		array(	// 2nd optgroup
+	 * 			'__label' => 'optgroup 2 label',
+	 * 			'group2_1' => 'group2_1 label',
+	 * 			'group2_2' => 'group2_2 label',
 	 * 		),
 	 * 		'bar' => 'Bar',	// no optgroup
 	 * 	),
 	 * );
 	 * </code>
 	 *
-	 * @param $template
+	 * @param Array|String $template
 	 * Input wrapper template. This template will be used for each field. Use array
 	 * to per field template, '__default' means default.
-	 * Default value:
+	 * All types allowed in $structure can be used as per-type default template 
+	 * when indexed like '__$type' ex '__checkbox'.
+	 * To each input wrapper will be added a class which is field's type.
+	 * Example:
+	 * <code>
+	 * $templates['__checkbox'] = '
+	 * <div class="input">
+	 * 	<div>Checkbox field below</div>
+	 *   <label/>
+	 *   <input/>
+	 * </div>';
+	 * </code>
+	 * Default template is:
 	 * <code>
 	 * <div class="input">
 	 *   <label/>
@@ -261,7 +667,7 @@ EOF;
 	 * </div>
 	 * </code>
 	 *
-	 * @param $selectors
+	 * @param Array $selectors
 	 * Array of selectors indexed by it's type. Allows to customize lookups inside
 	 * inputs wrapper. Possible values are:
 	 * - error - selects field's error wrapper
@@ -274,15 +680,22 @@ EOF;
 	 *   - use array to per field name selector, '__default' means default
 	 *   - %t is replaced by field node type (use it with customized per field $template)
 	 *
-	 * @param $fieldCallback
+	 * @param Array|String|Callback $fieldCallback
 	 * Callback triggered after preparation of each field.
 	 *
 	 * @return QueryTemplatesParse
+	 * @see QueryTemplatesPhpQuery::formFromValues()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 *
-	 * @TODO maybe support callbacks (per input type, before/after, maybe for errors too ?)
-	 * @TODO record, data, structure, defaultRecord, defaultData
+	 * @TODO support objects for record and data
+	 * @TODO select[multiple]
+	 * @TODO move radio values to data
+	 * @TODO move checkbox values to data
+	 * @TODO make checkbox and radios like select
+	 * @TODO write methods used here as part of syntax classes
+	 * @TODO maybe support callbacks per input type, before/after, maybe for errors too ?
+	 * @TODO hidden fields and fieldCallback
 	 */
 	function formFromVars($varNames, $structure, $defaultRecord = null, $defaultData = null,
 		$template = null, $selectors = null, $fieldCallback = null) {
@@ -314,9 +727,9 @@ EOF;
   <input/>
 </div>
 EOF;
-		if (is_array($template))
+		if (! isset($template))
 			$template = $defaultTemplate;
-		else if (! is_array($template) && ! $template['__default'])
+		else if (is_array($template) && ! $template['__default'])
 			$template['__default'] = $defaultTemplate;
 		// setup $selectors
 		if (! isset($selectors))
@@ -356,21 +769,24 @@ EOF;
 				unset($fieldsetFields['__label']);
 			}
 			foreach($fieldsetFields as $field => $info) {
+				// prepare $info
 				if (! is_array($info))
 					$info = array($info);
+				if (! isset($info[0]))
+					$info[0] = 'text';
+				// prepare id
 				$id = isset($info['id'])
 					? $info['id']
 					: "{$formID}_{$field}";
+				// prepare template
 				if (is_array($template)) {
 					if (isset($template[$field])) {
 						$markup = $template[$field];
+					} else if (isset($template["__{$info[0]}"])) {
+						$markup = $template["__{$info[0]}"];
 					} else if (isset($template['__default'])) {
 						$markup = $template['__default'];
 					}
-//					else {
-//						throw new Exception("No $selectorType selector for field $field. Provide "
-//							."default one or one selector for all fields");
-//					}
 				} else {
 					$markup = $template;
 				}
@@ -407,7 +823,7 @@ EOF;
 						$markup[$inputSelector]->replaceWith($input);
 						if (isset($defaultRecord[$field])) {
 							$input->qt_langMethod('markup',
-								self::formFromVars_CodeValue($this, compact(
+								self::_formFromVars_CodeValue($this, compact(
 									'input', 'field', 'defaultRecord', 'varRecord'
 								))
 							);
@@ -554,13 +970,13 @@ EOF;
 						);
 						// create templates
 						$optionTemplate = $this->newInstance("<optgroup><option/></optgroup><option/>");
-						$template = array(
+						$optionTemplates = array(
 							'default_default' => $optionTemplate->clone(),
 							'record_default' => $optionTemplate->clone(),
 							'default_data' => $optionTemplate->clone(),
 							'record_data' => $optionTemplate->clone(),
 						);
-						foreach($template as $optionTemplate) {
+						foreach($optionTemplates as $optionTemplate) {
 							$input->append($optionTemplate);
 						}
 						// apply conditions
@@ -569,7 +985,7 @@ EOF;
 								? " && ! isset($varNameDataOPHP) && ! isset($varNameDataAPHP)" : '';
 							$conditionDataJS = $varData
 								? " && typeof $varNameDataJS == 'undefined'" : '';
-							$template['default_default']->
+							$optionTemplates['default_default']->
 								onlyPHP()->
 									ifPHP("! isset($varNameRecordAPHP) && ! isset($varNameRecordOPHP)$conditionDataPHP")->
 								endOnly()->
@@ -577,7 +993,7 @@ EOF;
 									ifJS("typeof $varNameRecordJS == 'undefined'$conditionDataJS")->
 								endOnly()
 							;
-							$template['record_default']->
+							$optionTemplates['record_default']->
 								onlyPHP()->
 									ifPHP("(isset($varNameRecordAPHP) || isset($varNameRecordOPHP))$conditionDataPHP")->
 								endOnly()->
@@ -587,7 +1003,7 @@ EOF;
 							;
 						}
 						if ($varData) {
-							$template['default_data']->
+							$optionTemplates['default_data']->
 								onlyPHP()->
 									ifPHP("! isset($varNameRecordAPHP) && ! isset($varNameRecordOPHP)
 										&& (isset($varNameDataOPHP) || isset($varNameDataAPHP))")->
@@ -597,7 +1013,7 @@ EOF;
 										&& typeof $varNameDataJS != 'undefined'")->
 								endOnly()
 							;
-							$template['record_data']->
+							$optionTemplates['record_data']->
 								onlyPHP()->
 									ifPHP("(isset($varNameRecordAPHP) || isset($varNameRecordOPHP))
 										&& (isset($varNameDataOPHP) || isset($varNameDataAPHP))")->
@@ -614,16 +1030,16 @@ EOF;
 								'default_default' => $input['>php:eq(1), >js:eq(1)'],
 								'record_default' => $input['>php:eq(3), >js:eq(3)'],
 							);
-							$template['default_default']->
+							$optionTemplates['default_default']->
 								valuesToLoopBefore($defaultData[$field], $loopDefaultCallback, $loopTargets['default_default'])
 							;
-							$template['record_default']->
+							$optionTemplates['record_default']->
 								valuesToLoopBefore($defaultData[$field], $loopRecordCallback, $loopTargets['record_default'])
 							;
 						}
 						if ($varData) {
 							foreach(array('default_data', 'record_data') as $templateType) {
-	 							$template[$templateType]->
+	 							$optionTemplates[$templateType]->
 									varsToLoop("$varData.$field", 'label', 'value')->
 									filter('optgroup')->
 										onlyPHP()->
@@ -670,7 +1086,7 @@ EOF;
 							}
 						}
 						// unset used vars
-						$template = $templateType = $optionRecordDataCallback =
+						$optionTemplates = $templateType = $optionRecordDataCallback =
 							$scope = $loopDefaultCallback = $loopRecordCallback = 
 							$optionTemplate = $conditionDataPHP = $conditionDataJS = 
 							$optionDefaultDataCallback = $optionRecordDataCallback = 
@@ -695,7 +1111,7 @@ EOF;
 						// XXX not safe ?
 						foreach(array_slice($info['values'], 1) as $value) {
 							$lastInput = $input->clone()->
-								insertAfter($input)->
+								insertAfter($lastInput)->
 								attr('value', $value);
 							$inputs[] = $lastInput;
 						}
@@ -705,6 +1121,7 @@ EOF;
 								filter("[value='{$defaultRecord[$field]}']")->
 									attr('checked', 'checked')->
 								end()->
+								// TODO ifNotVarIsset
 								ifNotVar("varRecord.$field");
 							$inputs->elseStatement();
 						}
@@ -728,30 +1145,98 @@ EOF;
 							attr('type', 'hidden')->
 							attr('name', $field)->
 							attr('id', $id);
-						$target = $form['fieldset']->length
-							? $form['fieldset:first']
-							: $form;
 						$code = isset($defaultRecord[$field])
-							? self::formFromVars_CodeValue($this, compact(
+							? self::_formFromVars_CodeValue($this, compact(
 									'input', 'field', 'defaultRecord', 'varRecord'
 								))
 							: $input->qt_langCode('printVar', "$varRecord.$field");
 						$input->qt_langMethod('attr', 'value', $code);
-						$target->prepend($input);
+						$fieldset->prepend($input);
 						$target = $code = null;
+						break;
+					// CHECKBOX
+					case 'checkbox':
+						$value = isset($info['value'])
+							? $info['value'] : '1';
+						// setup var names
+						$varNameRecordAPHP = QueryTemplatesLanguage::get('php',
+							'varNameArray', "$varRecord.$field"
+						);
+						$varNameRecordOPHP = QueryTemplatesLanguage::get('php',
+							'varNameObject', "$varRecord.$field"
+						);
+						$varNameRecordJS = QueryTemplatesLanguage::get('js',
+							'varName', "$varRecord.$field"
+						);
+						$input = $markup[$inputSelector]->
+							attr('type', $info[0])->
+							attr('name', $field)->
+							attr('id', $id)->
+							attr('checked', 'checked');
+//						$codeValue = isset($defaultRecord[$field])
+//							? self::_formFromVars_CodeValue($this, compact(
+//									'input', 'field', 'defaultRecord', 'varRecord'
+//								))
+//							: $input->qt_langCode('printVar', "$varRecord.$field");
+//						$input->qt_langMethod('attr', 'value', $codeValue);
+						$input->attr('value', $value);
+//						$inputUnchecked = $input->clone()->
+//							removeAttr('checked');
+						// TODO JS conditions
+						$inputsRecord = $input->clone()->
+							add($input->clone()->removeAttr('checked'));
+						if (! isset($defaultRecord[$field]) || (isset($defaultRecord[$field]) && ! $defaultRecord[$field])) {
+							$input->removeAttr('checked');
+						}
+						$input->
+							ifPHP("! isset($varNameRecordAPHP) && ! isset($varNameRecordOPHP)")->
+							next('php, js')->
+								after($inputsRecord);
+//						if (isset($defaultRecord[$field])) {
+//							$inputUnchecked = $input->clone()->
+//								removeAttr('checked')->
+//								insertAfter($input)
+//							;
+//							$inputsRecord = $input->add($inputUnchecked)
+//								->ifPHP("! isset($varNameRecordAPHP) && ! isset($varNameRecordOPHP)")
+//								->clone()->
+//									insertAfter($inputUnchecked->next('php', 'js'))
+//							;
+//							$input->ifVar($input->qt_langCode('compareVarValue', "$varRecord.$field"));
+//						} else {
+//							$inputsRecord = $input->removeAttr('checked')
+//								->ifPHP("! isset($varNameRecordAPHP) && ! isset($varNameRecordOPHP)")
+//								->clone()->
+//									insertAfter($input->next('php', 'js'))
+//							;
+//							$inputsRecord = $inputsRecord->add(
+//								$input->clone()->
+//									removeAttr('checked')->
+//									insertAfter($inputsRecord)
+//							);
+//						}
+						$inputsRecord->elseStatement()->
+							eq(0)->
+								ifPHP("(isset($varNameRecordAPHP) && $varNameRecordAPHP) 
+									|| (isset($varNameRecordOPHP) && $varNameRecordOPHP)")->
+							end()->
+							eq(1)->
+								elseStatement()->
+							end()
+						;
+						$markup[$labelSelector]->attr('for', $id);
+						$codeValue = $inputUnchecked = $varNameRecordAPHP = $varNameRecordOPHP = 
+							$varNameRecordJS = $inputsRecord = null;
 						break;
 					// TEXT, PASSWORD, others
 					default:
-//						$markup = $template->clone();
-						if (! isset($info[0]))
-							$info[0] = 'text';
 						$input = $markup[$inputSelector]->
 							attr('type', $info[0])->
 							attr('name', $field)->
 							attr('id', $id)->
 							removeAttr('checked');
 						$code = isset($defaultRecord[$field])
-							? self::formFromVars_CodeValue($this, compact(
+							? self::_formFromVars_CodeValue($this, compact(
 									'input', 'field', 'defaultRecord', 'varRecord'
 								))
 							: $input->qt_langCode('printVar', "$varRecord.$field");
@@ -799,7 +1284,7 @@ EOF;
 		$this->append($form);
 		return $this;
 	}
-	protected static function formFromVars_CodeValue($self, $scope) {
+	protected static function _formFromVars_CodeValue($self, $scope) {
 		extract($scope);
 		$code = array(
 			'if' => $self->qt_langCode('ifVar', "$varRecord.$field"),
@@ -837,7 +1322,9 @@ EOF;
 	 *
 	 * === `QueryTemplates` formula ===
 	 * <code>
-	 * $template['node1']->valuesToVars($values);
+	 * $template['node1']->
+	 *   varsFromValues($values)
+	 * ;
 	 * </code>
 	 *
 	 * === Template ===

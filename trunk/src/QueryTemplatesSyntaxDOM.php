@@ -8,7 +8,7 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  * @link http://code.google.com/p/querytemplates/
  */
-class QueryTemplatesDOM extends phpQueryObject {
+class QueryTemplatesSyntaxDOM extends phpQueryObject {
 	/**
 	 * Returns array being result of running $method on all stack elements.
 	 *

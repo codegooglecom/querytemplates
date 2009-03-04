@@ -8,7 +8,7 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  * @link http://code.google.com/p/querytemplates/
  */
-class QueryTemplatesSyntaxConditions extends QueryTemplatesSyntaxInjections {
+class QueryTemplatesSyntaxConditions extends QueryTemplatesSyntaxCode {
 	/**
 	 * Replaces selected tag with PHP "if" statement containing $code as condition.
 	 *

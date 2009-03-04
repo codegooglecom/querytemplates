@@ -451,6 +451,9 @@ abstract class QueryTemplates {
 		);
 		return $markup;
 	}
+	public static function addslashes($target, $char = "'") {
+		return str_replace($char, '\\'.$char, $target);
+	}
 }
 // set default targetsPath
 QueryTemplates::$targetsPath = dirname(__FILE__).'/cache';
