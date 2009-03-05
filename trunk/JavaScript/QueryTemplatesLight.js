@@ -71,15 +71,30 @@ var valuesToStack = function(target, values, skipFields, fieldCallback){
 	}
 	return this;
 };
-var valuesToLoop = function(nodes, values, rowCallback){
+var valuesToLoop = function(nodes, values, rowCallback, targetNodeSelector, target) {
+	if (typeof target == 'undefined')
+		target = 'after';
 	if (typeof rowCallback == 'undefined')
-		throw "rowCallback needs to be provided for valuesToLoop";
-	var lastNode = nodes;
+		throw "rowCallback needs to be provided for valuesToLoop methods";
+	var nodeTarget = null, lastNode = nodes;
+	var injectMethod = 'insert'+target.slice(0, 1).toUpperCase()+target.slice(1);
 	for (k in values) {
+		$(lastNode.get().reverse()).each(function() {
+			if ($(this).parent().langth) {
+				lastNode = $(this);
+				return false;
+			}
+		});
+		if (targetNodeSelector) {
+			nodeTarget = typeof targetNodeSelector == 'string'
+				? lastNode.parent().find(targetNodeSelector)
+				: targetNodeSelector;
+		} else
+			nodeTarget = lastNode;
 		var v = values[k];
 		var stack = [];
 		nodes.each(function(i, node){
-			stack.push($(node).clone().insertAfter(lastNode).get(0));
+			stack.push($(node).clone()[injectMethod](lastNode).get(0));
 		});
 		lastNode = $(stack);
 		rowCallback.call(lastNode, v, k);
@@ -88,23 +103,62 @@ var valuesToLoop = function(nodes, values, rowCallback){
 	nodes.remove();
 	return this;
 };
-QueryTemplates.valuesToLoop = function(values, rowCallback) {
-	return valuesToLoop(this, values, rowCallback);
+QueryTemplates.valuesToLoop = function(values, rowCallback, targetNodeSelector) {
+	return valuesToLoop(this, values, rowCallback, targetNodeSelector);
 };
-QueryTemplates.valuesToLoopFirst = function(values, rowCallback) {
+QueryTemplates.valuesToLoopBefore = function(values, rowCallback, targetNodeSelector) {
+	return valuesToLoop(this, values, rowCallback, targetNodeSelector, 'before');
+};
+QueryTemplates.valuesToLoopFirst = function(values, rowCallback, targetNodeSelector) {
 	var loopNodes = this.eq(0);
 	this.slice(1).remove();
-	valuesToLoop(loopNodes, values, rowCallback);
+	valuesToLoop(loopNodes, values, rowCallback, targetNodeSelector);
 	return loopNodes;
 };
-QueryTemplates.valuesToLoopSeparate = function(values, rowCallback) {
+QueryTemplates.valuesToLoopSeparate = function(values, rowCallback, targetNodeSelector) {
 	this.each(function(i, node) {
-		return valuesToLoop(node, values, rowCallback);
+		return valuesToLoop(node, values, rowCallback, targetNodeSelector);
 	});
 	return this;
 };
-QueryTemplates.valuesToForm = function(){
-	// TODO
+QueryTemplates.valuesToForm = function(values, selectorPattern) {
+	if (typeof selectorPattern == 'undefined')
+		selectorPattern = "[name*='%k']";
+	var form = this.is('form')
+		? this.filter('form')
+		: this.find('form');
+	$.each(values, function(f, v) {
+		var selector = selectorPattern.replace('%k', f);
+		var input = form.find("input"+selector);
+		if (input.length) {
+			switch(input.attr('type')) {
+				case 'checkbox':
+					if (v)
+						input.attr('checked', 'checked');
+					else
+						input.removeAttr('checked');
+				break;
+				case 'radio':
+					var inputChecked = input.filter("[value='"+v+"']")
+						.attr('checked', 'checked');
+					input.not(inputChecked).removeAttr('checked');
+				break;
+				default:
+					input.attr('value', v);
+			}
+		}
+		var select = form.find("select"+selector);
+		if (select.length) {
+			var selected = select.find('option')
+				.filter("[value='"+v+"']")
+				.attr('selected', 'selected');
+			select.not(selected).removeAttr('selected');
+		}
+		var textarea = form.find("textarea"+selector);
+		if (textarea.length)
+			textarea.html(v);
+	});
+	return this;
 };
 QueryTemplates.formFromValues = function(){
 	// TODO
