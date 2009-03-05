@@ -7,6 +7,66 @@
 <script type="text/javascript" src="QueryTemplatesLight.js"></script>
 <!--<script type="text/javascript" src="QueryTemplatesLight.min.js"></script>-->
 <script type="text/javascript">
+var data_valuesToLoop = [
+     {
+         'User': {'name': 'foo'},
+         'Tags': [
+             {'tag': 'php'},
+             {'tag': 'js'}
+         ]
+     },
+     {
+         'User': {'name': 'bar'},
+         'Tags': [
+             {'tag': 'perl'}
+         ]
+     },
+     {
+         'User': {'name': 'fooBar'},
+         'Tags': [
+             {'tag': 'php'},
+             {'tag': 'js'},
+             {'tag': 'perl'}
+         ]
+     }
+];
+var data_valuesToForm = {
+  'text-example': 'new',
+  'checkbox-example': true,
+  'radio-example': 'second',
+  'select-example': 'second',
+  'textarea-example': 'new',
+};
+function valuesToLoop() {
+	$('body > ul > li')
+		.valuesToLoop(data_valuesToLoop, function(row) {
+				this.valuesToSelector(row.User, 'span.%k')
+						.find('> ul > li')
+								.valuesToLoop(row.Tags, function(tag) {
+										this.valuesToSelector(tag);
+								})
+				;
+		});
+}
+function valuesToForm() {
+	$('form.valuesToForm')
+		.valuesToForm(data_valuesToForm);
+}
+$(function(){
+	$('button.valuesToLoop').click(function(){
+		valuesToLoop();
+	});
+	$('button.valuesToForm').click(function(){
+		valuesToForm();
+	});
+});
+</script>
+</head>
+<body>
+<h1><a href='http://code.google.com/p/querytemplates/'>QueryTemplates</a> Light for JavaScript</h1>
+<h2><a href='http://code.google.com/p/querytemplates/wiki/valuesToLoopMethodJS'>valuesToLoop</a> demo</h2>
+<h4>Data</h4>
+<pre>
 var data = [
      {
          'User': {'name': 'foo'},
@@ -30,26 +90,8 @@ var data = [
          ]
      }
 ];
-function demoLoop() {
-	$('body > ul > li')
-		.valuesToLoop(data, function(row) {
-				this.valuesToSelector(row.User, 'span.%k')
-						.find('> ul > li')
-								.valuesToLoop(row.Tags, function(tag) {
-										this.valuesToSelector(tag);
-								})
-				;
-		});
-}
-$(function(){
-	$('button').click(function(){
-		demoLoop();
-	});
-});
-</script>
-</head>
-<body>
-<h1><a href='http://code.google.com/p/querytemplates/'>QueryTemplates</a> Light for JavaScript</h1>
+</pre>
+<h4>Code</h4>
 <pre>
 $('body &gt; ul &gt; li')
   .valuesToLoop(data, function(row) {
@@ -61,7 +103,7 @@ $('body &gt; ul &gt; li')
       ;
   });
 </pre>
-<button>Test code above</button>
+<button class='valuesToLoop'>Test code above</button>
 <ul>
      <li class='row'>
          <span class='name'>fake name</span>
@@ -72,5 +114,54 @@ $('body &gt; ul &gt; li')
          </ul>
      </li>
 </ul>
+<h2><a href='http://code.google.com/p/querytemplates/wiki/valuesToFormMethodJS'>valuesToForm</a> demo</h2>
+<h4>Data</h4>
+<pre>
+data = {
+  'text-example': 'new',
+  'checkbox-example': true,
+  'radio-example': 'second',
+  'select-example': 'second',
+  'textarea-example': 'new',
+};
+</pre>
+<h4>Code</h4>
+<pre>
+$('form')
+  .valuesToForm(data);
+</pre>
+<button class='valuesToForm'>Test code above</button>
+<blockquote>
+	<form class='valuesToForm'>
+		<dl>
+			<dt>text-example</dt>
+			<dd><input type='text' name='text-example' value='old'></dd>
+		</dl>
+		<dl>
+			<dt>checkbox-example</dt>
+			<dd><input type='checkbox' name='checkbox-example' value='foo'></dd>
+		</dl>
+		<dl>
+			<dt>radio-example</dt>
+			<dd>
+				<input type='radio' name='radio-example' value='first' checked='checked'>
+				<input type='radio' name='radio-example' value='second'>
+			</dd>
+		</dl>
+		<dl>
+			<dt>select-example</dt>
+			<dd>
+				<select name='select-example'>
+					<option value='first' selected='selected'>first</option>
+			  	<option value='second'>second</option>
+				</select>
+			</dd>
+		</dl>
+		<dl>
+			<dt>textarea-example</dt>
+			<dd><textarea name='textarea-example'>old</textarea></dd>
+		</dl>
+	</form>
+</blockquote>
 </body>
 </html>
