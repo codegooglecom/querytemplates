@@ -159,10 +159,24 @@ $('ul &gt; li:has(ul)')
 <blockquote>
 	<ul>
 	     <li class='row'>
-	         <span class='name'>fake name</span>
+	         <span class='name'>lorem ipsum</span>
 	         <ul class='tags'>
 	             <li class='tag'>
-	                 <span class='tag'>fake tag</span>
+	                 <span class='tag'>tag 1</span>
+	             </li>
+	             <li class='tag'>
+	                 <span class='tag'>tag 2</span>
+	             </li>
+	         </ul>
+	     </li>
+	     <li class='row'>
+	         <span class='name'>lorem ipsum</span>
+	         <ul class='tags'>
+	             <li class='tag'>
+	                 <span class='tag'>tag 1</span>
+	             </li>
+	             <li class='tag'>
+	                 <span class='tag'>tag 2</span>
 	             </li>
 	         </ul>
 	     </li>
@@ -264,9 +278,10 @@ var record = {
 };</pre>
 <h4 style='font-size: 1.3em;'>Code</h4>
 <pre>
-$('form.formFromValues').<strong><a href='http://code.google.com/p/querytemplates/wiki/formFromValuesMethodJS'>formFromValues</a></strong>(
-	record, structure, undefined, data
-)
+$('form.formFromValues')
+  .<strong><a href='http://code.google.com/p/querytemplates/wiki/formFromValuesMethodJS'>formFromValues</a></strong>(
+    record, structure, undefined, data
+  );
 </pre>
 <button class='formFromValues'>Test code above</button>
 <blockquote>
