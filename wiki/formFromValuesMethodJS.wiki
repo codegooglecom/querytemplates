@@ -32,30 +32,30 @@
   Additional data for fields. For now it's only used for populating select boxes.  Example:
 {{{
 var data = {
-     'select-field-optgroups' => {
-         0: {
-             '__label': 'optgroup 1 label',
-             'group1_1':> 'group1_1 label',
-             'group1_2': 'group1_2 label',
-				 },
-         1: {
-             '__label': 'optgroup 2 label',
-             'group2_1': 'group2_1 label',
-             'group2_2': 'group2_2 label',
-				 },
-         'bar': 'Bar'    // no optgroup
-		 }
- };
+  'select-field-optgroups' => {
+    0: {
+      '__label': 'optgroup 1 label',
+      'group1_1':> 'group1_1 label',
+      'group1_2': 'group1_2 label',
+    },
+    1: {
+      '__label': 'optgroup 2 label',
+      'group2_1': 'group2_1 label',
+      'group2_2': 'group2_2 label',
+    },
+    'bar': 'Bar'    // no optgroup
+  }
+};
 }}}
 
  * *template* _Array|String_ = `null`
   Input wrapper template. This template will be used for each field. Use array  to per field template, '__default' means default.  All types allowed in $structure can be used as per-type default template  when indexed like '__$type' ex '__checkbox'.  To each input wrapper will be added a class which is field's type.  Example:
 {{{
- $templates`['__checkbox']` = '
- <div class="input">
-     <div>Checkbox field below</div>
-   <label/>
-   <input/>
+templates.checkbox = '\
+ <div class="input">\
+     <div>Checkbox field below</div>\
+   <label/>\
+   <input/>\
  </div>';
 
 }}}
@@ -105,48 +105,48 @@ Created form can be customized using:
 == Example ==
 {{{
 var structure_formFromValues = {
-	'__form': {'id': 'myFormId'},
-	0: { 
-		'__label': 'Fieldset 1 legend',
-		'default-field': {	// 'text' is default
-			'label': 'default-field label',
-			'id': 'default-field-id'
-		},
-		'text-field': {
-			0: 'text',
-			'label': 'text-field label',
-			'id': 'text-field-id'
-		},
-		'hidden-field': 'hidden',
-		'checkbox-field': 'checkbox'
-	},
-	1: {
-		'__label': 'Fieldset 2 legend',
-		'select-field': {
-			0: 'select', 
-			'label': 'select-field label'
-		},
-		'radio-field': {
-			0: 'radio', 
-			'values': ['possibleValue1', 'possibleValue2']
-		},
-		'textarea-field': 'textarea'
-	}
+  '__form': {'id': 'myFormId'},
+  0: { 
+    '__label': 'Fieldset 1 legend',
+    'default-field': {  // 'text' is default
+      'label': 'default-field label',
+      'id': 'default-field-id'
+    },
+    'text-field': {
+      0: 'text',
+      'label': 'text-field label',
+      'id': 'text-field-id'
+    },
+    'hidden-field': 'hidden',
+    'checkbox-field': 'checkbox'
+  },
+  1: {
+    '__label': 'Fieldset 2 legend',
+    'select-field': {
+      0: 'select', 
+      'label': 'select-field label'
+    },
+    'radio-field': {
+      0: 'radio', 
+      'values': ['possibleValue1', 'possibleValue2']
+    },
+    'textarea-field': 'textarea'
+  }
 };
 var data_formFromValues = {
-	'select-field': {
-		// no optgroup
-		'bar1': 'bar1 label',
-		'bar2': 'bar2 label',
-		'bar3': 'bar3 label'
-	}
+  'select-field': {
+    // no optgroup
+    'bar1': 'bar1 label',
+    'bar2': 'bar2 label',
+    'bar3': 'bar3 label'
+  }
 };
 var record_formFromValues = {
   'text-field': 'value from record'
 };
 $('form')
-  .formFromValues(record, structure, undefined, data);
-
+  .formFromValues(record, structure, undefined, data)
+;
 }}}
 === Result DOM tree ===
 {{{

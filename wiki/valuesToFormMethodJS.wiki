@@ -70,7 +70,7 @@ Result
 ----
 
 == See also ==
- * [varsToFormMethodJS formFromValues]
+ * [ormFromValuesMethodJS formFromValues]
 
 
 === Comments allowed ===
