@@ -1,10 +1,10 @@
 #sidebar SyntaxSidebar
 = `formFromValues` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [formFromSyntax formFrom] > [formFromValuesMethodPHP formFromValues]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [formFromSyntax formFrom] > [formFromValuesMethodJS formFromValues]
 === Parameters ===
- * *$record* _Array_
-  TODO doc
- * *$structure* _Array_
+ * *record* _Object_
+  Object representing record. All fields present in structure are optional.
+ * *structure* _Array_
   Form structure information. This should be easily fetchable from ORM layer.  Possible types:
    * text (default)
    * password
@@ -14,42 +14,41 @@
    * textarea  
   Convention:
 {{{
- 'fieldName' => array(
-   'fieldType', $fieldOptions
- )
+ 'fieldName': {
+   'fieldType', ${fieldOptions}
+ }
 
 }}}
-  Where $fieldOptions can be (`key => value` pairs):
+  Where ${fieldOptions} can be (`key => value` pairs):
    * label
    * id
    * multiple (only select)
    * values (only radio, MANDATORY)
    * value (only checkbox, optional)  
   There can be special field *`__form`*, which represents form element, as an array.  All values from it will be pushed as form attributes.  If you wrap fields' array within another array, it will represent *fieldsets*,  which value with index *`__label`* will be used as legend (optional).
- * *$errors* _Array_ = `null`
+ * *errors* _Array_ = `null`
   TODO doc
- * *$data* _Array_ = `null`
+ * *data* _Array_ = `null`
   Additional data for fields. For now it's only used for populating select boxes.  Example:
 {{{
- $defaultData = array(
-     'select-field-optgroups' => array(
-         array(    // 1st optgroup
-             '__label' => 'optgroup 1 label',
-             'group1_1' => 'group1_1 label',
-             'group1_2' => 'group1_2 label',
-         ),
-         array(    // 2nd optgroup
-             '__label' => 'optgroup 2 label',
-             'group2_1' => 'group2_1 label',
-             'group2_2' => 'group2_2 label',
-         ),
-         'bar' => 'Bar',    // no optgroup
-     ),
- );
-
+var data = {
+     'select-field-optgroups' => {
+         0: {
+             '__label': 'optgroup 1 label',
+             'group1_1':> 'group1_1 label',
+             'group1_2': 'group1_2 label',
+				 },
+         1: {
+             '__label': 'optgroup 2 label',
+             'group2_1': 'group2_1 label',
+             'group2_2': 'group2_2 label',
+				 },
+         'bar': 'Bar'    // no optgroup
+		 }
+ };
 }}}
 
- * *$template* _Array|String_ = `null`
+ * *template* _Array|String_ = `null`
   Input wrapper template. This template will be used for each field. Use array  to per field template, '__default' means default.  All types allowed in $structure can be used as per-type default template  when indexed like '__$type' ex '__checkbox'.  To each input wrapper will be added a class which is field's type.  Example:
 {{{
  $templates`['__checkbox']` = '
@@ -72,7 +71,7 @@
 
 }}}
 
- * *$selectors* _Array_ = `null`
+ * *selectors* _Array_ = `null`
   Array of selectors indexed by it's type. Allows to customize lookups inside  inputs wrapper. Possible values are:
    * error - selects field's error wrapper
      * dafault value is '.errors'
@@ -83,16 +82,12 @@
      * default value is 'input:first'
      * use array to per field name selector, '__default' means default
      * %t is replaced by field node type (use it with customized per field $template)
- * *$fieldCallback* _Array|String|Callback_ = `null`
-  Callback triggered after preparation of each field.
+ * *fieldCallback* _Array|String|Callback_ = `null`
+  Callback triggered after preparation of each field, in it's context (this variable).
 
 
 === Description ===
 Method formFromVars acts as flexible form helper. It creates customized  pure-markup form without the need of suppling a line of markup.
-
-
-Final form is available right after using this method.
-
 
 Created form have following features:
 
@@ -109,46 +104,48 @@ Created form can be customized using:
    * callbacks (per field)
 == Example ==
 {{{
- $structure = array(
-     '__form' => array('id' => 'myFormId'),
-     array(
-         '__label' => 'Fieldset 1 legend',
-         'default-field' => array(    // 'text' is default
-             'label' => 'default-field label',
-             'id' => 'default-field-id',
-         ),
-         'text-field' => array('text',
-             'label' => 'text-field label',
-             'id' => 'text-field-id',
-         ),
-         'hidden-field' => 'hidden',
-         'checkbox-field' => 'checkbox',
-     ),
-     array(
-         '__label' => 'Fieldset 2 legend',
-         'select-field' => array('select',
-             'label' => 'select-field label',
-         ),
-         'radio-field' => array('radio',
-             'values' => array('possibleValue1', 'possibleValue2')
-         ),
-         'textarea-field' => 'textarea',
-     ),
- );
- $data = array(
-     'select-field' => array(
-         // no optgroup
-         'bar1' => 'bar1 label',
-         'bar2' => 'bar2 label',
-         'bar3' => 'bar3 label',
-     ),
- );
- $record = array(
-   'text-field' => 'value from record',
- );
- $tempalte->
-   formFromValues($record, $structure, null, $data)
- ;
+var structure_formFromValues = {
+	'__form': {'id': 'myFormId'},
+	0: { 
+		'__label': 'Fieldset 1 legend',
+		'default-field': {	// 'text' is default
+			'label': 'default-field label',
+			'id': 'default-field-id'
+		},
+		'text-field': {
+			0: 'text',
+			'label': 'text-field label',
+			'id': 'text-field-id'
+		},
+		'hidden-field': 'hidden',
+		'checkbox-field': 'checkbox'
+	},
+	1: {
+		'__label': 'Fieldset 2 legend',
+		'select-field': {
+			0: 'select', 
+			'label': 'select-field label'
+		},
+		'radio-field': {
+			0: 'radio', 
+			'values': ['possibleValue1', 'possibleValue2']
+		},
+		'textarea-field': 'textarea'
+	}
+};
+var data_formFromValues = {
+	'select-field': {
+		// no optgroup
+		'bar1': 'bar1 label',
+		'bar2': 'bar2 label',
+		'bar3': 'bar3 label'
+	}
+};
+var record_formFromValues = {
+  'text-field': 'value from record'
+};
+$('form')
+  .formFromValues(record, structure, undefined, data);
 
 }}}
 === Result DOM tree ===
@@ -223,9 +220,7 @@ Created form can be customized using:
 ----
 
 == See also ==
- * [formFromVarsMethodPHP formFromVars]
- * [varsToFormMethodPHP varsToForm]
- * [valuesToFormMethodPHP valuesToForm]
+ * [valuesToFormMethodJS valuesToForm]
 
 
 === Comments allowed ===

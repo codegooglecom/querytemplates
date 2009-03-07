@@ -8,6 +8,9 @@
   Callback triggered for every inserted row. Should support following  parameters:
    * dataRow mixed
    * dataIndex mixed
+	Callback is triggered in context (this variable) of looped nodes.
+ * *targetNodeSelector* _String|jQuery_ = `null`
+  Selector or direct node used as relative point for inserting new node(s) for  each record. Defaults to last inserted node which has a parent.
 
 
 === Description ===

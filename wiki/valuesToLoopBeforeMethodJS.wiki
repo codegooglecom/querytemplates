@@ -1,6 +1,6 @@
 #sidebar SyntaxSidebar
-= `valuesToLoop` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToLoopMethodJS valuesToLoop]
+= `valuesToLoopBefore` =
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToLoopBeforeMethodJS valuesToLoopBefore]
 === Parameters ===
  * *values* _Array|Object_
   Associative array or Object.
@@ -15,6 +15,8 @@
 
 === Description ===
 Method loops provided values on actually selected nodes. Each time new row is inserted, provided callback is triggered with dataRow dataIndex, in context (this) of matched node. Acts as valuesToLoop(), but loops only first node from stack. Rest is removed from the DOM.
+
+Acts as valuesToLoop(), but new nodes are inserted BEFORE target node.
 
 Method DOES change selected nodes stack. Returned is first node.
 

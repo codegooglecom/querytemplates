@@ -769,7 +769,7 @@ Source Location: /home/bob/workspace/QueryTemplates/src/QueryTemplatesSyntaxGene
     <a href="../QueryTemplates/QueryTemplatesSyntaxValues.html#methodvaluesToForm">QueryTemplatesSyntaxValues::valuesToForm()</a>
   </dt>
   <dd>
-    Toggles form fields values and selection states according to static values  from $data.
+    Toggles form fields values and selection states according to static values  from $values.
   </dd>
     <dt>
     <a href="../QueryTemplates/QueryTemplatesSyntaxValues.html#methodvaluesToLoop">QueryTemplatesSyntaxValues::valuesToLoop()</a>
@@ -781,7 +781,7 @@ Source Location: /home/bob/workspace/QueryTemplates/src/QueryTemplatesSyntaxGene
     <a href="../QueryTemplates/QueryTemplatesSyntaxValues.html#methodvaluesToLoopBefore">QueryTemplatesSyntaxValues::valuesToLoopBefore()</a>
   </dt>
   <dd>
-    
+    Method loops provided $values on actually selected nodes. Each time new row  is inserted, provided callback is triggered with $dataRow, $node and $dataIndex.
   </dd>
     <dt>
     <a href="../QueryTemplates/QueryTemplatesSyntaxValues.html#methodvaluesToLoopFirst">QueryTemplatesSyntaxValues::valuesToLoopFirst()</a>
@@ -1794,7 +1794,7 @@ Class extending phpQueryObject with templating methods.<br /><br /><br /><br />
 <div class="tags">
   <hr />
 	<a name="method_formFromVars_CodeValue"></a>
-	<h3>static method _formFromVars_CodeValue <span class="smalllinenumber">[line 1345]</span></h3>
+	<h3>static method _formFromVars_CodeValue <span class="smalllinenumber">[line 1348]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1837,7 +1837,7 @@ $scope)</code>
 
   <hr />
 	<a name="methodformFromValues"></a>
-	<h3>method formFromValues <span class="smalllinenumber">[line 303]</span></h3>
+	<h3>method formFromValues <span class="smalllinenumber">[line 304]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -1891,7 +1891,7 @@ $fieldCallback = null])</code>
 <li><div class="src-line">&nbsp;&nbsp;&nbsp;<span class="src-str">'text-field'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'value&nbsp;from&nbsp;record'</span><span class="src-sym">,</span></div></li>
 <li><div class="src-line">&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
 <li><div class="src-line">&nbsp;<span class="src-var">$tempalte</span><span class="src-sym">-&gt;</span></div></li>
-<li><div class="src-line">&nbsp;&nbsp;&nbsp;<a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodformFromValues">formFromValues</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,&nbsp;</span><span class="src-var">$structure</span><span class="src-sym">,&nbsp;</span><span class="src-var">$data</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;<a href="../QueryTemplates/QueryTemplatesSyntaxGenerators.html#methodformFromValues">formFromValues</a><span class="src-sym">(</span><span class="src-var">$record</span><span class="src-sym">,&nbsp;</span><span class="src-var">$structure</span><span class="src-sym">,&nbsp;</span><span class="src-id">null</span><span class="src-sym">,&nbsp;</span><span class="src-var">$data</span><span class="src-sym">)</span></div></li>
 <li><div class="src-line">&nbsp;<span class="src-sym">;</span></div></li>
 </ol>  === Result DOM tree ===  <ol><li><div class="src-line">&nbsp;<span class="src-id">form</span><span class="src-comm">#myFormId</span></div></li>
 <li><div class="src-line">&nbsp;&nbsp;-&nbsp;<span class="src-id">fieldset</span></div></li>
@@ -1975,10 +1975,13 @@ $fieldCallback = null])</code>
     <td><b>TODO:</b>&nbsp;&nbsp;</td><td>support objects for record and data</td>
   </tr>
   <tr>
-    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>hidden fields and fieldCallback</td>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>maybe support callbacks per input type, before/after, maybe for errors too ?</td>
   </tr>
   <tr>
-    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>maybe support callbacks per input type, before/after, maybe for errors too ?</td>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>fieldCallback __form special field for form callback</td>
+  </tr>
+  <tr>
+    <td><b>TODO:</b>&nbsp;&nbsp;</td><td>hidden fields and fieldCallback</td>
   </tr>
 </table>
 </div>
@@ -2060,7 +2063,7 @@ $fieldCallback = null])</code>
   </div>
   <hr />
 	<a name="methodformFromVars"></a>
-	<h3>method formFromVars <span class="smalllinenumber">[line 759]</span></h3>
+	<h3>method formFromVars <span class="smalllinenumber">[line 762]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2291,7 +2294,7 @@ $type = 'hidden'])</code>
   </div>
   <hr />
 	<a name="methodsaveAsVar"></a>
-	<h3>method saveAsVar <span class="smalllinenumber">[line 1440]</span></h3>
+	<h3>method saveAsVar <span class="smalllinenumber">[line 1443]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2330,7 +2333,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodsaveTextAsVar"></a>
-	<h3>method saveTextAsVar <span class="smalllinenumber">[line 1446]</span></h3>
+	<h3>method saveTextAsVar <span class="smalllinenumber">[line 1449]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2369,7 +2372,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodvaluesToVars"></a>
-	<h3>method valuesToVars <span class="smalllinenumber">[line 1418]</span></h3>
+	<h3>method valuesToVars <span class="smalllinenumber">[line 1421]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2408,7 +2411,7 @@ $varsArray)</code>
   </div>
   <hr />
 	<a name="methodvarsFromStack"></a>
-	<h3>method varsFromStack <span class="smalllinenumber">[line 1430]</span></h3>
+	<h3>method varsFromStack <span class="smalllinenumber">[line 1433]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2450,7 +2453,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodvarsFromStackText"></a>
-	<h3>method varsFromStackText <span class="smalllinenumber">[line 1457]</span></h3>
+	<h3>method varsFromStackText <span class="smalllinenumber">[line 1460]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2489,7 +2492,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodvarsFromValues"></a>
-	<h3>method varsFromValues <span class="smalllinenumber">[line 1410]</span></h3>
+	<h3>method varsFromValues <span class="smalllinenumber">[line 1413]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -2542,7 +2545,7 @@ $varsArray)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Wed, 04 Mar 2009 19:39:28 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
+		    Documentation generated on Sat, 07 Mar 2009 12:08:31 +0100 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.2</a>
 	      </div>
       </td></tr></table>
     </td>

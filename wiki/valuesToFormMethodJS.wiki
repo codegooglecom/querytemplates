@@ -1,15 +1,15 @@
 #sidebar SyntaxSidebar
 = `valuesToForm` =
-[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToFormMethodPHP valuesToForm]
+[http://code.google.com/p/querytemplates/w/list Wiki] > [Syntax Syntax] > [valuesToSyntax valuesTo] > [valuesToFormMethodJS valuesToForm]
 === Parameters ===
- * *$values* _Array|Object_
+ * *values* _Object_
 
- * *$selectorPattern* _String_ = `"[name*='%k']"`
+ * *selectorPattern* _String_ = `"[name*='%k']"`
   Defines pattern matching form fields.  Defaults to "`[name*='%k']`", which matches fields containing  $values' key in their names. For example, to match only names starting with  "foo`[bar]`" change $selectorPattern to "`[name^='foo[bar]`']`[name*='%k']`"
 
 
 === Description ===
-Toggles form fields values and selection states according to static values  from $values.
+Toggles form fields values and selection states according to static values  from values parameter.
 
 
 This includes:
@@ -27,15 +27,15 @@ Method doesn't change selected elements stack.
 
 Example
 {{{
- $data = array(
-   'text-example' => 'new',
-   'checkbox-example' => true,
-   'radio-example' => 'second',
-   'select-example' => 'second',
-   'textarea-example' => 'new',
- );
- $template->valuesToForm($data);
-
+var data = {
+  'text-example': 'new value',
+  'checkbox-example': true,
+  'radio-example': 'second',
+  'select-example': 'second',
+  'textarea-example': 'new value',
+};
+$('form')
+  .valuesToForm(data);
 }}}
 Source
 {{{
@@ -70,8 +70,7 @@ Result
 ----
 
 == See also ==
- * [varsToFormMethodPHP varsToForm]
- * [formFromValuesMethodPHP formFromValues]
+ * [varsToFormMethodJS formFromValues]
 
 
 === Comments allowed ===

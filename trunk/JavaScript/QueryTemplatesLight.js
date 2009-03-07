@@ -3,7 +3,7 @@
  *
  * Light version for JavaScript.
  *
- * @version 1.0 dev2
+ * @version 1.0 beta2
  * @author Tobiasz Cudnik <tobiasz.cudnik/gmail.com>
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  * @link http://code.google.com/p/querytemplates/
@@ -165,8 +165,11 @@ QueryTemplates.valuesToForm = function(values, selectorPattern) {
 	});
 	return this;
 };
+/**
+ * @TODO change input type method
+ */
 QueryTemplates.formFromValues = function(record, structure, errors, data, 
-	templateselectorsfieldCallback){
+	templateselectors, fieldCallback){
 	var self = this;
 	if (typeof record != 'object')
 		throw "[formFromValues] record should be an object";

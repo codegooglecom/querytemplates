@@ -119,7 +119,7 @@ class QueryTemplatesSyntaxGenerators extends QueryTemplatesSyntaxVars {
 	 *   'text-field' => 'value from record',
 	 * );
 	 * $tempalte->
-	 *   formFromValues($record, $structure, $data)
+	 *   formFromValues($record, $structure, null, $data)
 	 * ;
 	 * </code>
 	 * === Result DOM tree ===
@@ -299,6 +299,7 @@ class QueryTemplatesSyntaxGenerators extends QueryTemplatesSyntaxVars {
 	 * @TODO support objects for record and data
 	 * @TODO maybe support callbacks per input type, before/after, maybe for errors too ?
 	 * @TODO hidden fields and fieldCallback
+	 * @TODO fieldCallback __form special field for form callback 
 	 */
 	function formFromValues($record, $structure, $errors = null, $data = null, 
 		$template = null, $selectors = null, $fieldCallback = null) {
@@ -353,7 +354,7 @@ EOF;
 		}
 		foreach($structure as $fieldsetFields) {
 			$fieldset = $this->newInstance('<fieldset/>');
-			if (is_string($fieldsetFields['__label'])) {
+			if (isset($fieldsetFields['__label'])) {
 				$fieldset->append("<legend>{$fieldsetFields['__label']}</legend>");
 				unset($fieldsetFields['__label']);
 			}
@@ -421,8 +422,8 @@ EOF;
 								."populate select element. Otherwise remove \$structure['$field'].");
 						$input = $this->newInstance("<select name='$field'/>");
 						$markup[$inputSelector]->replaceWith($input);
-						if (isset($info['multiple'])) {
-							$input->attr('multiple', true);
+						if (isset($info['multiple']) && $info['multiple']) {
+							$input->attr('multiple', 'multiple');
 						} else {
 							$info['multiple'] = false;
 						}
@@ -472,8 +473,9 @@ EOF;
 					// RADIO
 					case 'radio':
 						if (! $info['values'])
-							throw new Exception("'values' property needed for radio inputs");
+							throw new Exception("\$structure[$field]['values'] property needed for radio inputs.");
 						$inputs = array();
+						// TODO prototype input, dont trust template
 						$input = $markup[$inputSelector]->
 							attr('type', 'radio')->
 							attr('name', $field)->
@@ -481,7 +483,7 @@ EOF;
 							removeAttr('checked');
 						$inputs[] = $input->get(0);
 						$lastInput = $input;
-						foreach(array_slice($info['values'], 1) as $value) {
+						foreach(array_reverse(array_slice($info['values'], 1)) as $value) {
 							$lastInput = $input->clone()->
 								insertAfter($lastInput)->
 								attr('value', $value);
@@ -514,7 +516,8 @@ EOF;
 							attr('type', $info[0])->
 							attr('name', $field)->
 							attr('id', $id)->
-							attr('value', $value)
+							attr('value', $value)->
+							removeAttr('checked')
 						;
 						if (isset($record[$field]) && $record[$field])
 							$input->attr('checked', 'checked');
@@ -530,7 +533,6 @@ EOF;
 						if (isset($record[$field]))
 							$input->attr('value', $record[$field]);
 						$markup[$labelSelector]->attr('for', $id);
-						$code = null;
 						break;
 				}
 				if ($markup) {
@@ -554,13 +556,14 @@ EOF;
 						}
 					}
 					if ($fieldCallback)
-						phpQuery::callbackRun($fieldCallback, array($markup));
+						// TODO doc param change
+						phpQuery::callbackRun($fieldCallback, array($field, $makrup));
 					$fieldset->append($markup);
 				}
 			}
 			$form->append($fieldset);
 		}
-		$input = $code = null;
+		$input = null;
 		$this->append($form);
 		return $this;
 	}

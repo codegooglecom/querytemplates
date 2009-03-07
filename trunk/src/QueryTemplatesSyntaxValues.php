@@ -25,13 +25,17 @@ class QueryTemplatesSyntaxValues extends QueryTemplatesSyntaxDOM {
 	 * - $dataRow mixed
 	 * - $node phpQueryObject
 	 * - $dataIndex mixed
+	 * 
+	 * @param String|phpQueryObject $targetNodeSelector
+	 * Selector or direct node used as relative point for inserting new node(s) for 
+	 * each record. Defaults to last inserted node which has a parent.
 	 *
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::valuesToLoop()
 	 */
-	public function valuesToLoopSeparate($values, $rowCallback) {
+	public function valuesToLoopSeparate($values, $rowCallback, $targetNodeSelector) {
 		foreach($this->stack() as $node)
-			$this->_valuesToLoop($node, $values, $rowCallback);
+			$this->_valuesToLoop($node, $values, $rowCallback, $targetNodeSelector);
 		return $this;
 	}
 	/**
@@ -51,14 +55,18 @@ class QueryTemplatesSyntaxValues extends QueryTemplatesSyntaxDOM {
 	 * - $dataRow mixed
 	 * - $node phpQueryObject
 	 * - $dataIndex mixed
+	 * 
+	 * @param String|phpQueryObject $targetNodeSelector
+	 * Selector or direct node used as relative point for inserting new node(s) for 
+	 * each record. Defaults to last inserted node which has a parent.
 	 *
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::valuesToLoop()
 	 */
-	public function valuesToLoopFirst($values, $rowCallback) {
+	public function valuesToLoopFirst($values, $rowCallback, $targetNodeSelector) {
 		$return = $this->eq(0);
 		$this->slice(1)->remove();
-		$this->_valuesToLoop($return, $values, $rowCallback);
+		$this->_valuesToLoop($return, $values, $rowCallback, $targetNodeSelector);
 		return $return;
 	}
 	/**
@@ -219,8 +227,10 @@ class QueryTemplatesSyntaxValues extends QueryTemplatesSyntaxDOM {
 	 * - $dataRow mixed
 	 * - $node phpQueryObject
 	 * - $dataIndex mixed
-	 *
+	 * 
 	 * @param String|phpQueryObject $targetNodeSelector
+	 * Selector or direct node used as relative point for inserting new node(s) for 
+	 * each record. Defaults to last inserted node which has a parent.
 	 *
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::varsToLoop()
@@ -228,12 +238,34 @@ class QueryTemplatesSyntaxValues extends QueryTemplatesSyntaxDOM {
 	public function valuesToLoop($values, $rowCallback, $targetNodeSelector = null) {
 		return $this->_valuesToLoop($this, $values, $rowCallback, $targetNodeSelector);
 	}
+	/**
+	 * Method loops provided $values on actually selected nodes. Each time new row
+	 * is inserted, provided callback is triggered with $dataRow, $node and $dataIndex.
+	 * 
+	 * Acts as valuesToLoop(), but new nodes are inserted BEFORE target node.
+	 *
+	 * Method doesn't change selected nodes stack.
+	 *
+	 * @param Array|Object $values
+	 * Associative array or Object.
+	 *
+	 * @param Callback|String $rowCallback
+	 * Callback triggered for every inserted row. Should support following
+	 * parameters:
+	 * - $dataRow mixed
+	 * - $node phpQueryObject
+	 * - $dataIndex mixed
+	 * 
+	 * @param String|phpQueryObject $targetNodeSelector
+	 * Selector or direct node used as relative point for inserting new node(s) for 
+	 * each record. Defaults to last inserted node which has a parent.
+	 *
+	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
+	 * @see QueryTemplatesPhpQuery::valuesToLoop()
+	 */
 	public function valuesToLoopBefore($values, $rowCallback, $targetNodeSelector = null) {
 		return $this->_valuesToLoop($this, $values, $rowCallback, $targetNodeSelector, 'before');
 	}
-	/**
-	* @TODO $target methods
-	*/
 	protected function _valuesToLoop($pq, $values, $rowCallback, $targetNodeSelector = null, $target = 'after') {
 		$lastNode = $pq;
 		$injectMethod = 'insert'.ucfirst($target);
@@ -263,7 +295,7 @@ class QueryTemplatesSyntaxValues extends QueryTemplatesSyntaxDOM {
 	}
 	/**
 	 * Toggles form fields values and selection states according to static values
-	 * from $data.
+	 * from $values.
 	 *
 	 * This includes:
 	 * - `input[type=radio][checked]`
@@ -297,8 +329,8 @@ class QueryTemplatesSyntaxValues extends QueryTemplatesSyntaxDOM {
 	 *   <input type='radio' name='radio-example' value='first' checked='checked'>
 	 *   <input type='radio' name='radio-example' value='second'>
    *   <select name='select-example'>
-	 *     <option value='first' selected='selected'></option>
-	 *     <option value='second'></option>
+	 *     <option value='first' selected='selected'>first</option>
+	 *     <option value='second'>second</option>
    *   </select>
 	 *   <textarea name='textarea-example'>old</textarea>
 	 * </form>
@@ -312,8 +344,8 @@ class QueryTemplatesSyntaxValues extends QueryTemplatesSyntaxDOM {
 	 *   <input type='radio' name='radio-example' value='first'>
 	 *   <input type='radio' name='radio-example' value='second' checked='checked'>
    *   <select name='select-example'>
-	 *     <option value='first'></option>
-	 *     <option value='second' selected='selected'></option>
+	 *     <option value='first'>first</option>
+	 *     <option value='second' selected='selected'>second</option>
 	 *   </select>
 	 *   <textarea name='textarea-example'>new</textarea>
 	 * </form>
@@ -329,12 +361,12 @@ class QueryTemplatesSyntaxValues extends QueryTemplatesSyntaxDOM {
 	 *
 	 * @return QueryTemplatesParse|QueryTemplatesPhpQuery
 	 * @see QueryTemplatesPhpQuery::varsToForm()
+	 * @see QueryTemplatesPhpQuery::formFromValues()
 	 */
 	public function valuesToForm($values, $selectorPattern = "[name*='%k']") {
 		$form = $this->is('form')
 			? $this->filter('form')
 			: $this->find('form');
-		// $arrayValue represents target data
 		foreach($values as $f => $v) {
 			// TODO addslashes to $f
 			$selector = str_replace(array('%k'), array($f), $selectorPattern);
@@ -361,12 +393,13 @@ class QueryTemplatesSyntaxValues extends QueryTemplatesSyntaxDOM {
 							->end();
 					break;
 					default:
-						$input->val($v);
+						$input->attr('value', $v);
+//						$input->val($v);
 				}
 			}
 			$select = $form->find("select$selector");
 			if ($select->length) {
-				$selected;
+				$selected = null;
 				$select->find('option')
 					->filter("[value='{$v}']")
 						->toReference($selected)
