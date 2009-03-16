@@ -89,7 +89,7 @@ abstract class QueryTemplates {
 	 */
 	public static $htmlTidyIntendWithTabs = true;
 	/**
-	 * Config fo Tidy.
+   * Config for Tidy.
 	 * @link http://tidy.sourceforge.net/docs/quickref.html
 	 * @var array
 	 * @TODO create formatter API

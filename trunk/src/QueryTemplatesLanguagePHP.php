@@ -9,11 +9,12 @@ abstract class QueryTemplatesLanguagePHP
 if (isset(\$$varName)) print {$callbacks[0]}\$$varName{$callbacks[1]};
 EOF;
 		}
+		$varRoot = explode('.', $varName);
 		$varNameArray = self::varNameArray($varName);
 		$varNameObject = self::varNameObject($varName);
 		return <<<EOF
-if (isset($varNameArray)) print {$callbacks[0]}$varNameArray{$callbacks[1]};
-else if (isset($varNameObject)) print {$callbacks[0]}$varNameObject{$callbacks[1]};
+if (is_array(\${$varRoot[0]}) && isset($varNameArray)) print {$callbacks[0]}$varNameArray{$callbacks[1]};
+else if (! is_array(\${$varRoot[0]}) && isset($varNameObject)) print {$callbacks[0]}$varNameObject{$callbacks[1]};
 EOF;
 	}
 	public static function printValue($value) {
@@ -26,11 +27,12 @@ EOF;
 			: $asVarName;
 		$preCode = '';
 		if (strpos($varName, '.')) {
+			$varRoot = explode('.', $varName);
 			$varNameObject = self::varNameObject($varName);
 			$varNameArray = self::varNameArray($varName);
 			$varName = '$__'.substr(md5($varName), 0, 5);
-			$preCode = "if (isset($varNameArray)) $varName = $varNameArray; ";
-			$preCode .= "else if (isset($varNameObject)) $varName = $varNameObject; ";
+			$preCode = "if (is_array(\${$varRoot[0]}) && isset($varNameArray)) $varName = $varNameArray; ";
+			$preCode .= "else if (!is_array(\${$varRoot[0]}) && isset($varNameObject)) $varName = $varNameObject; ";
 		} else
 			$varName = '$'.$varName;
 		$wrapper = self::ifCode(

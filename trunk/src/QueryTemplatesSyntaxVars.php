@@ -530,8 +530,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToStack()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToSelector($varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToSelector('markup', $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
+	public function varsToSelector($varName, $varFields, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector('markup', $varName, $varFields, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects executable code printing variable's fields replacing nodes matched by
@@ -612,8 +612,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToStack()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToSelectorReplace($varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToSelector('replaceWith', $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
+	public function varsToSelectorReplace($varName, $varFields, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector('replaceWith', $varName, $varFields, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects executable code printing variable's fields at the end of nodes
@@ -699,8 +699,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToStack()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToSelectorAppend($varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToSelector('append', $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
+	public function varsToSelectorAppend($varName, $varFields, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector('append', $varName, $varFields, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects executable code printing variable's fields at the beggining of nodes
@@ -786,8 +786,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToStack()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToSelectorPrepend($varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToSelector('prepend', $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
+	public function varsToSelectorPrepend($varName, $varFields, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector('prepend', $varName, $varFields, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects executable code printing variable's fields after nodes matched by
@@ -874,8 +874,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToStack()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToSelectorAfter($varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToSelector('after', $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
+	public function varsToSelectorAfter($varName, $varFields, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector('after', $varName, $varFields, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects executable code printing variable's fields before nodes matched by
@@ -960,8 +960,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToStack()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToSelectorBefore($varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToSelector('before', $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
+	public function varsToSelectorBefore($varName, $varFields, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector('before', $varName, $varFields, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects executable code printing variable's fields as attribute of nodes
@@ -1048,8 +1048,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToStack()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToSelectorAttr($attr, $varName, $varFields, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToSelector(array('attr', $attr), $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback);
+	public function varsToSelectorAttr($attr, $varName, $varFields, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToSelector(array('attr', $attr), $varName, $varFields, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Internal method.
@@ -1064,7 +1064,9 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 *
 	 * @TODO support $varName to be a function (last char == ')'),
 	 */
-	protected function _varsToSelector($target, $varName, $varFields, $selectorPattern, $skipFields, $fieldCallback) {
+	 protected function _varsToSelector($target, $varName, $varFields, $selectorPattern, $filters, $skipFields, $fieldCallback) {
+		$filterVar = QueryTemplatesLanguage::filterVarNameCallbacks($varName);
+		$filterVar = implode('|', $filterVar);
 		$loop = $this->_varsParseFields($varFields);
 		$_target = $target;
 		$targetData = null;
@@ -1075,28 +1077,34 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 		foreach($loop as $f) {
 			if ($skipFields && in_array($f, $skipFields))
 				continue;
+			$filter = $filterVar;
+			if (isset($filters[$f]))
+				$filter = array_merge($filter, $filters[$f]);
+			else if (is_string($filters))
+				$filter = array_merge($filter, array($filters));
+			if ($filter)
+				$filter = '.|'.implode('|', $filter);
 			$selector = str_replace(array('%k'), array($f), $selectorPattern);
 			$node = $this->find($selector);
 			switch($target) {
 				case 'attr':
 					$node->qt_langMethod('attr', $targetData[0],
-						$this->qt_langCode('printVar', "$varName.$f")
+						$this->qt_langCode('printVar', "$varName.$f$filter")
 					);
 					break;
 				default:
 					$node->qt_langMethod($target,
-						$this->qt_langCode('printVar', "$varName.$f")
+						$this->qt_langCode('printVar', "$varName.$f$filter")
 					);
 			}
 			if ($fieldCallback)
-				// TODO doc
 				phpQuery::callbackRun($fieldCallback, array($node, $f, $_target));
 		}
 		return $this;
 	}
 	/**
 	 * Injects executable code printing variable's fields inside actually matched
-	 * nodes. Second param needs to be wrapped with array_keys for non-assosiative
+	 * nodes. Second param needs to be wrapped with array_keys for non-associative
 	 * arrays.
 	 *
 	 * Method doesn't change selected elements stack.
@@ -1176,8 +1184,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToSelector()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToStack($varName, $varFields, $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToStack('markup', $varName, $varFields, $skipFields, $fieldCallback);
+	public function varsToStack($varName, $varFields, $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack('markup', $varName, $varFields, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects executable code printing variable's fields replacing actually matched
@@ -1259,8 +1267,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToSelector()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToStackReplace($varName, $varFields, $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToStack('replaceWith', $varName, $varFields, $skipFields, $fieldCallback);
+	public function varsToStackReplace($varName, $varFields, $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack('replaceWith', $varName, $varFields, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects executable code printing variable's fields at the end of actually
@@ -1346,8 +1354,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToSelector()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToStackAppend($varName, $varFields, $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToStack('append', $varName, $varFields, $skipFields, $fieldCallback);
+	public function varsToStackAppend($varName, $varFields, $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack('append', $varName, $varFields, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects executable code printing variable's fields at the beggining of actually
@@ -1433,8 +1441,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToSelector()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToStackPrepend($varName, $varFields, $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToStack('prepend', $varName, $varFields, $skipFields, $fieldCallback);
+	public function varsToStackPrepend($varName, $varFields, $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack('prepend', $varName, $varFields, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects executable code printing variable's fields after actually matched
@@ -1520,8 +1528,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToSelector()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToStackAfter($varName, $varFields, $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToStack('after', $varName, $varFields, $skipFields, $fieldCallback);
+	public function varsToStackAfter($varName, $varFields, $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack('after', $varName, $varFields, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects executable code printing variable's fields before actually matched
@@ -1607,8 +1615,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToSelector()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToStackBefore($varName, $varFields, $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToStack('before', $varName, $varFields, $skipFields, $fieldCallback);
+	public function varsToStackBefore($varName, $varFields, $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack('before', $varName, $varFields, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects executable code printing variable's fields as attribute of actually
@@ -1695,11 +1703,13 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::varsToSelector()
 	 * @see QueryTemplatesPhpQuery::varsToForm()
 	 */
-	public function varsToStackAttr($attr, $varName, $varFields, $skipFields = null, $fieldCallback = null) {
-		return $this->_varsToStack(array('attr', $attr), $varName, $varFields, $skipFields, $fieldCallback);
+	public function varsToStackAttr($attr, $varName, $varFields, $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_varsToStack(array('attr', $attr), $varName, $varFields, $filters, $skipFields, $fieldCallback);
 	}
-	protected function _varsToStack($target, $varName, $varValue, $skipFields, $fieldCallback) {
+	protected function _varsToStack($target, $varName, $varValue, $filters, $skipFields, $fieldCallback) {
 		$loop = $this->_varsParseFields($varValue);
+		$filterVar = QueryTemplatesLanguage::filterVarNameCallbacks($varName);
+		$filterVar = implode('|', $filterVar);
 		$_target = $target;
 		$targetData = null;
 		if (is_array($target)) {
@@ -1710,20 +1720,26 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 		foreach($loop as $f) {
 			if ($skipFields && in_array($f, $skipFields))
 				continue;
+			$filter = $filterVar;
+			if (isset($filters[$f]))
+				$filter = array_merge($filter, $filters[$f]);
+			else if (is_string($filters))
+				$filter = array_merge($filter, array($filters));
+			if ($filter)
+				$filter = '.|'.implode('|', $filter);
 			$node = $this->eq($i++);
 			switch($target) {
 				case 'attr':
 					$node->qt_langMethod('attr', $targetData[0],
-						$this->qt_langCode('printVar', "$varName.$f")
+						$this->qt_langCode('printVar', "$varName.$f$filter")
 					);
 					break;
 				default:
 					$node->qt_langMethod($target,
-						$this->qt_langCode('printVar', "$varName.$f")
+						$this->qt_langCode('printVar', "$varName.$f$filter")
 					);
 			}
 			if ($fieldCallback)
-				// TODO doc
 				phpQuery::callbackRun($fieldCallback, array($node, $f, $_target));
 		}
 		return $this;
@@ -1818,8 +1834,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelector($values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('markup', $values, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelector($values, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('markup', $values, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects markup from $values' content (rows or attributes) replacing nodes
@@ -1896,8 +1912,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorReplace($values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('replaceWith', $values, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelectorReplace($values, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('replaceWith', $values, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects markup from $values' content (rows or attributes) before nodes
@@ -1978,8 +1994,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorBefore($values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('before', $values, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelectorBefore($values, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('before', $values, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects markup from $values' content (rows or attributes) after nodes
@@ -2062,8 +2078,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorAfter($values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('after', $values, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelectorAfter($values, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('after', $values, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects markup from $values' content (rows or attributes) at the beggining of
@@ -2144,8 +2160,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorPrepend($values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('prepend', $values, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelectorPrepend($values, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('prepend', $values, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects markup from $values' content (rows or attributes) at the end of
@@ -2226,8 +2242,8 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorAppend($values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector('append', $values, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelectorAppend($values, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector('append', $values, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
 	/**
 	 * Injects markup from $values' content (rows or attributes) as attribute of
@@ -2309,10 +2325,10 @@ class QueryTemplatesSyntaxVars extends QueryTemplatesSyntaxConditions {
 	 * @see QueryTemplatesPhpQuery::valuesToStack()
 	 * @see QueryTemplatesPhpQuery::valuesToForm()
 	 */
-	public function valuesToSelectorAttr($attr, $values, $selectorPattern = '.%k', $skipFields = null, $fieldCallback = null) {
-		return $this->_valuesToSelector(array('attr', $attr), $values, $selectorPattern, $skipFields, $fieldCallback);
+	public function valuesToSelectorAttr($attr, $values, $selectorPattern = '.%k', $filters = null, $skipFields = null, $fieldCallback = null) {
+		return $this->_valuesToSelector(array('attr', $attr), $values, $selectorPattern, $filters, $skipFields, $fieldCallback);
 	}
-	protected function _valuesToSelector($target, $data, $selectorPattern, $skipFields, $fieldCallback) {
+	protected function _valuesToSelector($target, $data, $selectorPattern, $filters, $skipFields, $fieldCallback) {
 		$_target = $target;
 		$targetData = null;
 		if (is_array($target)) {

@@ -82,7 +82,7 @@ EOF;
 		return array(
 			"	else if (typeof $var != undefined && ! $var) {",
 			"	}"
-		);
+    );
 	}
 	public static function elseStatement() {
 		return array(
