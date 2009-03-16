@@ -568,7 +568,7 @@ EOF;
 		return $this;
 	}
 	/**
-	 * EXPERIMENTAL - works, but not for production code
+	 * EXPERIMENTAL - works, but not for production code.
 	 * 
 	 * Method formFromVars acts as flexible form helper. It creates customized 
 	 * exacutable form without the need of suppling a line of markup.
@@ -1367,7 +1367,7 @@ EOF;
 	/**
 	 * Behaves as var_export, dumps variables from $varsArray as $key = value for
 	 * later use during template execution. Variables are prepended into selected
-	 * elemets.
+	 * elements.
 	 *
 	 * Method doesn't change selected elements stack.
 	 *
@@ -1441,6 +1441,16 @@ EOF;
 		$object->vars[$name] = $this->markupOuter();
 		return $this;
 	}
+	// TODO phpdoc
+  /**
+   * testMethod 
+   * 
+   * @access public
+   * @return void
+   */
+  public function testMethod() {
+    foo();
+  }
 	/**
 	 * @deprecated
 	 */
