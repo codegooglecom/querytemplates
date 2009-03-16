@@ -9,8 +9,7 @@
    * errors `[1]`
    Represents actual errors as array of fields. Field can also be an array.
    * data `[2]`
-   Overloads $defaultData during template's execution.  
-  Names should be without dollar signs.  Ex:
+   Overloads $defaultData during template's execution.  Names should be without dollar signs.  Ex:
 {{{
  array('row', 'errors.row', 'data');
  $errors`['row']` = array(
@@ -27,8 +26,7 @@
    * hidden
    * checkbox
    * radio
-   * textarea  
-  Convention:
+   * textarea  Convention:
 {{{
  'fieldName' => array(
    'fieldType', $fieldOptions
@@ -40,8 +38,7 @@
    * id
    * multiple (only select)  // TODO
    * values (only radio, MANDATORY)
-   * value (only checkbox, optional)  
-  There can be special field *`__form`*, which represents form element, as an array.  All values from it will be pushed as form attributes.  If you wrap fields' array within another array, it will represent *fieldsets*,  which value with index *`__label`* will be used as legend (optional).
+   * value (only checkbox, optional)  There can be special field *`__form`*, which represents form element, as an array.  All values from it will be pushed as form attributes.  If you wrap fields' array within another array, it will represent *fieldsets*,  which value with index *`__label`* will be used as legend (optional).
  * *$defaultRecord* _Array_ = `null`
   Default field's value. Used when field isn't present within supplied record.  Ex:
 {{{
