@@ -1,0 +1,22 @@
+# `varsTo` #
+[Wiki](http://code.google.com/p/querytemplates/w/list) > [Syntax](Syntax.md) > [varsTo](varsToSyntax.md)
+
+## Methods ##
+  * [varsToForm](varsToFormMethodPHP.md)
+  * [varsToLoop](varsToLoopMethodPHP.md)
+  * [varsToLoopFirst](varsToLoopFirstMethodPHP.md)
+  * [varsToLoopSeparate](varsToLoopSeparateMethodPHP.md)
+  * [varsToSelector](varsToSelectorMethodPHP.md)
+  * [varsToSelectorAfter](varsToSelectorAfterMethodPHP.md)
+  * [varsToSelectorAppend](varsToSelectorAppendMethodPHP.md)
+  * [varsToSelectorAttr](varsToSelectorAttrMethodPHP.md)
+  * [varsToSelectorBefore](varsToSelectorBeforeMethodPHP.md)
+  * [varsToSelectorPrepend](varsToSelectorPrependMethodPHP.md)
+  * [varsToSelectorReplace](varsToSelectorReplaceMethodPHP.md)
+  * [varsToStack](varsToStackMethodPHP.md)
+  * [varsToStackAfter](varsToStackAfterMethodPHP.md)
+  * [varsToStackAppend](varsToStackAppendMethodPHP.md)
+  * [varsToStackAttr](varsToStackAttrMethodPHP.md)
+  * [varsToStackBefore](varsToStackBeforeMethodPHP.md)
+  * [varsToStackPrepend](varsToStackPrependMethodPHP.md)
+  * [varsToStackReplace](varsToStackReplaceMethodPHP.md)
